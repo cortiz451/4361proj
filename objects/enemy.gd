@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var player: Node3D
+@export var Bullet : PackedScene
 
 @onready var raycast = $RayCast
 @onready var muzzle_a = $MuzzleA
@@ -10,6 +11,7 @@ var health := 100
 var time := 0.0
 var target_position: Vector3
 var destroyed := false
+var angry=false;
 
 # When ready, save the initial position
 
@@ -46,23 +48,18 @@ func destroy():
 # Shoot when timer hits 0
 
 func _on_timer_timeout():
-	raycast.force_raycast_update()
+	#do not aggro if not in aggro zone
+	if(angry):
+		var b=Bullet.instantiate()
+		owner.add_child(b)
+		b.transform = $Marker3D.global_transform
+	
 
-	if raycast.is_colliding():
-		var collider = raycast.get_collider()
+#aggro mechanics
+func _on_aggro_body_entered(body: Node3D) -> void:
+	if(body==player):
+		angry=true
 
-		if collider.has_method("damage"):  # Raycast collides with player
-			
-			# Play muzzle flash animation(s)
-
-			muzzle_a.frame = 0
-			muzzle_a.play("default")
-			muzzle_a.rotation_degrees.z = randf_range(-45, 45)
-
-			muzzle_b.frame = 0
-			muzzle_b.play("default")
-			muzzle_b.rotation_degrees.z = randf_range(-45, 45)
-
-			Audio.play("sounds/enemy_attack.ogg")
-
-			collider.damage(5)  # Apply damage to player
+func _on_aggro_body_exited(body: Node3D) -> void:
+	if(body==player):
+		angry=false

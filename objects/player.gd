@@ -33,6 +33,7 @@ var container_offset = Vector3(1.2, -1.1, -2.75)
 var tween:Tween
 
 signal health_updated
+signal ammo_updated
 
 @onready var camera = $Head/Camera
 @onready var raycast = $Head/Camera/RayCast
@@ -227,10 +228,13 @@ func action_shoot():
 			
 		container.position.z += 0.45 # Knockback of weapon visual
 		#camera.rotation.x += 0.025 # Knockback of camera
-		movement_velocity += Vector3(0, 0, weapon.knockback) # Knockback
+		#movement_velocity += Vector3(0, 0, weapon.knockback) # Knockback
 		
 		#lower ammo
-		weapon.ammo-=weapon.drain;
+		weapon.ammo = weapon.ammo - weapon.drain;
+		
+		ammo_updated.emit(weapon.ammo) # Update ammo on HUD..?
+
 
 # Toggle between available weapons (listed in 'weapons')
 
@@ -242,6 +246,7 @@ func action_weapon_toggle():
 		initiate_change_weapon(weapon_index)
 		
 		Audio.play("sounds/weapon_change.ogg")
+		
 
 # Initiates the weapon changing animation (tween)
 
@@ -282,8 +287,12 @@ func change_weapon():
 	
 	raycast.target_position = Vector3(0, 0, -1) * weapon.max_distance
 	crosshair.texture = weapon.crosshair
+	
+	ammo_updated.emit(weapon.ammo) # Update ammo on HUD..?
 
 func damage(amount):
+	
+	Audio.play("sounds/ouch.wav")
 	
 	health -= amount
 	health_updated.emit(health) # Update health on HUD

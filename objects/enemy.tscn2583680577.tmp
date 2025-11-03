@@ -1,18 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2g78tpqbyf5g"]
+[gd_scene load_steps=8 format=3 uid="uid://d2g78tpqbyf5g"]
 
 [ext_resource type="PackedScene" uid="uid://lde2xq3vq635" path="res://models/enemy-flying.glb" id="1_3v8nl"]
 [ext_resource type="Script" uid="uid://b6udw8uhlp4ei" path="res://objects/enemy.gd" id="1_jg24b"]
-[ext_resource type="PackedScene" uid="uid://c4cej68vmmp6c" path="res://objects/bullet.tscn" id="2_we7g8"]
 [ext_resource type="SpriteFrames" uid="uid://dbv3sy5qjatnl" path="res://sprites/burst_animation.tres" id="3_iblw5"]
+[ext_resource type="Script" uid="uid://7bigwh70psau" path="res://objects/pew.gd" id="4_3hb37"]
+[ext_resource type="Texture2D" uid="uid://2jld33y6h5pq" path="res://sprites/crosshair.png" id="4_we7g8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iix87"]
 radius = 0.75
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_we7g8"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_41oev"]
 
 [node name="enemy-flying" type="Area3D"]
 script = ExtResource("1_jg24b")
-Bullet = ExtResource("2_we7g8")
 
 [node name="enemy-flying" parent="." instance=ExtResource("1_3v8nl")]
 
@@ -39,16 +39,18 @@ frame = 2
 wait_time = 0.25
 autostart = true
 
+[node name="Bullet" type="Area3D" parent="."]
+script = ExtResource("4_3hb37")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bullet"]
+shape = SubResource("SphereShape3D_41oev")
+
+[node name="Sprite3D" type="Sprite3D" parent="Bullet"]
+modulate = Color(3.0528986, 0.560643, 0.654699, 1)
+billboard = 1
+texture = ExtResource("4_we7g8")
+
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29273826, 0.6475944)
-
-[node name="Aggro" type="Area3D" parent="."]
-input_ray_pickable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Aggro"]
-transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0.30040395, 0)
-shape = SubResource("CylinderShape3D_we7g8")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29273826, 0.37781978)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="Aggro" to="." method="_on_aggro_body_entered"]
-[connection signal="body_exited" from="Aggro" to="." method="_on_aggro_body_exited"]

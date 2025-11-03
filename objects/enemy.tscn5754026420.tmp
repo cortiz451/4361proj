@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2g78tpqbyf5g"]
+[gd_scene load_steps=6 format=3 uid="uid://d2g78tpqbyf5g"]
 
 [ext_resource type="PackedScene" uid="uid://lde2xq3vq635" path="res://models/enemy-flying.glb" id="1_3v8nl"]
 [ext_resource type="Script" uid="uid://b6udw8uhlp4ei" path="res://objects/enemy.gd" id="1_jg24b"]
@@ -7,8 +7,6 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iix87"]
 radius = 0.75
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_we7g8"]
 
 [node name="enemy-flying" type="Area3D"]
 script = ExtResource("1_jg24b")
@@ -40,15 +38,6 @@ wait_time = 0.25
 autostart = true
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29273826, 0.6475944)
-
-[node name="Aggro" type="Area3D" parent="."]
-input_ray_pickable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Aggro"]
-transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0.30040395, 0)
-shape = SubResource("CylinderShape3D_we7g8")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29273826, 0.37781978)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="Aggro" to="." method="_on_aggro_body_entered"]
-[connection signal="body_exited" from="Aggro" to="." method="_on_aggro_body_exited"]
