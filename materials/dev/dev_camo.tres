@@ -1,0 +1,7 @@
+[gd_resource type="ORMMaterial3D" load_steps=2 format=3 uid="uid://maylgk1pqhmi"]
+
+[ext_resource type="Texture2D" uid="uid://d4kg84xtbd3ws" path="res://materials/dev/dev_camo.png" id="1_26d5q"]
+
+[resource]
+albedo_texture = ExtResource("1_26d5q")
+uv1_scale = Vector3(2, 2, 2)

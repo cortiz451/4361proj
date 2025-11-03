@@ -23,7 +23,9 @@ environment = ExtResource("1_q8fpv")
 
 [node name="Player" parent="." node_paths=PackedStringArray("crosshair") instance=ExtResource("2_elriq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.011154, 0.5, 0)
+movement_speed = 10
 number_of_jumps = 1
+jump_strength = 10
 crosshair = NodePath("../HUD/Crosshair")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
@@ -75,15 +77,7 @@ vertical_alignment = 2
 [node name="Enemies" type="Node" parent="."]
 
 [node name="enemy-flying" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.969482, 2.5, 3.1107635)
-player = NodePath("../../Player")
-
-[node name="enemy-flying2" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.45506, 2.5, 1.5)
-player = NodePath("../../Player")
-
-[node name="enemy-flying4" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 15.5, 4, 5.9739885)
+transform = Transform3D(0.32252336, -0.32997075, -0.8871854, 0.11273757, 0.9439911, -0.31011438, 0.93982387, 0, 0.3416593, 20.969482, 2.5, 3.1107635)
 player = NodePath("../../Player")
 
 [node name="Level" type="Node" parent="."]
