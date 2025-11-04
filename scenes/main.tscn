@@ -177,9 +177,10 @@ metadata/surface_prop = "default"
 [node name="collision" type="CollisionShape3D" parent="Level/VMFNode/Geometry/surface_prop_default"]
 shape = ExtResource("9_ya4ey")
 
-[node name="Resupply" type="Area3D" parent="Level"]
+[node name="Resupply" type="Area3D" parent="Level" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0077224, 1.5289316, -3.6103284)
 script = ExtResource("15_jbj1t")
+player = NodePath("../../Player")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Resupply"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.5078633, 0)
@@ -191,10 +192,30 @@ billboard = 1
 sprite_frames = SubResource("SpriteFrames_jkv2x")
 
 [node name="Timer" type="Timer" parent="Level/Resupply"]
-wait_time = 0.009999999999999998
+wait_time = 0.1
+one_shot = true
+
+[node name="Resupply2" type="Area3D" parent="Level" node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.446518, 22.156618, 14.957723)
+script = ExtResource("15_jbj1t")
+player = NodePath("../../Player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Resupply2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.5078633, 0)
+shape = SubResource("CylinderShape3D_a8y0u")
+
+[node name="Sprite3D" type="AnimatedSprite3D" parent="Level/Resupply2"]
+pixel_size = 0.005
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_jkv2x")
+
+[node name="Timer" type="Timer" parent="Level/Resupply2"]
+wait_time = 0.1
 one_shot = true
 
 [connection signal="ammo_updated" from="Player" to="HUD" method="_on_player_ammo_updated"]
 [connection signal="health_updated" from="Player" to="HUD" method="_on_health_updated"]
-[connection signal="body_entered" from="Level/Resupply" to="Player" method="_on_resupply_entered"]
+[connection signal="body_entered" from="Level/Resupply" to="Level/Resupply" method="_on_player_resupply"]
 [connection signal="timeout" from="Level/Resupply/Timer" to="Level/Resupply" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Level/Resupply2" to="Level/Resupply2" method="_on_player_resupply"]
+[connection signal="timeout" from="Level/Resupply2/Timer" to="Level/Resupply2" method="_on_timer_timeout"]

@@ -326,17 +326,6 @@ func damage(amount):
 		
 		get_tree().reload_current_scene() # Reset when out of health
 
-#resupply ammo at resupplies
-func _on_resupply_entered(_body: Node3D) -> void:
-	
-	#don't allow constant resupplies
-	if(resupplytime.get_time_left()<=0.1):
-		for w in weapons:
-			weapon.ammo=weapon.maxammo
-		
-		$"../Level/Resupply/Sprite3D".frame=1
-		resupplytime.start(10)
-		
-		Audio.play("sounds/mystery.ogg")
-		ammo_updated.emit(weapon.ammo) # Update ammo on HUD
+
+
 	
