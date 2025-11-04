@@ -32,6 +32,8 @@ var container_offset = Vector3(1.2, -1.1, -2.75)
 
 var tween:Tween
 
+var DAMAGE_COOLDOWN=0.33;
+
 #Sig-nal.
 signal health_updated
 signal ammo_updated
@@ -43,6 +45,7 @@ signal drain_updated
 @onready var container = $Head/Camera/SubViewportContainer/SubViewport/CameraItem/Container
 @onready var sound_footsteps = $SoundFootsteps
 @onready var blaster_cooldown = $Cooldown
+@onready var dmgcool = $DmgCool
 @onready var resupplytime = $"../Level/Resupply/Timer"
 
 @export var crosshair:TextureRect
@@ -199,9 +202,7 @@ func action_shoot():
 	
 	if Input.is_action_pressed("shoot"):
 	
-		if !blaster_cooldown.is_stopped(): return # Cooldown for shooting
-		
-		if weapon.ammo<=0: return # Cooldown for shooting
+		if !blaster_cooldown.is_stopped() || weapon.ammo<=0: return # Cooldown for shooting
 		
 		Audio.play(weapon.sound_shoot)
 		
@@ -223,11 +224,10 @@ func action_shoot():
 			raycast.target_position.y = randf_range(-weapon.spread, weapon.spread)
 			
 			raycast.force_raycast_update()
-			
-			if !raycast.is_colliding(): continue # Don't create impact when raycast didn't hit
-			
+			if !raycast.is_colliding():
+				continue # Don't create impact when raycast didn't hit
+
 			var collider = raycast.get_collider()
-			
 			# Hitting an enemy
 			
 			if collider.has_method("damage"):
@@ -275,6 +275,7 @@ func action_weapon_toggle():
 func initiate_change_weapon(index):
 	
 	Audio.play("sounds/weapon_change.ogg")
+	blaster_cooldown.start(0.5)
 	
 	weapon_index = index
 	
@@ -317,10 +318,14 @@ func change_weapon():
 
 func damage(amount):
 	
+	if(dmgcool.time_left!=0): return
+	
 	Audio.play("sounds/ouch.ogg")
 	
-	health -= amount
+	health -= amount+randi_range(-2,2)
 	health_updated.emit(health) # Update health on HUD
+	
+	dmgcool.start(DAMAGE_COOLDOWN)
 	
 	if health < 0:
 		

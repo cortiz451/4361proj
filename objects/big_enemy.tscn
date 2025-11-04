@@ -162,6 +162,8 @@ margin = 0.05
 points = PackedVector3Array(0, 0, 0, -15, -15, 10, -15, 15, 10, 15, 15, 10, 15, -15, 10, 0, 0, 0)
 
 [node name="enemy-flying" type="Area3D"]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("2_2emci")
 Bullet = ExtResource("2_e841d")
 
@@ -191,7 +193,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.3, -0.02375)
 mesh = SubResource("ArrayMesh_tlnvm")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Enemy"]]
 transform = Transform3D(1.65, 0, 0, 0, 1.65, 0, 0, 0, 1.65, 0, 1.0028583, 0)
 shape = SubResource("SphereShape3D_iix87")
 
@@ -217,6 +219,7 @@ autostart = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29273826, 0.6475944)
 
 [node name="Aggro" type="Area3D" parent="."]
+collision_layer = 2
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Aggro"]

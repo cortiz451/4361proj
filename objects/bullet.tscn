@@ -8,6 +8,7 @@
 [node name="Node3D" type="Node3D"]
 
 [node name="Bullet" type="Area3D" parent="."]
+collision_layer = 2
 input_ray_pickable = false
 script = ExtResource("1_3ndsa")
 
@@ -20,7 +21,7 @@ texture_filter = 0
 texture = ExtResource("2_xbcx7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bullet"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shape = SubResource("SphereShape3D_3ndsa")
 
 [connection signal="body_entered" from="Bullet" to="Bullet" method="_on_bullet_body_entered"]

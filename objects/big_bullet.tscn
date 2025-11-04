@@ -8,6 +8,7 @@
 [node name="Node3D" type="Node3D"]
 
 [node name="Bullet" type="Area3D" parent="."]
+collision_layer = 2
 input_ray_pickable = false
 script = ExtResource("1_jpaxd")
 
