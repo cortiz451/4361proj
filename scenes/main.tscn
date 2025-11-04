@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=10 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
 [ext_resource type="Script" uid="uid://by0qn28x1i1jj" path="res://scripts/hud.gd" id="3_s8mkj"]
 [ext_resource type="FontFile" uid="uid://biqtga8moh7ah" path="res://fonts/lilita_one_regular.ttf" id="3_w27de"]
 [ext_resource type="Script" uid="uid://cjmpchbcxyqh6" path="res://addons/godotvmf/src/vmf_node.gd" id="7_85g3d"]
-[ext_resource type="PackedScene" uid="uid://bvx5cvigosg0s" path="res://objects/platform_large_grass.tscn" id="7_wggef"]
 [ext_resource type="PackedScene" uid="uid://d2g78tpqbyf5g" path="res://objects/enemy.tscn" id="8_7ty2f"]
 [ext_resource type="ArrayMesh" uid="uid://bgkrjkpxwnspr" path="res://geometry/godotmap1_vmf_import.mesh" id="8_choun"]
 [ext_resource type="Shape3D" uid="uid://toakdbdoymgg" path="res://geometry/godotmap1_vmf_collision_surface_prop_default.res" id="9_ya4ey"]
@@ -22,7 +21,7 @@ outline_color = Color(0, 0, 0, 0.470588)
 environment = ExtResource("1_q8fpv")
 
 [node name="Player" parent="." node_paths=PackedStringArray("crosshair") instance=ExtResource("2_elriq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.011154, 0.5, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.055559635, 0.5, -8.163817)
 movement_speed = 10
 number_of_jumps = 1
 jump_strength = 10
@@ -81,11 +80,11 @@ transform = Transform3D(0.32252336, -0.32997075, -0.8871854, 0.11273757, 0.94399
 player = NodePath("../../Player")
 
 [node name="enemy-flying2" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
-transform = Transform3D(0.30561993, -0.017393053, -0.95199466, 0.017899059, 0.99976134, -0.012519656, 0.95198536, -0.013213546, 0.30585828, 59.276417, 2.4907267, 5.6301165)
+transform = Transform3D(0.9829465, -0.015303165, 0.18325496, -0.047537044, 0.94151425, 0.33360368, -0.17764236, -0.33662593, 0.92473036, 59.276417, 2.4907267, 5.6301165)
 player = NodePath("../../Player")
 
 [node name="enemy-flying3" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
-transform = Transform3D(-0.54647446, -0.02760353, -0.83702064, -0.03865637, 0.9992228, -0.007714808, 0.836583, 0.028140202, -0.5471169, 59.276417, 2.4907267, 2.493379)
+transform = Transform3D(-0.9666797, -0.035439927, 0.25352347, -0.038656365, 0.9992228, -0.0077148094, -0.25305295, -0.017257955, -0.9672984, 59.276417, 2.4907267, 2.493379)
 player = NodePath("../../Player")
 
 [node name="enemy-flying4" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
@@ -109,10 +108,6 @@ transform = Transform3D(0.018645668, -0.032315895, 0.99930376, -0.00018134614, 0
 player = NodePath("../../Player")
 
 [node name="Level" type="Node" parent="."]
-
-[node name="platform-large-grass" parent="Level" instance=ExtResource("7_wggef")]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -0.5, 0)
-visible = false
 
 [node name="VMFNode" type="Node3D" parent="Level"]
 script = ExtResource("7_85g3d")

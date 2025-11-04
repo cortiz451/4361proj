@@ -7,10 +7,13 @@ signal exploded
 
 var velocity = Vector3.ZERO
 
+#how fast do you want it to go?
+var SPEED = 20
+
 var DMG=10;
 
 func _physics_process(delta):
-	velocity += g * delta
+	velocity = g*delta*SPEED
 	look_at(transform.origin + velocity.normalized(), Vector3.UP)
 	transform.origin += velocity * delta
 

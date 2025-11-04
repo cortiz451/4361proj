@@ -8,7 +8,9 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_iix87"]
 radius = 0.75
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_we7g8"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_we7g8"]
+margin = 0.545
+points = PackedVector3Array(0, 0, 0, -5, -5, 10, -5, 5, 10, 5, 5, 10, 5, -5, 10, 0, 0, 0)
 
 [node name="enemy-flying" type="Area3D"]
 script = ExtResource("1_jg24b")
@@ -36,7 +38,6 @@ sprite_frames = ExtResource("3_iblw5")
 frame = 2
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.25
 autostart = true
 
 [node name="Marker3D" type="Marker3D" parent="."]
@@ -47,7 +48,7 @@ input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Aggro"]
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0.30040395, 0)
-shape = SubResource("CylinderShape3D_we7g8")
+shape = SubResource("ConvexPolygonShape3D_we7g8")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Aggro" to="." method="_on_aggro_body_entered"]

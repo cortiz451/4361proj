@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://bds2lhxkasyh3"]
+
+[ext_resource type="Texture2D" uid="uid://2jld33y6h5pq" path="res://sprites/crosshair.png" id="1_uwy8n"]
+[ext_resource type="PackedScene" uid="uid://b888ra18w1uwb" path="res://objects/babyblaster.tscn" id="2_uwy8n"]
+[ext_resource type="Script" uid="uid://dg01pkkc1c5vd" path="res://scripts/weapon.gd" id="3_esfoj"]
+
+[resource]
+script = ExtResource("3_esfoj")
+model = ExtResource("2_uwy8n")
+rotation = Vector3(0, 180, 0)
+muzzle_position = Vector3(0.1, -0.4, 1.5)
+cooldown = 0.4
+damage = 10.0
+spread = 2.5
+ammo = 1
+drain = 0
+sound_shoot = "sounds/blaster.ogg"
+crosshair = ExtResource("1_uwy8n")
