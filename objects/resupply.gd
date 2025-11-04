@@ -8,15 +8,15 @@ func _on_timer_timeout() -> void:
 
 #resupply ammo at resupplies
 func _on_player_resupply(body: Node3D) -> void:
-	if(body.has_method("change_weapon")):
-		var weapons=body.weapons
+	if(body.has_method("setAmmo")):
 		#don't allow constant resupplies
 		if(resupplytime.get_time_left()<=0.2):
-			for w in weapons:
-				w.ammo=w.maxammo
+			
+			for w in body.numATypes:
+				body.setAmmo(w, body.maxAmmo[w])
 			
 			$Sprite3D.frame=1
 			resupplytime.start(10)
 			
 			Audio.play("sounds/mystery.ogg")
-			player.ammo_updated.emit(player.weapon.ammo) # Update ammo on HUD
+			body.refreshAmmoHUD() # Update ammo on HUD

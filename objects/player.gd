@@ -11,30 +11,31 @@ extends CharacterBody3D
 @export var coins = 0
 
 var weapon: Weapon
-var weapon_index := 0
+var weapon_index := 1
 
 var mouse_sensitivity = 700
 var gamepad_sensitivity := 0.075
 
 var mouse_captured := true
-
 var movement_velocity: Vector3
 var rotation_target: Vector3
-
 var input_mouse: Vector2
 
 var health:int = 100
 var gravity := 0.0
 
 var previously_floored := false
-
 var jumps_remaining:int
-
 var container_offset = Vector3(1.2, -1.1, -2.75)
-
 var tween:Tween
 
 var DAMAGE_COOLDOWN=0.33;
+
+#add ammotypes here
+var ammoTypes=["Ammo", "Shells", "Bullets"]
+var numATypes=3
+var ammo=[1, 50, 256]
+var maxAmmo=[1, 100, 512]
 
 #Sig-nal.
 signal health_updated
@@ -56,11 +57,9 @@ signal coins_updated
 # Functions
 
 func _ready():
-	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
 	weapon = weapons[weapon_index] # Weapon must never be nil
-	initiate_change_weapon(weapon_index)
+	initiate_change_weapon(0)
 
 func _process(delta):
 	
@@ -204,8 +203,10 @@ func action_jump():
 func action_shoot():
 	
 	if Input.is_action_pressed("shoot"):
-	
-		if !blaster_cooldown.is_stopped() || weapon.ammo<=0: return # Cooldown for shooting
+		
+		var aty=weapon.ammotype
+		
+		if !blaster_cooldown.is_stopped() || ammo[aty]<=0: return # Cooldown for shooting
 		
 		Audio.play(weapon.sound_shoot)
 		
@@ -253,10 +254,10 @@ func action_shoot():
 		#movement_velocity += Vector3(0, 0, weapon.knockback) # Knockback
 		
 		#lower ammo
-		weapon.ammo -= weapon.drain;
-		if(weapon.ammo<0): weapon.ammo=0
+		ammo[aty] -= weapon.drain;
+		if(ammo[aty]<0): ammo[aty]=0
 		
-		ammo_updated.emit(weapon.ammo) # Update ammo on HUD..?
+		ammo_updated.emit(ammo[aty], ammoTypes[aty]) # Update ammo on HUD..?
 
 
 # Toggle between available weapons (listed in 'weapons')
@@ -264,20 +265,20 @@ func action_shoot():
 func action_weapon_toggle():
 	
 	if Input.is_action_just_pressed("weapon_toggle"):
-		
-		weapon_index = wrap(weapon_index + 1, 0, weapons.size())
-		initiate_change_weapon(weapon_index)
+		initiate_change_weapon(wrap(weapon_index + 1, 0, weapons.size()))
 	
 	if Input.is_action_just_pressed("weapon_untoggle"):
-		
-		weapon_index = wrap(weapon_index - 1, 0, weapons.size())
-		initiate_change_weapon(weapon_index)
+		initiate_change_weapon(wrap(weapon_index - 1, 0, weapons.size()))
 
 # Initiates the weapon changing animation (tween)
 
 func initiate_change_weapon(index):
 	
+	# no cheeky same swaps!
+	if(index==weapon_index): return
+	
 	Audio.play("sounds/weapon_change.ogg")
+	
 	blaster_cooldown.start(0.5)
 	
 	weapon_index = index
@@ -317,11 +318,17 @@ func change_weapon():
 	crosshair.texture = weapon.crosshair
 	
 	drain_updated.emit(weapon.drain) # Update drain on HUD..?
-	ammo_updated.emit(weapon.ammo) # Update ammo on HUD
+	ammo_updated.emit(ammo[weapon.ammotype], ammoTypes[weapon.ammotype]) # Update ammo on HUD
 
 func coin_get():
 	coins+=1
 	coins_updated.emit(coins)
+
+func setAmmo(ammotype, value):
+	ammo[ammotype]=value
+
+func refreshAmmoHUD():
+	ammo_updated.emit(ammo[weapon.ammotype], ammoTypes[weapon.ammotype]) # Update ammo on HUD
 
 func damage(amount):
 	
