@@ -16,6 +16,7 @@ class_name Weapon
 @export_range(0, 50) var knockback: int = 0  # Amount of knockback
 @export var ammotype: int = 0  # Amount of ammo
 @export_range(0, 10) var drain: int = 1  # Amount of ammo to take per shot
+@export var inInventory: bool = true  # Requires pickup?
 
 @export_subgroup("Sounds")
 @export var sound_shoot: String  # Sound path

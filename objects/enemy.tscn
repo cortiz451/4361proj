@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2g78tpqbyf5g"]
+[gd_scene load_steps=10 format=3 uid="uid://d2g78tpqbyf5g"]
 
 [ext_resource type="PackedScene" uid="uid://lde2xq3vq635" path="res://models/enemy-flying.glb" id="1_3v8nl"]
 [ext_resource type="Script" uid="uid://b6udw8uhlp4ei" path="res://objects/enemy.gd" id="1_jg24b"]
 [ext_resource type="PackedScene" uid="uid://c4cej68vmmp6c" path="res://objects/bullet.tscn" id="2_we7g8"]
 [ext_resource type="SpriteFrames" uid="uid://dbv3sy5qjatnl" path="res://sprites/burst_animation.tres" id="3_iblw5"]
+[ext_resource type="AudioStream" uid="uid://cgnbyrnxj12ed" path="res://sounds/enemy_hurt.ogg" id="5_l24ub"]
+[ext_resource type="AudioStream" uid="uid://br1ov3ld0er6r" path="res://sounds/enemy_destroy.ogg" id="6_lw0qc"]
+[ext_resource type="AudioStream" uid="uid://dqoyre6x2aqnk" path="res://sounds/enemy_aggro.ogg" id="7_l24ub"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iix87"]
 radius = 0.75
@@ -37,6 +40,14 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.45, 0.3, 0.4)
 sprite_frames = ExtResource("3_iblw5")
 frame = 2
 
+[node name="DestroyFX" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.2, 0)
+pixel_size = 0.03
+billboard = 1
+sprite_frames = ExtResource("3_iblw5")
+frame = 2
+speed_scale = 0.1
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
@@ -52,6 +63,20 @@ input_ray_pickable = false
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0.30040395, 0)
 shape = SubResource("ConvexPolygonShape3D_we7g8")
 
+[node name="Destroy" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_lw0qc")
+
+[node name="Hurt" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_l24ub")
+
+[node name="Angry" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_l24ub")
+
+[node name="DestroyTime" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Aggro" to="." method="_on_aggro_body_entered"]
 [connection signal="body_exited" from="Aggro" to="." method="_on_aggro_body_exited"]
+[connection signal="timeout" from="DestroyTime" to="." method="_on_destroy_time_timeout"]

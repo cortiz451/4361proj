@@ -7,7 +7,10 @@ extends Node3D
 @onready var muzzle_a = $MuzzleA
 @onready var muzzle_b = $MuzzleB
 
+#obj ori progs!
 var health := 100
+var shots := 1
+
 var time := 0.0
 var target_position: Vector3
 var destroyed := false
@@ -37,7 +40,8 @@ func damage(amount):
 	#make angry if damaged!
 	angry=true
 	
-	Audio.play("sounds/enemy_hurt.ogg")
+	$Hurt.pitch_scale=randf_range(0.9, 1.1)
+	$Hurt.play()
 
 	health -= amount
 
@@ -47,28 +51,38 @@ func damage(amount):
 # Destroy the enemy when out of health
 
 func destroy():
-	Audio.play("sounds/enemy_destroy.ogg")
+	$Destroy.pitch_scale=randf_range(0.9, 1.1)
+	$Destroy.play()
 
 	destroyed = true
-	queue_free()
+	
+	#do cool fx
+	$CollisionShape3D.queue_free()
+	$"enemy-flying".queue_free()
+	$DestroyFX.play()
+	$DestroyTime.start(0.3)
 
 # Shoot when timer hits 0
 func _on_timer_timeout():
 	#do not aggro if not in aggro zone
 	if(angry):
 		raycast.force_raycast_update()
+	
+	if(destroyed): return
 
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		if collider.has_method("damage"):  # Raycast collides with player
 			
 			if(!alerted):
-				Audio.play("sounds/enemy_aggro.ogg")
+				$Angry.pitch_scale=randf_range(0.9, 1.1)
+				$Angry.play()
 				alerted=true
 			
-			var b=Bullet.instantiate()
-			owner.add_child(b)
-			b.transform = $Marker3D.global_transform
+			for n in shots:
+				var b=Bullet.instantiate()
+				owner.add_child(b)
+				b.transform = $Marker3D.global_transform
 		
 			muzzle_a.frame = 0
 			muzzle_a.play("default")
@@ -89,4 +103,6 @@ func _on_aggro_body_exited(body: Node3D) -> void:
 	if(body==player):
 		angry=false
 		
-		
+
+func _on_destroy_time_timeout() -> void:
+	queue_free()

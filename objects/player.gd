@@ -277,6 +277,9 @@ func initiate_change_weapon(index):
 	# no cheeky same swaps!
 	if(index==weapon_index): return
 	
+	#unlockables
+	if(! weapons[index].inInventory): return
+	
 	Audio.play("sounds/weapon_change.ogg")
 	
 	blaster_cooldown.start(0.5)
@@ -329,6 +332,9 @@ func setAmmo(ammotype, value):
 
 func refreshAmmoHUD():
 	ammo_updated.emit(ammo[weapon.ammotype], ammoTypes[weapon.ammotype]) # Update ammo on HUD
+
+func unlockWeapon(w):
+	weapons[w].inInventory=true
 
 func damage(amount):
 	

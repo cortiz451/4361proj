@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://bccwvlemredbt"]
+[gd_scene load_steps=19 format=4 uid="uid://bccwvlemredbt"]
 
 [ext_resource type="Script" uid="uid://bg1h2ukwmsgwl" path="res://objects/big_enemy.gd" id="2_2emci"]
-[ext_resource type="PackedScene" uid="uid://bxjujrxi2ormu" path="res://objects/big_bullet.tscn" id="2_e841d"]
 [ext_resource type="Texture2D" uid="uid://b5hxnjwvrxuji" path="res://models/Textures/colormap.png" id="3_e841d"]
+[ext_resource type="AudioStream" uid="uid://bwp13xq45msrv" path="res://sounds/big_enemy_destroy.ogg" id="3_oimpi"]
 [ext_resource type="SpriteFrames" uid="uid://dbv3sy5qjatnl" path="res://sprites/burst_animation.tres" id="4_1em1r"]
+[ext_resource type="AudioStream" uid="uid://cipnoe6fb5r31" path="res://sounds/big_enemy_hurt.ogg" id="4_46712"]
+[ext_resource type="AudioStream" uid="uid://bgequytrwogqn" path="res://sounds/big_enemy_aggro.ogg" id="5_1em1r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_850tk"]
 resource_name = "colormap"
@@ -165,7 +167,6 @@ points = PackedVector3Array(0, 0, 0, -15, -15, 10, -15, 15, 10, 15, 15, 10, 15, 
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("2_2emci")
-Bullet = ExtResource("2_e841d")
 
 [node name="enemy-flying" type="Node3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 2.5, 0, 0, 0, 3, 0, 0, 0)
@@ -211,8 +212,16 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.45, 0.3, 0.4)
 sprite_frames = ExtResource("4_1em1r")
 frame = 2
 
+[node name="DestroyFX" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.2, 0)
+pixel_size = 0.03
+billboard = 1
+sprite_frames = ExtResource("4_1em1r")
+frame = 2
+speed_scale = 0.1
+
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.8
+wait_time = 0.6
 autostart = true
 
 [node name="Marker3D" type="Marker3D" parent="."]
@@ -226,6 +235,20 @@ input_ray_pickable = false
 transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0.30040395, 0)
 shape = SubResource("ConvexPolygonShape3D_we7g8")
 
+[node name="Destroy" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_oimpi")
+
+[node name="Hurt" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_46712")
+
+[node name="Angry" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_1em1r")
+
+[node name="DestroyTime" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Aggro" to="." method="_on_aggro_body_entered"]
 [connection signal="body_exited" from="Aggro" to="." method="_on_aggro_body_exited"]
+[connection signal="timeout" from="DestroyTime" to="." method="_on_destroy_time_timeout"]

@@ -13,5 +13,6 @@ cooldown = 0.08
 damage = 8.0
 spread = 3.0
 ammotype = 2
+inInventory = false
 sound_shoot = "sounds/blaster_repeater.ogg"
 crosshair = ExtResource("1_hoqei")

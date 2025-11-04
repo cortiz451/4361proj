@@ -16,5 +16,6 @@ shot_count = 20
 knockback = 5
 ammotype = 1
 drain = 2
+inInventory = false
 sound_shoot = "sounds/superblaster.ogg"
 crosshair = ExtResource("1_ec3tx")

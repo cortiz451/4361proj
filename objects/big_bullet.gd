@@ -2,7 +2,7 @@ extends Area3D
 
 signal exploded
 
-@export var g = Vector3.FORWARD * -20 + Vector3.LEFT*(-1.5+3*randf()) + Vector3.UP*(-1.5+3*randf())
+@export var g = Vector3.FORWARD * -20 + Vector3.LEFT*(-2+4*randf()) + Vector3.UP*(-1.5+3*randf())
 @export var muzzle_velocity = 35
 
 var velocity = Vector3.ZERO

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=38 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bccwvlemredbt" path="res://objects/big_enemy.tscn" id="11_a8y0u"]
 [ext_resource type="FontFile" uid="uid://brilqc8nb0env" path="res://fonts/texgyreadventor-regular.otf" id="11_y6deb"]
 [ext_resource type="Script" uid="uid://bq7bocqfp8ivg" path="res://objects/resupply.gd" id="15_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://bxjujrxi2ormu" path="res://objects/big_bullet.tscn" id="15_tel4y"]
 [ext_resource type="Texture2D" uid="uid://c6770lsxhxfvw" path="res://materials/ammo1.png" id="16_muem4"]
 [ext_resource type="Texture2D" uid="uid://nf5nhm0bsdth" path="res://materials/ammo2.png" id="17_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://kdmi2skd1htj" path="res://sprites/tp1.png" id="18_0ld40"]
@@ -25,6 +26,9 @@
 [ext_resource type="Texture2D" uid="uid://dxd7k2w5ixnmq" path="res://sprites/coin1.png" id="21_jscy8"]
 [ext_resource type="Texture2D" uid="uid://dxfmh51e8b0ph" path="res://sprites/coin2.png" id="22_pm3ni"]
 [ext_resource type="Script" uid="uid://ukxui1v3rlrf" path="res://objects/coin.gd" id="23_og1vs"]
+[ext_resource type="PackedScene" uid="uid://dcartkp2gx554" path="res://objects/superblaster.tscn" id="26_2wyq8"]
+[ext_resource type="Script" uid="uid://d4gutj58celif" path="res://objects/ssg.gd" id="26_vxglm"]
+[ext_resource type="AudioStream" uid="uid://3w8ih36begok" path="res://sounds/acheivement_get.ogg" id="28_2f3dj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_og1vs"]
 font = ExtResource("11_y6deb")
@@ -49,6 +53,22 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_gqmmt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yc10j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_jscy8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_pm3ni")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.5
+}]
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_muem4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_muem4"]
@@ -65,21 +85,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_gqmmt"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_yc10j"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("21_jscy8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_pm3ni")
-}],
-"loop": true,
-"name": &"default",
-"speed": 7.5
-}]
+[sub_resource type="SphereShape3D" id="SphereShape3D_og1vs"]
 
 [node name="Main" type="Node3D"]
 metadata/_edit_horizontal_guides_ = [591.0]
@@ -278,6 +284,7 @@ player = NodePath("../../Player")
 [node name="big-enemy-flying" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_a8y0u")]
 transform = Transform3D(0.22264458, 0.5551203, 0.801418, -0.14859217, 0.83177006, -0.5348634, -0.9635091, 0, 0.26767564, 0, 26.22204, 0)
 player = NodePath("../../Player")
+Bullet = ExtResource("15_tel4y")
 
 [node name="Level" type="Node" parent="."]
 
@@ -333,22 +340,6 @@ sprite_frames = SubResource("SpriteFrames_jkv2x")
 wait_time = 0.1
 one_shot = true
 
-[node name="Tp1" type="Area3D" parent="Level" node_paths=PackedStringArray("dest")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, -4, 4)
-script = ExtResource("18_gqmmt")
-dest = NodePath("../../Dest1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Tp1"]
-shape = SubResource("CylinderShape3D_muem4")
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Tp1"]
-transparency = 0.6
-billboard = 1
-sprite_frames = SubResource("SpriteFrames_muem4")
-autoplay = "default"
-frame = 1
-frame_progress = 0.8368172
-
 [node name="Coin" type="Area3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, -4.391259, 2.351065)
 script = ExtResource("23_og1vs")
@@ -377,8 +368,41 @@ autoplay = "default"
 frame = 1
 frame_progress = 0.42070758
 
-[node name="Dest1" type="Marker3D" parent="."]
+[node name="Tp1" type="Node" parent="Level"]
+
+[node name="Tp" type="Area3D" parent="Level/Tp1" node_paths=PackedStringArray("dest")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, -4, 4)
+script = ExtResource("18_gqmmt")
+dest = NodePath("../Dest1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Tp1/Tp"]
+shape = SubResource("CylinderShape3D_muem4")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Tp1/Tp"]
+transparency = 0.6
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_muem4")
+autoplay = "default"
+frame = 1
+frame_progress = 0.8368172
+
+[node name="Dest1" type="Marker3D" parent="Level/Tp1"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 40, 1, 4)
+
+[node name="SSG" type="Node3D" parent="Level" node_paths=PackedStringArray("Jingle")]
+script = ExtResource("26_vxglm")
+Jingle = NodePath("../../Jingle")
+
+[node name="Area3D" type="Area3D" parent="Level/SSG"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/SSG/Area3D"]
+shape = SubResource("SphereShape3D_og1vs")
+
+[node name="blaster" parent="Level/SSG" instance=ExtResource("26_2wyq8")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Jingle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_2f3dj")
 
 [connection signal="ammo_updated" from="Player" to="HUD" method="_on_player_ammo_updated"]
 [connection signal="coins_updated" from="Player" to="HUD" method="_on_player_coins_updated"]
@@ -388,6 +412,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 40, 
 [connection signal="timeout" from="Level/Resupply/Timer" to="Level/Resupply" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Level/Resupply2" to="Level/Resupply2" method="_on_player_resupply"]
 [connection signal="timeout" from="Level/Resupply2/Timer" to="Level/Resupply2" method="_on_timer_timeout"]
-[connection signal="body_entered" from="Level/Tp1" to="Level/Tp1" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Coin" to="Level/Coin" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Coin2" to="Level/Coin2" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/Tp1/Tp" to="Level/Tp1/Tp" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/SSG/Area3D" to="Level/SSG" method="_on_area_3d_body_entered"]
