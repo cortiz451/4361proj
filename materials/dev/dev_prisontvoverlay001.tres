@@ -1,6 +1,6 @@
 [gd_resource type="ORMMaterial3D" load_steps=2 format=3 uid="uid://drt7fmwallp70"]
 
-[ext_resource type="Texture2D" uid="uid://bhibb25ronkf2" path="res://materials/dev/dev_prisontvoverlay001.png" id="1_ch4ka"]
+[ext_resource type="Texture2D" uid="uid://7wkei3x7jcd0" path="res://materials/dev/dev_prisonoverlay001.png" id="1_ch4ka"]
 
 [resource]
 albedo_texture = ExtResource("1_ch4ka")

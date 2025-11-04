@@ -32,8 +32,10 @@ var container_offset = Vector3(1.2, -1.1, -2.75)
 
 var tween:Tween
 
+#Sig-nal.
 signal health_updated
 signal ammo_updated
+signal drain_updated
 
 @onready var camera = $Head/Camera
 @onready var raycast = $Head/Camera/RayCast
@@ -104,6 +106,22 @@ func _input(event):
 	if event is InputEventMouseMotion and mouse_captured:
 		input_mouse = event.relative / mouse_sensitivity
 		handle_rotation(event.relative.x, event.relative.y, false)
+	
+	#code for selecting weapons
+	if event is InputEventKey and event.pressed:
+		match event.keycode:
+			KEY_1:
+				initiate_change_weapon(0)
+			KEY_2:
+				initiate_change_weapon(1)
+			KEY_3:
+				initiate_change_weapon(2)
+			KEY_4:
+				initiate_change_weapon(3)
+			#KEY_5:
+			#	initiate_change_weapon(4)
+			
+		
 
 func handle_controls(delta):
 	
@@ -182,7 +200,7 @@ func action_shoot():
 	
 		if !blaster_cooldown.is_stopped(): return # Cooldown for shooting
 		
-		if weapon.ammo<0: return # Cooldown for shooting
+		if weapon.ammo<=0: return # Cooldown for shooting
 		
 		Audio.play(weapon.sound_shoot)
 		
@@ -231,7 +249,8 @@ func action_shoot():
 		#movement_velocity += Vector3(0, 0, weapon.knockback) # Knockback
 		
 		#lower ammo
-		weapon.ammo = weapon.ammo - weapon.drain;
+		weapon.ammo -= weapon.drain;
+		if(weapon.ammo<0): weapon.ammo=0
 		
 		ammo_updated.emit(weapon.ammo) # Update ammo on HUD..?
 
@@ -244,13 +263,17 @@ func action_weapon_toggle():
 		
 		weapon_index = wrap(weapon_index + 1, 0, weapons.size())
 		initiate_change_weapon(weapon_index)
+	
+	if Input.is_action_just_pressed("weapon_untoggle"):
 		
-		Audio.play("sounds/weapon_change.ogg")
-		
+		weapon_index = wrap(weapon_index - 1, 0, weapons.size())
+		initiate_change_weapon(weapon_index)
 
 # Initiates the weapon changing animation (tween)
 
 func initiate_change_weapon(index):
+	
+	Audio.play("sounds/weapon_change.ogg")
 	
 	weapon_index = index
 	
@@ -258,6 +281,8 @@ func initiate_change_weapon(index):
 	tween.set_ease(Tween.EASE_OUT_IN)
 	tween.tween_property(container, "position", container_offset - Vector3(0, 1, 0), 0.1)
 	tween.tween_callback(change_weapon) # Changes the model
+	
+	drain_updated.emit(weapons[weapon_index].drain) # Update drain on HUD..?
 
 # Switches the weapon model (off-screen)
 

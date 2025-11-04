@@ -27,7 +27,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="Camera" type="Camera3D" parent="Head"]
 cull_mask = 1048573
 current = true
-fov = 80.0
+fov = 90.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Head/Camera"]
 anchors_preset = 15

@@ -29,15 +29,15 @@ metadata/_edit_vertical_guides_ = [250.0, 1030.0]
 environment = ExtResource("1_q8fpv")
 
 [node name="Player" parent="." node_paths=PackedStringArray("crosshair") instance=ExtResource("2_elriq")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.055559635, 0.5, -8.163817)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 movement_speed = 10
 number_of_jumps = 1
 jump_strength = 10
-weapons = Array[ExtResource("3_trceg")]([ExtResource("4_a8y0u"), ExtResource("5_jkv2x"), ExtResource("6_jbj1t"), ExtResource("7_muem4")])
+weapons = Array[ExtResource("3_trceg")]([ExtResource("4_a8y0u"), ExtResource("5_jkv2x"), ExtResource("7_muem4"), ExtResource("6_jbj1t")])
 crosshair = NodePath("../HUD/Crosshair")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.422618, -0.694272, 0.582563, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, 0, 0)
+transform = Transform3D(-0.42261794, -0.6942719, 0.58256376, 0, 0.64278793, 0.7660442, -0.9063079, 0.32374403, -0.27165374, 0, 2.076825, 0)
 shadow_enabled = true
 shadow_opacity = 0.75
 
@@ -97,7 +97,7 @@ vertical_alignment = 2
 [node name="Enemies" type="Node" parent="."]
 
 [node name="enemy-flying" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
-transform = Transform3D(0.32252336, -0.32997075, -0.8871854, 0.11273757, 0.9439911, -0.31011438, 0.93982387, 0, 0.3416593, 20.968138, 2.4907267, 3.1112633)
+transform = Transform3D(0.51974034, 0.0008659344, 0.8543239, 0.045297787, 0.99856496, -0.028569622, -0.8531225, 0.053547826, 0.5189553, 19.899832, 0.08140552, 1.3770478)
 player = NodePath("../../Player")
 
 [node name="enemy-flying2" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
@@ -136,7 +136,7 @@ player = NodePath("../../Player")
 transform = Transform3D(0.018645668, -0.032315895, 0.99930376, -0.16703898, 0.9853298, 0.03498063, -0.9857739, -0.16757487, 0.012974213, 45.998608, 21.34367, 2.3193438)
 player = NodePath("../../Player")
 
-[node name="enemy-flying11" parent="Enemies" instance=ExtResource("11_a8y0u")]
+[node name="big-enemy-flying" parent="Enemies" instance=ExtResource("11_a8y0u")]
 transform = Transform3D(0.22264458, 0.5551203, 0.801418, -0.14859217, 0.83177006, -0.5348634, -0.9635091, 0, 0.26767564, 0, 26.22204, 0)
 
 [node name="Level" type="Node" parent="."]
@@ -146,6 +146,8 @@ script = ExtResource("7_85g3d")
 vmf = "res://mapsrc/godotmap1.vmf"
 metadata/_custom_type_script = "uid://cjmpchbcxyqh6"
 
+[node name="Entities" type="Node3D" parent="Level/VMFNode"]
+
 [node name="Geometry" type="MeshInstance3D" parent="Level/VMFNode"]
 mesh = ExtResource("8_choun")
 
@@ -154,8 +156,6 @@ metadata/surface_prop = "default"
 
 [node name="collision" type="CollisionShape3D" parent="Level/VMFNode/Geometry/surface_prop_default"]
 shape = ExtResource("9_ya4ey")
-
-[node name="Entities" type="Node3D" parent="Level/VMFNode"]
 
 [connection signal="ammo_updated" from="Player" to="HUD" method="_on_player_ammo_updated"]
 [connection signal="health_updated" from="Player" to="HUD" method="_on_health_updated"]
