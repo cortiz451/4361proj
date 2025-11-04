@@ -13,4 +13,4 @@ func _on_player_ammo_updated(weaponammo) -> void:
 
 
 func _on_player_drain_update(weapondrain) -> void:
-	displayAmmo=(weapondrain==0)
+	displayAmmo=(weapondrain!=0)

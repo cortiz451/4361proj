@@ -281,8 +281,6 @@ func initiate_change_weapon(index):
 	tween.set_ease(Tween.EASE_OUT_IN)
 	tween.tween_property(container, "position", container_offset - Vector3(0, 1, 0), 0.1)
 	tween.tween_callback(change_weapon) # Changes the model
-	
-	drain_updated.emit(weapons[weapon_index].drain) # Update drain on HUD..?
 
 # Switches the weapon model (off-screen)
 
@@ -314,6 +312,7 @@ func change_weapon():
 	crosshair.texture = weapon.crosshair
 	
 	ammo_updated.emit(weapon.ammo) # Update ammo on HUD..?
+	drain_updated.emit(weapon.drain) # Update drain on HUD..?
 
 func damage(amount):
 	

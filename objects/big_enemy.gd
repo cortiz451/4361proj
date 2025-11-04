@@ -14,7 +14,7 @@ var destroyed := false
 
 #code for aggro
 var angry=false;
-var in_view=false;
+var alerted=false;
 
 # When ready, save the initial position
 
@@ -34,7 +34,9 @@ func _process(delta):
 # Take damage from player
 
 func damage(amount):
-	Audio.play("sounds/enemy_hurt.ogg")
+	#make angry if damaged!
+	angry=true
+	Audio.play("sounds/big_enemy_hurt.ogg")
 
 	health -= amount
 
@@ -44,7 +46,7 @@ func damage(amount):
 # Destroy the enemy when out of health
 
 func destroy():
-	Audio.play("sounds/enemy_destroy.ogg")
+	Audio.play("sounds/big_enemy_destroy.ogg")
 
 	destroyed = true
 	queue_free()
@@ -59,10 +61,16 @@ func _on_timer_timeout():
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		if collider.has_method("damage"):  # Raycast collides with player
+			
+			if(!alerted):
+				Audio.play("sounds/big_enemy_aggro.ogg")
+				alerted=true
+				
 			for _x in 8:
 				var b=Bullet.instantiate()
 				owner.add_child(b)
 				b.transform = $Marker3D.global_transform
+		
 		
 			muzzle_a.frame = 0
 			muzzle_a.play("default")

@@ -14,7 +14,7 @@ var destroyed := false
 
 #code for aggro
 var angry=false;
-var in_view=false;
+var alerted=false;
 
 # When ready, save the initial position
 
@@ -34,6 +34,9 @@ func _process(delta):
 # Take damage from player
 
 func damage(amount):
+	#make angry if damaged!
+	angry=true
+	
 	Audio.play("sounds/enemy_hurt.ogg")
 
 	health -= amount
@@ -58,6 +61,10 @@ func _on_timer_timeout():
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		if collider.has_method("damage"):  # Raycast collides with player
+			
+			if(!alerted):
+				Audio.play("sounds/enemy_aggro.ogg")
+				alerted=true
 			
 			var b=Bullet.instantiate()
 			owner.add_child(b)
