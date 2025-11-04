@@ -363,6 +363,20 @@ autoplay = "default"
 frame = 1
 frame_progress = 0.42070758
 
+[node name="Coin2" type="Area3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.702988, 21.083263, 6.25872)
+script = ExtResource("23_og1vs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Coin2"]
+shape = SubResource("SphereShape3D_gqmmt")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Coin2"]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_yc10j")
+autoplay = "default"
+frame = 1
+frame_progress = 0.42070758
+
 [node name="Dest1" type="Marker3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 40, 1, 4)
 
@@ -376,3 +390,4 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 40, 
 [connection signal="timeout" from="Level/Resupply2/Timer" to="Level/Resupply2" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Level/Tp1" to="Level/Tp1" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Coin" to="Level/Coin" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/Coin2" to="Level/Coin2" method="_on_body_entered"]
