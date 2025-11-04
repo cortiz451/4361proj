@@ -60,6 +60,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	weapon = weapons[weapon_index] # Weapon must never be nil
 	initiate_change_weapon(0)
+	$"../Music".play()
 
 func _process(delta):
 	

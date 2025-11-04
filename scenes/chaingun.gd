@@ -6,7 +6,7 @@ var target_position = position
 var target_rotation = rotation
 var time = 0.0
 
-var unlock = 2
+var unlock = 3
 
 func _process(delta):
 	target_position.y += (cos(time * 5 + unlock) * 1) * delta  # Sine movement (up and down)
@@ -21,4 +21,3 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		body.unlockWeapon(unlock)
 		Jingle.play()
 		queue_free()
-	
