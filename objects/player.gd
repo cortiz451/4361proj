@@ -317,7 +317,7 @@ func change_weapon():
 
 func damage(amount):
 	
-	Audio.play("sounds/ouch.wav")
+	Audio.play("sounds/ouch.ogg")
 	
 	health -= amount
 	health_updated.emit(health) # Update health on HUD

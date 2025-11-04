@@ -16,5 +16,5 @@ shot_count = 20
 knockback = 5
 ammo = 50
 drain = 2
-sound_shoot = "sounds/superblaster.wav"
+sound_shoot = "sounds/superblaster.ogg"
 crosshair = ExtResource("1_ec3tx")
