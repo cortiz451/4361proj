@@ -107,6 +107,14 @@ player = NodePath("../../Player")
 transform = Transform3D(0.018645668, -0.032315895, 0.99930376, -0.00018134614, 0.9994775, 0.03232479, -0.99982595, -0.0007838436, 0.018630145, 45.998608, 20.809746, 2.8773394)
 player = NodePath("../../Player")
 
+[node name="enemy-flying9" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(0.018645668, -0.032315895, 0.99930376, 0.116193034, 0.9927756, 0.029936658, -0.9930515, 0.11555407, 0.022265913, 45.998608, 20.766335, 1.499389)
+player = NodePath("../../Player")
+
+[node name="enemy-flying10" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(0.018645668, -0.032315895, 0.99930376, -0.16703898, 0.9853298, 0.03498063, -0.9857739, -0.16757487, 0.012974213, 45.998608, 21.34367, 2.3193438)
+player = NodePath("../../Player")
+
 [node name="Level" type="Node" parent="."]
 
 [node name="VMFNode" type="Node3D" parent="Level"]
