@@ -1,10 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=15 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
 [ext_resource type="Script" uid="uid://by0qn28x1i1jj" path="res://scripts/hud.gd" id="3_s8mkj"]
+[ext_resource type="Script" uid="uid://dg01pkkc1c5vd" path="res://scripts/weapon.gd" id="3_trceg"]
 [ext_resource type="FontFile" uid="uid://biqtga8moh7ah" path="res://fonts/lilita_one_regular.ttf" id="3_w27de"]
+[ext_resource type="Resource" uid="uid://bds2lhxkasyh3" path="res://weapons/babyblaster.tres" id="4_a8y0u"]
+[ext_resource type="Resource" uid="uid://c56y8pqoyk15f" path="res://weapons/blaster.tres" id="5_jkv2x"]
+[ext_resource type="Resource" uid="uid://cu2gtxlcmbb34" path="res://weapons/blaster-repeater.tres" id="6_jbj1t"]
 [ext_resource type="Script" uid="uid://cjmpchbcxyqh6" path="res://addons/godotvmf/src/vmf_node.gd" id="7_85g3d"]
+[ext_resource type="Resource" uid="uid://cipvtara42tpx" path="res://weapons/superblaster.tres" id="7_muem4"]
 [ext_resource type="PackedScene" uid="uid://d2g78tpqbyf5g" path="res://objects/enemy.tscn" id="8_7ty2f"]
 [ext_resource type="ArrayMesh" uid="uid://bgkrjkpxwnspr" path="res://geometry/godotmap1_vmf_import.mesh" id="8_choun"]
 [ext_resource type="Shape3D" uid="uid://toakdbdoymgg" path="res://geometry/godotmap1_vmf_collision_surface_prop_default.res" id="9_ya4ey"]
@@ -16,6 +21,8 @@ outline_size = 12
 outline_color = Color(0, 0, 0, 0.470588)
 
 [node name="Main" type="Node3D"]
+metadata/_edit_horizontal_guides_ = [591.0]
+metadata/_edit_vertical_guides_ = [250.0, 1030.0]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_q8fpv")
@@ -25,6 +32,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.0
 movement_speed = 10
 number_of_jumps = 1
 jump_strength = 10
+weapons = Array[ExtResource("3_trceg")]([ExtResource("4_a8y0u"), ExtResource("5_jkv2x"), ExtResource("6_jbj1t"), ExtResource("7_muem4")])
 crosshair = NodePath("../HUD/Crosshair")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
@@ -33,6 +41,7 @@ shadow_enabled = true
 shadow_opacity = 0.75
 
 [node name="HUD" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 script = ExtResource("3_s8mkj")
 
 [node name="Crosshair" type="TextureRect" parent="HUD"]
@@ -51,26 +60,37 @@ scale = Vector2(0.35, 0.35)
 pivot_offset = Vector2(64, 64)
 
 [node name="Health" type="Label" parent="HUD"]
-offset_left = 48.0
-offset_top = 627.0
-offset_right = 138.0
-offset_bottom = 672.0
-size_flags_horizontal = 0
-size_flags_vertical = 8
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -482.0
+offset_top = 233.0
+offset_right = -392.0
+offset_bottom = 278.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
 text = "100%"
 label_settings = SubResource("LabelSettings_fpmwk")
 vertical_alignment = 2
 
 [node name="Ammo" type="Label" parent="HUD"]
-offset_left = 1118.0
-offset_top = 627.0
-offset_right = 1208.0
-offset_bottom = 672.0
-size_flags_horizontal = 0
-size_flags_vertical = 8
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 392.0
+offset_top = 233.0
+offset_right = 482.0
+offset_bottom = 278.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
 text = "100"
 label_settings = SubResource("LabelSettings_fpmwk")
-horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="Enemies" type="Node" parent="."]
