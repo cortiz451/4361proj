@@ -148,7 +148,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 1
-text = "Health: 100%"
+text = "100%"
 label_settings = ExtResource("9_jscy8")
 horizontal_alignment = 2
 
@@ -166,6 +166,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 8
 size_flags_vertical = 1
+text = "Ammo:100"
 label_settings = ExtResource("9_jscy8")
 vertical_alignment = 1
 

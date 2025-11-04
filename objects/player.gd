@@ -8,6 +8,8 @@ extends CharacterBody3D
 @export_subgroup("Weapons")
 @export var weapons: Array[Weapon] = []
 
+@export var coins = 0
+
 var weapon: Weapon
 var weapon_index := 0
 
@@ -38,6 +40,7 @@ var DAMAGE_COOLDOWN=0.33;
 signal health_updated
 signal ammo_updated
 signal drain_updated
+signal coins_updated
 
 @onready var camera = $Head/Camera
 @onready var raycast = $Head/Camera/RayCast
@@ -313,8 +316,12 @@ func change_weapon():
 	raycast.target_position = Vector3(0, 0, -1) * weapon.max_distance
 	crosshair.texture = weapon.crosshair
 	
-	ammo_updated.emit(weapon.ammo) # Update ammo on HUD
 	drain_updated.emit(weapon.drain) # Update drain on HUD..?
+	ammo_updated.emit(weapon.ammo) # Update ammo on HUD
+
+func coin_get():
+	coins+=1
+	coins_updated.emit(coins)
 
 func damage(amount):
 	
@@ -330,7 +337,3 @@ func damage(amount):
 	if health < 0:
 		
 		get_tree().reload_current_scene() # Reset when out of health
-
-
-
-	
