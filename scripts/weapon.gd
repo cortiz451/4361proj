@@ -16,6 +16,7 @@ class_name Weapon
 @export_range(0, 50) var knockback: int = 0  # Amount of knockback
 @export_range(0, 500) var ammo: int = 100  # Amount of ammo
 @export_range(0, 10) var drain: int = 1  # Amount of ammo to take per shot
+@export_range(0, 500) var maxammo: int = 100  # Amount of ammo
 
 @export_subgroup("Sounds")
 @export var sound_shoot: String  # Sound path

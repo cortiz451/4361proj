@@ -14,5 +14,6 @@ damage = 12.5
 spread = 2.5
 ammo = 1
 drain = 0
+maxammo = 1
 sound_shoot = "sounds/babyblaster.ogg"
 crosshair = ExtResource("1_uwy8n")

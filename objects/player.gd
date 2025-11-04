@@ -43,6 +43,7 @@ signal drain_updated
 @onready var container = $Head/Camera/SubViewportContainer/SubViewport/CameraItem/Container
 @onready var sound_footsteps = $SoundFootsteps
 @onready var blaster_cooldown = $Cooldown
+@onready var resupplytime = $"../Level/Resupply/Timer"
 
 @export var crosshair:TextureRect
 
@@ -311,7 +312,7 @@ func change_weapon():
 	raycast.target_position = Vector3(0, 0, -1) * weapon.max_distance
 	crosshair.texture = weapon.crosshair
 	
-	ammo_updated.emit(weapon.ammo) # Update ammo on HUD..?
+	ammo_updated.emit(weapon.ammo) # Update ammo on HUD
 	drain_updated.emit(weapon.drain) # Update drain on HUD..?
 
 func damage(amount):
@@ -324,3 +325,18 @@ func damage(amount):
 	if health < 0:
 		
 		get_tree().reload_current_scene() # Reset when out of health
+
+#resupply ammo at resupplies
+func _on_resupply_entered(_body: Node3D) -> void:
+	
+	#don't allow constant resupplies
+	if(resupplytime.get_time_left()<=0.1):
+		for w in weapons:
+			weapon.ammo=weapon.maxammo
+		
+		$"../Level/Resupply/Sprite3D".frame=1
+		resupplytime.start(10)
+		
+		Audio.play("sounds/mystery.ogg")
+		ammo_updated.emit(weapon.ammo) # Update ammo on HUD
+	

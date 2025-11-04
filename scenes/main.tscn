@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=21 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -14,12 +14,31 @@
 [ext_resource type="ArrayMesh" uid="uid://bgkrjkpxwnspr" path="res://geometry/godotmap1_vmf_import.mesh" id="8_choun"]
 [ext_resource type="Shape3D" uid="uid://toakdbdoymgg" path="res://geometry/godotmap1_vmf_collision_surface_prop_default.res" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://bccwvlemredbt" path="res://objects/big_enemy.tscn" id="11_a8y0u"]
+[ext_resource type="Script" uid="uid://bq7bocqfp8ivg" path="res://scenes/resupply.gd" id="15_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://c6770lsxhxfvw" path="res://materials/ammo1.png" id="16_muem4"]
+[ext_resource type="Texture2D" uid="uid://nf5nhm0bsdth" path="res://materials/ammo2.png" id="17_dp3eg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fpmwk"]
 font = ExtResource("3_w27de")
 font_size = 36
 outline_size = 12
 outline_color = Color(0, 0, 0, 0.470588)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_a8y0u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jkv2x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_muem4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_dp3eg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Main" type="Node3D"]
 metadata/_edit_horizontal_guides_ = [591.0]
@@ -158,5 +177,24 @@ metadata/surface_prop = "default"
 [node name="collision" type="CollisionShape3D" parent="Level/VMFNode/Geometry/surface_prop_default"]
 shape = ExtResource("9_ya4ey")
 
+[node name="Resupply" type="Area3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0077224, 1.5289316, -3.6103284)
+script = ExtResource("15_jbj1t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Resupply"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.5078633, 0)
+shape = SubResource("CylinderShape3D_a8y0u")
+
+[node name="Sprite3D" type="AnimatedSprite3D" parent="Level/Resupply"]
+pixel_size = 0.005
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_jkv2x")
+
+[node name="Timer" type="Timer" parent="Level/Resupply"]
+wait_time = 0.009999999999999998
+one_shot = true
+
 [connection signal="ammo_updated" from="Player" to="HUD" method="_on_player_ammo_updated"]
 [connection signal="health_updated" from="Player" to="HUD" method="_on_health_updated"]
+[connection signal="body_entered" from="Level/Resupply" to="Player" method="_on_resupply_entered"]
+[connection signal="timeout" from="Level/Resupply/Timer" to="Level/Resupply" method="_on_timer_timeout"]
