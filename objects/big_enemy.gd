@@ -1,0 +1,83 @@
+extends Node3D
+
+@export var player: Node3D
+@export var Bullet : PackedScene
+
+@onready var raycast = $RayCast
+@onready var muzzle_a = $MuzzleA
+@onready var muzzle_b = $MuzzleB
+
+var health := 400
+var time := 0.0
+var target_position: Vector3
+var destroyed := false
+
+#code for aggro
+var angry=false;
+var in_view=false;
+
+# When ready, save the initial position
+
+func _ready():
+	target_position = position
+
+
+func _process(delta):
+	if(angry):
+		self.look_at(player.position + Vector3(0, 0.5, 0), Vector3.UP, true)  # Look at player
+	target_position.y += (cos(time * 5) * 1) * delta  # Sine movement (up and down)
+
+	time += delta
+
+	position = target_position
+
+# Take damage from player
+
+func damage(amount):
+	Audio.play("sounds/enemy_hurt.ogg")
+
+	health -= amount
+
+	if health <= 0 and !destroyed:
+		destroy()
+
+# Destroy the enemy when out of health
+
+func destroy():
+	Audio.play("sounds/enemy_destroy.ogg")
+
+	destroyed = true
+	queue_free()
+
+# Shoot when timer hits 0
+# Shoot when timer hits 0
+func _on_timer_timeout():
+	#do not aggro if not in aggro zone
+	if(angry):
+		raycast.force_raycast_update()
+
+	if raycast.is_colliding():
+		var collider = raycast.get_collider()
+		if collider.has_method("damage"):  # Raycast collides with player
+			for _x in 8:
+				var b=Bullet.instantiate()
+				owner.add_child(b)
+				b.transform = $Marker3D.global_transform
+		
+			muzzle_a.frame = 0
+			muzzle_a.play("default")
+			muzzle_a.rotation_degrees.z = randf_range(-45, 45)
+
+			muzzle_b.frame = 0
+			muzzle_b.play("default")
+			muzzle_b.rotation_degrees.z = randf_range(-45, 45)
+
+#aggro mechanics
+func _on_aggro_body_entered(body: Node3D) -> void:
+	#if player is in body and not obscured, AH!
+	if(body==player):
+		angry=true
+
+func _on_aggro_body_exited(body: Node3D) -> void:
+	if(body==player):
+		angry=false
