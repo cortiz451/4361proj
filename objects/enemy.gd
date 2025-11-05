@@ -1,11 +1,13 @@
 extends Node3D
 
 @export var player: Node3D
-@export var Bullet : PackedScene
+@export var Bullet: PackedScene
 
 @onready var raycast = $RayCast
 @onready var muzzle_a = $MuzzleA
 @onready var muzzle_b = $MuzzleB
+
+signal enemy_down
 
 #obj ori progs!
 var health := 100
@@ -26,8 +28,19 @@ func _ready():
 
 
 func _process(delta):
+	#sorry for the gross nested ifs
 	if(angry):
 		self.look_at(player.position + Vector3(0, 0.5, 0), Vector3.UP, true)  # Look at player
+		if(!alerted):
+			raycast.force_raycast_update()
+			if(raycast.is_colliding()):
+				var collider = raycast.get_collider()
+				if collider.has_method("damage"):  # Raycast collides with player
+					$Angry.pitch_scale=randf_range(0.9, 1.1)
+					$Angry.play()
+					alerted=true
+	
+	
 	target_position.y += (cos(time * 5) * 1) * delta  # Sine movement (up and down)
 
 	time += delta
@@ -46,6 +59,7 @@ func damage(amount):
 	health -= amount
 
 	if health <= 0 and !destroyed:
+		enemy_down.emit(1)
 		destroy()
 
 # Destroy the enemy when out of health
@@ -73,11 +87,6 @@ func _on_timer_timeout():
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		if collider.has_method("damage"):  # Raycast collides with player
-			
-			if(!alerted):
-				$Angry.pitch_scale=randf_range(0.9, 1.1)
-				$Angry.play()
-				alerted=true
 			
 			for n in shots:
 				var b=Bullet.instantiate()

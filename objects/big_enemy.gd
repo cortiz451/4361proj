@@ -19,6 +19,8 @@ var destroyed := false
 var angry=false;
 var alerted=false;
 
+signal enemy_down
+
 # When ready, save the initial position
 
 func _ready():
@@ -28,6 +30,12 @@ func _ready():
 func _process(delta):
 	if(angry):
 		self.look_at(player.position + Vector3(0, 0.5, 0), Vector3.UP, true)  # Look at player
+	
+	if(angry && !alerted):
+		$Angry.pitch_scale=randf_range(0.9, 1.1)
+		$Angry.play()
+		alerted=true
+	
 	target_position.y += (cos(time * 5) * 1) * delta  # Sine movement (up and down)
 
 	time += delta
@@ -54,6 +62,7 @@ func destroy():
 	$Destroy.pitch_scale=randf_range(0.9, 1.1)
 	$Destroy.play()
 
+	enemy_down.emit(1)
 	destroyed = true
 	
 	#do cool fx
@@ -73,11 +82,6 @@ func _on_timer_timeout():
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		if collider.has_method("damage"):  # Raycast collides with player
-			
-			if(!alerted):
-				$Angry.pitch_scale=randf_range(0.9, 1.1)
-				$Angry.play()
-				alerted=true
 			
 			for n in shots:
 				var b=Bullet.instantiate()

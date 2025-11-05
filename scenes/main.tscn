@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=57 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -43,12 +43,29 @@
 [ext_resource type="Texture2D" uid="uid://bjqhk3siiigs" path="res://sprites/health.png" id="32_chjal"]
 [ext_resource type="AudioStream" uid="uid://pwh0vch3y31k" path="res://sounds/music.ogg" id="32_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://6k0llye1167u" path="res://objects/blockade.tscn" id="37_c6pm6"]
+[ext_resource type="Script" uid="uid://20mwe6t33io1" path="res://objects/blockade.gd" id="42_cjqg0"]
+[ext_resource type="AudioStream" uid="uid://cueak1mk2hw5k" path="res://sounds/jingle.ogg" id="45_vchkt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_og1vs"]
 font = ExtResource("11_y6deb")
-font_size = 36
+font_size = 48
 outline_size = 12
 outline_color = Color(0.42352942, 0.4392157, 0.98039216, 0.4509804)
+shadow_offset = Vector2(2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vchkt"]
+paragraph_spacing = 1.0
+font = ExtResource("11_y6deb")
+font_size = 24
+outline_size = 12
+outline_color = Color(0.42352942, 0.4392157, 0.98039216, 0.4509804)
+shadow_offset = Vector2(2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_txyw0"]
+font = ExtResource("11_y6deb")
+font_size = 12
+outline_size = 6
+outline_color = Color(0.5712, 0.58015996, 0.84, 0.4509804)
 shadow_offset = Vector2(2, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a8y0u"]
@@ -100,6 +117,8 @@ animations = [{
 }]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_og1vs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chjal"]
 
 [node name="Main" type="Node3D"]
 metadata/_edit_horizontal_guides_ = [591.0, 640.0]
@@ -287,7 +306,7 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("14_pibwh")
 expand_mode = 3
 
-[node name="Health2" type="Label" parent="HUD"]
+[node name="Enemies" type="Label" parent="HUD"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -301,9 +320,31 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 1
-text = "Situation: Normal"
+text = "Enemies: 0"
 label_settings = SubResource("LabelSettings_og1vs")
 horizontal_alignment = 2
+
+[node name="Console" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 1272.0
+offset_bottom = 128.0
+text = "You got the burger!"
+label_settings = SubResource("LabelSettings_vchkt")
+
+[node name="FPS" type="Label" parent="HUD"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_top = -14.0
+offset_right = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "FPS: 30000"
+label_settings = SubResource("LabelSettings_txyw0")
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -899,8 +940,16 @@ shape = SubResource("SphereShape3D_og1vs")
 [node name="blaster-repeater" parent="Level/Chaingun" instance=ExtResource("30_tel4y")]
 transform = Transform3D(0.4894337, 0, 0.10224802, 0, 0.5, 0, -0.10224802, 0, 0.4894337, 0, -0.2, 0)
 
-[node name="Blockade" parent="Level" instance=ExtResource("37_c6pm6")]
+[node name="Blockade" parent="Level" node_paths=PackedStringArray("player") instance=ExtResource("37_c6pm6")]
 transform = Transform3D(-4.371139e-07, 0, 10, 0, 10, 0, -10, 0, -4.371139e-07, -9.6101265, 20.502466, -4.4553194)
+script = ExtResource("42_cjqg0")
+player = NodePath("../../Player")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Blockade"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Blockade/StaticBody3D"]
+transform = Transform3D(0.6, 0, 2.1316283e-15, 0, 0.6, 0, -2.1316283e-15, 0, 0.6, 0, 0.3, 0)
+shape = SubResource("BoxShape3D_chjal")
 
 [node name="Jingle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_2f3dj")
@@ -910,10 +959,41 @@ stream = ExtResource("32_qkpxi")
 volume_db = -12.0
 parameters/looping = true
 
+[node name="JingleUnlock" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("45_vchkt")
+
 [connection signal="ammo_updated" from="Player" to="HUD" method="_on_player_ammo_updated"]
 [connection signal="coins_updated" from="Player" to="HUD" method="_on_player_coins_updated"]
 [connection signal="drain_updated" from="Player" to="HUD" method="_on_player_drain_updated"]
 [connection signal="health_updated" from="Player" to="HUD" method="_on_health_updated"]
+[connection signal="enemy_down" from="Enemies/enemy-flying" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying2" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying3" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying4" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying5" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying6" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying7" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying8" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying9" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying10" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying11" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying12" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying13" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying14" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying15" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying16" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying17" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying18" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying19" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying20" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying21" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying22" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying23" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/big-enemy-flying" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/big-enemy-flying2" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/big-enemy-flying3" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/big-enemy-flying4" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/big-enemy-flying5" to="HUD" method="_on_enemy_down"]
 [connection signal="body_entered" from="Level/Resupply" to="Level/Resupply" method="_on_player_resupply"]
 [connection signal="timeout" from="Level/Resupply/Timer" to="Level/Resupply" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Level/Resupply2" to="Level/Resupply2" method="_on_player_resupply"]
