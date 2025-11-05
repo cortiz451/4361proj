@@ -1,6 +1,8 @@
-[gd_resource type="ORMMaterial3D" load_steps=2 format=3 uid="uid://7o17sse0j4f5"]
+[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://7o17sse0j4f5"]
 
-[ext_resource type="Texture2D" uid="uid://ty32h66vk45n" path="res://materials/dev/dev_measuregeneric01.png" id="1_2ej7m"]
+[ext_resource type="Texture2D" uid="uid://xf6sqb5e67ay" path="res://materials/paper/paper_seamless_texture_3186.jpg" id="1_2ej7m"]
+[ext_resource type="Texture2D" uid="uid://b7ilpwixbk2m3" path="res://materials/paper/paper_seamless_texture_3172.jpg" id="2_0g6eg"]
 
 [resource]
 albedo_texture = ExtResource("1_2ej7m")
+orm_texture = ExtResource("2_0g6eg")

@@ -2,17 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biff4dkpfqi47"
-path.s3tc="res://.godot/imported/splash-screen.png-ae6c8b07e185ee8a074576008d9ccc5a.s3tc.ctex"
-metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
-}
+uid="uid://bm7p5en0bhtbf"
+valid=false
 
 [deps]
 
-source_file="res://splash-screen.png"
-dest_files=["res://.godot/imported/splash-screen.png-ae6c8b07e185ee8a074576008d9ccc5a.s3tc.ctex"]
+source_file="res://materials/Texturelabs_Paper_361M.png"
 
 [params]
 

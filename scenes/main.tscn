@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=47 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -13,16 +13,22 @@
 [ext_resource type="ArrayMesh" uid="uid://bgkrjkpxwnspr" path="res://geometry/godotmap1_vmf_import.mesh" id="8_choun"]
 [ext_resource type="LabelSettings" uid="uid://dy5ecelk2tcjh" path="res://fonts/main_font.tres" id="9_jscy8"]
 [ext_resource type="Shape3D" uid="uid://toakdbdoymgg" path="res://geometry/godotmap1_vmf_collision_surface_prop_default.res" id="9_ya4ey"]
-[ext_resource type="Texture2D" uid="uid://cpxour8a7ihec" path="res://icon.png" id="10_pm3ni"]
+[ext_resource type="Texture2D" uid="uid://dqr1b0mpwudk3" path="res://materials/face_bg.png" id="10_fuf3a"]
+[ext_resource type="Texture2D" uid="uid://0xjf5dj4qq5x" path="res://materials/face_bad.png" id="10_kmb1v"]
 [ext_resource type="PackedScene" uid="uid://bccwvlemredbt" path="res://objects/big_enemy.tscn" id="11_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://ct5oysruh40jp" path="res://materials/face_ok.png" id="11_fuf3a"]
 [ext_resource type="FontFile" uid="uid://brilqc8nb0env" path="res://fonts/texgyreadventor-regular.otf" id="11_y6deb"]
+[ext_resource type="Texture2D" uid="uid://bbv273v6ihrpo" path="res://materials/face_good.png" id="12_pibwh"]
+[ext_resource type="Texture2D" uid="uid://djhvruwyvgddh" path="res://materials/face_wow.png" id="14_pibwh"]
 [ext_resource type="Script" uid="uid://bq7bocqfp8ivg" path="res://objects/resupply.gd" id="15_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://bxjujrxi2ormu" path="res://objects/big_bullet.tscn" id="15_tel4y"]
 [ext_resource type="Texture2D" uid="uid://c6770lsxhxfvw" path="res://materials/ammo1.png" id="16_muem4"]
 [ext_resource type="Texture2D" uid="uid://nf5nhm0bsdth" path="res://materials/ammo2.png" id="17_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://kdmi2skd1htj" path="res://sprites/tp1.png" id="18_0ld40"]
+[ext_resource type="PackedScene" uid="uid://cwxttgf1xbejo" path="res://addons/godotvmf/entities/light_environment.tscn" id="18_dgi5k"]
 [ext_resource type="Script" uid="uid://chsc23s3l36f0" path="res://objects/tp.gd" id="18_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://dophwnys1qsdp" path="res://sprites/tp2.png" id="19_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://bdg014m5mhqjt" path="res://addons/godotvmf/entities/light.tscn" id="19_j8jky"]
 [ext_resource type="Texture2D" uid="uid://dxd7k2w5ixnmq" path="res://sprites/coin1.png" id="21_jscy8"]
 [ext_resource type="Texture2D" uid="uid://dxfmh51e8b0ph" path="res://sprites/coin2.png" id="22_pm3ni"]
 [ext_resource type="Script" uid="uid://ukxui1v3rlrf" path="res://objects/coin.gd" id="23_og1vs"]
@@ -91,7 +97,7 @@ animations = [{
 [sub_resource type="SphereShape3D" id="SphereShape3D_og1vs"]
 
 [node name="Main" type="Node3D"]
-metadata/_edit_horizontal_guides_ = [591.0]
+metadata/_edit_horizontal_guides_ = [591.0, 640.0]
 metadata/_edit_vertical_guides_ = [430.0, 1030.0, 903.0, 640.0, 300.0]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -107,8 +113,10 @@ crosshair = NodePath("../HUD/Crosshair")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.42261794, -0.6942719, 0.58256376, 0, 0.64278793, 0.7660442, -0.9063079, 0.32374403, -0.27165374, 0, 2.076825, 0)
+visible = false
 shadow_enabled = true
-shadow_opacity = 0.75
+directional_shadow_mode = 0
+directional_shadow_blend_splits = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -193,22 +201,23 @@ grow_vertical = 2
 text = "Coins: 0"
 label_settings = ExtResource("9_jscy8")
 
-[node name="TextureRect2" type="ColorRect" parent="HUD"]
+[node name="face_bg" type="TextureRect" parent="HUD"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = 220.0
-offset_right = 100.0
-offset_bottom = 380.0
+offset_left = -96.0
+offset_top = 184.0
+offset_right = 160.0
+offset_bottom = 440.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.75, 0.75)
-color = Color(0.5882353, 0.5882353, 1, 0.2627451)
+texture = ExtResource("10_fuf3a")
+expand_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="HUD"]
+[node name="face_bad" type="TextureRect" parent="HUD"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -221,7 +230,56 @@ offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("10_pm3ni")
+texture = ExtResource("10_kmb1v")
+expand_mode = 3
+
+[node name="face_ok" type="TextureRect" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = 232.0
+offset_right = 80.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("11_fuf3a")
+expand_mode = 3
+
+[node name="face_good" type="TextureRect" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = 232.0
+offset_right = 80.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("12_pibwh")
+expand_mode = 3
+
+[node name="face_wow" type="TextureRect" parent="HUD"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = 232.0
+offset_right = 80.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("14_pibwh")
 expand_mode = 3
 
 [node name="Health2" type="Label" parent="HUD"]
@@ -296,8 +354,6 @@ script = ExtResource("7_85g3d")
 vmf = "res://mapsrc/godotmap1.vmf"
 metadata/_custom_type_script = "uid://cjmpchbcxyqh6"
 
-[node name="Entities" type="Node3D" parent="Level/VMFNode"]
-
 [node name="Geometry" type="MeshInstance3D" parent="Level/VMFNode"]
 mesh = ExtResource("8_choun")
 
@@ -306,6 +362,164 @@ metadata/surface_prop = "default"
 
 [node name="collision" type="CollisionShape3D" parent="Level/VMFNode/Geometry/surface_prop_default"]
 shape = ExtResource("9_ya4ey")
+
+[node name="Entities" type="Node3D" parent="Level/VMFNode"]
+
+[node name="lights" type="Node3D" parent="Level/VMFNode/Entities"]
+
+[node name="light_environment" parent="Level/VMFNode/Entities/lights" instance=ExtResource("18_dgi5k")]
+transform = Transform3D(0.2014445, 0.9328006, -0.29883626, 0.36599827, 0.21130916, 0.9063077, 0.9085512, -0.29194432, -0.29883626, 0, 28.16, 0)
+entity = {
+"SunSpreadAngle": 0,
+"_AmbientScaleHDR": 1,
+"_ambient": Color(1, 1, 1, 0.078431375),
+"_ambientHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_light": Color(1, 1, 1, 0.78431374),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"angles": Vector3(-60, -45, 0),
+"classname": "light_environment",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[0 500]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 311,
+"origin": Vector3(0, 0, 1408),
+"pitch": -65
+}
+
+[node name="DirectionalLight3D" parent="Level/VMFNode/Entities/lights/light_environment" index="0"]
+light_energy = 0.78431374
+directional_shadow_blend_splits = true
+
+[node name="light_330" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 7.68, 3.84)
+default_light_energy = 1.9607843
+entity = {
+"_light": Color(0.8117647, 0.85490197, 1, 1.9607843),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"_quadratic_attn": 1,
+"classname": "light",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[0 1000]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 330,
+"origin": Vector3(3200, -192, 384)
+}
+
+[node name="light" parent="Level/VMFNode/Entities/lights/light_330" index="0"]
+light_color = Color(0.8117647, 0.85490197, 1, 1)
+light_energy = 1.9607843
+light_bake_mode = 1
+omni_range = 70.01401
+omni_attenuation = 1.44
+
+[node name="light_342" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.12, 0)
+default_light_energy = 1.5686275
+entity = {
+"_light": Color(1, 1, 1, 1.5686275),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"_quadratic_attn": 1,
+"classname": "light",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[0 1000]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 342,
+"origin": Vector3(0, 0, 256)
+}
+
+[node name="light" parent="Level/VMFNode/Entities/lights/light_342" index="0"]
+light_energy = 1.5686275
+light_bake_mode = 1
+omni_range = 62.62243
+omni_attenuation = 1.44
+
+[node name="light_349" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.88, 3.84, 3.84)
+default_light_energy = 0.5882353
+entity = {
+"_light": Color(1, 1, 1, 0.5882353),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"_quadratic_attn": 1,
+"classname": "light",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[0 1500]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 349,
+"origin": Vector3(1344, -192, 192)
+}
+
+[node name="light" parent="Level/VMFNode/Entities/lights/light_349" index="0"]
+light_energy = 0.5882353
+light_bake_mode = 1
+omni_range = 38.34825
+omni_attenuation = 1.44
+
+[node name="light_367" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.64, 7.68, 3.84)
+default_light_energy = 1.9607843
+entity = {
+"_light": Color(0.8117647, 0.85490197, 1, 1.9607843),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"_quadratic_attn": 1,
+"classname": "light",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[0 1000]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 367,
+"origin": Vector3(2432, -192, 384)
+}
+
+[node name="light" parent="Level/VMFNode/Entities/lights/light_367" index="0"]
+light_color = Color(0.8117647, 0.85490197, 1, 1)
+light_energy = 1.9607843
+light_bake_mode = 1
+omni_range = 70.01401
+omni_attenuation = 1.44
+
+[node name="light_384" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.96, 20.48, 4.48)
+default_light_energy = 0.78431374
+entity = {
+"_light": Color(1, 1, 1, 0.78431374),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"_quadratic_attn": 1,
+"classname": "light",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[0 2000]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 384,
+"origin": Vector3(4448, -224, 1024)
+}
+
+[node name="light" parent="Level/VMFNode/Entities/lights/light_384" index="0"]
+light_energy = 0.78431374
+light_bake_mode = 1
+omni_range = 44.280746
+omni_attenuation = 1.44
 
 [node name="Resupply" type="Area3D" parent="Level" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0077224, 1.5289316, -3.6103284)
@@ -440,3 +654,10 @@ parameters/looping = true
 [connection signal="body_entered" from="Level/Tp1/Tp" to="Level/Tp1/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/SSG/Area3D" to="Level/SSG" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Level/Chaingun/Area3D" to="Level/Chaingun" method="_on_area_3d_body_entered"]
+
+[editable path="Level/VMFNode/Entities/lights/light_environment"]
+[editable path="Level/VMFNode/Entities/lights/light_330"]
+[editable path="Level/VMFNode/Entities/lights/light_342"]
+[editable path="Level/VMFNode/Entities/lights/light_349"]
+[editable path="Level/VMFNode/Entities/lights/light_367"]
+[editable path="Level/VMFNode/Entities/lights/light_384"]

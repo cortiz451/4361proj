@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biff4dkpfqi47"
-path.s3tc="res://.godot/imported/splash-screen.png-ae6c8b07e185ee8a074576008d9ccc5a.s3tc.ctex"
+uid="uid://bc7k24xodiih0"
+path.s3tc="res://.godot/imported/paper_seamless_texture_3183.jpg-852f9f6540bb75120de97a12feb7519f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://splash-screen.png"
-dest_files=["res://.godot/imported/splash-screen.png-ae6c8b07e185ee8a074576008d9ccc5a.s3tc.ctex"]
+source_file="res://materials/paper/paper_seamless_texture_3183.jpg"
+dest_files=["res://.godot/imported/paper_seamless_texture_3183.jpg-852f9f6540bb75120de97a12feb7519f.s3tc.ctex"]
 
 [params]
 
