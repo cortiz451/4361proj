@@ -327,6 +327,11 @@ func change_weapon():
 func coin_get():
 	coins+=1
 	coins_updated.emit(coins)
+	
+func heal(hp):
+	health+=hp
+	if(health>200): health=200
+	health_updated.emit(health)
 
 func setAmmo(ammotype, value):
 	ammo[ammotype]=value

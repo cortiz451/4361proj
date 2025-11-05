@@ -9,11 +9,11 @@ func _process(delta):
 	time += delta
 	position = target_position
 
-
-#add a coin congrats!
+#healy
 func _on_body_entered(body: Node3D) -> void:
-	if body.has_method("coin_get"):
-		Audio.play("sounds/coin.ogg")
-		body.coin_get()
+	if(body.has_method("heal")):
+		body.heal(50)
+		
+		Audio.play("sounds/yum.ogg")
+		
 		queue_free()
-	

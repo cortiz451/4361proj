@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=52 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -27,8 +27,10 @@
 [ext_resource type="Texture2D" uid="uid://kdmi2skd1htj" path="res://sprites/tp1.png" id="18_0ld40"]
 [ext_resource type="PackedScene" uid="uid://cwxttgf1xbejo" path="res://addons/godotvmf/entities/light_environment.tscn" id="18_dgi5k"]
 [ext_resource type="Script" uid="uid://chsc23s3l36f0" path="res://objects/tp.gd" id="18_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://dlr1lgnnsy2gs" path="res://objects/rotating_thingy.tscn" id="19_5he1u"]
 [ext_resource type="Texture2D" uid="uid://dophwnys1qsdp" path="res://sprites/tp2.png" id="19_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://bdg014m5mhqjt" path="res://addons/godotvmf/entities/light.tscn" id="19_j8jky"]
+[ext_resource type="Script" uid="uid://dxscrh1t8qt1r" path="res://objects/rotating_thingy.gd" id="20_5poiv"]
 [ext_resource type="Texture2D" uid="uid://dxd7k2w5ixnmq" path="res://sprites/coin1.png" id="21_jscy8"]
 [ext_resource type="Texture2D" uid="uid://dxfmh51e8b0ph" path="res://sprites/coin2.png" id="22_pm3ni"]
 [ext_resource type="Script" uid="uid://ukxui1v3rlrf" path="res://objects/coin.gd" id="23_og1vs"]
@@ -37,7 +39,10 @@
 [ext_resource type="AudioStream" uid="uid://3w8ih36begok" path="res://sounds/acheivement_get.ogg" id="28_2f3dj"]
 [ext_resource type="Script" uid="uid://cr3qqoes6btp0" path="res://scenes/chaingun.gd" id="29_fv21b"]
 [ext_resource type="PackedScene" uid="uid://cvervjf8gggum" path="res://objects/blaster_repeater.tscn" id="30_tel4y"]
+[ext_resource type="Script" uid="uid://cfyfrolc4hbf4" path="res://scenes/health.gd" id="32_2cjbq"]
+[ext_resource type="Texture2D" uid="uid://bjqhk3siiigs" path="res://sprites/health.png" id="32_chjal"]
 [ext_resource type="AudioStream" uid="uid://pwh0vch3y31k" path="res://sounds/music.ogg" id="32_qkpxi"]
+[ext_resource type="PackedScene" uid="uid://6k0llye1167u" path="res://objects/blockade.tscn" id="37_c6pm6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_og1vs"]
 font = ExtResource("11_y6deb")
@@ -68,10 +73,10 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("21_jscy8")
+"texture": ExtResource("22_pm3ni")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_pm3ni")
+"texture": ExtResource("21_jscy8")
 }],
 "loop": true,
 "name": &"default",
@@ -323,7 +328,7 @@ transform = Transform3D(0.054062076, -0.8913245, -0.45013124, 0.020589793, 0.451
 player = NodePath("../../Player")
 
 [node name="enemy-flying6" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
-transform = Transform3D(-0.9997398, 0.0005559921, -0.022796756, -0.0001813462, 0.9994775, 0.03232479, 0.022802887, 0.03232062, -0.99921745, 60.692116, 20.809746, 0.13044143)
+transform = Transform3D(-0.9997398, 0.0005559921, -0.022796756, -0.0001813462, 0.9994775, 0.03232479, 0.022802887, 0.03232062, -0.99921745, 60.692116, 20.809746, -1.8960917)
 player = NodePath("../../Player")
 
 [node name="enemy-flying7" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
@@ -371,23 +376,23 @@ transform = Transform3D(-0.9968537, -0.052677363, -0.059225436, -0.012652097, 0.
 player = NodePath("../../Player")
 
 [node name="enemy-flying18" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
-transform = Transform3D(0.03927246, 0.5812495, 0.8127772, 0.020639755, 0.8127597, -0.5822337, -0.99901533, 0.03964137, 0.019922303, -7.4820867, 22.171532, -28.971502)
+transform = Transform3D(0.03927246, 0.5812495, 0.8127772, 0.020639755, 0.8127597, -0.5822337, -0.99901533, 0.03964137, 0.019922303, -7.4820867, 21.771166, -28.971502)
 player = NodePath("../../Player")
 
 [node name="enemy-flying19" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
-transform = Transform3D(-0.91994625, 0.11993185, -0.3732492, 0.073422104, 0.98791945, 0.13647312, 0.38510767, 0.09814331, -0.9176383, -9.200848, 20.365557, -23.510582)
+transform = Transform3D(0.8188021, -0.1378375, 0.5572821, 0.07342209, 0.9879194, 0.1364731, -0.569361, -0.07082777, 0.8190309, -11.95211, 20.786995, -25.82157)
 player = NodePath("../../Player")
 
 [node name="enemy-flying20" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
-transform = Transform3D(0.9998979, 0.011577852, -0.008353086, -0.012141746, 0.9974053, -0.07096428, 0.0075095864, 0.07105838, 0.997444, -13.5214205, 20.470947, -23.645885)
+transform = Transform3D(0.9998979, 0.011577852, -0.008353086, -0.012141746, 0.9974053, -0.07096428, 0.0075095864, 0.07105838, 0.997444, -13.5214205, 20.470947, -23.831856)
 player = NodePath("../../Player")
 
 [node name="enemy-flying21" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
-transform = Transform3D(-0.94270736, -0.18217662, 0.27948955, -0.2240363, 0.96643764, -0.12572432, -0.24720478, -0.18113703, -0.95188177, -13.5214205, 21.152384, -23.645885)
+transform = Transform3D(-0.94270736, -0.18217662, 0.27948955, -0.2240363, 0.96643764, -0.12572432, -0.24720478, -0.18113703, -0.95188177, -13.5214205, 21.152384, -23.776905)
 player = NodePath("../../Player")
 
 [node name="enemy-flying22" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
-transform = Transform3D(-0.036065385, 0.99405617, 0.102722965, -0.9980979, -0.04097195, 0.046061743, 0.04999676, -0.10086659, 0.9936428, -15.912743, 21.947325, -35.945435)
+transform = Transform3D(-0.036065385, 0.99405617, 0.102722965, -0.9980979, -0.04097195, 0.046061743, 0.04999676, -0.10086659, 0.9936428, -14.836081, 21.947325, -34.908886)
 player = NodePath("../../Player")
 
 [node name="enemy-flying23" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
@@ -395,9 +400,33 @@ transform = Transform3D(-0.7651757, -0.032839287, -0.64298356, -0.045425687, 0.9
 player = NodePath("../../Player")
 
 [node name="big-enemy-flying" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_a8y0u")]
-transform = Transform3D(0.22264458, 0.5551203, 0.801418, -0.14859217, 0.83177006, -0.5348634, -0.9635091, 0, 0.26767564, 0, 26.22204, 0)
+transform = Transform3D(0.013880177, -0.031155456, 0.9994183, 0.059476543, 0.99777055, 0.030278029, -0.9981333, 0.059021685, 0.015702277, 9.014107, 22.832573, 2.7459314)
 player = NodePath("../../Player")
 Bullet = ExtResource("15_tel4y")
+
+[node name="big-enemy-flying2" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_a8y0u")]
+transform = Transform3D(-0.43643132, 0.05327071, -0.89815915, 0.05947653, 0.99777037, 0.030278035, 0.8977694, -0.0402051, -0.43862668, 22.58839, 28.403282, 30.727684)
+player = NodePath("../../Player")
+Bullet = ExtResource("15_tel4y")
+
+[node name="big-enemy-flying3" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_a8y0u")]
+transform = Transform3D(-0.93707764, -0.09807983, -0.33506042, -0.014029233, 0.9695307, -0.2445676, 0.34883845, -0.22447816, -0.9099016, 16.938707, 28.403282, 37.67633)
+player = NodePath("../../Player")
+Bullet = ExtResource("15_tel4y")
+
+[node name="big-enemy-flying4" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_a8y0u")]
+transform = Transform3D(-0.9204465, 0.100600325, -0.37769994, 0.08028817, 0.9943674, 0.06918903, 0.38253292, 0.033360153, -0.9233391, 26.763798, 28.403282, 49.89545)
+player = NodePath("../../Player")
+Bullet = ExtResource("15_tel4y")
+
+[node name="big-enemy-flying5" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_a8y0u")]
+transform = Transform3D(-0.48179623, -0.04848375, -0.8749409, 0.009359411, 0.9981266, -0.06046391, 0.8762331, -0.037320085, -0.48043975, 34.043106, 28.403282, 42.14107)
+player = NodePath("../../Player")
+Bullet = ExtResource("15_tel4y")
+
+[node name="Rotating Thingy" parent="Enemies" instance=ExtResource("19_5he1u")]
+transform = Transform3D(-8.456522, -4.9445105, -2.0097384, -0.82523835, 4.931427, -8.6602545, 5.27316, -7.157712, -4.578312, 27, 36, 41)
+script = ExtResource("20_5poiv")
 
 [node name="Level" type="Node" parent="."]
 
@@ -748,7 +777,6 @@ shape = SubResource("SphereShape3D_gqmmt")
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_yc10j")
 autoplay = "default"
-frame = 1
 frame_progress = 0.42070758
 
 [node name="Coin2" type="Area3D" parent="Level"]
@@ -762,8 +790,66 @@ shape = SubResource("SphereShape3D_gqmmt")
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_yc10j")
 autoplay = "default"
-frame = 1
 frame_progress = 0.42070758
+
+[node name="Coin3" type="Area3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.55987, 21.406836, 52.67992)
+script = ExtResource("23_og1vs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Coin3"]
+shape = SubResource("SphereShape3D_gqmmt")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Coin3"]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_yc10j")
+autoplay = "default"
+frame_progress = 0.42070758
+
+[node name="Coin4" type="Area3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.709471, 21.406836, -23.569286)
+script = ExtResource("23_og1vs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Coin4"]
+shape = SubResource("SphereShape3D_gqmmt")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Coin4"]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_yc10j")
+autoplay = "default"
+frame_progress = 0.42070758
+
+[node name="Health" type="Area3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.644337, 21.231901, -4.395258)
+script = ExtResource("32_2cjbq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Health"]
+shape = SubResource("SphereShape3D_gqmmt")
+
+[node name="Sprite3D" type="Sprite3D" parent="Level/Health"]
+billboard = 1
+texture = ExtResource("32_chjal")
+
+[node name="Health2" type="Area3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.831047, 26.610508, 40.820255)
+script = ExtResource("32_2cjbq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Health2"]
+shape = SubResource("SphereShape3D_gqmmt")
+
+[node name="Sprite3D" type="Sprite3D" parent="Level/Health2"]
+billboard = 1
+texture = ExtResource("32_chjal")
+
+[node name="Health3" type="Area3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7385607, 21.317602, -38.20389)
+script = ExtResource("32_2cjbq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Health3"]
+shape = SubResource("SphereShape3D_gqmmt")
+
+[node name="Sprite3D" type="Sprite3D" parent="Level/Health3"]
+billboard = 1
+texture = ExtResource("32_chjal")
 
 [node name="Tp1" type="Node" parent="Level"]
 
@@ -787,7 +873,7 @@ frame_progress = 0.8368172
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 40, 1, 4)
 
 [node name="SSG" type="Node3D" parent="Level" node_paths=PackedStringArray("Jingle")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1490064, 21.294527, 10.417404)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 26.5, 55)
 script = ExtResource("26_vxglm")
 Jingle = NodePath("../../Jingle")
 
@@ -813,6 +899,9 @@ shape = SubResource("SphereShape3D_og1vs")
 [node name="blaster-repeater" parent="Level/Chaingun" instance=ExtResource("30_tel4y")]
 transform = Transform3D(0.4894337, 0, 0.10224802, 0, 0.5, 0, -0.10224802, 0, 0.4894337, 0, -0.2, 0)
 
+[node name="Blockade" parent="Level" instance=ExtResource("37_c6pm6")]
+transform = Transform3D(-4.371139e-07, 0, 10, 0, 10, 0, -10, 0, -4.371139e-07, -9.6101265, 20.502466, -4.4553194)
+
 [node name="Jingle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_2f3dj")
 
@@ -831,6 +920,11 @@ parameters/looping = true
 [connection signal="timeout" from="Level/Resupply2/Timer" to="Level/Resupply2" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Level/Coin" to="Level/Coin" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Coin2" to="Level/Coin2" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/Coin3" to="Level/Coin3" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/Coin4" to="Level/Coin4" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/Health" to="Level/Health" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/Health2" to="Level/Health2" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/Health3" to="Level/Health3" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Tp1/Tp" to="Level/Tp1/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/SSG/Area3D" to="Level/SSG" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Level/Chaingun/Area3D" to="Level/Chaingun" method="_on_area_3d_body_entered"]

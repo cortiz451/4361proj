@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c05eij4cisfb0"]
+
+[ext_resource type="Texture2D" uid="uid://0xjf5dj4qq5x" path="res://materials/face_bad.png" id="1_4661t"]
+
+[resource]
+albedo_color = Color(18.892157, 11.919689, 9.806819, 1)
+albedo_texture = ExtResource("1_4661t")
+albedo_texture_force_srgb = true
