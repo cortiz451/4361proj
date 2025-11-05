@@ -2,12 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm7p5en0bhtbf"
-valid=false
+uid="uid://bet5oel2nurlp"
+path.s3tc="res://.godot/imported/glasswindow001b.png-20266a4ce5f94225417ce6731f82211e.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
 
 [deps]
 
-source_file="res://materials/Texturelabs_Paper_361M.png"
+source_file="res://materials/glass/glasswindow001b.png"
+dest_files=["res://.godot/imported/glasswindow001b.png-20266a4ce5f94225417ce6731f82211e.s3tc.ctex"]
 
 [params]
 

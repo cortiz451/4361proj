@@ -42,6 +42,10 @@ enabled=PackedStringArray("res://addons/godotvmf/plugin.cfg")
 
 Enemy=""
 
+[godot_vmf]
+
+materials/fallback_material="brick/brickwall001a"
+
 [input]
 
 move_right={

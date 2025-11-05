@@ -1,9 +1,8 @@
 [gd_resource type="ORMMaterial3D" load_steps=2 format=3 uid="uid://b5v8v3fvrxgxh"]
 
-[ext_resource type="Texture2D" uid="uid://itpe13lhb7wx" path="res://materials/glass/glasswindow01b.png" id="1_36puc"]
+[ext_resource type="Texture2D" uid="uid://bet5oel2nurlp" path="res://materials/glass/glasswindow001b.png" id="1_36puc"]
 
 [resource]
 transparency = 1
-albedo_color = Color(0.8441527, 0.91760206, 0.9999996, 1)
+blend_mode = 1
 albedo_texture = ExtResource("1_36puc")
-uv1_scale = Vector3(0.5, 0.5, 0.5)

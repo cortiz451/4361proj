@@ -2,11 +2,11 @@
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3vlvf"]
 sky_top_color = Color(0.81868726, 0.6321173, 0.4829309, 1)
-sky_horizon_color = Color(0.4003163, 0.31271607, 0.2519637, 1)
+sky_horizon_color = Color(0.36862746, 0.2901961, 0.23137255, 1)
 sky_curve = 6.7882247
-ground_bottom_color = Color(0.2056255, 0.17384365, 0.14346355, 1)
-ground_horizon_color = Color(0.4, 0.3137255, 0.2509804, 1)
-ground_curve = 0.6182013
+ground_bottom_color = Color(0.12507391, 0.10308347, 0.08383646, 1)
+ground_horizon_color = Color(0.3695321, 0.28848165, 0.22950864, 1)
+ground_curve = 0.76109576
 
 [sub_resource type="Sky" id="Sky_u3n42"]
 sky_material = SubResource("ProceduralSkyMaterial_3vlvf")

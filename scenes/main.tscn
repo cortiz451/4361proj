@@ -342,6 +342,58 @@ player = NodePath("../../Player")
 transform = Transform3D(0.018645668, -0.032315895, 0.99930376, -0.16703898, 0.9853298, 0.03498063, -0.9857739, -0.16757487, 0.012974213, 45.998608, 21.34367, 2.3193438)
 player = NodePath("../../Player")
 
+[node name="enemy-flying11" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(0.02178589, 0.047150567, 0.99865013, 0.038648427, 0.99810123, -0.047967825, -0.99901533, 0.03964137, 0.019922303, -5.220609, 21.34367, -21.647295)
+player = NodePath("../../Player")
+
+[node name="enemy-flying12" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-0.032106627, -0.046738457, -0.9983909, -0.07126767, 0.99647087, -0.04435676, 0.9969403, 0.06972882, -0.035324335, 2.938686, 21.34367, -21.647295)
+player = NodePath("../../Player")
+
+[node name="enemy-flying13" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-0.03210662, -0.046738457, -0.99839085, -0.10983531, -0.9926916, 0.05000384, -0.9934311, 0.11126418, 0.026738506, 5.97194, 22.198904, -27.25475)
+player = NodePath("../../Player")
+
+[node name="enemy-flying14" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(0.5503886, 0.0522499, 0.8332719, -0.032394424, 0.9986254, -0.041221406, -0.83428, -0.004305577, 0.55132425, 10.4662, 20.67976, -32.47191)
+player = NodePath("../../Player")
+
+[node name="enemy-flying15" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-0.18537873, -0.085985824, 0.97889775, -0.042483028, 0.99593496, 0.07943687, -0.98174846, -0.026860546, -0.18827783, 10.4662, 21.541534, -32.47191)
+player = NodePath("../../Player")
+
+[node name="enemy-flying16" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(0.9773553, -0.08660823, 0.19306871, 0.09569587, 0.99467665, -0.038234524, -0.18872954, 0.055844523, 0.9804398, 8.665719, 20.832197, -38.892265)
+player = NodePath("../../Player")
+
+[node name="enemy-flying17" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-0.9968537, -0.052677363, -0.059225436, -0.012652097, 0.8433762, -0.53717536, 0.07824641, -0.5347363, -0.8413883, 1.3927972, 21.833176, -36.417713)
+player = NodePath("../../Player")
+
+[node name="enemy-flying18" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(0.03927246, 0.5812495, 0.8127772, 0.020639755, 0.8127597, -0.5822337, -0.99901533, 0.03964137, 0.019922303, -7.4820867, 22.171532, -28.971502)
+player = NodePath("../../Player")
+
+[node name="enemy-flying19" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-0.91994625, 0.11993185, -0.3732492, 0.073422104, 0.98791945, 0.13647312, 0.38510767, 0.09814331, -0.9176383, -9.200848, 20.365557, -23.510582)
+player = NodePath("../../Player")
+
+[node name="enemy-flying20" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(0.9998979, 0.011577852, -0.008353086, -0.012141746, 0.9974053, -0.07096428, 0.0075095864, 0.07105838, 0.997444, -13.5214205, 20.470947, -23.645885)
+player = NodePath("../../Player")
+
+[node name="enemy-flying21" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-0.94270736, -0.18217662, 0.27948955, -0.2240363, 0.96643764, -0.12572432, -0.24720478, -0.18113703, -0.95188177, -13.5214205, 21.152384, -23.645885)
+player = NodePath("../../Player")
+
+[node name="enemy-flying22" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-0.036065385, 0.99405617, 0.102722965, -0.9980979, -0.04097195, 0.046061743, 0.04999676, -0.10086659, 0.9936428, -15.912743, 21.947325, -35.945435)
+player = NodePath("../../Player")
+
+[node name="enemy-flying23" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-0.7651757, -0.032839287, -0.64298356, -0.045425687, 0.9989635, 0.0030378255, 0.64221704, 0.031532593, -0.76587397, -7.175462, 20.807024, -33.90985)
+player = NodePath("../../Player")
+
 [node name="big-enemy-flying" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_a8y0u")]
 transform = Transform3D(0.22264458, 0.5551203, 0.801418, -0.14859217, 0.83177006, -0.5348634, -0.9635091, 0, 0.26767564, 0, 26.22204, 0)
 player = NodePath("../../Player")
@@ -392,7 +444,6 @@ entity = {
 
 [node name="DirectionalLight3D" parent="Level/VMFNode/Entities/lights/light_environment" index="0"]
 light_energy = 0.78431374
-directional_shadow_blend_splits = true
 
 [node name="light_330" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 7.68, 3.84)
@@ -521,6 +572,135 @@ light_bake_mode = 1
 omni_range = 44.280746
 omni_attenuation = 1.44
 
+[node name="light_551" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.64, 23.039999, -14.719999)
+default_light_energy = 0.78431374
+entity = {
+"_light": Color(1, 1, 1, 0.78431374),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"_quadratic_attn": 1,
+"classname": "light",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[0 12000]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 551,
+"origin": Vector3(-32, 736, 1152)
+}
+
+[node name="light" parent="Level/VMFNode/Entities/lights/light_551" index="0"]
+light_energy = 0.78431374
+light_bake_mode = 1
+omni_range = 44.280746
+omni_attenuation = 1.44
+
+[node name="light_654" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.84, 22.4, -40.96)
+default_light_energy = 0.39215687
+entity = {
+"_light": Color(1, 0.8627451, 0.8627451, 0.39215687),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"_quadratic_attn": 1,
+"classname": "light",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[500 10000]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 654,
+"origin": Vector3(-192, 2048, 1120)
+}
+
+[node name="light" parent="Level/VMFNode/Entities/lights/light_654" index="0"]
+light_color = Color(1, 0.8627451, 0.8627451, 1)
+light_energy = 0.39215687
+light_bake_mode = 1
+omni_range = 31.311214
+omni_attenuation = 1.44
+
+[node name="light_669" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.719999, 21.8352, -29.439999)
+default_light_energy = 0.39215687
+entity = {
+"_light": Color(1, 0.8627451, 0.8627451, 0.39215687),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"_quadratic_attn": 1,
+"classname": "light",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[500 10000]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 669,
+"origin": Vector3(-736, 1472, 1091.76)
+}
+
+[node name="light" parent="Level/VMFNode/Entities/lights/light_669" index="0"]
+light_color = Color(1, 0.8627451, 0.8627451, 1)
+light_energy = 0.39215687
+light_bake_mode = 1
+omni_range = 31.311214
+omni_attenuation = 1.44
+
+[node name="light_692" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.16, 22.4, -32)
+default_light_energy = 0.39215687
+entity = {
+"_light": Color(1, 0.8627451, 0.8627451, 0.39215687),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"_quadratic_attn": 1,
+"classname": "light",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[500 10000]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 692,
+"origin": Vector3(608, 1600, 1120)
+}
+
+[node name="light" parent="Level/VMFNode/Entities/lights/light_692" index="0"]
+light_color = Color(1, 0.8627451, 0.8627451, 1)
+light_energy = 0.39215687
+light_bake_mode = 1
+omni_range = 31.311214
+omni_attenuation = 1.44
+
+[node name="light_699" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.04, 21.76, -29.439999)
+default_light_energy = 0.39215687
+entity = {
+"_light": Color(1, 0.8627451, 0.8627451, 0.39215687),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"_quadratic_attn": 1,
+"classname": "light",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[500 10000]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 699,
+"origin": Vector3(-352, 1472, 1088)
+}
+
+[node name="light" parent="Level/VMFNode/Entities/lights/light_699" index="0"]
+light_color = Color(1, 0.8627451, 0.8627451, 1)
+light_energy = 0.39215687
+light_bake_mode = 1
+omni_range = 31.311214
+omni_attenuation = 1.44
+
 [node name="Resupply" type="Area3D" parent="Level" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0077224, 1.5289316, -3.6103284)
 script = ExtResource("15_jbj1t")
@@ -621,7 +801,7 @@ shape = SubResource("SphereShape3D_og1vs")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.2, 0)
 
 [node name="Chaingun" type="Node3D" parent="Level" node_paths=PackedStringArray("Jingle")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1490064, 21.294527, -9.785845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.825, 21, -41)
 script = ExtResource("29_fv21b")
 Jingle = NodePath("../../Jingle")
 
@@ -661,3 +841,8 @@ parameters/looping = true
 [editable path="Level/VMFNode/Entities/lights/light_349"]
 [editable path="Level/VMFNode/Entities/lights/light_367"]
 [editable path="Level/VMFNode/Entities/lights/light_384"]
+[editable path="Level/VMFNode/Entities/lights/light_551"]
+[editable path="Level/VMFNode/Entities/lights/light_654"]
+[editable path="Level/VMFNode/Entities/lights/light_669"]
+[editable path="Level/VMFNode/Entities/lights/light_692"]
+[editable path="Level/VMFNode/Entities/lights/light_699"]
