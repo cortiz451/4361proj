@@ -917,6 +917,27 @@ frame_progress = 0.8368172
 [node name="Dest1" type="Marker3D" parent="Level/Tp1"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 40, 1, 4)
 
+[node name="Tp2" type="Node" parent="Level"]
+
+[node name="Tp" type="Area3D" parent="Level/Tp2" node_paths=PackedStringArray("dest")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.323036, 1.2380781, -5.0267096)
+script = ExtResource("18_gqmmt")
+dest = NodePath("../Dest2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Tp2/Tp"]
+shape = SubResource("CylinderShape3D_muem4")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Tp2/Tp"]
+transparency = 0.6
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_muem4")
+autoplay = "default"
+frame = 1
+frame_progress = 0.8368172
+
+[node name="Dest2" type="Marker3D" parent="Level/Tp2"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.4111595, 23.519804, -0.65664625)
+
 [node name="SSG" type="Node3D" parent="Level" node_paths=PackedStringArray("Jingle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 26.5, 55)
 script = ExtResource("26_vxglm")
@@ -955,9 +976,6 @@ player = NodePath("../../Player")
 transform = Transform3D(0.6, 0, 2.1316283e-15, 0, 0.6, 0, -2.1316283e-15, 0, 0.6, 0, 0.3, 0)
 shape = SubResource("BoxShape3D_chjal")
 
-[node name="Timer" type="Timer" parent="Level/Blockade"]
-one_shot = true
-
 [node name="Jingle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_2f3dj")
 
@@ -969,6 +987,10 @@ parameters/looping = true
 [node name="JingleUnlock" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("45_vchkt")
 volume_db = -2.0
+
+[node name="BlockadeSanityTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="ammo_updated" from="Player" to="HUD" method="_on_player_ammo_updated"]
 [connection signal="coins_updated" from="Player" to="HUD" method="_on_player_coins_updated"]
@@ -1016,9 +1038,10 @@ volume_db = -2.0
 [connection signal="body_entered" from="Level/Health2" to="Level/Health2" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Health3" to="Level/Health3" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Tp1/Tp" to="Level/Tp1/Tp" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/Tp2/Tp" to="Level/Tp2/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/SSG/Area3D" to="Level/SSG" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Level/Chaingun/Area3D" to="Level/Chaingun" method="_on_area_3d_body_entered"]
-[connection signal="timeout" from="Level/Blockade/Timer" to="Level/Blockade" method="_on_timer_timeout"]
+[connection signal="timeout" from="BlockadeSanityTimer" to="Level/Blockade" method="_on_blockade_sanity_timer_timeout"]
 
 [editable path="Level/VMFNode/Entities/lights/light_environment"]
 [editable path="Level/VMFNode/Entities/lights/light_330"]

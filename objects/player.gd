@@ -110,7 +110,7 @@ func _process(delta):
 	
 	# Falling/respawning
 	
-	if position.y < -10:
+	if position.y < -100:
 		get_tree().reload_current_scene()
 
 # Mouse movement
