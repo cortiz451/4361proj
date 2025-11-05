@@ -51,7 +51,7 @@ signal init_enemycount
 @onready var sound_footsteps = $SoundFootsteps
 @onready var blaster_cooldown = $Cooldown
 @onready var dmgcool = $DmgCool
-@onready var resupplytime = $"../Level/Resupply/Timer"
+@onready var resupplytime = $"../Level/WpnPickups/Resupply/Timer"
 @onready var initWait = $"initWait"
 
 @export var crosshair:TextureRect
@@ -339,8 +339,12 @@ func heal(hp):
 	if(health>200): health=200
 	health_updated.emit(health)
 
-func setAmmo(ammotype, value):
-	ammo[ammotype]=value
+func setAmmo(ammotype, value, add=false):
+	if(add):
+		ammo[ammotype]+=value
+	else:
+		ammo[ammotype]=value
+	refreshAmmoHUD()
 
 func refreshAmmoHUD():
 	ammo_updated.emit(ammo[weapon.ammotype], ammoTypes[weapon.ammotype]) # Update ammo on HUD
