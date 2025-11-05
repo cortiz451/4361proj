@@ -42,6 +42,7 @@ signal health_updated
 signal ammo_updated
 signal drain_updated
 signal coins_updated
+signal init_enemycount
 
 @onready var camera = $Head/Camera
 @onready var raycast = $Head/Camera/RayCast
@@ -51,6 +52,7 @@ signal coins_updated
 @onready var blaster_cooldown = $Cooldown
 @onready var dmgcool = $DmgCool
 @onready var resupplytime = $"../Level/Resupply/Timer"
+@onready var initWait = $"initWait"
 
 @export var crosshair:TextureRect
 
@@ -60,6 +62,10 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	weapon = weapons[weapon_index] # Weapon must never be nil
 	initiate_change_weapon(0)
+	
+	#update enemy count the best way I know how
+	initWait.start(0.5)
+	
 	$"../Music".play()
 
 func _process(delta):
@@ -356,3 +362,7 @@ func damage(amount):
 	if health < 0:
 		
 		get_tree().reload_current_scene() # Reset when out of health
+
+
+func _on_init_wait_timeout() -> void:
+	init_enemycount.emit(0)

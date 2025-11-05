@@ -26,7 +26,6 @@ var alerted=false;
 func _ready():
 	target_position = position
 
-
 func _process(delta):
 	#sorry for the gross nested ifs
 	if(angry):
@@ -40,11 +39,8 @@ func _process(delta):
 					$Angry.play()
 					alerted=true
 	
-	
 	target_position.y += (cos(time * 5) * 1) * delta  # Sine movement (up and down)
-
 	time += delta
-
 	position = target_position
 
 # Take damage from player

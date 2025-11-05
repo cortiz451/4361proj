@@ -135,6 +135,10 @@ jump_strength = 10
 weapons = Array[ExtResource("3_trceg")]([ExtResource("4_a8y0u"), ExtResource("5_jkv2x"), ExtResource("7_muem4"), ExtResource("6_jbj1t")])
 crosshair = NodePath("../HUD/Crosshair")
 
+[node name="initWait" type="Timer" parent="Player"]
+wait_time = 0.3
+one_shot = true
+
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.42261794, -0.6942719, 0.58256376, 0, 0.64278793, 0.7660442, -0.9063079, 0.32374403, -0.27165374, 0, 2.076825, 0)
 visible = false
@@ -320,7 +324,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 1
-text = "Enemies: 0"
+text = "Enemies: ..."
 label_settings = SubResource("LabelSettings_og1vs")
 horizontal_alignment = 2
 
@@ -951,6 +955,9 @@ player = NodePath("../../Player")
 transform = Transform3D(0.6, 0, 2.1316283e-15, 0, 0.6, 0, -2.1316283e-15, 0, 0.6, 0, 0.3, 0)
 shape = SubResource("BoxShape3D_chjal")
 
+[node name="Timer" type="Timer" parent="Level/Blockade"]
+one_shot = true
+
 [node name="Jingle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_2f3dj")
 
@@ -961,11 +968,14 @@ parameters/looping = true
 
 [node name="JingleUnlock" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("45_vchkt")
+volume_db = -2.0
 
 [connection signal="ammo_updated" from="Player" to="HUD" method="_on_player_ammo_updated"]
 [connection signal="coins_updated" from="Player" to="HUD" method="_on_player_coins_updated"]
 [connection signal="drain_updated" from="Player" to="HUD" method="_on_player_drain_updated"]
 [connection signal="health_updated" from="Player" to="HUD" method="_on_health_updated"]
+[connection signal="init_enemycount" from="Player" to="HUD" method="_on_enemy_down"]
+[connection signal="timeout" from="Player/initWait" to="Player" method="_on_init_wait_timeout"]
 [connection signal="enemy_down" from="Enemies/enemy-flying" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/enemy-flying2" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/enemy-flying3" to="HUD" method="_on_enemy_down"]
@@ -1008,6 +1018,7 @@ stream = ExtResource("45_vchkt")
 [connection signal="body_entered" from="Level/Tp1/Tp" to="Level/Tp1/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/SSG/Area3D" to="Level/SSG" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Level/Chaingun/Area3D" to="Level/Chaingun" method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Level/Blockade/Timer" to="Level/Blockade" method="_on_timer_timeout"]
 
 [editable path="Level/VMFNode/Entities/lights/light_environment"]
 [editable path="Level/VMFNode/Entities/lights/light_330"]

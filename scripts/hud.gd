@@ -6,6 +6,9 @@ var time=0.0
 var lastupdate=0.0
 var enemies=0
 
+#please only fire once
+@onready var enemycount=$"../Enemies".get_children().size()
+
 func _process(delta):
 	time+=delta
 	
@@ -40,4 +43,4 @@ func _on_player_coins_updated(coins) -> void:
 
 func _on_enemy_down(v):
 	enemies+=v
-	$Enemies.text = "Enemies: "+str(enemies)
+	$Enemies.text = "Enemies: "+str(enemies)+"/"+str(enemycount)

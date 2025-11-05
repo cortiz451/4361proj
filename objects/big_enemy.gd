@@ -28,22 +28,24 @@ func _ready():
 
 
 func _process(delta):
+	
 	if(angry):
 		self.look_at(player.position + Vector3(0, 0.5, 0), Vector3.UP, true)  # Look at player
-	
-	if(angry && !alerted):
-		$Angry.pitch_scale=randf_range(0.9, 1.1)
-		$Angry.play()
-		alerted=true
+		if(!alerted):
+			raycast.force_raycast_update()
+			if(raycast.is_colliding()):
+				var collider = raycast.get_collider()
+				if collider.has_method("damage"):  # Raycast collides with player
+					$Angry.pitch_scale=randf_range(0.9, 1.1)
+					$Angry.play()
+					alerted=true
 	
 	target_position.y += (cos(time * 5) * 1) * delta  # Sine movement (up and down)
-
 	time += delta
-
 	position = target_position
 
-# Take damage from player
 
+# Take damage from player
 func damage(amount):
 	#make angry if damaged!
 	angry=true
