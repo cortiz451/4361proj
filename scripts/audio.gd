@@ -17,7 +17,7 @@ func _ready():
 
 		p.volume_db = -10
 		p.finished.connect(_on_stream_finished.bind(p))
-		p.bus = bus
+		p.bus = "SFX"
 
 func _on_stream_finished(stream):
 	available.append(stream)

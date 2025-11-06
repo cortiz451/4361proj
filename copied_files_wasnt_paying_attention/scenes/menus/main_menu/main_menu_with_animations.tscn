@@ -343,7 +343,7 @@ shadow_offset = Vector2(2, 1)
 [node name="MainMenu" instance=ExtResource("1_a3117")]
 theme = ExtResource("2_lqrbs")
 script = ExtResource("2_veygi")
-game_scene_path = "uid://dxvvlck8lej3f"
+game_scene_path = "uid://b3870tfjj1fgx"
 options_packed_scene = ExtResource("3_2uvjv")
 credits_packed_scene = ExtResource("4_lqqec")
 

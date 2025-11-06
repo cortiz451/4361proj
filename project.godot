@@ -14,7 +14,7 @@ config/name="MazeQuest 3D: Revenge of the Evil, No-Good, Nefairous Enemies!"
 config/description="A game made by Group 7 for CS 4361.001's 2025 project."
 config/version="0.0002"
 config/tags=PackedStringArray("starterkit")
-run/main_scene="res://copied_files_wasnt_paying_attention/scenes/opening/opening.tscn"
+run/main_scene="res://maaacks_template/scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/bg_color=Color(0.92549, 0.92549, 0.960784, 1)
 boot_splash/image="res://splash-screen.png"
@@ -29,10 +29,10 @@ general/3d_panning_strength=0.75
 [autoload]
 
 Audio="*res://scripts/audio.gd"
-AppConfig="*res://addons/maaacks_menus_template/base/nodes/autoloads/app_config/app_config.tscn"
-SceneLoader="*res://addons/maaacks_menus_template/base/nodes/autoloads/scene_loader/scene_loader.tscn"
-ProjectMusicController="*res://addons/maaacks_menus_template/base/nodes/autoloads/music_controller/project_music_controller.tscn"
-ProjectUISoundController="*res://addons/maaacks_menus_template/base/nodes/autoloads/ui_sound_controller/project_ui_sound_controller.tscn"
+AppConfig="*res://addons/maaacks_game_template/base/nodes/autoloads/app_config/app_config.tscn"
+SceneLoader="*res://addons/maaacks_game_template/base/nodes/autoloads/scene_loader/scene_loader.tscn"
+ProjectMusicController="*res://addons/maaacks_game_template/base/nodes/autoloads/music_controller/project_music_controller.tscn"
+ProjectUISoundController="*res://addons/maaacks_game_template/base/nodes/autoloads/ui_sound_controller/project_ui_sound_controller.tscn"
 
 [display]
 
@@ -47,7 +47,7 @@ movie_writer/mjpeg_quality=1.0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godotvmf/plugin.cfg", "res://addons/maaacks_menus_template/plugin.cfg")
+enabled=PackedStringArray("res://addons/godotvmf/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg")
 
 [global_group]
 
@@ -147,7 +147,14 @@ weapon_untoggle={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://addons/maaacks_menus_template/base/translations/menus_translations.en.translation", "res://addons/maaacks_menus_template/base/translations/menus_translations.fr.translation")
+locale/translations=PackedStringArray("res://addons/maaacks_menus_template/base/translations/menus_translations.en.translation", "res://addons/maaacks_menus_template/base/translations/menus_translations.fr.translation", "res://addons/maaacks_game_template/base/translations/menus_translations.en.translation", "res://addons/maaacks_game_template/base/translations/menus_translations.fr.translation")
+
+[maaacks_game_template]
+
+disable_install_audio_busses=true
+disable_update_check=false
+disable_install_wizard=true
+copy_path="res://maaacks_template/"
 
 [maaacks_menus_template]
 

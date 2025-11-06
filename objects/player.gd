@@ -404,7 +404,7 @@ func damage(amount):
 				consoletext.emit("You almost had it, too!")
 			3:
 				consoletext.emit("Maybe you just need to believe in yourself...")
-		get_tree().reload_current_scene() # Reset when out of health
+		SceneLoader.reload_current_scene() # Reset when out of health
 
 
 func _on_init_wait_timeout() -> void:
