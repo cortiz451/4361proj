@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc00uvcy8gxby"
-path.s3tc="res://.godot/imported/bullets.png-75c96e90a267d39bab2fb3c69c223d15.s3tc.ctex"
+uid="uid://c6770lsxhxfvw"
+path.s3tc="res://.godot/imported/ammo1.png-6fa16fda11df5dbf09fdce7d99f7e30b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://materials/bullets.png"
-dest_files=["res://.godot/imported/bullets.png-75c96e90a267d39bab2fb3c69c223d15.s3tc.ctex"]
+source_file="res://sprites/ammo1.png"
+dest_files=["res://.godot/imported/ammo1.png-6fa16fda11df5dbf09fdce7d99f7e30b.s3tc.ctex"]
 
 [params]
 

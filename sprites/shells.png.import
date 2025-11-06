@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bjdje1dtxnu8x"
-path.s3tc="res://.godot/imported/shells.png-2df232a9034e3099d2ece3a2ba8bc0d1.s3tc.ctex"
+path.s3tc="res://.godot/imported/shells.png-e60328fc6e20537eb875135460d3a267.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://materials/shells.png"
-dest_files=["res://.godot/imported/shells.png-2df232a9034e3099d2ece3a2ba8bc0d1.s3tc.ctex"]
+source_file="res://sprites/shells.png"
+dest_files=["res://.godot/imported/shells.png-e60328fc6e20537eb875135460d3a267.s3tc.ctex"]
 
 [params]
 

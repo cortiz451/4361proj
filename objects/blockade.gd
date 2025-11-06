@@ -20,3 +20,8 @@ func _on_blockade_sanity_timer_timeout() -> void:
 	console_text.emit("Something shifted in the world...")
 	jingle.play()
 	queue_free()
+
+func _on_warning_body_entered(body: Node3D) -> void:
+	if(body.has_method("unlockWeapon")):
+		console_text.emit("I'm going to need to pick up something to pass this guy...")
+		Audio.play("sounds/nope.ogg")

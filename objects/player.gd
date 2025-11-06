@@ -214,7 +214,11 @@ func action_shoot():
 		
 		var aty=weapon.ammotype
 		
-		if !blaster_cooldown.is_stopped() || ammo[aty]<=0: return # Cooldown for shooting
+		if (!blaster_cooldown.is_stopped()): return # Cooldown for shooting
+		if (ammo[aty]<=0):
+			blaster_cooldown.start(0.5)
+			Audio.play("sounds/nope.ogg")
+			return
 		
 		Audio.play(weapon.sound_shoot)
 		
@@ -378,8 +382,7 @@ func unlockWeapon(w):
 			consoletext.emit("You snagged a Super Shotgun!")
 		3:					#maybe a better word here?
 			consoletext.emit("You contracted a Chaingun!")
-		
-
+	
 
 func damage(amount):
 	
@@ -393,7 +396,7 @@ func damage(amount):
 	dmgcool.start(DAMAGE_COOLDOWN)
 	
 	if health < 0:
-		get_tree().reload_current_scene() # Reset when out of health
+		#doesn't do anything right now; maybe if we add a game over screen
 		match randi_range(0,3):
 			0:
 				consoletext.emit("It was nice knowing you...")
@@ -403,6 +406,7 @@ func damage(amount):
 				consoletext.emit("You almost had it, too!")
 			3:
 				consoletext.emit("Maybe you just need to believe in yourself...")
+		get_tree().reload_current_scene() # Reset when out of health
 
 
 func _on_init_wait_timeout() -> void:

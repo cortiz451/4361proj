@@ -55,7 +55,7 @@ func _consoletext(text) -> void:
 	print_console()
 	
 	#Start the timer which will remove x after 5 seconds
-	await get_tree().create_timer(10).timeout 
+	await get_tree().create_timer(10).timeout
 	if(!thingsToSay.is_empty()):
 		thingsToSay.pop_front()
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=63 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -22,8 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://djhvruwyvgddh" path="res://materials/face_wow.png" id="14_pibwh"]
 [ext_resource type="Script" uid="uid://bq7bocqfp8ivg" path="res://objects/resupply.gd" id="15_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://bxjujrxi2ormu" path="res://objects/big_bullet.tscn" id="15_tel4y"]
-[ext_resource type="Texture2D" uid="uid://c6770lsxhxfvw" path="res://materials/ammo1.png" id="16_muem4"]
-[ext_resource type="Texture2D" uid="uid://nf5nhm0bsdth" path="res://materials/ammo2.png" id="17_dp3eg"]
+[ext_resource type="Texture2D" uid="uid://c6770lsxhxfvw" path="res://sprites/ammo1.png" id="16_muem4"]
+[ext_resource type="Texture2D" uid="uid://nf5nhm0bsdth" path="res://sprites/ammo2.png" id="17_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://kdmi2skd1htj" path="res://sprites/tp1.png" id="18_0ld40"]
 [ext_resource type="PackedScene" uid="uid://cwxttgf1xbejo" path="res://addons/godotvmf/entities/light_environment.tscn" id="18_dgi5k"]
 [ext_resource type="Script" uid="uid://chsc23s3l36f0" path="res://objects/tp.gd" id="18_gqmmt"]
@@ -38,15 +38,16 @@
 [ext_resource type="Script" uid="uid://d4gutj58celif" path="res://objects/ssg.gd" id="26_vxglm"]
 [ext_resource type="AudioStream" uid="uid://3w8ih36begok" path="res://sounds/acheivement_get.ogg" id="28_2f3dj"]
 [ext_resource type="Script" uid="uid://cr3qqoes6btp0" path="res://scripts/chaingun.gd" id="29_fv21b"]
-[ext_resource type="Texture2D" uid="uid://bjdje1dtxnu8x" path="res://materials/shells.png" id="29_txyw0"]
+[ext_resource type="Texture2D" uid="uid://bjdje1dtxnu8x" path="res://sprites/shells.png" id="29_txyw0"]
 [ext_resource type="Script" uid="uid://cyjjxx67fkwsw" path="res://scripts/shells.gd" id="29_vc5cj"]
 [ext_resource type="PackedScene" uid="uid://cvervjf8gggum" path="res://objects/blaster_repeater.tscn" id="30_tel4y"]
 [ext_resource type="Script" uid="uid://cfyfrolc4hbf4" path="res://scripts/health.gd" id="32_2cjbq"]
 [ext_resource type="Texture2D" uid="uid://bjqhk3siiigs" path="res://sprites/health.png" id="32_chjal"]
 [ext_resource type="Script" uid="uid://cny485lvwyxhy" path="res://scripts/bullets.gd" id="33_nvyfr"]
-[ext_resource type="Texture2D" uid="uid://cc00uvcy8gxby" path="res://materials/bullets.png" id="34_ty1g6"]
+[ext_resource type="Texture2D" uid="uid://cc00uvcy8gxby" path="res://sprites/bullets.png" id="34_ty1g6"]
 [ext_resource type="PackedScene" uid="uid://6k0llye1167u" path="res://objects/blockade.tscn" id="37_c6pm6"]
 [ext_resource type="Script" uid="uid://20mwe6t33io1" path="res://objects/blockade.gd" id="42_cjqg0"]
+[ext_resource type="Script" uid="uid://bssmkht6jwadv" path="res://objects/tp_locked.gd" id="45_j2jfr"]
 [ext_resource type="AudioStream" uid="uid://cueak1mk2hw5k" path="res://sounds/jingle.ogg" id="45_vchkt"]
 [ext_resource type="AudioStream" uid="uid://dfb1vvae8d3aa" path="res://sounds/bg2.ogg" id="48_ty1g6"]
 
@@ -60,7 +61,7 @@ shadow_offset = Vector2(2, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_vchkt"]
 paragraph_spacing = 1.0
 font = ExtResource("11_y6deb")
-font_size = 24
+font_size = 18
 outline_size = 12
 outline_color = Color(0.42352942, 0.4392157, 0.98039216, 0.4509804)
 shadow_offset = Vector2(2, 1)
@@ -108,6 +109,8 @@ animations = [{
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_chjal"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ty1g6"]
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_muem4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_muem4"]
@@ -121,6 +124,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_dp3eg")
+}],
+"loop": true,
+"name": &"nope",
 "speed": 5.0
 }]
 
@@ -975,6 +986,12 @@ player = NodePath("../../Player")
 transform = Transform3D(0.6, 0, 2.1316283e-15, 0, 0.6, 0, -2.1316283e-15, 0, 0.6, 0, 0.3, 0)
 shape = SubResource("BoxShape3D_chjal")
 
+[node name="Warning" type="Area3D" parent="Level/Blockade"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Blockade/Warning"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.3, 0)
+shape = SubResource("BoxShape3D_ty1g6")
+
 [node name="Teleports" type="Node" parent="Level"]
 
 [node name="Tp1" type="Node" parent="Level/Teleports"]
@@ -1000,10 +1017,11 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 40, 
 
 [node name="Tp2" type="Node" parent="Level/Teleports"]
 
-[node name="Tp" type="Area3D" parent="Level/Teleports/Tp2" node_paths=PackedStringArray("dest")]
+[node name="Tp" type="Area3D" parent="Level/Teleports/Tp2" node_paths=PackedStringArray("dest", "player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.323036, 1.2380781, -5.0267096)
-script = ExtResource("18_gqmmt")
+script = ExtResource("45_j2jfr")
 dest = NodePath("../Dest2")
+player = NodePath("../../../../Player")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Teleports/Tp2/Tp"]
 shape = SubResource("CylinderShape3D_muem4")
@@ -1012,9 +1030,7 @@ shape = SubResource("CylinderShape3D_muem4")
 transparency = 0.6
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_muem4")
-autoplay = "default"
-frame = 1
-frame_progress = 0.8368172
+autoplay = "nope"
 
 [node name="Dest2" type="Marker3D" parent="Level/Teleports/Tp2"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.4111595, 23.519804, -0.65664625)
@@ -1090,6 +1106,7 @@ one_shot = true
 [connection signal="body_entered" from="Level/Coins/Coin3" to="Level/Coins/Coin3" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Coins/Coin4" to="Level/Coins/Coin4" method="_on_body_entered"]
 [connection signal="console_text" from="Level/Blockade" to="HUD" method="_consoletext"]
+[connection signal="body_entered" from="Level/Blockade/Warning" to="Level/Blockade" method="_on_warning_body_entered"]
 [connection signal="body_entered" from="Level/Teleports/Tp1/Tp" to="Level/Teleports/Tp1/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Teleports/Tp2/Tp" to="Level/Teleports/Tp2/Tp" method="_on_body_entered"]
 [connection signal="timeout" from="BlockadeSanityTimer" to="Level/Blockade" method="_on_blockade_sanity_timer_timeout"]
