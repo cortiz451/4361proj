@@ -43,12 +43,12 @@
 [ext_resource type="PackedScene" uid="uid://cvervjf8gggum" path="res://objects/blaster_repeater.tscn" id="30_tel4y"]
 [ext_resource type="Script" uid="uid://cfyfrolc4hbf4" path="res://scripts/health.gd" id="32_2cjbq"]
 [ext_resource type="Texture2D" uid="uid://bjqhk3siiigs" path="res://sprites/health.png" id="32_chjal"]
-[ext_resource type="AudioStream" uid="uid://pwh0vch3y31k" path="res://sounds/music.ogg" id="32_qkpxi"]
 [ext_resource type="Script" uid="uid://cny485lvwyxhy" path="res://scripts/bullets.gd" id="33_nvyfr"]
 [ext_resource type="Texture2D" uid="uid://cc00uvcy8gxby" path="res://materials/bullets.png" id="34_ty1g6"]
 [ext_resource type="PackedScene" uid="uid://6k0llye1167u" path="res://objects/blockade.tscn" id="37_c6pm6"]
 [ext_resource type="Script" uid="uid://20mwe6t33io1" path="res://objects/blockade.gd" id="42_cjqg0"]
 [ext_resource type="AudioStream" uid="uid://cueak1mk2hw5k" path="res://sounds/jingle.ogg" id="45_vchkt"]
+[ext_resource type="AudioStream" uid="uid://dfb1vvae8d3aa" path="res://sounds/bg2.ogg" id="48_ty1g6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_og1vs"]
 font = ExtResource("11_y6deb")
@@ -1027,8 +1027,8 @@ script = ExtResource("20_5poiv")
 stream = ExtResource("28_2f3dj")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("32_qkpxi")
-volume_db = -12.0
+stream = ExtResource("48_ty1g6")
+volume_db = -15.0
 parameters/looping = true
 
 [node name="JingleUnlock" type="AudioStreamPlayer" parent="."]
