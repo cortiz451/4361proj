@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=64 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -50,6 +50,7 @@
 [ext_resource type="Script" uid="uid://bssmkht6jwadv" path="res://objects/tp_locked.gd" id="45_j2jfr"]
 [ext_resource type="AudioStream" uid="uid://cueak1mk2hw5k" path="res://sounds/jingle.ogg" id="45_vchkt"]
 [ext_resource type="AudioStream" uid="uid://dfb1vvae8d3aa" path="res://sounds/bg2.ogg" id="48_ty1g6"]
+[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_menus_template/base/nodes/music_players/background_music_player.tscn" id="50_bjg73"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_og1vs"]
 font = ExtResource("11_y6deb")
@@ -1042,11 +1043,6 @@ script = ExtResource("20_5poiv")
 [node name="Jingle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_2f3dj")
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("48_ty1g6")
-volume_db = -15.0
-parameters/looping = true
-
 [node name="JingleUnlock" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("45_vchkt")
 volume_db = -2.0
@@ -1054,6 +1050,11 @@ volume_db = -2.0
 [node name="BlockadeSanityTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="BackgroundMusicPlayer" parent="." instance=ExtResource("50_bjg73")]
+stream = ExtResource("48_ty1g6")
+volume_db = -12.0
+playback_type = 1
 
 [connection signal="ammo_updated" from="Player" to="HUD" method="_on_player_ammo_updated"]
 [connection signal="coins_updated" from="Player" to="HUD" method="_on_player_coins_updated"]

@@ -66,8 +66,6 @@ func _ready():
 	
 	#update enemy count the best way I know how
 	initWait.start(0.5)
-	
-	$"../Music".play()
 
 func _process(delta):
 	

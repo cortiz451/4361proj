@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://djhjwkga7yytg"]
+
+[ext_resource type="Script" path="res://copied_files_wasnt_paying_attention/scenes/credits/scrollable_credits.gd" id="1_ovqdw"]
+[ext_resource type="PackedScene" path="res://copied_files_wasnt_paying_attention/scenes/credits/credits_label.tscn" id="2_sfvhd"]
+
+[node name="ScrollableCredits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ovqdw")
+
+[node name="CreditsLabel" parent="." instance=ExtResource("2_sfvhd")]
+unique_name_in_owner = true
+layout_mode = 1
+fit_content = false
+scroll_active = true
