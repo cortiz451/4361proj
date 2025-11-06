@@ -10,6 +10,7 @@ model = ExtResource("2_uwy8n")
 rotation = Vector3(0, 180, 0)
 muzzle_position = Vector3(0.1, -0.4, 1.5)
 cooldown = 0.4
+damage = 15.0
 spread = 2.5
 drain = 0
 sound_shoot = "sounds/babyblaster.ogg"

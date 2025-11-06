@@ -5,14 +5,17 @@ var displayAmmo = true
 var time=0.0
 var lastupdate=0.0
 var enemies=0
+var thingsToSay=[]
 
-#please only fire once
 @onready var enemycount=$"../Enemies".get_children().size()
 
 func _process(delta):
 	time+=delta
 	
-	$FPS.text= "FPS " + str(Engine.get_frames_per_second())
+	$FPS.text = "FPS: " + str(Engine.get_frames_per_second())
+	#INTEGER DIVISION IS THE POINT, GODOT.
+	@warning_ignore("integer_division")
+	$Time.text = "Time: %d:%02d.%03d" % [(Time.get_ticks_msec()/60000), ((Time.get_ticks_msec()/1000)%60), (Time.get_ticks_msec()%1000)]
 
 func _on_health_updated(health):
 	$Health.text = "Health: "+ str(health) + "%"
@@ -44,3 +47,23 @@ func _on_player_coins_updated(coins) -> void:
 func _on_enemy_down(v):
 	enemies+=v
 	$Enemies.text = "Enemies: "+str(enemies)+"/"+str(enemycount)
+
+func _consoletext(text) -> void:
+	thingsToSay.push_back(text)
+
+	#reconstruct console output in case of new info
+	print_console()
+	
+	#Start the timer which will remove x after 5 seconds
+	await get_tree().create_timer(10).timeout 
+	if(!thingsToSay.is_empty()):
+		thingsToSay.pop_front()
+	
+	#after we pop the crusty info
+	print_console()
+
+func print_console():
+	var console=""
+	for x in thingsToSay:
+		console+=x+("\n")
+	$Console.text=console

@@ -43,6 +43,7 @@ signal ammo_updated
 signal drain_updated
 signal coins_updated
 signal init_enemycount
+signal consoletext
 
 @onready var camera = $Head/Camera
 @onready var raycast = $Head/Camera/RayCast
@@ -262,7 +263,7 @@ func action_shoot():
 		
 		#lower ammo
 		ammo[aty] -= weapon.drain;
-		if(ammo[aty]<0): ammo[aty]=0
+		ammo[aty]=max(0, ammo[aty])
 		
 		ammo_updated.emit(ammo[aty], ammoTypes[aty]) # Update ammo on HUD..?
 
@@ -333,17 +334,30 @@ func change_weapon():
 func coin_get():
 	coins+=1
 	coins_updated.emit(coins)
+	consoletext.emit("You found a coin! Now where's the other one...")
 	
 func heal(hp):
+	var prevhp=health
+	var better="That burger made you feel better..."
 	health+=hp
 	if(health>200): health=200
 	health_updated.emit(health)
+	if(prevhp<25):
+		better+=" you really needed it!"
+	consoletext.emit(better)
 
 func setAmmo(ammotype, value, add=false):
 	if(add):
 		ammo[ammotype]+=value
+		match ammotype:
+			1:
+				consoletext.emit("You scooped up some Shells!")
+			2:
+				consoletext.emit("You bargained for some Bullets!")
 	else:
 		ammo[ammotype]=value
+	#wrap down
+	ammo[ammotype]=min(ammo[ammotype], maxAmmo[ammotype])
 	refreshAmmoHUD()
 
 func refreshAmmoHUD():
@@ -351,6 +365,13 @@ func refreshAmmoHUD():
 
 func unlockWeapon(w):
 	weapons[w].inInventory=true
+	match w:
+		2:
+			consoletext.emit("You snagged a Super Shotgun!")
+		3:					#maybe a better word here?
+			consoletext.emit("You contracted a Chaingun!")
+		
+
 
 func damage(amount):
 	
