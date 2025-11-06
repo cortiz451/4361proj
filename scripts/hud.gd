@@ -8,6 +8,7 @@ var enemies=0
 var thingsToSay=[]
 
 @onready var enemycount=$"../Enemies".get_children().size()
+@onready var coincount=$"../Level/Coins".get_children().size()
 
 func _process(delta):
 	time+=delta
@@ -42,7 +43,7 @@ func _on_player_drain_updated(weapondrain) -> void:
 	displayAmmo=(weapondrain!=0)
 
 func _on_player_coins_updated(coins) -> void:
-	$Coins.text = "Coins: "+str(coins)
+	$Coins.text = "Coins: "+str(coins)+"/"+str(coincount)
 
 func _on_enemy_down(v):
 	enemies+=v

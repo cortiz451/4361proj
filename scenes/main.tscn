@@ -241,7 +241,7 @@ offset_right = 615.0
 offset_bottom = 327.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Coins: 0"
+text = "Coins: 0/..."
 label_settings = ExtResource("9_jscy8")
 
 [node name="face_bg" type="TextureRect" parent="HUD"]
@@ -339,7 +339,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 1
-text = "Enemies: ..."
+text = "Enemies: 0/..."
 label_settings = SubResource("LabelSettings_og1vs")
 horizontal_alignment = 2
 
@@ -1109,6 +1109,7 @@ one_shot = true
 [connection signal="body_entered" from="Level/Blockade/Warning" to="Level/Blockade" method="_on_warning_body_entered"]
 [connection signal="body_entered" from="Level/Teleports/Tp1/Tp" to="Level/Teleports/Tp1/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Teleports/Tp2/Tp" to="Level/Teleports/Tp2/Tp" method="_on_body_entered"]
+[connection signal="console_text" from="Level/Teleports/Tp2/Tp" to="HUD" method="_consoletext"]
 [connection signal="timeout" from="BlockadeSanityTimer" to="Level/Blockade" method="_on_blockade_sanity_timer_timeout"]
 
 [editable path="Level/VMFNode/Entities/lights/light_environment"]

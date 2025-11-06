@@ -381,7 +381,7 @@ func unlockWeapon(w):
 		2:
 			consoletext.emit("You snagged a Super Shotgun!")
 		3:					#maybe a better word here?
-			consoletext.emit("You contracted a Chaingun!")
+			consoletext.emit("You collected a Chaingun!")
 	
 
 func damage(amount):
@@ -411,3 +411,8 @@ func damage(amount):
 
 func _on_init_wait_timeout() -> void:
 	init_enemycount.emit(0)
+	coins_updated.emit(0)
+
+
+func _consoletext() -> void:
+	pass # Replace with function body.

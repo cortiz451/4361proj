@@ -3,6 +3,8 @@ extends Area3D
 @export var dest: Marker3D
 @export var player: Node3D
 
+signal console_text
+
 var unlocked=false
 
 func _process(_delta):
@@ -18,4 +20,5 @@ func _on_body_entered(body: Node3D) -> void:
 		Audio.play("sounds/tp.ogg")
 		body.position=dest.position
 	else:
+		console_text.emit("Haven't unlocked that yet...")
 		Audio.play("sounds/nope.ogg")
