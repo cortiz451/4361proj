@@ -3,6 +3,8 @@ extends Area3D
 @export var player: Node3D
 @onready var resupplytime=$Timer
 
+signal console_text
+
 func _on_timer_timeout() -> void:
 	$Sprite3D.frame=0
 
@@ -17,6 +19,8 @@ func _on_player_resupply(body: Node3D) -> void:
 			
 			$Sprite3D.frame=1
 			resupplytime.start(10)
+			
+			console_text.emit("You filled up on ammo! Now to find the baddies...")
 			
 			Audio.play("sounds/mystery.ogg")
 			body.refreshAmmoHUD() # Update ammo on HUD

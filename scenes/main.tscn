@@ -1078,6 +1078,7 @@ one_shot = true
 [connection signal="body_entered" from="Level/HP/Health2" to="Level/HP/Health2" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/HP/Health3" to="Level/HP/Health3" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Resupply" to="Level/WpnPickups/Resupply" method="_on_player_resupply"]
+[connection signal="console_text" from="Level/WpnPickups/Resupply" to="HUD" method="_consoletext"]
 [connection signal="timeout" from="Level/WpnPickups/Resupply/Timer" to="Level/WpnPickups/Resupply" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Level/WpnPickups/Shells" to="Level/WpnPickups/Shells" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Shells2" to="Level/WpnPickups/Shells2" method="_on_body_entered"]
