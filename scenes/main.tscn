@@ -1089,6 +1089,7 @@ one_shot = true
 [connection signal="body_entered" from="Level/Coins/Coin2" to="Level/Coins/Coin2" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Coins/Coin3" to="Level/Coins/Coin3" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Coins/Coin4" to="Level/Coins/Coin4" method="_on_body_entered"]
+[connection signal="console_text" from="Level/Blockade" to="HUD" method="_consoletext"]
 [connection signal="body_entered" from="Level/Teleports/Tp1/Tp" to="Level/Teleports/Tp1/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Teleports/Tp2/Tp" to="Level/Teleports/Tp2/Tp" method="_on_body_entered"]
 [connection signal="timeout" from="BlockadeSanityTimer" to="Level/Blockade" method="_on_blockade_sanity_timer_timeout"]

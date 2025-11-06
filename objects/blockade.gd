@@ -6,6 +6,8 @@ extends Node3D
 
 var hasFired = false
 
+signal console_text
+
 #explode if player got the items required to pass
 func _process(_delta):
 	if(!hasFired && player.weapons[2].inInventory && player.weapons[3].inInventory):
@@ -15,5 +17,6 @@ func _process(_delta):
 
 #jingle a little after getting weapon so sounds don't overlap
 func _on_blockade_sanity_timer_timeout() -> void:
+	console_text.emit("Something shifted in the world...")
 	jingle.play()
 	queue_free()

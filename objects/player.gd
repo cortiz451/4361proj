@@ -273,10 +273,18 @@ func action_shoot():
 func action_weapon_toggle():
 	
 	if Input.is_action_just_pressed("weapon_toggle"):
-		initiate_change_weapon(wrap(weapon_index + 1, 0, weapons.size()))
-	
+		var w=wrap(weapon_index + 1, 0, weapons.size())
+		#cycle to next available
+		while(!weapons[w].inInventory):
+			w=wrap(w+1, 0, weapons.size())
+		initiate_change_weapon(w)
+		
 	if Input.is_action_just_pressed("weapon_untoggle"):
-		initiate_change_weapon(wrap(weapon_index - 1, 0, weapons.size()))
+		var w=wrap(weapon_index - 1, 0, weapons.size())
+		#cycle to next available
+		while(!weapons[w].inInventory):
+			w=wrap(w-1, 0, weapons.size())
+		initiate_change_weapon(w)
 
 # Initiates the weapon changing animation (tween)
 
@@ -385,8 +393,16 @@ func damage(amount):
 	dmgcool.start(DAMAGE_COOLDOWN)
 	
 	if health < 0:
-		
 		get_tree().reload_current_scene() # Reset when out of health
+		match randi_range(0,3):
+			0:
+				consoletext.emit("It was nice knowing you...")
+			1:
+				consoletext.emit("Have you tried turning it off and on again?")
+			2:
+				consoletext.emit("You almost had it, too!")
+			3:
+				consoletext.emit("Maybe you just need to believe in yourself...")
 
 
 func _on_init_wait_timeout() -> void:
