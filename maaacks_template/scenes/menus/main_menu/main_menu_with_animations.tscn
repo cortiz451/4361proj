@@ -1,12 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://cr5qst4g2kwro"]
+[gd_scene load_steps=28 format=3 uid="uid://cr5qst4g2kwro"]
 
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_game_template/base/nodes/menus/main_menu/main_menu.tscn" id="1_5omaq"]
 [ext_resource type="Theme" uid="uid://bmipurejtlhpm" path="res://materials/main_theme.tres" id="2_61jja"]
 [ext_resource type="Script" uid="uid://bei5cfyls4y5c" path="res://maaacks_template/scenes/menus/main_menu/main_menu_with_animations.gd" id="2_hiy74"]
-[ext_resource type="PackedScene" uid="uid://dg1aqvirfe3j3" path="res://maaacks_template/scenes/windows/main_menu_options_window.tscn" id="3_61jja"]
-[ext_resource type="PackedScene" uid="uid://dgj51m63vrh4k" path="res://maaacks_template/scenes/menus/level_select_menu/level_select_menu.tscn" id="4_8m5tm"]
 [ext_resource type="PackedScene" uid="uid://cd0imhxda1x7o" path="res://maaacks_template/scenes/windows/main_menu_credits_window.tscn" id="4_eyao0"]
 [ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_game_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="5_5bn2x"]
+[ext_resource type="PackedScene" uid="uid://dg1aqvirfe3j3" path="res://maaacks_template/scenes/windows/main_menu_options_window.tscn" id="5_8m5tm"]
 [ext_resource type="Texture2D" uid="uid://cnnmaqioo7swr" path="res://materials/bg.png" id="6_5bn2x"]
 [ext_resource type="FontFile" uid="uid://brilqc8nb0env" path="res://fonts/texgyreadventor-regular.otf" id="6_61jja"]
 [ext_resource type="AudioStream" uid="uid://duwb1w0i311aw" path="res://sounds/nope.ogg" id="6_h0ckf"]
@@ -339,10 +338,10 @@ shadow_offset = Vector2(2, 1)
 [node name="MainMenu" instance=ExtResource("1_5omaq")]
 theme = ExtResource("2_61jja")
 script = ExtResource("2_hiy74")
-level_select_packed_scene = ExtResource("4_8m5tm")
+level_select_packed_scene = null
 confirm_new_game = false
-game_scene_path = "uid://3f3cne2yh7ff"
-options_packed_scene = ExtResource("3_61jja")
+game_scene_path = "uid://dxvvlck8lej3f"
+options_packed_scene = ExtResource("5_8m5tm")
 credits_packed_scene = ExtResource("4_eyao0")
 
 [node name="UISoundController" parent="." index="0"]
@@ -411,6 +410,9 @@ offset_right = -480.0
 offset_bottom = 240.0
 lock = true
 
+[node name="NewGameButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="0"]
+text = "Start Game"
+
 [node name="ContinueGameButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="1"]
 unique_name_in_owner = true
 visible = false
@@ -422,6 +424,9 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "Level Select"
+
+[node name="OptionsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="3"]
+visible = false
 
 [node name="NewGameConfirmation" parent="." index="7" instance=ExtResource("5_5bn2x")]
 unique_name_in_owner = true
