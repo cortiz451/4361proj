@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=65 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -49,6 +49,7 @@
 [ext_resource type="Script" uid="uid://20mwe6t33io1" path="res://objects/blockade.gd" id="42_cjqg0"]
 [ext_resource type="Script" uid="uid://bssmkht6jwadv" path="res://objects/tp_locked.gd" id="45_j2jfr"]
 [ext_resource type="AudioStream" uid="uid://cueak1mk2hw5k" path="res://sounds/jingle.ogg" id="45_vchkt"]
+[ext_resource type="PackedScene" uid="uid://g4ceg7fqt1ob" path="res://objects/jumppad.tscn" id="48_bu4jf"]
 [ext_resource type="AudioStream" uid="uid://dfb1vvae8d3aa" path="res://sounds/bg2.ogg" id="48_ty1g6"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="50_bjg73"]
 
@@ -801,6 +802,98 @@ light_bake_mode = 1
 omni_range = 31.311214
 omni_attenuation = 1.44
 
+[node name="light_918" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.24, -24.32, -4.48)
+default_light_energy = 3.9215686
+entity = {
+"_constant_attn": 0,
+"_distance": 0,
+"_fifty_percent_distance": 0,
+"_hardfalloff": 0,
+"_light": Color(1, 0.38039216, 0.38039216, 3.9215686),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"_linear_attn": 0,
+"_quadratic_attn": 1,
+"_zero_percent_distance": 0,
+"classname": "light",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[0 14000]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 918,
+"origin": Vector3(-1312, 224, -1216),
+"style": 0
+}
+
+[node name="light" parent="Level/VMFNode/Entities/lights/light_918" index="0"]
+light_color = Color(1, 0.38039216, 0.38039216, 1)
+light_energy = 3.9215686
+light_bake_mode = 1
+omni_range = 99.014755
+omni_attenuation = 1.44
+
+[node name="light_1061" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.519999, -19.199999, 29.119999)
+default_light_energy = 3.9215686
+entity = {
+"_constant_attn": 0,
+"_distance": 0,
+"_fifty_percent_distance": 0,
+"_hardfalloff": 0,
+"_light": Color(0.83137256, 1, 0.38039216, 3.9215686),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"_linear_attn": 0,
+"_quadratic_attn": 1,
+"_zero_percent_distance": 0,
+"classname": "light",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[0 14000]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 1061,
+"origin": Vector3(-1376, -1456, -960),
+"style": 0
+}
+
+[node name="light" parent="Level/VMFNode/Entities/lights/light_1061" index="0"]
+light_color = Color(0.83137256, 1, 0.38039216, 1)
+light_energy = 3.9215686
+light_bake_mode = 1
+omni_range = 99.014755
+omni_attenuation = 1.44
+
+[node name="light_1085" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.519999, -34.559998, 49.92)
+default_light_energy = 1.1764706
+entity = {
+"_light": Color(0.83137256, 1, 0.38039216, 1.1764706),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"_quadratic_attn": 1,
+"classname": "light",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[0 -1268]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 1085,
+"origin": Vector3(-1376, -2496, -1728)
+}
+
+[node name="light" parent="Level/VMFNode/Entities/lights/light_1085" index="0"]
+light_color = Color(0.83137256, 1, 0.38039216, 1)
+light_energy = 1.1764706
+light_bake_mode = 1
+omni_range = 54.232616
+omni_attenuation = 1.44
+
 [node name="HP" type="Node" parent="Level"]
 
 [node name="Health" type="Area3D" parent="Level/HP"]
@@ -1040,6 +1133,13 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.41
 transform = Transform3D(-10.147826, -5.9334126, -2.4116864, -0.9902861, 5.917713, -10.392305, 6.3277917, -8.589254, -5.493975, 27, 36, 41)
 script = ExtResource("20_5poiv")
 
+[node name="JumpPad" type="Node3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -41, 50)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Level/JumpPad"]
+
+[node name="Whee" parent="Level/JumpPad" instance=ExtResource("48_bu4jf")]
+
 [node name="Jingle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_2f3dj")
 bus = &"SFX"
@@ -1126,3 +1226,6 @@ playback_type = 1
 [editable path="Level/VMFNode/Entities/lights/light_669"]
 [editable path="Level/VMFNode/Entities/lights/light_692"]
 [editable path="Level/VMFNode/Entities/lights/light_699"]
+[editable path="Level/VMFNode/Entities/lights/light_918"]
+[editable path="Level/VMFNode/Entities/lights/light_1061"]
+[editable path="Level/VMFNode/Entities/lights/light_1085"]
