@@ -32,10 +32,10 @@ var tween:Tween
 var DAMAGE_COOLDOWN=0.33;
 
 #add ammotypes here
-var ammoTypes=["Ammo", "Shells", "Bullets"]
-var numATypes=3
-var ammo=[1, 50, 256]
-var maxAmmo=[1, 100, 512]
+var ammoTypes=["Ammo", "Shells", "Bullets", "Rockets"]
+var numATypes=4
+var ammo=[1, 50, 256, 25]
+var maxAmmo=[1, 100, 512, 50]
 
 var keys=[false,false,false]
 
@@ -133,8 +133,8 @@ func _input(event):
 				initiate_change_weapon(2)
 			KEY_4:
 				initiate_change_weapon(3)
-			#KEY_5:
-			#	initiate_change_weapon(4)
+			KEY_5:
+				initiate_change_weapon(4)
 			
 		
 
@@ -233,35 +233,38 @@ func action_shoot():
 		
 		blaster_cooldown.start(weapon.cooldown)
 		
+		# FOR PROJECTILE WEAPONS
+		if(!weapon.hitscan):
+			shootProj()
 		# Shoot the weapon, amount based on shot count
-		
-		for n in weapon.shot_count:
-		
-			raycast.target_position.x = randf_range(-weapon.spread, weapon.spread)
-			raycast.target_position.y = randf_range(-weapon.spread, weapon.spread)
+		else:
+			for n in weapon.shot_count:
 			
-			raycast.force_raycast_update()
-			if !raycast.is_colliding():
-				continue # Don't create impact when raycast didn't hit
+				raycast.target_position.x = randf_range(-weapon.spread, weapon.spread)
+				raycast.target_position.y = randf_range(-weapon.spread, weapon.spread)
+				
+				raycast.force_raycast_update()
+				if !raycast.is_colliding():
+					continue # Don't create impact when raycast didn't hit
 
-			var collider = raycast.get_collider()
-			# Hitting an enemy
-			
-			if collider.has_method("damage"):
-				collider.damage(weapon.damage)
-			
-			# Creating an impact animation
-			
-			var impact = preload("res://objects/impact.tscn")
-			var impact_instance = impact.instantiate()
-			
-			impact_instance.play("shot")
-			
-			get_tree().root.add_child(impact_instance)
-			
-			impact_instance.position = raycast.get_collision_point() + (raycast.get_collision_normal() / 10)
-			impact_instance.look_at(camera.global_transform.origin, Vector3.UP, true)
-			
+				var collider = raycast.get_collider()
+				# Hitting an enemy
+				
+				if collider.has_method("damage"):
+					collider.damage(weapon.damage)
+				
+				# Creating an impact animation
+				
+				var impact = preload("res://objects/impact.tscn")
+				var impact_instance = impact.instantiate()
+				
+				impact_instance.play("shot")
+				
+				get_tree().root.add_child(impact_instance)
+				
+				impact_instance.position = raycast.get_collision_point() + (raycast.get_collision_normal() / 10)
+				impact_instance.look_at(camera.global_transform.origin, Vector3.UP, true)
+				
 		container.position.z += 0.45 # Knockback of weapon visual
 		#camera.rotation.x += 0.025 # Knockback of camera
 		#movement_velocity += Vector3(0, 0, weapon.knockback) # Knockback
@@ -272,6 +275,10 @@ func action_shoot():
 		
 		ammo_updated.emit(ammo[aty], ammoTypes[aty]) # Update ammo on HUD..?
 
+func shootProj():
+	var b=weapon.Proj.instantiate()
+	owner.add_child(b)
+	b.transform = $Head/Camera/Marker3D.global_transform
 
 # Toggle between available weapons (listed in 'weapons')
 
@@ -389,6 +396,8 @@ func setAmmo(ammotype, value, add=false):
 				consoletext.emit("You scooped up some Shells!")
 			2:
 				consoletext.emit("You bargained for some Bullets!")
+			2:
+				consoletext.emit("You racketeered some Rockets!")
 	else:
 		ammo[ammotype]=value
 	#wrap down
@@ -405,7 +414,9 @@ func unlockWeapon(w):
 			consoletext.emit("You snagged a Super Shotgun!")
 		3:					#maybe a better word here?
 			consoletext.emit("You collected a Chaingun!")
-	
+		4:					#maybe a better word here?
+			consoletext.emit("You rounded up a Rocket Launcher!")
+
 
 func damage(amount):
 	

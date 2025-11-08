@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://b3pbme0x88p6r"]
+
+[ext_resource type="Script" uid="uid://cril2kq0hp3ko" path="res://objects/rocket.gd" id="1_pb2y6"]
+[ext_resource type="Texture2D" uid="uid://2jld33y6h5pq" path="res://sprites/crosshair.png" id="2_tgfi0"]
+[ext_resource type="Script" uid="uid://ybmatey1y08j" path="res://objects/explosion.gd" id="3_tgfi0"]
+[ext_resource type="Texture2D" uid="uid://b2yjoi33kmmnw" path="res://sprites/boom3.png" id="4_y1a8c"]
+[ext_resource type="Texture2D" uid="uid://b63hnp1on1plf" path="res://sprites/boom1.png" id="4_yi8md"]
+[ext_resource type="Texture2D" uid="uid://dhvimn3i0pm0" path="res://sprites/boom2.png" id="5_y1a8c"]
+[ext_resource type="AudioStream" uid="uid://coqwoxs6fhmsq" path="res://sounds/boom.ogg" id="7_ek3pu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3ndsa"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pb2y6"]
+radius = 1.5
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ek3pu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_y1a8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yi8md")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y1a8c")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Rocket" type="Area3D" parent="."]
+collision_mask = 5
+script = ExtResource("1_pb2y6")
+muzzle_velocity = 50
+
+[node name="Sprite3D" type="Sprite3D" parent="Rocket"]
+transparency = 0.66
+modulate = Color(3.2522914, 0, 3.2522914, 1)
+pixel_size = 0.0075
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_tgfi0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocket"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_3ndsa")
+
+[node name="Explosion" type="Area3D" parent="."]
+monitoring = false
+script = ExtResource("3_tgfi0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Explosion"]
+shape = SubResource("SphereShape3D_pb2y6")
+
+[node name="Boom" type="AnimatedSprite3D" parent="Explosion"]
+modulate = Color(1, 1, 1, 0.3882353)
+pixel_size = 0.03
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_ek3pu")
+
+[node name="BoomAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_ek3pu")
+bus = &"SFX"
+
+[connection signal="area_entered" from="Rocket" to="Rocket" method="_on_area_entered"]
+[connection signal="body_entered" from="Rocket" to="Rocket" method="_on_body_entered"]
+[connection signal="exploded" from="Rocket" to="Explosion" method="_on_rocket_exploded"]
+[connection signal="area_entered" from="Explosion" to="Explosion" method="_on_area_entered"]
+[connection signal="body_entered" from="Explosion" to="Explosion" method="_on_body_entered"]

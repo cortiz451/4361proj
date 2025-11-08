@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=80 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://cipvtara42tpx" path="res://weapons/superblaster.tres" id="7_muem4"]
 [ext_resource type="PackedScene" uid="uid://d2g78tpqbyf5g" path="res://objects/enemy.tscn" id="8_7ty2f"]
 [ext_resource type="ArrayMesh" uid="uid://bgkrjkpxwnspr" path="res://geometry/godotmap1_vmf_import.mesh" id="8_choun"]
+[ext_resource type="Resource" uid="uid://brdg5gajhxkdc" path="res://weapons/rocketblaster.tres" id="8_ro3en"]
 [ext_resource type="LabelSettings" uid="uid://dy5ecelk2tcjh" path="res://fonts/main_font.tres" id="9_jscy8"]
 [ext_resource type="Shape3D" uid="uid://toakdbdoymgg" path="res://geometry/godotmap1_vmf_collision_surface_prop_default.res" id="9_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://dqr1b0mpwudk3" path="res://materials/face_bg.png" id="10_fuf3a"]
@@ -177,7 +178,7 @@ slide_on_ceiling = false
 movement_speed = 10
 number_of_jumps = 1
 jump_strength = 10
-weapons = Array[ExtResource("3_trceg")]([ExtResource("4_a8y0u"), ExtResource("5_jkv2x"), ExtResource("7_muem4"), ExtResource("6_jbj1t")])
+weapons = Array[ExtResource("3_trceg")]([ExtResource("4_a8y0u"), ExtResource("5_jkv2x"), ExtResource("7_muem4"), ExtResource("6_jbj1t"), ExtResource("8_ro3en")])
 crosshair = NodePath("../HUD/Crosshair")
 
 [node name="initWait" type="Timer" parent="Player"]
@@ -1493,7 +1494,7 @@ color = Color(0, 0, 255.0139, 1)
 [node name="YelKey" parent="Level/Key" instance=ExtResource("53_1v6qk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, -32.5, -5.5)
 KeyType = "yellow"
-color = Color(0, 0, 255.0139, 1)
+color = Color(255.0139, 255.0139, 0, 1)
 
 [node name="RKBlockade" parent="Level/Key" instance=ExtResource("54_augu2")]
 transform = Transform3D(-4.371139e-07, 0, 10, 0, 10, 0, -10, 0, -4.371139e-07, -55, -33, -9.5)
