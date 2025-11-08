@@ -9,4 +9,5 @@ func _ready():
 func _on_collect(body: Node3D) -> void:
 	if(body.has_method("keyGet")):
 		body.keyGet(KeyType)
+		Audio.play("sounds/key.ogg")
 		queue_free()

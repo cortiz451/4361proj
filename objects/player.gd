@@ -37,6 +37,8 @@ var numATypes=3
 var ammo=[1, 50, 256]
 var maxAmmo=[1, 100, 512]
 
+var keys=[false,false,false]
+
 #Sig-nal.
 signal health_updated
 signal ammo_updated
@@ -360,10 +362,24 @@ func heal(hp):
 func keyGet(type):
 	key_updated.emit(type, true)
 	consoletext.emit("You picked up a "+type+" key!")
+	match type:
+		"red": keys[0]=true
+		"yellow": keys[1]=true
+		"blue": keys[2]=true
 
 func keyUse(type):
 	key_updated.emit(type, false)
 	consoletext.emit("You used the "+type+" key...")
+	match type:
+		"red": keys[0]=false
+		"yellow": keys[1]=false
+		"blue": keys[2]=false
+
+func hasKey(type):
+	match type:
+		"red": return keys[0]
+		"yellow": return keys[1]
+		"blue": return keys[2]
 
 func setAmmo(ammotype, value, add=false):
 	if(add):

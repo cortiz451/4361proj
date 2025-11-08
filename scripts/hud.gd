@@ -74,9 +74,7 @@ func _on_player_key_updated(type, pickedup=true) -> void:
 	match type:
 		"red": 
 			$Keys/RedKey.visible=pickedup
-			$"../Level/Key/RKBlockade".queue_free()
 		"yellow": 
 			$Keys/YelKey.visible=pickedup
 		"blue": 
 			$Keys/BluKey.visible=pickedup
-	Audio.play("sounds/key.ogg")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=79 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -58,7 +58,10 @@
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="50_bjg73"]
 [ext_resource type="PackedScene" uid="uid://ccarjk0gyirp" path="res://objects/key.tscn" id="53_1v6qk"]
 [ext_resource type="PackedScene" uid="uid://b20nvt7fs0xhb" path="res://objects/blockade_red.tscn" id="54_augu2"]
-[ext_resource type="Script" uid="uid://d0wv2ln02mqig" path="res://objects/redkeyblock.gd" id="55_tm6hj"]
+[ext_resource type="PackedScene" uid="uid://dgv5oxmgnso1k" path="res://objects/blockade_blue.tscn" id="56_kf5aa"]
+[ext_resource type="PackedScene" uid="uid://brikpg2j61va5" path="res://objects/rotating_thingy_2.tscn" id="57_e755i"]
+[ext_resource type="PackedScene" uid="uid://cf0nr61kufqjx" path="res://objects/blockade_yellow.tscn" id="57_ro3en"]
+[ext_resource type="Script" uid="uid://pwhx32u1aspq" path="res://objects/keyblock.gd" id="57_t5ykj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_og1vs"]
 font = ExtResource("11_y6deb")
@@ -560,6 +563,62 @@ player = NodePath("../../Player")
 transform = Transform3D(-0.0806821, 0.18387847, 0.97963214, 0.18001185, 0.9693632, -0.16712537, -0.9803497, 0.16286153, -0.11131069, -45.988728, -31.969437, 27.600416)
 player = NodePath("../../Player")
 
+[node name="enemy-flying28" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-0.6216487, 0.24378012, 0.744395, 0.18001185, 0.96936315, -0.16712536, -0.7623307, 0.030106828, -0.6464869, -27.064413, -15.228025, -25.832142)
+player = NodePath("../../Player")
+
+[node name="enemy-flying29" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(0.8679172, -0.23648123, -0.4368021, 0.18001185, 0.96936315, -0.16712536, 0.46294177, 0.066421255, 0.8838965, -18.503248, -11.206661, -34.432674)
+player = NodePath("../../Player")
+
+[node name="enemy-flying30" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-0.54530007, -0.043818884, 0.8370948, -0.26190376, 0.95754373, -0.12048553, -0.79627496, -0.2849389, -0.53362507, -26.86286, -3.5386353, -26.97512)
+player = NodePath("../../Player")
+
+[node name="enemy-flying31" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-0.14836344, -0.16330647, -0.97535616, -0.26190373, 0.9575437, -0.12048549, 0.9536216, 0.23757376, -0.18483508, -17.675266, 1.6735302, -29.242586)
+player = NodePath("../../Player")
+
+[node name="enemy-flying32" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-4.3711374e-08, 0, -1.0000001, 0, 1.0000001, 0, 0.9999997, 0, -4.3711392e-08, -5.660469, 3.3833752, -40.133934)
+player = NodePath("../../Player")
+
+[node name="enemy-flying33" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-4.3711374e-08, 0, -1.0000001, 0, 1.0000001, 0, 0.9999997, 0, -4.3711392e-08, -5.660469, 3.3833752, -43.125164)
+player = NodePath("../../Player")
+
+[node name="enemy-flying34" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-4.3711374e-08, 0, -1.0000001, 0, 1.0000001, 0, 0.9999997, 0, -4.3711392e-08, -5.660469, 3.3833752, -46.396282)
+player = NodePath("../../Player")
+
+[node name="enemy-flying35" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-4.3711374e-08, 0, -1.0000001, 0, 1.0000001, 0, 0.9999997, 0, -4.3711392e-08, -5.660469, 3.3833752, -49.21913)
+player = NodePath("../../Player")
+
+[node name="enemy-flying36" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-4.3711374e-08, 0, -1.0000001, 0, 1.0000001, 0, 0.9999997, 0, -4.3711392e-08, -5.660469, 3.3833752, -52.174713)
+player = NodePath("../../Player")
+
+[node name="enemy-flying37" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-4.3711374e-08, 0, 1.0000001, 0, 1.0000001, 0, -0.9999997, 0, -4.3711392e-08, -9.992317, 3.3833752, -41.504654)
+player = NodePath("../../Player")
+
+[node name="enemy-flying38" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-4.3711374e-08, 0, 1.0000001, 0, 1.0000001, 0, -0.9999997, 0, -4.3711392e-08, -9.992317, 3.3833752, -43.84224)
+player = NodePath("../../Player")
+
+[node name="enemy-flying39" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-4.3711374e-08, 0, 1.0000001, 0, 1.0000001, 0, -0.9999997, 0, -4.3711392e-08, -9.992317, 3.3833752, -47.83983)
+player = NodePath("../../Player")
+
+[node name="enemy-flying40" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-4.3711374e-08, 0, 1.0000001, 0, 1.0000001, 0, -0.9999997, 0, -4.3711392e-08, -9.992317, 3.3833752, -50.489395)
+player = NodePath("../../Player")
+
+[node name="enemy-flying41" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-4.3711374e-08, 0, 1.0000001, 0, 1.0000001, 0, -0.9999997, 0, -4.3711392e-08, -9.992317, 3.3833752, -53.651863)
+player = NodePath("../../Player")
+
 [node name="big-enemy-flying" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_a8y0u")]
 transform = Transform3D(0.013880177, -0.031155456, 0.9994183, 0.059476543, 0.99777055, 0.030278029, -0.9981333, 0.059021685, 0.015702277, 9.014107, 22.832573, 2.7459314)
 player = NodePath("../../Player")
@@ -595,6 +654,21 @@ transform = Transform3D(-0.99042094, 0.079722136, 0.112740666, 0.046005685, 0.96
 player = NodePath("../../Player")
 Bullet = ExtResource("15_tel4y")
 
+[node name="big-enemy-flying8" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_a8y0u")]
+transform = Transform3D(-0.76328427, 0.37854186, 0.52354836, 0.017318178, 0.82206476, -0.56913054, -0.6458302, -0.4253417, -0.63402486, -22.697763, -20.198515, -30.779837)
+player = NodePath("../../Player")
+Bullet = ExtResource("15_tel4y")
+
+[node name="big-enemy-flying9" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_a8y0u")]
+transform = Transform3D(-0.85121256, 0.31074035, 0.42293882, 0.2221308, 0.9434465, -0.24610269, -0.47549412, -0.11553815, -0.8720989, -22.697763, -6.654166, -30.779837)
+player = NodePath("../../Player")
+Bullet = ExtResource("15_tel4y")
+
+[node name="big-enemy-flying10" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_a8y0u")]
+transform = Transform3D(-0.08554989, -0.3097971, -0.94694614, -0.18970063, 0.93810886, -0.2897678, 0.9781077, 0.15484688, -0.13902393, -22.697763, 3.3117962, -30.779837)
+player = NodePath("../../Player")
+Bullet = ExtResource("15_tel4y")
+
 [node name="chasing-enemy" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
 transform = Transform3D(-0.23319937, -0.13474716, -0.9630479, -0.031712167, 0.99088, -0.13096234, 0.9719117, 0, -0.23534572, -13.262459, -25.092852, -0.40578747)
 player = NodePath("../../Player")
@@ -613,6 +687,26 @@ player = NodePath("../../Player")
 
 [node name="chasing-enemy5" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
 transform = Transform3D(0.9932716, -0.0060017165, -0.115651935, -0.037501108, 0.9281771, -0.37024358, 0.10956788, 0.3720895, 0.92170733, -25.342442, -17.773481, 23.98247)
+player = NodePath("../../Player")
+
+[node name="chasing-enemy6" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
+transform = Transform3D(0.9932718, -0.0060017263, -0.11565197, -0.11570339, -0.009022385, -0.99324304, 0.004917765, 0.9999411, -0.009655923, -22.675676, 5.0584826, -29.998709)
+player = NodePath("../../Player")
+
+[node name="chasing-enemy7" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
+transform = Transform3D(0.95295405, 0.27773294, 0.12142104, -0.0858998, 0.63159883, -0.77052176, -0.29068854, 0.7238416, 0.62574214, -22.675676, -16.49396, -34.852306)
+player = NodePath("../../Player")
+
+[node name="chasing-enemy8" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
+transform = Transform3D(0.9984208, -0.011464906, 0.054999508, 0.009730399, 0.9994497, 0.03170255, -0.055332437, -0.031117234, 0.9979831, -27.671051, -21.171576, 25.790073)
+player = NodePath("../../Player")
+
+[node name="chasing-enemy9" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
+transform = Transform3D(0.9933398, -0.013301312, 0.11445339, 0.009730398, 0.9994496, 0.031702545, -0.11481185, -0.030377647, 0.9929227, -24.52047, -21.171576, 25.790073)
+player = NodePath("../../Player")
+
+[node name="chasing-enemy10" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
+transform = Transform3D(0.008707203, -0.031787455, 0.9994568, 0.009730399, 0.99944973, 0.03170255, -0.99991506, 0.009449034, 0.00901144, -92.159195, -30.57889, -9.18014)
 player = NodePath("../../Player")
 
 [node name="Level" type="Node" parent="."]
@@ -1101,6 +1195,19 @@ pixel_size = 0.0075
 billboard = 1
 texture = ExtResource("29_txyw0")
 
+[node name="Shells3" type="Area3D" parent="Level/WpnPickups"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.898495, -24.545895, 29.75303)
+script = ExtResource("29_vc5cj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/WpnPickups/Shells3"]
+shape = SubResource("CylinderShape3D_a8y0u")
+
+[node name="Sprite3D" type="Sprite3D" parent="Level/WpnPickups/Shells3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+pixel_size = 0.0075
+billboard = 1
+texture = ExtResource("29_txyw0")
+
 [node name="Bullets" type="Area3D" parent="Level/WpnPickups"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 26.5, 54.5)
 script = ExtResource("33_nvyfr")
@@ -1122,6 +1229,19 @@ script = ExtResource("33_nvyfr")
 shape = SubResource("CylinderShape3D_a8y0u")
 
 [node name="Sprite3D" type="Sprite3D" parent="Level/WpnPickups/Bullets2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+pixel_size = 0.0075
+billboard = 1
+texture = ExtResource("34_ty1g6")
+
+[node name="Bullets3" type="Area3D" parent="Level/WpnPickups"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.141794, -1.663691, -25.606657)
+script = ExtResource("33_nvyfr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/WpnPickups/Bullets3"]
+shape = SubResource("CylinderShape3D_a8y0u")
+
+[node name="Sprite3D" type="Sprite3D" parent="Level/WpnPickups/Bullets3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 pixel_size = 0.0075
 billboard = 1
@@ -1221,6 +1341,19 @@ sprite_frames = SubResource("SpriteFrames_yc10j")
 autoplay = "default"
 frame_progress = 0.42070758
 
+[node name="Coin6" type="Area3D" parent="Level/Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.702168, 3.6512017, -55.271713)
+script = ExtResource("23_og1vs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Coins/Coin6"]
+shape = SubResource("SphereShape3D_gqmmt")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Coins/Coin6"]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_yc10j")
+autoplay = "default"
+frame_progress = 0.42070758
+
 [node name="Blockade" parent="Level" node_paths=PackedStringArray("player") instance=ExtResource("37_c6pm6")]
 transform = Transform3D(-4.371139e-07, 0, 10, 0, 10, 0, -10, 0, -4.371139e-07, -9.6101265, 20.502466, -4.4553194)
 script = ExtResource("42_cjqg0")
@@ -1276,6 +1409,7 @@ shape = SubResource("CylinderShape3D_muem4")
 transparency = 0.6
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_muem4")
+animation = &"nope"
 autoplay = "nope"
 
 [node name="Dest2" type="Marker3D" parent="Level/Teleports/Tp2"]
@@ -1295,10 +1429,29 @@ shape = SubResource("CylinderShape3D_muem4")
 transparency = 0.6
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_muem4")
-autoplay = "nope"
+autoplay = "default"
 
 [node name="Dest3" type="Marker3D" parent="Level/Teleports/Tp3"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25.949932, -27.710947, -3.7980132)
+
+[node name="Tp4" type="Node" parent="Level/Teleports"]
+
+[node name="Tp" type="Area3D" parent="Level/Teleports/Tp4" node_paths=PackedStringArray("dest")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -32, 8)
+script = ExtResource("18_gqmmt")
+dest = NodePath("../Dest4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Teleports/Tp4/Tp"]
+shape = SubResource("CylinderShape3D_muem4")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Teleports/Tp4/Tp"]
+transparency = 0.6
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_muem4")
+autoplay = "default"
+
+[node name="Dest4" type="Marker3D" parent="Level/Teleports/Tp4"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.55825, 24.917345, -0.38121986)
 
 [node name="Rotating Thingy" parent="Level" instance=ExtResource("19_5he1u")]
 transform = Transform3D(-10.147826, -5.9334126, -2.4116864, -0.9902861, 5.917713, -10.392305, 6.3277917, -8.589254, -5.493975, 27, 36, 41)
@@ -1332,9 +1485,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -19, 14)
 KeyType = "red"
 color = Color(255.0139, 0, 0, 1)
 
+[node name="BluKey" parent="Level/Key" instance=ExtResource("53_1v6qk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 3, -35.5)
+KeyType = "blue"
+color = Color(0, 0, 255.0139, 1)
+
+[node name="YelKey" parent="Level/Key" instance=ExtResource("53_1v6qk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, -32.5, -5.5)
+KeyType = "yellow"
+color = Color(0, 0, 255.0139, 1)
+
 [node name="RKBlockade" parent="Level/Key" instance=ExtResource("54_augu2")]
-transform = Transform3D(-5.2453663e-07, 0, 12, 0, 12, 0, -12, 0, -5.2453663e-07, -45.696644, -32.96797, -5.0296793)
-script = ExtResource("55_tm6hj")
+transform = Transform3D(-4.371139e-07, 0, 10, 0, 10, 0, -10, 0, -4.371139e-07, -55, -33, -9.5)
+script = ExtResource("57_t5ykj")
+key = "red"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level/Key/RKBlockade"]
 
@@ -1347,6 +1511,44 @@ shape = SubResource("BoxShape3D_chjal")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Key/RKBlockade/Warning"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.3, 0)
 shape = SubResource("BoxShape3D_ty1g6")
+
+[node name="BKBlockade" parent="Level/Key" instance=ExtResource("56_kf5aa")]
+transform = Transform3D(-4.371139e-07, 0, 10, 0, 10, 0, -10, 0, -4.371139e-07, -68, -33, -9.5)
+script = ExtResource("57_t5ykj")
+key = "blue"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Key/BKBlockade"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Key/BKBlockade/StaticBody3D"]
+transform = Transform3D(0.6, 0, 2.1316283e-15, 0, 0.6, 0, -2.1316283e-15, 0, 0.6, 0, 0.3, 0)
+shape = SubResource("BoxShape3D_chjal")
+
+[node name="Warning" type="Area3D" parent="Level/Key/BKBlockade"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Key/BKBlockade/Warning"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.3, 0)
+shape = SubResource("BoxShape3D_ty1g6")
+
+[node name="YKBlockade" parent="Level/Key" instance=ExtResource("57_ro3en")]
+transform = Transform3D(-0.6975648, 0, -9.975641, 0, 10, 0, 9.975641, 0, -0.6975648, -80, -33, -9.5)
+script = ExtResource("57_t5ykj")
+key = "yellow"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Key/YKBlockade"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Key/YKBlockade/StaticBody3D"]
+transform = Transform3D(0.6, 0, 2.1316283e-15, 0, 0.6, 0, -2.1316283e-15, 0, 0.6, 0, 0.3, 0)
+shape = SubResource("BoxShape3D_chjal")
+
+[node name="Warning" type="Area3D" parent="Level/Key/YKBlockade"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Key/YKBlockade/Warning"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.3, 0)
+shape = SubResource("BoxShape3D_ty1g6")
+
+[node name="Rotating Thingy3" parent="Level" instance=ExtResource("57_e755i")]
+transform = Transform3D(19.176395, 5.6803074, 0, -5.6627965, 19.117281, -1.5691819, -0.4456718, 1.5045626, 19.938347, 35, -24, -6)
+script = ExtResource("20_5poiv")
 
 [node name="Jingle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_2f3dj")
@@ -1365,6 +1567,7 @@ one_shot = true
 stream = ExtResource("48_ty1g6")
 volume_db = -12.0
 playback_type = 1
+parameters/looping = true
 
 [connection signal="ammo_updated" from="Player" to="HUD" method="_on_player_ammo_updated"]
 [connection signal="coins_updated" from="Player" to="HUD" method="_on_player_coins_updated"]
@@ -1401,6 +1604,20 @@ playback_type = 1
 [connection signal="enemy_down" from="Enemies/enemy-flying25" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/enemy-flying26" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/enemy-flying27" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying28" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying29" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying30" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying31" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying32" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying33" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying34" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying35" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying36" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying37" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying38" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying39" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying40" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying41" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/big-enemy-flying" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/big-enemy-flying2" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/big-enemy-flying3" to="HUD" method="_on_enemy_down"]
@@ -1408,11 +1625,19 @@ playback_type = 1
 [connection signal="enemy_down" from="Enemies/big-enemy-flying5" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/big-enemy-flying6" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/big-enemy-flying7" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/big-enemy-flying8" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/big-enemy-flying9" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/big-enemy-flying10" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/chasing-enemy" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/chasing-enemy2" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/chasing-enemy3" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/chasing-enemy4" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/chasing-enemy5" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/chasing-enemy6" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/chasing-enemy7" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/chasing-enemy8" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/chasing-enemy9" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/chasing-enemy10" to="HUD" method="_on_enemy_down"]
 [connection signal="body_entered" from="Level/HP/Health" to="Level/HP/Health" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/HP/Health2" to="Level/HP/Health2" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/HP/Health3" to="Level/HP/Health3" method="_on_body_entered"]
@@ -1422,8 +1647,10 @@ playback_type = 1
 [connection signal="timeout" from="Level/WpnPickups/Resupply/Timer" to="Level/WpnPickups/Resupply" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Level/WpnPickups/Shells" to="Level/WpnPickups/Shells" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Shells2" to="Level/WpnPickups/Shells2" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/WpnPickups/Shells3" to="Level/WpnPickups/Shells3" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Bullets" to="Level/WpnPickups/Bullets" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Bullets2" to="Level/WpnPickups/Bullets2" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/WpnPickups/Bullets3" to="Level/WpnPickups/Bullets3" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/SSG/Area3D" to="Level/WpnPickups/SSG" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Chaingun/Area3D" to="Level/WpnPickups/Chaingun" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Level/Coins/Coin" to="Level/Coins/Coin" method="_on_body_entered"]
@@ -1431,15 +1658,20 @@ playback_type = 1
 [connection signal="body_entered" from="Level/Coins/Coin3" to="Level/Coins/Coin3" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Coins/Coin4" to="Level/Coins/Coin4" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Coins/Coin5" to="Level/Coins/Coin5" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/Coins/Coin6" to="Level/Coins/Coin6" method="_on_body_entered"]
 [connection signal="console_text" from="Level/Blockade" to="HUD" method="_consoletext"]
 [connection signal="body_entered" from="Level/Blockade/Warning" to="Level/Blockade" method="_on_warning_body_entered"]
 [connection signal="body_entered" from="Level/Teleports/Tp1/Tp" to="Level/Teleports/Tp1/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Teleports/Tp2/Tp" to="Level/Teleports/Tp2/Tp" method="_on_body_entered"]
 [connection signal="console_text" from="Level/Teleports/Tp2/Tp" to="HUD" method="_consoletext"]
 [connection signal="body_entered" from="Level/Teleports/Tp3/Tp" to="Level/Teleports/Tp3/Tp" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/Teleports/Tp4/Tp" to="Level/Teleports/Tp4/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/JumpPad/Area3D" to="Level/JumpPad" method="_on_body_entered"]
 [connection signal="consoletext" from="Level/Key/RKBlockade" to="HUD" method="_consoletext"]
 [connection signal="body_entered" from="Level/Key/RKBlockade/Warning" to="Level/Key/RKBlockade" method="_on_warning_body_entered"]
+[connection signal="consoletext" from="Level/Key/BKBlockade" to="HUD" method="_consoletext"]
+[connection signal="body_entered" from="Level/Key/BKBlockade/Warning" to="Level/Key/BKBlockade" method="_on_warning_body_entered"]
+[connection signal="body_entered" from="Level/Key/YKBlockade/Warning" to="Level/Key/YKBlockade" method="_on_warning_body_entered"]
 [connection signal="timeout" from="BlockadeSanityTimer" to="Level/Blockade" method="_on_blockade_sanity_timer_timeout"]
 
 [editable path="Level/VMFNode/Entities/lights/light_environment"]

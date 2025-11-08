@@ -1,0 +1,7 @@
+[gd_resource type="ORMMaterial3D" load_steps=2 format=3 uid="uid://drtb5dpxj6wyf"]
+
+[ext_resource type="Texture2D" uid="uid://dsq80xelbkjvd" path="res://materials/unsplash/abstracttile.png" id="1_4jrya"]
+
+[resource]
+albedo_texture = ExtResource("1_4jrya")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
