@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=72 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -29,6 +29,7 @@
 [ext_resource type="Script" uid="uid://chsc23s3l36f0" path="res://objects/tp.gd" id="18_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://dlr1lgnnsy2gs" path="res://objects/rotating_thingy.tscn" id="19_5he1u"]
 [ext_resource type="Texture2D" uid="uid://dophwnys1qsdp" path="res://sprites/tp2.png" id="19_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://djsaoe43o3n37" path="res://objects/chasing_enemy.tscn" id="19_ids8r"]
 [ext_resource type="PackedScene" uid="uid://bdg014m5mhqjt" path="res://addons/godotvmf/entities/light.tscn" id="19_j8jky"]
 [ext_resource type="Script" uid="uid://dxscrh1t8qt1r" path="res://objects/rotating_thingy.gd" id="20_5poiv"]
 [ext_resource type="Texture2D" uid="uid://dxd7k2w5ixnmq" path="res://sprites/coin1.png" id="21_jscy8"]
@@ -518,6 +519,22 @@ Bullet = ExtResource("15_tel4y")
 transform = Transform3D(-0.48179623, -0.04848375, -0.8749409, 0.009359411, 0.9981266, -0.06046391, 0.8762331, -0.037320085, -0.48043975, 34.043106, 28.403282, 42.14107)
 player = NodePath("../../Player")
 Bullet = ExtResource("15_tel4y")
+
+[node name="chasing-enemy" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
+transform = Transform3D(-0.23319937, -0.13474716, -0.9630479, -0.031712167, 0.99088, -0.13096234, 0.9719117, 0, -0.23534572, -13.262459, -25.092852, -0.40578747)
+player = NodePath("../../Player")
+
+[node name="chasing-enemy2" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
+transform = Transform3D(-0.6457135, 0.07970384, 0.75940853, -0.03171216, 0.99087995, -0.13096231, -0.7629209, -0.10864665, -0.63729703, -44.181618, -25.092852, 7.166915)
+player = NodePath("../../Player")
+
+[node name="chasing-enemy3" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
+transform = Transform3D(0.5768608, 0.12514748, 0.8071987, -0.031712152, 0.9908799, -0.1309623, -0.81622654, 0.049949035, 0.57556856, -41.500744, -25.092852, -9.663535)
+player = NodePath("../../Player")
+
+[node name="chasing-enemy4" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
+transform = Transform3D(0.80962986, -0.051365525, -0.5846886, -0.031712152, 0.99087983, -0.13096228, 0.5860833, 0.124572806, 0.8006174, -17.536467, -25.092852, -13.35742)
+player = NodePath("../../Player")
 
 [node name="Level" type="Node" parent="."]
 

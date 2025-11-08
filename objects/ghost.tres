@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://nyyfhqa8gd4g"]
+
+[ext_resource type="Texture2D" uid="uid://b5hxnjwvrxuji" path="res://models/Textures/colormap.png" id="1_5b4yu"]
+
+[resource]
+resource_name = "colormap"
+cull_mode = 2
+albedo_color = Color(0.96687937, 4.331032, 4.6368647, 1)
+albedo_texture = ExtResource("1_5b4yu")
+rim_enabled = true
+rim_tint = 1.0
+clearcoat_roughness = 0.0
+texture_filter = 2
