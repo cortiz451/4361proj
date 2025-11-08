@@ -55,7 +55,7 @@ func _consoletext(text) -> void:
 	#reconstruct console output in case of new info
 	print_console()
 	
-	#Start the timer which will remove x after 5 seconds
+	#Start the timer which will remove x after y seconds
 	await get_tree().create_timer(10).timeout
 	if(!thingsToSay.is_empty()):
 		thingsToSay.pop_front()
@@ -68,3 +68,15 @@ func print_console():
 	for x in thingsToSay:
 		console+=x+("\n")
 	$Console.text=console
+
+
+func _on_player_key_updated(type, pickedup=true) -> void:
+	match type:
+		"red": 
+			$Keys/RedKey.visible=pickedup
+			$"../Level/Key/RKBlockade".queue_free()
+		"yellow": 
+			$Keys/YelKey.visible=pickedup
+		"blue": 
+			$Keys/BluKey.visible=pickedup
+	Audio.play("sounds/key.ogg")

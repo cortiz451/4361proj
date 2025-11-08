@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=76 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://djhvruwyvgddh" path="res://materials/face_wow.png" id="14_pibwh"]
 [ext_resource type="Script" uid="uid://bq7bocqfp8ivg" path="res://objects/resupply.gd" id="15_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://bxjujrxi2ormu" path="res://objects/big_bullet.tscn" id="15_tel4y"]
+[ext_resource type="Texture2D" uid="uid://b0kng35r6wlv5" path="res://sprites/key.png" id="16_dnhof"]
 [ext_resource type="Texture2D" uid="uid://c6770lsxhxfvw" path="res://sprites/ammo1.png" id="16_muem4"]
 [ext_resource type="Texture2D" uid="uid://nf5nhm0bsdth" path="res://sprites/ammo2.png" id="17_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://kdmi2skd1htj" path="res://sprites/tp1.png" id="18_0ld40"]
@@ -55,6 +56,9 @@
 [ext_resource type="Texture2D" uid="uid://cpxour8a7ihec" path="res://icon.png" id="48_o7ddy"]
 [ext_resource type="AudioStream" uid="uid://dfb1vvae8d3aa" path="res://sounds/bg2.ogg" id="48_ty1g6"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="50_bjg73"]
+[ext_resource type="PackedScene" uid="uid://ccarjk0gyirp" path="res://objects/key.tscn" id="53_1v6qk"]
+[ext_resource type="PackedScene" uid="uid://b20nvt7fs0xhb" path="res://objects/blockade_red.tscn" id="54_augu2"]
+[ext_resource type="Script" uid="uid://d0wv2ln02mqig" path="res://objects/redkeyblock.gd" id="55_tm6hj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_og1vs"]
 font = ExtResource("11_y6deb")
@@ -166,6 +170,7 @@ environment = ExtResource("1_q8fpv")
 
 [node name="Player" parent="." node_paths=PackedStringArray("crosshair") instance=ExtResource("2_elriq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+slide_on_ceiling = false
 movement_speed = 10
 number_of_jumps = 1
 jump_strength = 10
@@ -401,6 +406,50 @@ grow_vertical = 0
 text = "Time: 0.00:000"
 label_settings = SubResource("LabelSettings_txyw0")
 
+[node name="Keys" type="Node" parent="HUD"]
+
+[node name="RedKey" type="TextureRect" parent="HUD/Keys"]
+visible = false
+modulate = Color(1.8247963, 0, 0, 1)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -48.0
+offset_right = 145.0
+offset_bottom = 80.0
+grow_vertical = 0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("16_dnhof")
+
+[node name="YelKey" type="TextureRect" parent="HUD/Keys"]
+visible = false
+modulate = Color(1.8247963, 1.8247963, 0, 1)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -96.0
+offset_right = 144.0
+offset_bottom = 32.0
+grow_vertical = 0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("16_dnhof")
+
+[node name="BluKey" type="TextureRect" parent="HUD/Keys"]
+visible = false
+modulate = Color(0, 0, 1.8247963, 1)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -144.0
+offset_right = 144.0
+offset_bottom = -16.0
+grow_vertical = 0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("16_dnhof")
+
 [node name="Enemies" type="Node" parent="."]
 
 [node name="enemy-flying" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
@@ -495,6 +544,22 @@ player = NodePath("../../Player")
 transform = Transform3D(-0.7651757, -0.032839287, -0.64298356, -0.045425687, 0.9989635, 0.0030378255, 0.64221704, 0.031532593, -0.76587397, -7.175462, 20.807024, -33.90985)
 player = NodePath("../../Player")
 
+[node name="enemy-flying24" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-0.30322015, -0.016685836, 0.9527743, -0.04542568, 0.9989634, 0.00303783, -0.95183736, -0.04235925, -0.30366388, -13.89251, -31.474249, 27.600416)
+player = NodePath("../../Player")
+
+[node name="enemy-flying25" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(0.7554941, -0.55054253, -0.3551501, 0.1300323, 0.65730554, -0.74232167, 0.64212155, 0.51463884, 0.5681788, -8.738454, -26.963398, 27.600416)
+player = NodePath("../../Player")
+
+[node name="enemy-flying26" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(0.08686872, -0.6079051, -0.7892436, 0.24342318, 0.7811766, -0.57489896, 0.96602213, -0.14217958, 0.21583812, -33.75718, -26.963398, 28.323542)
+player = NodePath("../../Player")
+
+[node name="enemy-flying27" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-0.0806821, 0.18387847, 0.97963214, 0.18001185, 0.9693632, -0.16712537, -0.9803497, 0.16286153, -0.11131069, -45.988728, -31.969437, 27.600416)
+player = NodePath("../../Player")
+
 [node name="big-enemy-flying" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_a8y0u")]
 transform = Transform3D(0.013880177, -0.031155456, 0.9994183, 0.059476543, 0.99777055, 0.030278029, -0.9981333, 0.059021685, 0.015702277, 9.014107, 22.832573, 2.7459314)
 player = NodePath("../../Player")
@@ -520,6 +585,16 @@ transform = Transform3D(-0.48179623, -0.04848375, -0.8749409, 0.009359411, 0.998
 player = NodePath("../../Player")
 Bullet = ExtResource("15_tel4y")
 
+[node name="big-enemy-flying6" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_a8y0u")]
+transform = Transform3D(-0.9506111, 0.25116354, 0.18235935, 0.20387842, 0.9482854, -0.2432871, -0.23403344, -0.19409233, -0.9526575, -16.82967, -24.636198, 49.873928)
+player = NodePath("../../Player")
+Bullet = ExtResource("15_tel4y")
+
+[node name="big-enemy-flying7" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_a8y0u")]
+transform = Transform3D(-0.99042094, 0.079722136, 0.112740666, 0.046005685, 0.96035975, -0.27494153, -0.1301904, -0.2671212, -0.9548281, -42.88827, -20.446108, 42.306557)
+player = NodePath("../../Player")
+Bullet = ExtResource("15_tel4y")
+
 [node name="chasing-enemy" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
 transform = Transform3D(-0.23319937, -0.13474716, -0.9630479, -0.031712167, 0.99088, -0.13096234, 0.9719117, 0, -0.23534572, -13.262459, -25.092852, -0.40578747)
 player = NodePath("../../Player")
@@ -534,6 +609,10 @@ player = NodePath("../../Player")
 
 [node name="chasing-enemy4" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
 transform = Transform3D(0.80962986, -0.051365525, -0.5846886, -0.031712152, 0.99087983, -0.13096228, 0.5860833, 0.124572806, 0.8006174, -17.536467, -25.092852, -13.35742)
+player = NodePath("../../Player")
+
+[node name="chasing-enemy5" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
+transform = Transform3D(0.9932716, -0.0060017165, -0.115651935, -0.037501108, 0.9281771, -0.37024358, 0.10956788, 0.3720895, 0.92170733, -25.342442, -17.773481, 23.98247)
 player = NodePath("../../Player")
 
 [node name="Level" type="Node" parent="."]
@@ -965,6 +1044,17 @@ shape = SubResource("SphereShape3D_gqmmt")
 billboard = 1
 texture = ExtResource("32_chjal")
 
+[node name="Health4" type="Area3D" parent="Level/HP"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5, -30, -4.5)
+script = ExtResource("32_2cjbq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/HP/Health4"]
+shape = SubResource("SphereShape3D_gqmmt")
+
+[node name="Sprite3D" type="Sprite3D" parent="Level/HP/Health4"]
+billboard = 1
+texture = ExtResource("32_chjal")
+
 [node name="WpnPickups" type="Node" parent="Level"]
 
 [node name="Resupply" type="Area3D" parent="Level/WpnPickups" node_paths=PackedStringArray("player")]
@@ -1019,6 +1109,19 @@ script = ExtResource("33_nvyfr")
 shape = SubResource("CylinderShape3D_a8y0u")
 
 [node name="Sprite3D" type="Sprite3D" parent="Level/WpnPickups/Bullets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+pixel_size = 0.0075
+billboard = 1
+texture = ExtResource("34_ty1g6")
+
+[node name="Bullets2" type="Area3D" parent="Level/WpnPickups"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.586, -25, -4.5)
+script = ExtResource("33_nvyfr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/WpnPickups/Bullets2"]
+shape = SubResource("CylinderShape3D_a8y0u")
+
+[node name="Sprite3D" type="Sprite3D" parent="Level/WpnPickups/Bullets2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 pixel_size = 0.0075
 billboard = 1
@@ -1100,6 +1203,19 @@ script = ExtResource("23_og1vs")
 shape = SubResource("SphereShape3D_gqmmt")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Coins/Coin4"]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_yc10j")
+autoplay = "default"
+frame_progress = 0.42070758
+
+[node name="Coin5" type="Area3D" parent="Level/Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.75, -25, 55)
+script = ExtResource("23_og1vs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Coins/Coin5"]
+shape = SubResource("SphereShape3D_gqmmt")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Coins/Coin5"]
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_yc10j")
 autoplay = "default"
@@ -1191,6 +1307,7 @@ script = ExtResource("20_5poiv")
 [node name="JumpPad" type="Node3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -40.7, 50)
 script = ExtResource("48_0loja")
+STRENGTH = 35
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Level/JumpPad"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19047165, 0)
@@ -1207,6 +1324,29 @@ draw_pass_1 = SubResource("QuadMesh_o7ddy")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/JumpPad/Area3D"]
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0.62506485, 0)
 shape = SubResource("BoxShape3D_bu4jf")
+
+[node name="Key" type="Node" parent="Level"]
+
+[node name="RedKey" parent="Level/Key" instance=ExtResource("53_1v6qk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -19, 14)
+KeyType = "red"
+color = Color(255.0139, 0, 0, 1)
+
+[node name="RKBlockade" parent="Level/Key" instance=ExtResource("54_augu2")]
+transform = Transform3D(-5.2453663e-07, 0, 12, 0, 12, 0, -12, 0, -5.2453663e-07, -45.696644, -32.96797, -5.0296793)
+script = ExtResource("55_tm6hj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Key/RKBlockade"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Key/RKBlockade/StaticBody3D"]
+transform = Transform3D(0.6, 0, 2.1316283e-15, 0, 0.6, 0, -2.1316283e-15, 0, 0.6, 0, 0.3, 0)
+shape = SubResource("BoxShape3D_chjal")
+
+[node name="Warning" type="Area3D" parent="Level/Key/RKBlockade"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Key/RKBlockade/Warning"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.3, 0)
+shape = SubResource("BoxShape3D_ty1g6")
 
 [node name="Jingle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_2f3dj")
@@ -1232,6 +1372,7 @@ playback_type = 1
 [connection signal="drain_updated" from="Player" to="HUD" method="_on_player_drain_updated"]
 [connection signal="health_updated" from="Player" to="HUD" method="_on_health_updated"]
 [connection signal="init_enemycount" from="Player" to="HUD" method="_on_enemy_down"]
+[connection signal="key_updated" from="Player" to="HUD" method="_on_player_key_updated"]
 [connection signal="timeout" from="Player/initWait" to="Player" method="_on_init_wait_timeout"]
 [connection signal="enemy_down" from="Enemies/enemy-flying" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/enemy-flying2" to="HUD" method="_on_enemy_down"]
@@ -1256,26 +1397,40 @@ playback_type = 1
 [connection signal="enemy_down" from="Enemies/enemy-flying21" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/enemy-flying22" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/enemy-flying23" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying24" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying25" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying26" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying27" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/big-enemy-flying" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/big-enemy-flying2" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/big-enemy-flying3" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/big-enemy-flying4" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/big-enemy-flying5" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/big-enemy-flying6" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/big-enemy-flying7" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/chasing-enemy" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/chasing-enemy2" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/chasing-enemy3" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/chasing-enemy4" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/chasing-enemy5" to="HUD" method="_on_enemy_down"]
 [connection signal="body_entered" from="Level/HP/Health" to="Level/HP/Health" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/HP/Health2" to="Level/HP/Health2" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/HP/Health3" to="Level/HP/Health3" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/HP/Health4" to="Level/HP/Health4" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Resupply" to="Level/WpnPickups/Resupply" method="_on_player_resupply"]
 [connection signal="console_text" from="Level/WpnPickups/Resupply" to="HUD" method="_consoletext"]
 [connection signal="timeout" from="Level/WpnPickups/Resupply/Timer" to="Level/WpnPickups/Resupply" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Level/WpnPickups/Shells" to="Level/WpnPickups/Shells" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Shells2" to="Level/WpnPickups/Shells2" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Bullets" to="Level/WpnPickups/Bullets" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/WpnPickups/Bullets2" to="Level/WpnPickups/Bullets2" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/SSG/Area3D" to="Level/WpnPickups/SSG" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Chaingun/Area3D" to="Level/WpnPickups/Chaingun" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Level/Coins/Coin" to="Level/Coins/Coin" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Coins/Coin2" to="Level/Coins/Coin2" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Coins/Coin3" to="Level/Coins/Coin3" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Coins/Coin4" to="Level/Coins/Coin4" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/Coins/Coin5" to="Level/Coins/Coin5" method="_on_body_entered"]
 [connection signal="console_text" from="Level/Blockade" to="HUD" method="_consoletext"]
 [connection signal="body_entered" from="Level/Blockade/Warning" to="Level/Blockade" method="_on_warning_body_entered"]
 [connection signal="body_entered" from="Level/Teleports/Tp1/Tp" to="Level/Teleports/Tp1/Tp" method="_on_body_entered"]
@@ -1283,6 +1438,8 @@ playback_type = 1
 [connection signal="console_text" from="Level/Teleports/Tp2/Tp" to="HUD" method="_consoletext"]
 [connection signal="body_entered" from="Level/Teleports/Tp3/Tp" to="Level/Teleports/Tp3/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/JumpPad/Area3D" to="Level/JumpPad" method="_on_body_entered"]
+[connection signal="consoletext" from="Level/Key/RKBlockade" to="HUD" method="_consoletext"]
+[connection signal="body_entered" from="Level/Key/RKBlockade/Warning" to="Level/Key/RKBlockade" method="_on_warning_body_entered"]
 [connection signal="timeout" from="BlockadeSanityTimer" to="Level/Blockade" method="_on_blockade_sanity_timer_timeout"]
 
 [editable path="Level/VMFNode/Entities/lights/light_environment"]

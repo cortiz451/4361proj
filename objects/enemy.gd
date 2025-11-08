@@ -67,10 +67,14 @@ func destroy():
 	destroyed = true
 	
 	#do cool fx
-	$CollisionShape3D.queue_free()
-	$"enemy-flying".queue_free()
+	if($CollisionShape3D):
+		$CollisionShape3D.queue_free()
+	if($"enemy-flying"):
+		$"enemy-flying".queue_free()
 	$DestroyFX.play()
-	$DestroyTime.start(0.3)
+	await get_tree().create_timer(0.3).timeout
+	queue_free()
+	
 
 # Shoot when timer hits 0
 func _on_timer_timeout():
@@ -108,6 +112,3 @@ func _on_aggro_body_exited(body: Node3D) -> void:
 	if(body==player):
 		angry=false
 		
-
-func _on_destroy_time_timeout() -> void:
-	queue_free()

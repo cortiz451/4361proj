@@ -68,10 +68,13 @@ func destroy():
 	destroyed = true
 	
 	#do cool fx
-	$CollisionShape3D.queue_free()
-	$"enemy-flying".queue_free()
+	if($CollisionShape3D):
+		$CollisionShape3D.queue_free()
+	if($"enemy-flying"):
+		$"enemy-flying".queue_free()
 	$DestroyFX.play()
-	$DestroyTime.start(0.5)
+	await get_tree().create_timer(0.5).timeout
+	queue_free()
 
 #aggro mechanics
 func _on_aggro_body_entered(body: Node3D) -> void:

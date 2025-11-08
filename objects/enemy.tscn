@@ -56,7 +56,6 @@ autostart = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29273826, 0.6475944)
 
 [node name="Aggro" type="Area3D" parent="."]
-visible = false
 collision_layer = 2
 input_ray_pickable = false
 
@@ -76,11 +75,6 @@ bus = &"SFX"
 stream = ExtResource("7_l24ub")
 bus = &"SFX"
 
-[node name="DestroyTime" type="Timer" parent="."]
-wait_time = 0.3
-one_shot = true
-
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Aggro" to="." method="_on_aggro_body_entered"]
 [connection signal="body_exited" from="Aggro" to="." method="_on_aggro_body_exited"]
-[connection signal="timeout" from="DestroyTime" to="." method="_on_destroy_time_timeout"]

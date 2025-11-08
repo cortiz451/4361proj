@@ -44,6 +44,7 @@ signal drain_updated
 signal coins_updated
 signal init_enemycount
 signal consoletext
+signal key_updated
 
 @onready var camera = $Head/Camera
 @onready var raycast = $Head/Camera/RayCast
@@ -356,6 +357,14 @@ func heal(hp):
 		better+=" you really needed it!"
 	consoletext.emit(better)
 
+func keyGet(type):
+	key_updated.emit(type, true)
+	consoletext.emit("You picked up a "+type+" key!")
+
+func keyUse(type):
+	key_updated.emit(type, false)
+	consoletext.emit("You used the "+type+" key...")
+
 func setAmmo(ammotype, value, add=false):
 	if(add):
 		ammo[ammotype]+=value
@@ -413,4 +422,8 @@ func _on_init_wait_timeout() -> void:
 
 
 func _consoletext() -> void:
+	pass # Replace with function body.
+
+
+func _on_enemy_down() -> void:
 	pass # Replace with function body.
