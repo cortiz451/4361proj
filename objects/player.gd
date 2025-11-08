@@ -201,7 +201,7 @@ func handle_gravity(delta):
 
 func action_jump():	
 	Audio.play("sounds/jump_a.ogg, sounds/jump_b.ogg, sounds/jump_c.ogg")
-	gravity = -jump_strength	
+	gravity = -jump_strength
 	jumps_remaining -= 1
 
 # Shooting

@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=71 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -49,7 +49,9 @@
 [ext_resource type="Script" uid="uid://20mwe6t33io1" path="res://objects/blockade.gd" id="42_cjqg0"]
 [ext_resource type="Script" uid="uid://bssmkht6jwadv" path="res://objects/tp_locked.gd" id="45_j2jfr"]
 [ext_resource type="AudioStream" uid="uid://cueak1mk2hw5k" path="res://sounds/jingle.ogg" id="45_vchkt"]
+[ext_resource type="Script" uid="uid://qlu4psfkpcjh" path="res://scenes/jump_pad.gd" id="48_0loja"]
 [ext_resource type="PackedScene" uid="uid://g4ceg7fqt1ob" path="res://objects/jumppad.tscn" id="48_bu4jf"]
+[ext_resource type="Texture2D" uid="uid://cpxour8a7ihec" path="res://icon.png" id="48_o7ddy"]
 [ext_resource type="AudioStream" uid="uid://dfb1vvae8d3aa" path="res://sounds/bg2.ogg" id="48_ty1g6"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="50_bjg73"]
 
@@ -136,6 +138,23 @@ animations = [{
 "name": &"nope",
 "speed": 5.0
 }]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bu4jf"]
+direction = Vector3(0, 2, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 8.0
+scale_min = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0loja"]
+transparency = 1
+albedo_color = Color(2.1168277, 0, 2.1168277, 1)
+albedo_texture = ExtResource("48_o7ddy")
+
+[sub_resource type="QuadMesh" id="QuadMesh_o7ddy"]
+material = SubResource("StandardMaterial3D_0loja")
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bu4jf"]
 
 [node name="Main" type="Node3D"]
 metadata/_edit_horizontal_guides_ = [591.0, 640.0]
@@ -1129,16 +1148,48 @@ autoplay = "nope"
 [node name="Dest2" type="Marker3D" parent="Level/Teleports/Tp2"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.4111595, 23.519804, -0.65664625)
 
+[node name="Tp3" type="Node" parent="Level/Teleports"]
+
+[node name="Tp" type="Area3D" parent="Level/Teleports/Tp3" node_paths=PackedStringArray("dest")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.323036, 1.2380781, -3.0444698)
+script = ExtResource("18_gqmmt")
+dest = NodePath("../Dest3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Teleports/Tp3/Tp"]
+shape = SubResource("CylinderShape3D_muem4")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Teleports/Tp3/Tp"]
+transparency = 0.6
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_muem4")
+autoplay = "nope"
+
+[node name="Dest3" type="Marker3D" parent="Level/Teleports/Tp3"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25.949932, -27.710947, -3.7980132)
+
 [node name="Rotating Thingy" parent="Level" instance=ExtResource("19_5he1u")]
 transform = Transform3D(-10.147826, -5.9334126, -2.4116864, -0.9902861, 5.917713, -10.392305, 6.3277917, -8.589254, -5.493975, 27, 36, 41)
 script = ExtResource("20_5poiv")
 
 [node name="JumpPad" type="Node3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -41, 50)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -40.7, 50)
+script = ExtResource("48_0loja")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Level/JumpPad"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19047165, 0)
+amount = 25
+local_coords = true
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_bu4jf")
+draw_pass_1 = SubResource("QuadMesh_o7ddy")
 
 [node name="Whee" parent="Level/JumpPad" instance=ExtResource("48_bu4jf")]
+
+[node name="Area3D" type="Area3D" parent="Level/JumpPad"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/JumpPad/Area3D"]
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0.62506485, 0)
+shape = SubResource("BoxShape3D_bu4jf")
 
 [node name="Jingle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_2f3dj")
@@ -1213,6 +1264,8 @@ playback_type = 1
 [connection signal="body_entered" from="Level/Teleports/Tp1/Tp" to="Level/Teleports/Tp1/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Teleports/Tp2/Tp" to="Level/Teleports/Tp2/Tp" method="_on_body_entered"]
 [connection signal="console_text" from="Level/Teleports/Tp2/Tp" to="HUD" method="_consoletext"]
+[connection signal="body_entered" from="Level/Teleports/Tp3/Tp" to="Level/Teleports/Tp3/Tp" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/JumpPad/Area3D" to="Level/JumpPad" method="_on_body_entered"]
 [connection signal="timeout" from="BlockadeSanityTimer" to="Level/Blockade" method="_on_blockade_sanity_timer_timeout"]
 
 [editable path="Level/VMFNode/Entities/lights/light_environment"]
