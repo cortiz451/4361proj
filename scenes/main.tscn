@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=84 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -59,6 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://cpxour8a7ihec" path="res://icon.png" id="48_o7ddy"]
 [ext_resource type="AudioStream" uid="uid://dfb1vvae8d3aa" path="res://sounds/bg2.ogg" id="48_ty1g6"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="50_bjg73"]
+[ext_resource type="Script" uid="uid://fo3pxy7ftesl" path="res://objects/tp_locked2.gd" id="51_1epgm"]
 [ext_resource type="PackedScene" uid="uid://ccarjk0gyirp" path="res://objects/key.tscn" id="53_1v6qk"]
 [ext_resource type="PackedScene" uid="uid://b20nvt7fs0xhb" path="res://objects/blockade_red.tscn" id="54_augu2"]
 [ext_resource type="PackedScene" uid="uid://dgv5oxmgnso1k" path="res://objects/blockade_blue.tscn" id="56_kf5aa"]
@@ -149,6 +150,8 @@ animations = [{
 "name": &"nope",
 "speed": 5.0
 }]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bu4jf"]
 direction = Vector3(0, 2, 0)
@@ -621,6 +624,14 @@ player = NodePath("../../Player")
 transform = Transform3D(-4.3711374e-08, 0, 1.0000001, 0, 1.0000001, 0, -0.9999997, 0, -4.3711392e-08, -9.992317, 3.3833752, -53.651863)
 player = NodePath("../../Player")
 
+[node name="enemy-flying42" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(-0.99412614, 0, -0.10822502, 0, 1.0000001, 0, 0.10822497, 0, -0.99412656, -142.4696, -31.077848, 0.64521956)
+player = NodePath("../../Player")
+
+[node name="enemy-flying43" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_7ty2f")]
+transform = Transform3D(0.93190646, 0, -0.36269814, 0, 1.0000001, 0, 0.362698, 0, 0.9319068, -143.36356, -31.077848, -16.615189)
+player = NodePath("../../Player")
+
 [node name="big-enemy-flying" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_a8y0u")]
 transform = Transform3D(0.013880177, -0.031155456, 0.9994183, 0.059476543, 0.99777055, 0.030278029, -0.9981333, 0.059021685, 0.015702277, 9.014107, 22.832573, 2.7459314)
 player = NodePath("../../Player")
@@ -708,11 +719,33 @@ transform = Transform3D(0.9933398, -0.013301312, 0.11445339, 0.009730398, 0.9994
 player = NodePath("../../Player")
 
 [node name="chasing-enemy10" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
-transform = Transform3D(0.008707203, -0.031787455, 0.9994568, 0.009730399, 0.99944973, 0.03170255, -0.99991506, 0.009449034, 0.00901144, -92.159195, -30.57889, -9.18014)
+transform = Transform3D(0.008707203, -0.031787455, 0.9994568, 0.009730399, 0.99944973, 0.03170255, -0.99991506, 0.009449034, 0.00901144, -90.24001, -30.57889, -9.18014)
+player = NodePath("../../Player")
+
+[node name="chasing-enemy11" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
+transform = Transform3D(0.24190907, -0.033115022, 0.96973383, 0.009730397, 0.9994496, 0.03170254, -0.9702503, 0.0017667445, 0.24209791, -166.89343, -31.30414, -14.9181)
+player = NodePath("../../Player")
+
+[node name="chasing-enemy12" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
+transform = Transform3D(0.008550137, -0.03178596, 0.99945813, 0.009730397, 0.9994496, 0.03170254, -0.9999163, 0.009454024, 0.008854464, -168.4693, -31.30414, -9.980357)
+player = NodePath("../../Player")
+
+[node name="chasing-enemy13" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
+transform = Transform3D(-0.023577573, -0.03146584, 0.99922675, 0.009730397, 0.9994496, 0.03170254, -0.99967486, 0.0104703, -0.023258701, -167.52126, -31.30414, -4.9782004)
 player = NodePath("../../Player")
 
 [node name="spew-enemy" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("22_xhfw6")]
-transform = Transform3D(-0.0034041763, 0.83421415, 0.5514301, -0.031747095, 0.55106515, -0.8338581, -0.99949, -0.0203449, 0.024607949, 43.492363, -24.664497, -6.4554906)
+transform = Transform3D(-0.029066438, 0.5708703, 0.82052565, -0.0456819, 0.8192562, -0.57160527, -0.998533, -0.054097686, 0.0022655744, 43.03161, -24.664497, -6.4554906)
+player = NodePath("../../Player")
+Bullet = ExtResource("23_1epgm")
+
+[node name="spew-enemy2" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("22_xhfw6")]
+transform = Transform3D(0.13722193, 0.15599556, 0.9781797, -0.023901766, 0.98775524, -0.15416956, -0.9902516, -0.0022247639, 0.13927026, -152.01805, -31.30414, -11.538312)
+player = NodePath("../../Player")
+Bullet = ExtResource("23_1epgm")
+
+[node name="spew-enemy3" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("22_xhfw6")]
+transform = Transform3D(-0.22897534, 0.1447052, 0.96261656, -0.023901766, 0.98775524, -0.15416956, -0.97313845, -0.058309272, -0.2227129, -151.01648, -31.30414, -5.49728)
 player = NodePath("../../Player")
 Bullet = ExtResource("23_1epgm")
 
@@ -1110,6 +1143,108 @@ light_bake_mode = 1
 omni_range = 54.232616
 omni_attenuation = 1.44
 
+[node name="light_2367" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -205.44, -30.72, -11.5199995)
+default_light_energy = 0.78431374
+entity = {
+"_light": Color(1, 1, 1, 0.78431374),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"_quadratic_attn": 1,
+"classname": "light",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[500 8500]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 2367,
+"origin": Vector3(-10272, 576, -1536)
+}
+
+[node name="light" parent="Level/VMFNode/Entities/lights/light_2367" index="0"]
+light_energy = 0.78431374
+light_bake_mode = 1
+omni_range = 44.280746
+omni_attenuation = 1.44
+
+[node name="light_2378" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.64, -30.08, -8.96)
+default_light_energy = 1.9607843
+entity = {
+"_light": Color(0.78431374, 0.6117647, 1, 1.9607843),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"_quadratic_attn": 1,
+"classname": "light",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[500 9000]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 2378,
+"origin": Vector3(-7232, 448, -1504)
+}
+
+[node name="light" parent="Level/VMFNode/Entities/lights/light_2378" index="0"]
+light_color = Color(0.78431374, 0.6117647, 1, 1)
+light_energy = 1.9607843
+light_bake_mode = 1
+omni_range = 70.01401
+omni_attenuation = 1.44
+
+[node name="light_2389" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.28, -29.439999, -23.039999)
+default_light_energy = 0.78431374
+entity = {
+"_light": Color(1, 1, 1, 0.78431374),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"_quadratic_attn": 1,
+"classname": "light",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[500 9500]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 2389,
+"origin": Vector3(-5664, 1152, -1472)
+}
+
+[node name="light" parent="Level/VMFNode/Entities/lights/light_2389" index="0"]
+light_energy = 0.78431374
+light_bake_mode = 1
+omni_range = 44.280746
+omni_attenuation = 1.44
+
+[node name="light_2407" parent="Level/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -253.43999, -20.48, -10.24)
+default_light_energy = 19.607843
+entity = {
+"_light": Color(1, 0.2627451, 0.2627451, 19.607843),
+"_lightHDR": Color(-0.003921569, -0.003921569, -0.003921569, 0.003921569),
+"_lightscaleHDR": 1,
+"_quadratic_attn": 1,
+"classname": "light",
+"editor": {
+"color": Vector3(220, 30, 220),
+"logicalpos": "[500 15000]",
+"visgroupautoshown": 1,
+"visgroupshown": 1
+},
+"id": 2407,
+"origin": Vector3(-12672, 512, -1024)
+}
+
+[node name="light" parent="Level/VMFNode/Entities/lights/light_2407" index="0"]
+light_color = Color(1, 0.2627451, 0.2627451, 1)
+light_energy = 19.607843
+light_bake_mode = 1
+omni_range = 221.40372
+omni_attenuation = 1.44
+
 [node name="HP" type="Node" parent="Level"]
 
 [node name="Health" type="Area3D" parent="Level/HP"]
@@ -1156,6 +1291,17 @@ shape = SubResource("SphereShape3D_gqmmt")
 billboard = 1
 texture = ExtResource("32_chjal")
 
+[node name="Health5" type="Area3D" parent="Level/HP"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.579346, -32.308582, -23.340336)
+script = ExtResource("32_2cjbq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/HP/Health5"]
+shape = SubResource("SphereShape3D_gqmmt")
+
+[node name="Sprite3D" type="Sprite3D" parent="Level/HP/Health5"]
+billboard = 1
+texture = ExtResource("32_chjal")
+
 [node name="WpnPickups" type="Node" parent="Level"]
 
 [node name="Resupply" type="Area3D" parent="Level/WpnPickups" node_paths=PackedStringArray("player")]
@@ -1168,11 +1314,27 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.5078633, 0)
 shape = SubResource("CylinderShape3D_a8y0u")
 
 [node name="Sprite3D" type="AnimatedSprite3D" parent="Level/WpnPickups/Resupply"]
-pixel_size = 0.005
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_jkv2x")
 
 [node name="Timer" type="Timer" parent="Level/WpnPickups/Resupply"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Resupply2" type="Area3D" parent="Level/WpnPickups" node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -205.5, -32, -9)
+script = ExtResource("15_jbj1t")
+player = NodePath("../../../Player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/WpnPickups/Resupply2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.5078633, 0)
+shape = SubResource("CylinderShape3D_a8y0u")
+
+[node name="Sprite3D" type="AnimatedSprite3D" parent="Level/WpnPickups/Resupply2"]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_jkv2x")
+
+[node name="Timer" type="Timer" parent="Level/WpnPickups/Resupply2"]
 wait_time = 0.1
 one_shot = true
 
@@ -1460,7 +1622,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 40, 
 [node name="Tp2" type="Node" parent="Level/Teleports"]
 
 [node name="Tp" type="Area3D" parent="Level/Teleports/Tp2" node_paths=PackedStringArray("dest", "player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.323036, 1.2380781, -5.0267096)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -5)
 script = ExtResource("45_j2jfr")
 dest = NodePath("../Dest2")
 player = NodePath("../../../../Player")
@@ -1496,6 +1658,32 @@ autoplay = "default"
 
 [node name="Dest4" type="Marker3D" parent="Level/Teleports/Tp4"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.55825, 24.917345, -0.38121986)
+
+[node name="Tp5" type="Node" parent="Level/Teleports"]
+
+[node name="Tp" type="Area3D" parent="Level/Teleports/Tp5" node_paths=PackedStringArray("dest")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -2)
+script = ExtResource("51_1epgm")
+dest = NodePath("../Dest5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Teleports/Tp5/Tp"]
+shape = SubResource("CylinderShape3D_muem4")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Teleports/Tp5/Tp"]
+transparency = 0.6
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_muem4")
+animation = &"nope"
+autoplay = "nope"
+
+[node name="Area3D" type="Area3D" parent="Level/Teleports/Tp5/Tp"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Teleports/Tp5/Tp/Area3D"]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, -198, -32, -16)
+shape = SubResource("BoxShape3D_1epgm")
+
+[node name="Dest5" type="Marker3D" parent="Level/Teleports/Tp5"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -205.53984, -32, -11.92027)
 
 [node name="Rotating Thingy" parent="Level" instance=ExtResource("19_5he1u")]
 transform = Transform3D(-10.147826, -5.9334126, -2.4116864, -0.9902861, 5.917713, -10.392305, 6.3277917, -8.589254, -5.493975, 27, 36, 41)
@@ -1612,7 +1800,7 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.3, 0)
 shape = SubResource("BoxShape3D_ty1g6")
 
 [node name="Rotating Thingy 2" parent="Level" instance=ExtResource("57_e755i")]
-transform = Transform3D(19.176395, 5.6803074, 0, -5.6627965, 19.117281, -1.5691819, -0.4456718, 1.5045626, 19.938347, 35, -24, -6)
+transform = Transform3D(19.176395, 5.6803074, 0, -5.6627965, 19.117281, -1.5691819, -0.4456718, 1.5045626, 19.938347, 34.991127, -24, -6)
 script = ExtResource("20_5poiv")
 
 [node name="Jingle" type="AudioStreamPlayer" parent="."]
@@ -1683,6 +1871,8 @@ parameters/looping = true
 [connection signal="enemy_down" from="Enemies/enemy-flying39" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/enemy-flying40" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/enemy-flying41" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying42" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/enemy-flying43" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/big-enemy-flying" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/big-enemy-flying2" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/big-enemy-flying3" to="HUD" method="_on_enemy_down"]
@@ -1703,14 +1893,23 @@ parameters/looping = true
 [connection signal="enemy_down" from="Enemies/chasing-enemy8" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/chasing-enemy9" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/chasing-enemy10" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/chasing-enemy11" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/chasing-enemy12" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/chasing-enemy13" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/spew-enemy" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/spew-enemy2" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/spew-enemy3" to="HUD" method="_on_enemy_down"]
 [connection signal="body_entered" from="Level/HP/Health" to="Level/HP/Health" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/HP/Health2" to="Level/HP/Health2" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/HP/Health3" to="Level/HP/Health3" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/HP/Health4" to="Level/HP/Health4" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/HP/Health5" to="Level/HP/Health5" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Resupply" to="Level/WpnPickups/Resupply" method="_on_player_resupply"]
 [connection signal="console_text" from="Level/WpnPickups/Resupply" to="HUD" method="_consoletext"]
 [connection signal="timeout" from="Level/WpnPickups/Resupply/Timer" to="Level/WpnPickups/Resupply" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Level/WpnPickups/Resupply2" to="Level/WpnPickups/Resupply2" method="_on_player_resupply"]
+[connection signal="console_text" from="Level/WpnPickups/Resupply2" to="HUD" method="_consoletext"]
+[connection signal="timeout" from="Level/WpnPickups/Resupply2/Timer" to="Level/WpnPickups/Resupply2" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Level/WpnPickups/Shells" to="Level/WpnPickups/Shells" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Shells2" to="Level/WpnPickups/Shells2" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Shells3" to="Level/WpnPickups/Shells3" method="_on_body_entered"]
@@ -1734,6 +1933,9 @@ parameters/looping = true
 [connection signal="body_entered" from="Level/Teleports/Tp2/Tp" to="Level/Teleports/Tp2/Tp" method="_on_body_entered"]
 [connection signal="console_text" from="Level/Teleports/Tp2/Tp" to="HUD" method="_consoletext"]
 [connection signal="body_entered" from="Level/Teleports/Tp4/Tp" to="Level/Teleports/Tp4/Tp" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/Teleports/Tp5/Tp" to="Level/Teleports/Tp5/Tp" method="_on_body_entered"]
+[connection signal="console_text" from="Level/Teleports/Tp5/Tp" to="HUD" method="_consoletext"]
+[connection signal="body_entered" from="Level/Teleports/Tp5/Tp/Area3D" to="Level/Teleports/Tp5/Tp" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Level/JumpPad/Area3D" to="Level/JumpPad" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/JumpPad2/Area3D" to="Level/JumpPad2" method="_on_body_entered"]
 [connection signal="consoletext" from="Level/Key/RKBlockade" to="HUD" method="_consoletext"]
@@ -1757,3 +1959,7 @@ parameters/looping = true
 [editable path="Level/VMFNode/Entities/lights/light_918"]
 [editable path="Level/VMFNode/Entities/lights/light_1061"]
 [editable path="Level/VMFNode/Entities/lights/light_1085"]
+[editable path="Level/VMFNode/Entities/lights/light_2367"]
+[editable path="Level/VMFNode/Entities/lights/light_2378"]
+[editable path="Level/VMFNode/Entities/lights/light_2389"]
+[editable path="Level/VMFNode/Entities/lights/light_2407"]

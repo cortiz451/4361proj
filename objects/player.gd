@@ -29,7 +29,7 @@ var jumps_remaining:int
 var container_offset = Vector3(0, -1.25, -2.75)
 var tween:Tween
 
-var DAMAGE_COOLDOWN=0.33;
+var DAMAGE_COOLDOWN=0.25;
 
 #add ammotypes here
 var ammoTypes=["Ammo", "Shells", "Bullets", "Rockets"]

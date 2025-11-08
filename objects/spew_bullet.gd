@@ -2,8 +2,9 @@ extends Area3D
 
 signal exploded
 
-@export var g = Vector3.FORWARD * -20 + Vector3.LEFT*(-5+10*randf()) + Vector3.UP*(-4+8*randf())
-@export var muzzle_velocity = 35
+@export var g = Vector3.FORWARD * -20 + Vector3.LEFT*(-8+16*randf()) + Vector3.UP*(-6+12*randf())
+var h = Vector3.FORWARD * -20 + Vector3.LEFT*(-3+6*randf()) + Vector3.UP*(-2+4*randf())
+@export var muzzle_velocity = 45
 
 var velocity = Vector3.ZERO
 
@@ -13,7 +14,11 @@ var SPEED = 45
 var DMG=20;
 
 func _physics_process(delta):
-	velocity = g*delta*SPEED
+	var r=(randi_range(0,1)==1)
+	if(r):
+		velocity = g*delta*SPEED
+	else:
+		velocity = h*delta*SPEED
 	look_at(transform.origin + velocity.normalized(), Vector3.UP)
 	transform.origin += velocity * delta
 
