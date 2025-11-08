@@ -96,6 +96,7 @@ monitoring = false
 script = ExtResource("3_tgfi0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Explosion"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_pb2y6")
 
 [node name="Boom" type="AnimatedSprite3D" parent="Explosion"]
@@ -109,7 +110,7 @@ stream = ExtResource("7_ek3pu")
 bus = &"SFX"
 
 [node name="PreventWallCol" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.08
 one_shot = true
 autostart = true
 

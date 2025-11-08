@@ -26,7 +26,7 @@ var gravity := 0.0
 
 var previously_floored := false
 var jumps_remaining:int
-var container_offset = Vector3(1.2, -1.1, -2.75)
+var container_offset = Vector3(0, -1.25, -2.75)
 var tween:Tween
 
 var DAMAGE_COOLDOWN=0.33;
@@ -90,7 +90,7 @@ func _process(delta):
 	move_and_slide()
 	
 	# Rotation 
-	container.position = lerp(container.position, container_offset - (basis.inverse() * applied_velocity / 30), delta * 10)
+	container.position = lerp(container.position, container_offset - (basis.inverse() * applied_velocity / 300), delta * 10)
 	
 	# Movement sound
 	
@@ -121,22 +121,6 @@ func _input(event):
 	if event is InputEventMouseMotion and mouse_captured:
 		input_mouse = event.relative / mouse_sensitivity
 		handle_rotation(event.relative.x, event.relative.y, false)
-	
-	#code for selecting weapons
-	if event is InputEventKey and event.pressed:
-		match event.keycode:
-			KEY_1:
-				initiate_change_weapon(0)
-			KEY_2:
-				initiate_change_weapon(1)
-			KEY_3:
-				initiate_change_weapon(2)
-			KEY_4:
-				initiate_change_weapon(3)
-			KEY_5:
-				initiate_change_weapon(4)
-			
-		
 
 func handle_controls(delta):
 	
@@ -154,7 +138,10 @@ func handle_controls(delta):
 	
 	# Movement
 	var input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	movement_velocity = Vector3(input.x, 0, input.y).normalized() * movement_speed
+	movement_velocity = (Vector3(input.x, 0, 0).normalized()+Vector3(0,0,input.y)) * movement_speed
+	#							^^ Diagonal movement is faster. **This is intended.**
+	#							I'm trying to mimick how something like GoldenEye 64 handled diagonal movement
+	#							...cause I think it's cute :)
 	
 	# Handle Controller Rotation
 	var rotation_input := Input.get_vector("camera_right", "camera_left", "camera_down", "camera_up")
@@ -167,7 +154,7 @@ func handle_controls(delta):
 	
 	# Jumping
 	
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_pressed("jump"):
 		
 		if jumps_remaining:
 			action_jump()
@@ -175,6 +162,7 @@ func handle_controls(delta):
 	# Weapon switching
 	
 	action_weapon_toggle()
+	action_weapon_select()
 
 # Camera rotation
 
@@ -284,19 +272,33 @@ func shootProj():
 
 func action_weapon_toggle():
 	
-	if Input.is_action_just_pressed("weapon_toggle"):
+	if Input.is_action_just_pressed("weapon_next"):
 		var w=wrap(weapon_index + 1, 0, weapons.size())
 		#cycle to next available
 		while(!weapons[w].inInventory):
 			w=wrap(w+1, 0, weapons.size())
 		initiate_change_weapon(w)
 		
-	if Input.is_action_just_pressed("weapon_untoggle"):
+	if Input.is_action_just_pressed("weapon_last"):
 		var w=wrap(weapon_index - 1, 0, weapons.size())
 		#cycle to next available
 		while(!weapons[w].inInventory):
 			w=wrap(w-1, 0, weapons.size())
 		initiate_change_weapon(w)
+
+
+func action_weapon_select():
+	if Input.is_action_just_pressed("baby_blaster"):
+		initiate_change_weapon(0)
+	elif Input.is_action_just_pressed("shotgun"):
+		initiate_change_weapon(1)
+	elif Input.is_action_just_pressed("super_shotgun"):
+		initiate_change_weapon(2)
+	elif Input.is_action_just_pressed("chaingun"):
+		initiate_change_weapon(3)
+	elif Input.is_action_just_pressed("rocket_launcher"):
+		initiate_change_weapon(4)
+	
 
 # Initiates the weapon changing animation (tween)
 
@@ -396,7 +398,7 @@ func setAmmo(ammotype, value, add=false):
 				consoletext.emit("You scooped up some Shells!")
 			2:
 				consoletext.emit("You bargained for some Bullets!")
-			2:
+			3:
 				consoletext.emit("You racketeered some Rockets!")
 	else:
 		ammo[ammotype]=value

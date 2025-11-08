@@ -42,13 +42,13 @@
 [ext_resource type="PackedScene" uid="uid://dcartkp2gx554" path="res://objects/superblaster.tscn" id="26_2wyq8"]
 [ext_resource type="AudioStream" uid="uid://3w8ih36begok" path="res://sounds/acheivement_get.ogg" id="28_2f3dj"]
 [ext_resource type="Texture2D" uid="uid://bjdje1dtxnu8x" path="res://sprites/shells.png" id="29_txyw0"]
-[ext_resource type="Script" uid="uid://cyjjxx67fkwsw" path="res://scripts/shells.gd" id="29_vc5cj"]
 [ext_resource type="PackedScene" uid="uid://cvervjf8gggum" path="res://objects/blaster_repeater.tscn" id="30_tel4y"]
 [ext_resource type="Script" uid="uid://cfyfrolc4hbf4" path="res://scripts/health.gd" id="32_2cjbq"]
 [ext_resource type="Texture2D" uid="uid://bjqhk3siiigs" path="res://sprites/health.png" id="32_chjal"]
-[ext_resource type="Script" uid="uid://cny485lvwyxhy" path="res://scripts/bullets.gd" id="33_nvyfr"]
+[ext_resource type="Script" uid="uid://bt84cqkh2h36l" path="res://scenes/ammopickup.gd" id="34_1epgm"]
 [ext_resource type="Texture2D" uid="uid://cc00uvcy8gxby" path="res://sprites/bullets.png" id="34_ty1g6"]
 [ext_resource type="PackedScene" uid="uid://6k0llye1167u" path="res://objects/blockade.tscn" id="37_c6pm6"]
+[ext_resource type="Texture2D" uid="uid://cd7og2i8u4ew1" path="res://sprites/rocket.png" id="37_xhfw6"]
 [ext_resource type="Script" uid="uid://w2t8fw3uqog3" path="res://scenes/weapon_unlock.gd" id="38_od4ux"]
 [ext_resource type="PackedScene" uid="uid://s1hptq4hmpvo" path="res://models/rocketblaster.tscn" id="39_ro3en"]
 [ext_resource type="Script" uid="uid://20mwe6t33io1" path="res://objects/blockade.gd" id="42_cjqg0"]
@@ -179,7 +179,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 slide_on_ceiling = false
 movement_speed = 10
 number_of_jumps = 1
-jump_strength = 10
 weapons = Array[ExtResource("3_trceg")]([ExtResource("4_a8y0u"), ExtResource("5_jkv2x"), ExtResource("7_muem4"), ExtResource("6_jbj1t"), ExtResource("8_ro3en")])
 crosshair = NodePath("../HUD/Crosshair")
 
@@ -1179,7 +1178,9 @@ one_shot = true
 
 [node name="Shells" type="Area3D" parent="Level/WpnPickups"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.447, 21.5, 14.958)
-script = ExtResource("29_vc5cj")
+script = ExtResource("34_1epgm")
+ammotype = 1
+ammo = 25
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/WpnPickups/Shells"]
 shape = SubResource("CylinderShape3D_a8y0u")
@@ -1192,7 +1193,9 @@ texture = ExtResource("29_txyw0")
 
 [node name="Shells2" type="Area3D" parent="Level/WpnPickups"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 21.5, -32)
-script = ExtResource("29_vc5cj")
+script = ExtResource("34_1epgm")
+ammotype = 1
+ammo = 25
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/WpnPickups/Shells2"]
 shape = SubResource("CylinderShape3D_a8y0u")
@@ -1205,7 +1208,9 @@ texture = ExtResource("29_txyw0")
 
 [node name="Shells3" type="Area3D" parent="Level/WpnPickups"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.898495, -24.545895, 29.75303)
-script = ExtResource("29_vc5cj")
+script = ExtResource("34_1epgm")
+ammotype = 1
+ammo = 25
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/WpnPickups/Shells3"]
 shape = SubResource("CylinderShape3D_a8y0u")
@@ -1218,7 +1223,9 @@ texture = ExtResource("29_txyw0")
 
 [node name="Bullets" type="Area3D" parent="Level/WpnPickups"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 26.5, 54.5)
-script = ExtResource("33_nvyfr")
+script = ExtResource("34_1epgm")
+ammotype = 2
+ammo = 128
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/WpnPickups/Bullets"]
 shape = SubResource("CylinderShape3D_a8y0u")
@@ -1231,7 +1238,9 @@ texture = ExtResource("34_ty1g6")
 
 [node name="Bullets2" type="Area3D" parent="Level/WpnPickups"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.586, -25, -4.5)
-script = ExtResource("33_nvyfr")
+script = ExtResource("34_1epgm")
+ammotype = 2
+ammo = 128
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/WpnPickups/Bullets2"]
 shape = SubResource("CylinderShape3D_a8y0u")
@@ -1244,7 +1253,9 @@ texture = ExtResource("34_ty1g6")
 
 [node name="Bullets3" type="Area3D" parent="Level/WpnPickups"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.141794, -1.663691, -25.606657)
-script = ExtResource("33_nvyfr")
+script = ExtResource("34_1epgm")
+ammotype = 2
+ammo = 128
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/WpnPickups/Bullets3"]
 shape = SubResource("CylinderShape3D_a8y0u")
@@ -1254,6 +1265,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 pixel_size = 0.0075
 billboard = 1
 texture = ExtResource("34_ty1g6")
+
+[node name="Rockets" type="Area3D" parent="Level/WpnPickups"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.905, -40, -15.82)
+script = ExtResource("34_1epgm")
+ammotype = 3
+ammo = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/WpnPickups/Rockets"]
+shape = SubResource("CylinderShape3D_a8y0u")
+
+[node name="Sprite3D" type="Sprite3D" parent="Level/WpnPickups/Rockets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+pixel_size = 0.0075
+billboard = 1
+texture = ExtResource("37_xhfw6")
 
 [node name="SSG" type="Node3D" parent="Level/WpnPickups" node_paths=PackedStringArray("Jingle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 26.5, 55)
@@ -1377,6 +1403,20 @@ sprite_frames = SubResource("SpriteFrames_yc10j")
 autoplay = "default"
 frame_progress = 0.42070758
 
+[node name="Coin7" type="Area3D" parent="Level/Coins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.97129, -14.809248, -22.28815)
+script = ExtResource("23_og1vs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Coins/Coin7"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("SphereShape3D_gqmmt")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Coins/Coin7"]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_yc10j")
+autoplay = "default"
+frame_progress = 0.42070758
+
 [node name="Blockade" parent="Level" node_paths=PackedStringArray("player") instance=ExtResource("37_c6pm6")]
 transform = Transform3D(-4.371139e-07, 0, 10, 0, 10, 0, -10, 0, -4.371139e-07, -9.6101265, 20.502466, -4.4553194)
 script = ExtResource("42_cjqg0")
@@ -1482,6 +1522,27 @@ draw_pass_1 = SubResource("QuadMesh_o7ddy")
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0.62506485, 0)
 shape = SubResource("BoxShape3D_bu4jf")
 
+[node name="JumpPad2" type="Node3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -40.75, 5)
+script = ExtResource("48_0loja")
+STRENGTH = 20
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Level/JumpPad2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19047165, 0)
+amount = 25
+local_coords = true
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_bu4jf")
+draw_pass_1 = SubResource("QuadMesh_o7ddy")
+
+[node name="Whee" parent="Level/JumpPad2" instance=ExtResource("48_bu4jf")]
+
+[node name="Area3D" type="Area3D" parent="Level/JumpPad2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/JumpPad2/Area3D"]
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0.62506485, 0)
+shape = SubResource("BoxShape3D_bu4jf")
+
 [node name="Key" type="Node" parent="Level"]
 
 [node name="RedKey" parent="Level/Key" instance=ExtResource("53_1v6qk")]
@@ -1550,7 +1611,7 @@ shape = SubResource("BoxShape3D_chjal")
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.3, 0)
 shape = SubResource("BoxShape3D_ty1g6")
 
-[node name="Rotating Thingy3" parent="Level" instance=ExtResource("57_e755i")]
+[node name="Rotating Thingy 2" parent="Level" instance=ExtResource("57_e755i")]
 transform = Transform3D(19.176395, 5.6803074, 0, -5.6627965, 19.117281, -1.5691819, -0.4456718, 1.5045626, 19.938347, 35, -24, -6)
 script = ExtResource("20_5poiv")
 
@@ -1656,6 +1717,7 @@ parameters/looping = true
 [connection signal="body_entered" from="Level/WpnPickups/Bullets" to="Level/WpnPickups/Bullets" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Bullets2" to="Level/WpnPickups/Bullets2" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Bullets3" to="Level/WpnPickups/Bullets3" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/WpnPickups/Rockets" to="Level/WpnPickups/Rockets" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/SSG/Area3D" to="Level/WpnPickups/SSG" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Chaingun/Area3D" to="Level/WpnPickups/Chaingun" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/RocketLauncher/Area3D" to="Level/WpnPickups/RocketLauncher" method="_on_area_3d_body_entered"]
@@ -1665,6 +1727,7 @@ parameters/looping = true
 [connection signal="body_entered" from="Level/Coins/Coin4" to="Level/Coins/Coin4" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Coins/Coin5" to="Level/Coins/Coin5" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Coins/Coin6" to="Level/Coins/Coin6" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/Coins/Coin7" to="Level/Coins/Coin7" method="_on_body_entered"]
 [connection signal="console_text" from="Level/Blockade" to="HUD" method="_consoletext"]
 [connection signal="body_entered" from="Level/Blockade/Warning" to="Level/Blockade" method="_on_warning_body_entered"]
 [connection signal="body_entered" from="Level/Teleports/Tp1/Tp" to="Level/Teleports/Tp1/Tp" method="_on_body_entered"]
@@ -1672,6 +1735,7 @@ parameters/looping = true
 [connection signal="console_text" from="Level/Teleports/Tp2/Tp" to="HUD" method="_consoletext"]
 [connection signal="body_entered" from="Level/Teleports/Tp4/Tp" to="Level/Teleports/Tp4/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/JumpPad/Area3D" to="Level/JumpPad" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/JumpPad2/Area3D" to="Level/JumpPad2" method="_on_body_entered"]
 [connection signal="consoletext" from="Level/Key/RKBlockade" to="HUD" method="_consoletext"]
 [connection signal="body_entered" from="Level/Key/RKBlockade/Warning" to="Level/Key/RKBlockade" method="_on_warning_body_entered"]
 [connection signal="consoletext" from="Level/Key/BKBlockade" to="HUD" method="_consoletext"]
