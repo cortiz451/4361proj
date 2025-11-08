@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxjujrxi2ormu"]
+[gd_scene load_steps=4 format=3 uid="uid://dqoy6y05fgdji"]
 
-[ext_resource type="Script" uid="uid://b70akj347bhf3" path="res://objects/big_bullet.gd" id="1_jpaxd"]
-[ext_resource type="Texture2D" uid="uid://2jld33y6h5pq" path="res://sprites/crosshair.png" id="2_ijfpf"]
+[ext_resource type="Script" uid="uid://c58f6b17x8war" path="res://objects/spew_bullet.gd" id="1_nty17"]
+[ext_resource type="Texture2D" uid="uid://2jld33y6h5pq" path="res://sprites/crosshair.png" id="2_lbnf6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3ndsa"]
 
@@ -10,14 +10,14 @@
 [node name="Bullet" type="Area3D" parent="."]
 collision_layer = 2
 input_ray_pickable = false
-script = ExtResource("1_jpaxd")
+script = ExtResource("1_nty17")
 
 [node name="Sprite3D" type="Sprite3D" parent="Bullet"]
 transparency = 0.74
-modulate = Color(3.2368753, 0.7406666, 0, 1)
+modulate = Color(3.2368753, 0.5326491, 3.2368753, 1)
 billboard = 1
 texture_filter = 0
-texture = ExtResource("2_ijfpf")
+texture = ExtResource("2_lbnf6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bullet"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

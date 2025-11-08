@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=82 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -36,6 +36,8 @@
 [ext_resource type="Script" uid="uid://dxscrh1t8qt1r" path="res://objects/rotating_thingy.gd" id="20_5poiv"]
 [ext_resource type="Texture2D" uid="uid://dxd7k2w5ixnmq" path="res://sprites/coin1.png" id="21_jscy8"]
 [ext_resource type="Texture2D" uid="uid://dxfmh51e8b0ph" path="res://sprites/coin2.png" id="22_pm3ni"]
+[ext_resource type="PackedScene" uid="uid://djhr5v53whqa1" path="res://objects/spew_enemy.tscn" id="22_xhfw6"]
+[ext_resource type="PackedScene" uid="uid://dqoy6y05fgdji" path="res://objects/spew_bullet.tscn" id="23_1epgm"]
 [ext_resource type="Script" uid="uid://ukxui1v3rlrf" path="res://objects/coin.gd" id="23_og1vs"]
 [ext_resource type="PackedScene" uid="uid://dcartkp2gx554" path="res://objects/superblaster.tscn" id="26_2wyq8"]
 [ext_resource type="AudioStream" uid="uid://3w8ih36begok" path="res://sounds/acheivement_get.ogg" id="28_2f3dj"]
@@ -709,6 +711,11 @@ player = NodePath("../../Player")
 [node name="chasing-enemy10" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
 transform = Transform3D(0.008707203, -0.031787455, 0.9994568, 0.009730399, 0.99944973, 0.03170255, -0.99991506, 0.009449034, 0.00901144, -92.159195, -30.57889, -9.18014)
 player = NodePath("../../Player")
+
+[node name="spew-enemy" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("22_xhfw6")]
+transform = Transform3D(-0.0034041763, 0.83421415, 0.5514301, -0.031747095, 0.55106515, -0.8338581, -0.99949, -0.0203449, 0.024607949, 43.492363, -24.664497, -6.4554906)
+player = NodePath("../../Player")
+Bullet = ExtResource("23_1epgm")
 
 [node name="Level" type="Node" parent="."]
 
@@ -1635,6 +1642,7 @@ parameters/looping = true
 [connection signal="enemy_down" from="Enemies/chasing-enemy8" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/chasing-enemy9" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/chasing-enemy10" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/spew-enemy" to="HUD" method="_on_enemy_down"]
 [connection signal="body_entered" from="Level/HP/Health" to="Level/HP/Health" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/HP/Health2" to="Level/HP/Health2" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/HP/Health3" to="Level/HP/Health3" method="_on_body_entered"]

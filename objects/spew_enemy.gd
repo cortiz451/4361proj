@@ -1,13 +1,15 @@
 extends Node3D
 
 @export var player: Node3D
+@export var Bullet : PackedScene
 
 @onready var raycast = $RayCast
+@onready var muzzle_a = $MuzzleA
+@onready var muzzle_b = $MuzzleB
 
 #obj ori progs!
-var health := 120
-#I love ATR
-var SPEED_JUSTYOUBELIEVEIT=7.5
+var health := 320
+var shots := 16
 
 var time := 0.0
 var target_position: Vector3
@@ -37,10 +39,8 @@ func _process(delta):
 					$Angry.pitch_scale=randf_range(0.9, 1.1)
 					$Angry.play()
 					alerted=true
-		else:
-			target_position=position.move_toward(player.position, delta*SPEED_JUSTYOUBELIEVEIT)
 	
-	target_position.y += (cos(time * 9) * 1) * delta  # Sine movement (up and down)
+	target_position.y += (cos(time * 5) * 1) * delta  # Sine movement (up and down)
 	time += delta
 	position = target_position
 
@@ -63,10 +63,8 @@ func damage(amount):
 func destroy():
 	$Destroy.pitch_scale=randf_range(0.9, 1.1)
 	$Destroy.play()
-	
-	#double call issues
-	if(!destroyed):
-		enemy_down.emit(1)
+
+	enemy_down.emit(1)
 	destroyed = true
 	
 	#do cool fx
@@ -78,6 +76,32 @@ func destroy():
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
 
+# Shoot when timer hits 0
+func _on_timer_timeout():
+	#do not aggro if not in aggro zone
+	if(angry):
+		raycast.force_raycast_update()
+	
+	if(destroyed): return
+
+	if raycast.is_colliding():
+		var collider = raycast.get_collider()
+		if collider.has_method("damage"):  # Raycast collides with player
+			
+			for n in shots:
+				var b=Bullet.instantiate()
+				owner.add_child(b)
+				b.transform = $Marker3D.global_transform
+		
+			muzzle_a.frame = 0
+			muzzle_a.play("default")
+			muzzle_a.rotation_degrees.z = randf_range(-45, 45)
+
+			muzzle_b.frame = 0
+			muzzle_b.play("default")
+			muzzle_b.rotation_degrees.z = randf_range(-45, 45)
+	
+
 #aggro mechanics
 func _on_aggro_body_entered(body: Node3D) -> void:
 	#if player is in body and not obscured, AH!
@@ -88,12 +112,3 @@ func _on_aggro_body_exited(body: Node3D) -> void:
 	if(body==player):
 		angry=false
 		
-
-func _on_destroy_time_timeout() -> void:
-	queue_free()
-
-
-func _on_pain_sphere_body_entered(body: Node3D) -> void:
-	if(body.has_method("damage") && !destroyed):
-		body.damage(20)
-		destroy()
