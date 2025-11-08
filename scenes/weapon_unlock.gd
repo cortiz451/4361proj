@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var Jingle: AudioStreamPlayer
-@export var unlock = 3
+@export var unlock = 0
 
 var target_position = position
 var target_rotation = rotation

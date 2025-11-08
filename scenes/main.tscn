@@ -38,9 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://dxfmh51e8b0ph" path="res://sprites/coin2.png" id="22_pm3ni"]
 [ext_resource type="Script" uid="uid://ukxui1v3rlrf" path="res://objects/coin.gd" id="23_og1vs"]
 [ext_resource type="PackedScene" uid="uid://dcartkp2gx554" path="res://objects/superblaster.tscn" id="26_2wyq8"]
-[ext_resource type="Script" uid="uid://d4gutj58celif" path="res://objects/ssg.gd" id="26_vxglm"]
 [ext_resource type="AudioStream" uid="uid://3w8ih36begok" path="res://sounds/acheivement_get.ogg" id="28_2f3dj"]
-[ext_resource type="Script" uid="uid://cr3qqoes6btp0" path="res://scripts/chaingun.gd" id="29_fv21b"]
 [ext_resource type="Texture2D" uid="uid://bjdje1dtxnu8x" path="res://sprites/shells.png" id="29_txyw0"]
 [ext_resource type="Script" uid="uid://cyjjxx67fkwsw" path="res://scripts/shells.gd" id="29_vc5cj"]
 [ext_resource type="PackedScene" uid="uid://cvervjf8gggum" path="res://objects/blaster_repeater.tscn" id="30_tel4y"]
@@ -49,6 +47,8 @@
 [ext_resource type="Script" uid="uid://cny485lvwyxhy" path="res://scripts/bullets.gd" id="33_nvyfr"]
 [ext_resource type="Texture2D" uid="uid://cc00uvcy8gxby" path="res://sprites/bullets.png" id="34_ty1g6"]
 [ext_resource type="PackedScene" uid="uid://6k0llye1167u" path="res://objects/blockade.tscn" id="37_c6pm6"]
+[ext_resource type="Script" uid="uid://w2t8fw3uqog3" path="res://scenes/weapon_unlock.gd" id="38_od4ux"]
+[ext_resource type="PackedScene" uid="uid://s1hptq4hmpvo" path="res://models/rocketblaster.tscn" id="39_ro3en"]
 [ext_resource type="Script" uid="uid://20mwe6t33io1" path="res://objects/blockade.gd" id="42_cjqg0"]
 [ext_resource type="Script" uid="uid://bssmkht6jwadv" path="res://objects/tp_locked.gd" id="45_j2jfr"]
 [ext_resource type="AudioStream" uid="uid://cueak1mk2hw5k" path="res://sounds/jingle.ogg" id="45_vchkt"]
@@ -1250,8 +1250,9 @@ texture = ExtResource("34_ty1g6")
 
 [node name="SSG" type="Node3D" parent="Level/WpnPickups" node_paths=PackedStringArray("Jingle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 26.5, 55)
-script = ExtResource("26_vxglm")
+script = ExtResource("38_od4ux")
 Jingle = NodePath("../../../Jingle")
+unlock = 2
 
 [node name="Area3D" type="Area3D" parent="Level/WpnPickups/SSG"]
 
@@ -1264,8 +1265,9 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.2, 0)
 
 [node name="Chaingun" type="Node3D" parent="Level/WpnPickups" node_paths=PackedStringArray("Jingle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.825, 21, -41)
-script = ExtResource("29_fv21b")
+script = ExtResource("38_od4ux")
 Jingle = NodePath("../../../Jingle")
+unlock = 3
 
 [node name="Area3D" type="Area3D" parent="Level/WpnPickups/Chaingun"]
 
@@ -1274,6 +1276,19 @@ shape = SubResource("SphereShape3D_og1vs")
 
 [node name="blaster-repeater" parent="Level/WpnPickups/Chaingun" instance=ExtResource("30_tel4y")]
 transform = Transform3D(0.4894337, 0, 0.10224802, 0, 0.5, 0, -0.10224802, 0, 0.4894337, 0, -0.2, 0)
+
+[node name="RocketLauncher" type="Node3D" parent="Level/WpnPickups" node_paths=PackedStringArray("Jingle")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, -32.5, -5.5)
+script = ExtResource("38_od4ux")
+Jingle = NodePath("../../../Jingle")
+unlock = 4
+
+[node name="Area3D" type="Area3D" parent="Level/WpnPickups/RocketLauncher"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/WpnPickups/RocketLauncher/Area3D"]
+shape = SubResource("SphereShape3D_og1vs")
+
+[node name="blaster" parent="Level/WpnPickups/RocketLauncher" instance=ExtResource("39_ro3en")]
 
 [node name="Coins" type="Node" parent="Level"]
 
@@ -1415,25 +1430,6 @@ autoplay = "nope"
 
 [node name="Dest2" type="Marker3D" parent="Level/Teleports/Tp2"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.4111595, 23.519804, -0.65664625)
-
-[node name="Tp3" type="Node" parent="Level/Teleports"]
-
-[node name="Tp" type="Area3D" parent="Level/Teleports/Tp3" node_paths=PackedStringArray("dest")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.323036, 1.2380781, -3.0444698)
-script = ExtResource("18_gqmmt")
-dest = NodePath("../Dest3")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Teleports/Tp3/Tp"]
-shape = SubResource("CylinderShape3D_muem4")
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Teleports/Tp3/Tp"]
-transparency = 0.6
-billboard = 1
-sprite_frames = SubResource("SpriteFrames_muem4")
-autoplay = "default"
-
-[node name="Dest3" type="Marker3D" parent="Level/Teleports/Tp3"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25.949932, -27.710947, -3.7980132)
 
 [node name="Tp4" type="Node" parent="Level/Teleports"]
 
@@ -1654,6 +1650,7 @@ parameters/looping = true
 [connection signal="body_entered" from="Level/WpnPickups/Bullets3" to="Level/WpnPickups/Bullets3" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/SSG/Area3D" to="Level/WpnPickups/SSG" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Chaingun/Area3D" to="Level/WpnPickups/Chaingun" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Level/WpnPickups/RocketLauncher/Area3D" to="Level/WpnPickups/RocketLauncher" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Level/Coins/Coin" to="Level/Coins/Coin" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Coins/Coin2" to="Level/Coins/Coin2" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Coins/Coin3" to="Level/Coins/Coin3" method="_on_body_entered"]
@@ -1665,7 +1662,6 @@ parameters/looping = true
 [connection signal="body_entered" from="Level/Teleports/Tp1/Tp" to="Level/Teleports/Tp1/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Teleports/Tp2/Tp" to="Level/Teleports/Tp2/Tp" method="_on_body_entered"]
 [connection signal="console_text" from="Level/Teleports/Tp2/Tp" to="HUD" method="_consoletext"]
-[connection signal="body_entered" from="Level/Teleports/Tp3/Tp" to="Level/Teleports/Tp3/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Teleports/Tp4/Tp" to="Level/Teleports/Tp4/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/JumpPad/Area3D" to="Level/JumpPad" method="_on_body_entered"]
 [connection signal="consoletext" from="Level/Key/RKBlockade" to="HUD" method="_consoletext"]

@@ -9,8 +9,9 @@
 script = ExtResource("3_ms8kt")
 Proj = ExtResource("1_1ov0n")
 model = ExtResource("2_1ov0n")
-cooldown = 1.5
+cooldown = 1.25
 ammotype = 3
+inInventory = false
 hitscan = false
 sound_shoot = "sounds/rl.ogg"
 crosshair = ExtResource("2_ms8kt")

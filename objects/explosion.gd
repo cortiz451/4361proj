@@ -12,8 +12,8 @@ func _on_body_entered(body: Node3D) -> void:
 		body.gravity=-20
 	else:
 		$Boom.play()
-		$"../BoomAudio".play()
-	await get_tree().create_timer(0.3).timeout
+		$BoomAudio.play()
+	await get_tree().create_timer(0.5).timeout
 	queue_free()
 
 
@@ -21,6 +21,6 @@ func _on_area_entered(area: Area3D) -> void:
 	if(area.has_method("damage")):
 		area.damage(DMG)
 	$Boom.play()
-	$"../BoomAudio".play()
-	await get_tree().create_timer(0.3).timeout
+	$BoomAudio.play()
+	await get_tree().create_timer(0.5).timeout
 	queue_free()

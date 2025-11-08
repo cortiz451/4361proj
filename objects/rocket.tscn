@@ -24,10 +24,52 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_y1a8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yi8md")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y1a8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yi8md")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y1a8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yi8md")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y1a8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yi8md")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y1a8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yi8md")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y1a8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yi8md")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y1a8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yi8md")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y1a8c")
 }],
 "loop": false,
 "name": &"default",
-"speed": 15.0
+"speed": 25.0
 }]
 
 [node name="Node3D" type="Node3D"]
@@ -57,12 +99,12 @@ script = ExtResource("3_tgfi0")
 shape = SubResource("SphereShape3D_pb2y6")
 
 [node name="Boom" type="AnimatedSprite3D" parent="Explosion"]
-modulate = Color(1, 1, 1, 0.3882353)
+modulate = Color(1, 1, 1, 0.39215687)
 pixel_size = 0.03
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_ek3pu")
 
-[node name="BoomAudio" type="AudioStreamPlayer3D" parent="."]
+[node name="BoomAudio" type="AudioStreamPlayer3D" parent="Explosion"]
 stream = ExtResource("7_ek3pu")
 bus = &"SFX"
 

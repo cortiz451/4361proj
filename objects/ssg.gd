@@ -1,12 +1,11 @@
 extends Node3D
 
 @export var Jingle: AudioStreamPlayer
+@export var unlock = 2
 
 var target_position = position
 var target_rotation = rotation
 var time = 0.0
-
-var unlock = 2
 
 func _process(delta):
 	target_position.y += (cos(time * 5 + unlock) * 1) * delta  # Sine movement (up and down)
