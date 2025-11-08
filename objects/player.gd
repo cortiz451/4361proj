@@ -60,6 +60,8 @@ signal key_updated
 
 @export var crosshair:TextureRect
 
+@onready var tmp = ConfigFile.new()
+
 # Functions
 
 func _ready():
@@ -67,8 +69,32 @@ func _ready():
 	weapon = weapons[weapon_index] # Weapon must never be nil
 	initiate_change_weapon(0)
 	
+	#used to track deaths/tp status
+	var e = tmp.load("user://tmp")
+	
+	if(e!=OK):
+		print("COULD NOT LOAD FILE!!")
+	
 	#update enemy count the best way I know how
 	initWait.start(0.5)
+	
+	consoletext.emit(str(tmp.get_value("Game.Info", "tp1")))
+	if(tmp.get_value("Game.Info", "died")):
+		var deathmsg="You died! "
+		#death message
+		match randi_range(0,3):
+			0:
+				deathmsg+=("It was nice knowing you...")
+			1:
+				deathmsg+=("Have you tried turning the game off and on again?")
+			2:
+				deathmsg+=("You almost had it, too!")
+			3:
+				deathmsg+=("Maybe you just need to believe in yourself...")
+		tmp.set_value("Game.Info", "died", false)
+		tmp.save("user://tmp")
+		
+		consoletext.emit(deathmsg)
 
 func _process(delta):
 	
@@ -432,16 +458,8 @@ func damage(amount):
 	dmgcool.start(DAMAGE_COOLDOWN)
 	
 	if health < 0:
-		#doesn't do anything right now; maybe if we add a game over screen
-		match randi_range(0,3):
-			0:
-				consoletext.emit("It was nice knowing you...")
-			1:
-				consoletext.emit("Have you tried turning it off and on again?")
-			2:
-				consoletext.emit("You almost had it, too!")
-			3:
-				consoletext.emit("Maybe you just need to believe in yourself...")
+		tmp.set_value("Game.Info", "died", true)
+		tmp.save("user://tmp")
 		SceneLoader.reload_current_scene() # Reset when out of health
 
 

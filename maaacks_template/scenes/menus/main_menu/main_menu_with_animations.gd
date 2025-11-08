@@ -65,6 +65,17 @@ func _ready() -> void:
 	_show_level_select_if_set()
 	_show_continue_if_set()
 	animation_state_machine = $MenuAnimationTree.get("parameters/playback")
+	
+	#used to track deaths/tp status
+	var tmp = ConfigFile.new()
+	var e = tmp.load("user://tmp")
+	
+	if(e!=OK):
+		return
+	
+	tmp.set_value("Game.Info", "died", false)
+	tmp.set_value("Game.Info", "tp1", false)
+	tmp.save("user://tmp")
 
 func _on_continue_game_button_pressed() -> void:
 	GameState.continue_game()

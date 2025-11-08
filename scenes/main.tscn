@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=86 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -39,6 +39,8 @@
 [ext_resource type="PackedScene" uid="uid://djhr5v53whqa1" path="res://objects/spew_enemy.tscn" id="22_xhfw6"]
 [ext_resource type="PackedScene" uid="uid://dqoy6y05fgdji" path="res://objects/spew_bullet.tscn" id="23_1epgm"]
 [ext_resource type="Script" uid="uid://ukxui1v3rlrf" path="res://objects/coin.gd" id="23_og1vs"]
+[ext_resource type="PackedScene" uid="uid://ca25kh31waiua" path="res://objects/boss_enemy.tscn" id="24_152kg"]
+[ext_resource type="PackedScene" uid="uid://ct05qboq6adm0" path="res://objects/boss_bullet.tscn" id="25_r4e17"]
 [ext_resource type="PackedScene" uid="uid://dcartkp2gx554" path="res://objects/superblaster.tscn" id="26_2wyq8"]
 [ext_resource type="AudioStream" uid="uid://3w8ih36begok" path="res://sounds/acheivement_get.ogg" id="28_2f3dj"]
 [ext_resource type="Texture2D" uid="uid://bjdje1dtxnu8x" path="res://sprites/shells.png" id="29_txyw0"]
@@ -748,6 +750,11 @@ Bullet = ExtResource("23_1epgm")
 transform = Transform3D(-0.22897534, 0.1447052, 0.96261656, -0.023901766, 0.98775524, -0.15416956, -0.97313845, -0.058309272, -0.2227129, -151.01648, -31.30414, -5.49728)
 player = NodePath("../../Player")
 Bullet = ExtResource("23_1epgm")
+
+[node name="boss" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("24_152kg")]
+transform = Transform3D(0.24049234, 0, 2.990345, 0, 3, 0, -2.990345, 0, 0.24049234, -276.39987, -29.14649, -11.637871)
+player = NodePath("../../Player")
+Bullet = ExtResource("25_r4e17")
 
 [node name="Level" type="Node" parent="."]
 
@@ -1661,10 +1668,11 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.55
 
 [node name="Tp5" type="Node" parent="Level/Teleports"]
 
-[node name="Tp" type="Area3D" parent="Level/Teleports/Tp5" node_paths=PackedStringArray("dest")]
+[node name="Tp" type="Area3D" parent="Level/Teleports/Tp5" node_paths=PackedStringArray("dest", "player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -2)
 script = ExtResource("51_1epgm")
 dest = NodePath("../Dest5")
+player = NodePath("../../../../Player")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Teleports/Tp5/Tp"]
 shape = SubResource("CylinderShape3D_muem4")
@@ -1899,6 +1907,7 @@ parameters/looping = true
 [connection signal="enemy_down" from="Enemies/spew-enemy" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/spew-enemy2" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/spew-enemy3" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/boss" to="HUD" method="_on_enemy_down"]
 [connection signal="body_entered" from="Level/HP/Health" to="Level/HP/Health" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/HP/Health2" to="Level/HP/Health2" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/HP/Health3" to="Level/HP/Health3" method="_on_body_entered"]
