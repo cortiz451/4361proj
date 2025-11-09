@@ -17,10 +17,11 @@ var animation_state_machine : AnimationNodeStateMachinePlayback
 func load_game_scene() -> void:
 	#used to track deaths/tp status
 	var tmp = ConfigFile.new()
-	var e = tmp.load("user://tmp")
 	
-	if(e!=OK):
-		return
+	#causes issues w/ first load...
+	#var e = tmp.load("user://tmp")
+	#if(e!=OK):
+	#	return
 	
 	tmp.set_value("Game.Info", "died", false)
 	tmp.set_value("Game.Info", "tp1", false)
