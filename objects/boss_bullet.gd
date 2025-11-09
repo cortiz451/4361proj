@@ -10,7 +10,7 @@ var velocity = Vector3.ZERO
 #how fast do you want it to go?
 var SPEED = 40
 
-var DMG=25;
+var DMG=20;
 
 func _physics_process(delta):
 	velocity = g*delta*SPEED

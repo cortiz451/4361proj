@@ -39,6 +39,8 @@ var maxAmmo=[1, 100, 512, 50]
 
 var keys=[false,false,false]
 
+var fullscreen=false
+
 #Sig-nal.
 signal health_updated
 signal ammo_updated
@@ -58,14 +60,21 @@ signal btp_updated
 @onready var dmgcool = $DmgCool
 @onready var resupplytime = $"../Level/WpnPickups/Resupply/Timer"
 @onready var initWait = $"initWait"
+@onready var hudfade=$"../HUD/Fade"
 
 @export var crosshair:TextureRect
 
 @onready var tmp = ConfigFile.new()
 
+var player_mouse_sensitivity : float = PlayerConfig.get_config(AppSettings.INPUT_SECTION, "MouseSensitivity", 1.0)
+var player_joypad_sensitivity : float = PlayerConfig.get_config(AppSettings.INPUT_SECTION, "JoypadSensitivity", 1.0)
+
 # Functions
 
 func _ready():
+	
+	hudfade.color=Color(0,0,0,0)
+	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	weapon = weapons[weapon_index] # Weapon must never be nil
 	initiate_change_weapon(0)
@@ -80,7 +89,6 @@ func _ready():
 	initWait.start(0.5)
 	
 	#update tp5 (boss tp) status
-	consoletext.emit(str(tmp.get_value("Game.Info", "tp1")))
 	if(tmp.get_value("Game.Info", "tp1")):
 		btp_updated.emit()
 	
@@ -102,7 +110,6 @@ func _ready():
 		consoletext.emit(deathmsg)
 
 func _process(delta):
-	
 	# Handle functions
 	
 	handle_controls(delta)
@@ -150,7 +157,7 @@ func _process(delta):
 
 func _input(event):
 	if event is InputEventMouseMotion and mouse_captured:
-		input_mouse = event.relative / mouse_sensitivity
+		input_mouse = (event.relative / mouse_sensitivity) #* player_mouse_sensitivity
 		handle_rotation(event.relative.x, event.relative.y, false)
 
 func handle_controls(delta):
@@ -199,12 +206,12 @@ func handle_controls(delta):
 
 func handle_rotation(xRot: float, yRot: float, isController: bool, delta: float = 0.0):
 	if isController:
-		rotation_target -= Vector3(-yRot, -xRot, 0).limit_length(1.0) * gamepad_sensitivity
+		rotation_target -= Vector3(-yRot, -xRot, 0).limit_length(1.0) * gamepad_sensitivity * player_joypad_sensitivity
 		rotation_target.x = clamp(rotation_target.x, deg_to_rad(-90), deg_to_rad(90))
 		camera.rotation.x = lerp_angle(camera.rotation.x, rotation_target.x, delta * 25)
 		rotation.y = lerp_angle(rotation.y, rotation_target.y, delta * 25)
 	else:
-		rotation_target += (Vector3(-yRot, -xRot, 0) / mouse_sensitivity)
+		rotation_target += (Vector3(-yRot, -xRot, 0) / mouse_sensitivity) * player_mouse_sensitivity
 		rotation_target.x = clamp(rotation_target.x, deg_to_rad(-90), deg_to_rad(90))
 		camera.rotation.x = rotation_target.x;
 		rotation.y = rotation_target.y;
@@ -398,6 +405,10 @@ func heal(hp):
 	if(prevhp<25):
 		better+=" you really needed it!"
 	consoletext.emit(better)
+
+func sethp(hp):
+	health=hp
+	health_updated.emit(health)
 
 func keyGet(type):
 	key_updated.emit(type, true)

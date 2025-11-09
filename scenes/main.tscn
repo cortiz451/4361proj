@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=91 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -70,6 +70,7 @@
 [ext_resource type="PackedScene" uid="uid://brikpg2j61va5" path="res://objects/rotating_thingy_2.tscn" id="57_e755i"]
 [ext_resource type="PackedScene" uid="uid://cf0nr61kufqjx" path="res://objects/blockade_yellow.tscn" id="57_ro3en"]
 [ext_resource type="Script" uid="uid://pwhx32u1aspq" path="res://objects/keyblock.gd" id="57_t5ykj"]
+[ext_resource type="Script" uid="uid://ck1icqy8v2ckf" path="res://scenes/fade.gd" id="71_a82wo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_og1vs"]
 font = ExtResource("11_y6deb")
@@ -195,6 +196,8 @@ material = SubResource("StandardMaterial3D_0loja")
 size = Vector2(0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bu4jf"]
+
+[sub_resource type="AnimationRootNode" id="AnimationRootNode_a82wo"]
 
 [node name="Main" type="Node3D"]
 metadata/_edit_horizontal_guides_ = [591.0, 640.0]
@@ -483,6 +486,11 @@ offset_bottom = -16.0
 grow_vertical = 0
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("16_dnhof")
+
+[node name="Fade" type="ColorRect" parent="HUD"]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0)
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -1852,6 +1860,15 @@ volume_db = -12.0
 playback_type = 1
 parameters/looping = true
 
+[node name="AnimationTree" type="AnimationTree" parent="BackgroundMusicPlayer"]
+tree_root = SubResource("AnimationRootNode_a82wo")
+
+[node name="Fade" type="Node" parent="."]
+script = ExtResource("71_a82wo")
+
+[node name="Timer" type="Timer" parent="Fade"]
+wait_time = 0.5
+
 [connection signal="ammo_updated" from="Player" to="HUD" method="_on_player_ammo_updated"]
 [connection signal="btp_updated" from="Player" to="Level/Teleports/Tp5/Tp" method="_on_player_btp_updated"]
 [connection signal="coins_updated" from="Player" to="HUD" method="_on_player_coins_updated"]
@@ -1930,6 +1947,7 @@ parameters/looping = true
 [connection signal="enemy_down" from="Enemies/spew-enemy" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/spew-enemy2" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/spew-enemy3" to="HUD" method="_on_enemy_down"]
+[connection signal="end_game" from="Enemies/boss" to="Fade" method="_on_boss_end_game"]
 [connection signal="enemy_down" from="Enemies/boss" to="HUD" method="_on_enemy_down"]
 [connection signal="body_entered" from="Level/HP/Health" to="Level/HP/Health" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/HP/Health2" to="Level/HP/Health2" method="_on_body_entered"]
@@ -1976,6 +1994,7 @@ parameters/looping = true
 [connection signal="body_entered" from="Level/Key/BKBlockade/Warning" to="Level/Key/BKBlockade" method="_on_warning_body_entered"]
 [connection signal="body_entered" from="Level/Key/YKBlockade/Warning" to="Level/Key/YKBlockade" method="_on_warning_body_entered"]
 [connection signal="timeout" from="BlockadeSanityTimer" to="Level/Blockade" method="_on_blockade_sanity_timer_timeout"]
+[connection signal="timeout" from="Fade/Timer" to="Fade" method="_on_timer_timeout"]
 
 [editable path="Level/VMFNode/Entities/lights/light_environment"]
 [editable path="Level/VMFNode/Entities/lights/light_330"]

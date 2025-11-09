@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cr5qst4g2kwro"]
+[gd_scene load_steps=29 format=3 uid="uid://cr5qst4g2kwro"]
 
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_game_template/base/nodes/menus/main_menu/main_menu.tscn" id="1_5omaq"]
 [ext_resource type="Theme" uid="uid://bmipurejtlhpm" path="res://materials/main_theme.tres" id="2_61jja"]
@@ -335,12 +335,19 @@ outline_size = 12
 outline_color = Color(0.42352942, 0.4392157, 0.98039216, 0.4509804)
 shadow_offset = Vector2(2, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_h0ckf"]
+font = ExtResource("6_61jja")
+font_size = 24
+outline_size = 12
+outline_color = Color(0.42352942, 0.4392157, 0.98039216, 0.4509804)
+shadow_offset = Vector2(2, 1)
+
 [node name="MainMenu" instance=ExtResource("1_5omaq")]
 theme = ExtResource("2_61jja")
 script = ExtResource("2_hiy74")
 level_select_packed_scene = null
 confirm_new_game = false
-game_scene_path = "uid://dxvvlck8lej3f"
+game_scene_path = "uid://3f3cne2yh7ff"
 options_packed_scene = ExtResource("5_8m5tm")
 credits_packed_scene = ExtResource("4_eyao0")
 
@@ -450,6 +457,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="." index="9"]
+layout_mode = 0
+offset_left = 805.0
+offset_top = 277.0
+offset_right = 1206.0
+offset_bottom = 494.0
+text = "NOTE: Going back to Main Menu from the pause menu is broken right now! If you need to change settings, either restart or use the arrow keys + enter. Sorry
+
+Also, visual options don't quite work. Sorry^2."
+label_settings = SubResource("LabelSettings_h0ckf")
+autowrap_mode = 3
 
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/ContinueGameButton" to="." method="_on_continue_game_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]

@@ -9,7 +9,7 @@ var h = Vector3.FORWARD * -20 + Vector3.LEFT*(-3+6*randf()) + Vector3.UP*(-2+4*r
 var velocity = Vector3.ZERO
 
 #how fast do you want it to go?
-var SPEED = 45
+var SPEED = 65
 
 var DMG=20;
 

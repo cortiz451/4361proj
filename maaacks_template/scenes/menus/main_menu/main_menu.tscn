@@ -1,17 +1,72 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbj0jsuxssncm"]
+[gd_scene load_steps=13 format=3 uid="uid://cbj0jsuxssncm"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/nodes/menus/main_menu/main_menu.tscn" id="1_jhuxg"]
-[ext_resource type="Script" path="res://maaacks_template/scenes/menus/main_menu/main_menu.gd" id="2_akplf"]
-[ext_resource type="PackedScene" path="res://maaacks_template/scenes/windows/main_menu_options_window.tscn" id="3_vfta6"]
-[ext_resource type="PackedScene" path="res://maaacks_template/scenes/windows/main_menu_credits_window.tscn" id="4_nuhfh"]
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="5_nrhhn"]
+[ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_game_template/base/nodes/menus/main_menu/main_menu.tscn" id="1_jhuxg"]
+[ext_resource type="Script" uid="uid://bwibni2fethw0" path="res://maaacks_template/scenes/menus/main_menu/main_menu.gd" id="2_akplf"]
+[ext_resource type="PackedScene" uid="uid://dg1aqvirfe3j3" path="res://maaacks_template/scenes/windows/main_menu_options_window.tscn" id="3_vfta6"]
+[ext_resource type="PackedScene" uid="uid://cd0imhxda1x7o" path="res://maaacks_template/scenes/windows/main_menu_credits_window.tscn" id="4_nuhfh"]
+[ext_resource type="FontFile" uid="uid://brilqc8nb0env" path="res://fonts/texgyreadventor-regular.otf" id="5_akplf"]
+[ext_resource type="AudioStream" uid="uid://duwb1w0i311aw" path="res://sounds/nope.ogg" id="5_jndlq"]
+[ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_game_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="5_nrhhn"]
+[ext_resource type="Texture2D" uid="uid://cnnmaqioo7swr" path="res://materials/bg.png" id="5_vfta6"]
+[ext_resource type="AudioStream" uid="uid://d4e5q4dijcbgm" path="res://sounds/ouch.ogg" id="6_u86gn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nrhhn"]
+font = ExtResource("5_akplf")
+font_size = 12
+outline_size = 12
+outline_color = Color(0.42352942, 0.4392157, 0.98039216, 0.4509804)
+shadow_offset = Vector2(2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vfta6"]
+font = ExtResource("5_akplf")
+font_size = 48
+outline_size = 12
+outline_color = Color(0.42352942, 0.4392157, 0.98039216, 0.4509804)
+shadow_offset = Vector2(2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nuhfh"]
+font = ExtResource("5_akplf")
+font_size = 24
+outline_size = 12
+outline_color = Color(0.42352942, 0.4392157, 0.98039216, 0.4509804)
+shadow_offset = Vector2(2, 1)
 
 [node name="MainMenu" instance=ExtResource("1_jhuxg")]
 script = ExtResource("2_akplf")
 level_select_packed_scene = null
-confirm_new_game = true
+confirm_new_game = false
+game_scene_path = "uid://dxvvlck8lej3f"
 options_packed_scene = ExtResource("3_vfta6")
 credits_packed_scene = ExtResource("4_nuhfh")
+
+[node name="UISoundController" parent="." index="0"]
+button_hovered = ExtResource("5_jndlq")
+button_focused = ExtResource("6_u86gn")
+
+[node name="BackgroundTextureRect" parent="." index="2"]
+texture = ExtResource("5_vfta6")
+
+[node name="VersionLabel" parent="VersionMargin/VersionContainer" index="0"]
+text = "v0.0002"
+label_settings = SubResource("LabelSettings_nrhhn")
+
+[node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
+text = "MazeQuest 3D:"
+label_settings = SubResource("LabelSettings_vfta6")
+auto_update = false
+
+[node name="SubTitleLabel" parent="MenuContainer/SubTitleMargin/SubTitleContainer" index="0"]
+text = " Revenge of the Evil, No-Good, Nefarious Enemies!"
+label_settings = SubResource("LabelSettings_nuhfh")
+
+[node name="MenuButtonsBoxContainer" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer" index="0"]
+offset_left = -608.0
+offset_top = 32.0
+offset_right = -480.0
+offset_bottom = 240.0
+
+[node name="NewGameButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="0"]
+text = "Start Game"
 
 [node name="ContinueGameButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="1"]
 unique_name_in_owner = true

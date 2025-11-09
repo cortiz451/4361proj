@@ -8,6 +8,8 @@ extends Node3D
 @onready var muzzle_a = $MuzzleA
 @onready var muzzle_b = $MuzzleB
 
+signal end_game
+
 #obj ori progs!
 var health := 5000
 var shots := 10
@@ -79,7 +81,11 @@ func destroy():
 	$Timer.stop()
 	$Timer2.stop()
 	$Timer3.stop()
-	await get_tree().create_timer(1.5).timeout
+	
+	end_game.emit()
+	
+	await get_tree().create_timer(2).timeout
+	
 	queue_free()
 
 # Shoot when timer hits 0
