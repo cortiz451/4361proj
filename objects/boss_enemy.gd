@@ -2,6 +2,7 @@ extends Node3D
 
 @export var player: Node3D
 @export var Bullet : PackedScene
+@export var Bullet2 : PackedScene
 
 @onready var raycast = $RayCast
 @onready var muzzle_a = $MuzzleA
@@ -151,7 +152,7 @@ func _on_timer_3_timeout() -> void:
 			await get_tree().create_timer(0.5).timeout
 			for n in shots:
 				await get_tree().create_timer(0.25).timeout
-				var b=Bullet.instantiate()
+				var b=Bullet2.instantiate()
 				owner.add_child(b)
 				b.transform = $Marker3D3.global_transform
 				$Pew2.play()

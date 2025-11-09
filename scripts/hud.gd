@@ -7,6 +7,7 @@ var lastupdate=0.0
 var enemies=0
 var thingsToSay=[]
 
+@onready var hp=$"../Player".health
 @onready var enemycount=$"../Enemies".get_children().size()
 @onready var coincount=$"../Level/Coins".get_children().size()
 
@@ -17,21 +18,23 @@ func _process(delta):
 	#INTEGER DIVISION IS THE POINT, GODOT.
 	@warning_ignore("integer_division")
 	$Time.text = "Time: %d:%02d.%03d" % [(Time.get_ticks_msec()/60000), ((Time.get_ticks_msec()/1000)%60), (Time.get_ticks_msec()%1000)]
-
-func _on_health_updated(health):
-	$Health.text = "Health: "+ str(health) + "%"
 	
-	if(health>100):
+	#update face constantly!
+	hp=$"../Player".health
+	if(hp>100):
 		$face_wow.visible=true
-	elif(health>50):
+	elif(hp>50):
 		$face_wow.visible=false
 		$face_good.visible=true
-	elif(health>25):
+	elif(hp>25):
 		$face_good.visible=false
 		$face_ok.visible=true
 	else:
 		$face_ok.visible=false
 		$face_bad.visible=true
+
+func _on_health_updated(health):
+	$Health.text = "Health: "+ str(health) + "%"
 
 func _on_player_ammo_updated(weaponammo, type) -> void:
 	if(displayAmmo):

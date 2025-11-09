@@ -4,14 +4,8 @@ extends Area3D
 @export var player: Node3D
 
 var unlocked=false
-var tmp = ConfigFile.new()
 
 signal console_text
-
-func _process(_delta):
-	if(tmp.get_value("Game.Info","tp1", false)):
-		unlocked=true
-		$AnimatedSprite3D.animation="default"
 
 #teleport player
 func _on_body_entered(body: Node3D) -> void:
@@ -19,18 +13,23 @@ func _on_body_entered(body: Node3D) -> void:
 		body.position=dest.position
 		Audio.play("sounds/tp.ogg")
 	else:
-		console_text.emit("Haven't unlocked that yet...")
+		console_text.emit("I'm going to need to find another resupply in order to unlock this one...")
 		Audio.play("sounds/nope.ogg")
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if(body.has_method("keyGet")):
-		tmp.load("user://tmp")
 		console_text.emit("Teleport unlocked! Hopefully you won't need it...")
 		$"../../../../JingleUnlock".play()
 		unlocked=true
-		$AnimatedSprite3D.animation="default"
-		tmp.set_value("Game.Info", "tp1", true)
-		tmp.save("user://tmp")
+		#threads
+		body.bossTpUnlocked()
 		
 		$Area3D.queue_free()
+
+
+func _on_player_btp_updated() -> void:
+	console_text.emit("Teleport unlocked! You might need it...")
+	$"../../../../JingleUnlock".play()
+	unlocked=true
+	$Area3D.queue_free()

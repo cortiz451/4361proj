@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=89 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://ca25kh31waiua" path="res://objects/boss_enemy.tscn" id="24_152kg"]
 [ext_resource type="PackedScene" uid="uid://ct05qboq6adm0" path="res://objects/boss_bullet.tscn" id="25_r4e17"]
 [ext_resource type="PackedScene" uid="uid://dcartkp2gx554" path="res://objects/superblaster.tscn" id="26_2wyq8"]
+[ext_resource type="PackedScene" uid="uid://kusronv2ccrs" path="res://objects/boss_bullet2.tscn" id="26_y57op"]
 [ext_resource type="AudioStream" uid="uid://3w8ih36begok" path="res://sounds/acheivement_get.ogg" id="28_2f3dj"]
 [ext_resource type="Texture2D" uid="uid://bjdje1dtxnu8x" path="res://sprites/shells.png" id="29_txyw0"]
 [ext_resource type="PackedScene" uid="uid://cvervjf8gggum" path="res://objects/blaster_repeater.tscn" id="30_tel4y"]
@@ -64,6 +65,7 @@
 [ext_resource type="Script" uid="uid://fo3pxy7ftesl" path="res://objects/tp_locked2.gd" id="51_1epgm"]
 [ext_resource type="PackedScene" uid="uid://ccarjk0gyirp" path="res://objects/key.tscn" id="53_1v6qk"]
 [ext_resource type="PackedScene" uid="uid://b20nvt7fs0xhb" path="res://objects/blockade_red.tscn" id="54_augu2"]
+[ext_resource type="Texture2D" uid="uid://dramn5jq0ov8d" path="res://sprites/bosstp.png" id="55_mlv25"]
 [ext_resource type="PackedScene" uid="uid://dgv5oxmgnso1k" path="res://objects/blockade_blue.tscn" id="56_kf5aa"]
 [ext_resource type="PackedScene" uid="uid://brikpg2j61va5" path="res://objects/rotating_thingy_2.tscn" id="57_e755i"]
 [ext_resource type="PackedScene" uid="uid://cf0nr61kufqjx" path="res://objects/blockade_yellow.tscn" id="57_ro3en"]
@@ -132,6 +134,28 @@ animations = [{
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_muem4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_muem4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_0ld40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_gqmmt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_dp3eg")
+}],
+"loop": true,
+"name": &"nope",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mlv25"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -755,6 +779,7 @@ Bullet = ExtResource("23_1epgm")
 transform = Transform3D(0.24049234, 0, 2.990345, 0, 3, 0, -2.990345, 0, 0.24049234, -276.39987, -29.14649, -11.637871)
 player = NodePath("../../Player")
 Bullet = ExtResource("25_r4e17")
+Bullet2 = ExtResource("26_y57op")
 
 [node name="Level" type="Node" parent="."]
 
@@ -1640,7 +1665,7 @@ shape = SubResource("CylinderShape3D_muem4")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Teleports/Tp2/Tp"]
 transparency = 0.6
 billboard = 1
-sprite_frames = SubResource("SpriteFrames_muem4")
+sprite_frames = SubResource("SpriteFrames_mlv25")
 animation = &"nope"
 autoplay = "nope"
 
@@ -1677,18 +1702,15 @@ player = NodePath("../../../../Player")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Teleports/Tp5/Tp"]
 shape = SubResource("CylinderShape3D_muem4")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Teleports/Tp5/Tp"]
-transparency = 0.6
-billboard = 1
-sprite_frames = SubResource("SpriteFrames_muem4")
-animation = &"nope"
-autoplay = "nope"
-
 [node name="Area3D" type="Area3D" parent="Level/Teleports/Tp5/Tp"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Teleports/Tp5/Tp/Area3D"]
 transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, -198, -32, -16)
 shape = SubResource("BoxShape3D_1epgm")
+
+[node name="Sprite3D" type="Sprite3D" parent="Level/Teleports/Tp5/Tp"]
+billboard = 1
+texture = ExtResource("55_mlv25")
 
 [node name="Dest5" type="Marker3D" parent="Level/Teleports/Tp5"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -205.53984, -32, -11.92027)
@@ -1831,6 +1853,7 @@ playback_type = 1
 parameters/looping = true
 
 [connection signal="ammo_updated" from="Player" to="HUD" method="_on_player_ammo_updated"]
+[connection signal="btp_updated" from="Player" to="Level/Teleports/Tp5/Tp" method="_on_player_btp_updated"]
 [connection signal="coins_updated" from="Player" to="HUD" method="_on_player_coins_updated"]
 [connection signal="consoletext" from="Player" to="HUD" method="_consoletext"]
 [connection signal="drain_updated" from="Player" to="HUD" method="_on_player_drain_updated"]

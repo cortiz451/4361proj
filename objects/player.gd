@@ -47,6 +47,7 @@ signal coins_updated
 signal init_enemycount
 signal consoletext
 signal key_updated
+signal btp_updated
 
 @onready var camera = $Head/Camera
 @onready var raycast = $Head/Camera/RayCast
@@ -78,7 +79,11 @@ func _ready():
 	#update enemy count the best way I know how
 	initWait.start(0.5)
 	
+	#update tp5 (boss tp) status
 	consoletext.emit(str(tmp.get_value("Game.Info", "tp1")))
+	if(tmp.get_value("Game.Info", "tp1")):
+		btp_updated.emit()
+	
 	if(tmp.get_value("Game.Info", "died")):
 		var deathmsg="You died! "
 		#death message
@@ -461,6 +466,11 @@ func damage(amount):
 		tmp.set_value("Game.Info", "died", true)
 		tmp.save("user://tmp")
 		SceneLoader.reload_current_scene() # Reset when out of health
+
+func bossTpUnlocked():
+	tmp.load("user://tmp")
+	tmp.set_value("Game.Info", "tp1", true)
+	tmp.save("user://tmp")
 
 
 func _on_init_wait_timeout() -> void:

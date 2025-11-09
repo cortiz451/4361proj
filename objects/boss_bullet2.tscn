@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://kusronv2ccrs"]
+
+[ext_resource type="Script" uid="uid://5ysaq0uimdt3" path="res://objects/boss_bullet2.gd" id="1_lhdtw"]
+[ext_resource type="Texture2D" uid="uid://2jld33y6h5pq" path="res://sprites/crosshair.png" id="2_mr1sp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3ndsa"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Bullet" type="Area3D" parent="."]
+collision_layer = 2
+input_ray_pickable = false
+script = ExtResource("1_lhdtw")
+
+[node name="Sprite3D" type="Sprite3D" parent="Bullet"]
+transparency = 0.74
+modulate = Color(0.69411767, 0.22745098, 1, 0.5019608)
+billboard = 1
+alpha_cut = 3
+alpha_scissor_threshold = 0.467
+alpha_hash_scale = 1.17
+texture_filter = 0
+render_priority = 4
+texture = ExtResource("2_mr1sp")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Bullet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006876111, 0, -0.06702018)
+transparency = 0.74
+modulate = Color(0.69411767, 0.22745098, 1, 0.5019608)
+billboard = 1
+texture_filter = 0
+render_priority = 4
+texture = ExtResource("2_mr1sp")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Bullet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.061869144, 0, 0.0071667433)
+transparency = 0.74
+modulate = Color(0.69411767, 0.22745098, 1, 0.5019608)
+billboard = 1
+texture_filter = 0
+render_priority = 4
+texture = ExtResource("2_mr1sp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bullet"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_3ndsa")
+
+[connection signal="body_entered" from="Bullet" to="Bullet" method="_on_bullet_body_entered"]
