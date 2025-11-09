@@ -42,7 +42,7 @@ func _process(delta):
 					$Angry.pitch_scale=randf_range(0.9, 1.1)
 					$Angry.play()
 					alerted=true
-					$Timer3.start(5)
+					$Timer3.start(8)
 	
 	target_position.y += (cos(time * 5) * 1) * delta  # Sine movement (up and down)
 	time += delta

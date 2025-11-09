@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=92 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -70,6 +70,7 @@
 [ext_resource type="PackedScene" uid="uid://brikpg2j61va5" path="res://objects/rotating_thingy_2.tscn" id="57_e755i"]
 [ext_resource type="PackedScene" uid="uid://cf0nr61kufqjx" path="res://objects/blockade_yellow.tscn" id="57_ro3en"]
 [ext_resource type="Script" uid="uid://pwhx32u1aspq" path="res://objects/keyblock.gd" id="57_t5ykj"]
+[ext_resource type="PackedScene" uid="uid://b5dqjbmbocun7" path="res://objects/blockade_boss.tscn" id="67_gdvew"]
 [ext_resource type="Script" uid="uid://ck1icqy8v2ckf" path="res://scenes/fade.gd" id="71_a82wo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_og1vs"]
@@ -1342,6 +1343,28 @@ shape = SubResource("SphereShape3D_gqmmt")
 billboard = 1
 texture = ExtResource("32_chjal")
 
+[node name="Health6" type="Area3D" parent="Level/HP"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -203, -32.5, -7.5)
+script = ExtResource("32_2cjbq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/HP/Health6"]
+shape = SubResource("SphereShape3D_gqmmt")
+
+[node name="Sprite3D" type="Sprite3D" parent="Level/HP/Health6"]
+billboard = 1
+texture = ExtResource("32_chjal")
+
+[node name="Health7" type="Area3D" parent="Level/HP"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -208, -32.5, -7.5)
+script = ExtResource("32_2cjbq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/HP/Health7"]
+shape = SubResource("SphereShape3D_gqmmt")
+
+[node name="Sprite3D" type="Sprite3D" parent="Level/HP/Health7"]
+billboard = 1
+texture = ExtResource("32_chjal")
+
 [node name="WpnPickups" type="Node" parent="Level"]
 
 [node name="Resupply" type="Area3D" parent="Level/WpnPickups" node_paths=PackedStringArray("player")]
@@ -1680,6 +1703,27 @@ autoplay = "nope"
 [node name="Dest2" type="Marker3D" parent="Level/Teleports/Tp2"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.4111595, 23.519804, -0.65664625)
 
+[node name="Tp3" type="Node" parent="Level/Teleports"]
+
+[node name="Tp" type="Area3D" parent="Level/Teleports/Tp3" node_paths=PackedStringArray("dest")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -215, -32, -9)
+script = ExtResource("18_gqmmt")
+dest = NodePath("../Dest1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Teleports/Tp3/Tp"]
+shape = SubResource("CylinderShape3D_muem4")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Teleports/Tp3/Tp"]
+transparency = 0.6
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_muem4")
+autoplay = "default"
+frame = 1
+frame_progress = 0.8368172
+
+[node name="Dest1" type="Marker3D" parent="Level/Teleports/Tp3"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -229.74004, -13.966318, -36.049812)
+
 [node name="Tp4" type="Node" parent="Level/Teleports"]
 
 [node name="Tp" type="Area3D" parent="Level/Teleports/Tp4" node_paths=PackedStringArray("dest")]
@@ -1708,6 +1752,7 @@ dest = NodePath("../Dest5")
 player = NodePath("../../../../Player")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Teleports/Tp5/Tp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 20.5, 5)
 shape = SubResource("CylinderShape3D_muem4")
 
 [node name="Area3D" type="Area3D" parent="Level/Teleports/Tp5/Tp"]
@@ -1717,6 +1762,7 @@ transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, -198, -32, -16)
 shape = SubResource("BoxShape3D_1epgm")
 
 [node name="Sprite3D" type="Sprite3D" parent="Level/Teleports/Tp5/Tp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 20.5, 5)
 billboard = 1
 texture = ExtResource("55_mlv25")
 
@@ -1841,6 +1887,15 @@ shape = SubResource("BoxShape3D_ty1g6")
 transform = Transform3D(19.176395, 5.6803074, 0, -5.6627965, 19.117281, -1.5691819, -0.4456718, 1.5045626, 19.938347, 34.991127, -24, -6)
 script = ExtResource("20_5poiv")
 
+[node name="BlockadeBoss" parent="Level" instance=ExtResource("67_gdvew")]
+transform = Transform3D(-3.496911e-07, 0, 8, 0, 8, 0, -8, 0, -3.496911e-07, -220, -33, -2.5)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/BlockadeBoss"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/BlockadeBoss/StaticBody3D"]
+transform = Transform3D(0.6, 0, 2.1316283e-15, 0, 0.6, 0, -2.1316283e-15, 0, 0.6, 0, 0.3, 0)
+shape = SubResource("BoxShape3D_chjal")
+
 [node name="Jingle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_2f3dj")
 bus = &"SFX"
@@ -1954,6 +2009,8 @@ wait_time = 0.5
 [connection signal="body_entered" from="Level/HP/Health3" to="Level/HP/Health3" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/HP/Health4" to="Level/HP/Health4" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/HP/Health5" to="Level/HP/Health5" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/HP/Health6" to="Level/HP/Health6" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/HP/Health7" to="Level/HP/Health7" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/WpnPickups/Resupply" to="Level/WpnPickups/Resupply" method="_on_player_resupply"]
 [connection signal="console_text" from="Level/WpnPickups/Resupply" to="HUD" method="_consoletext"]
 [connection signal="timeout" from="Level/WpnPickups/Resupply/Timer" to="Level/WpnPickups/Resupply" method="_on_timer_timeout"]
@@ -1982,6 +2039,7 @@ wait_time = 0.5
 [connection signal="body_entered" from="Level/Teleports/Tp1/Tp" to="Level/Teleports/Tp1/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Teleports/Tp2/Tp" to="Level/Teleports/Tp2/Tp" method="_on_body_entered"]
 [connection signal="console_text" from="Level/Teleports/Tp2/Tp" to="HUD" method="_consoletext"]
+[connection signal="body_entered" from="Level/Teleports/Tp3/Tp" to="Level/Teleports/Tp3/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Teleports/Tp4/Tp" to="Level/Teleports/Tp4/Tp" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Teleports/Tp5/Tp" to="Level/Teleports/Tp5/Tp" method="_on_body_entered"]
 [connection signal="console_text" from="Level/Teleports/Tp5/Tp" to="HUD" method="_consoletext"]
