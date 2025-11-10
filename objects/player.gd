@@ -6,12 +6,11 @@ extends CharacterBody3D
 @export var coins = 0
 
 const RUNSPEED = 12
-const MAX_AIRACCEL=0.6
+const MAX_AIRACCEL=0.7
 const MAX_ACCEL = 8*RUNSPEED
-const STOP_SPD = 1.5
-const g=18
+const g=23
 const jump_strength = 1.5*sqrt(2*g)
-var friction = 8
+var friction = 9
 
 var weapon: Weapon
 var weapon_index := 1
@@ -28,7 +27,7 @@ var health:int = 100
 
 var previously_floored := false
 var jumps_remaining:int
-var container_offset = Vector3(0, -1.25, -2.75)
+var container_offset = Vector3(0, -1.3, -2.75)
 var tween:Tween
 
 var DAMAGE_COOLDOWN=0.25;
@@ -132,14 +131,13 @@ func _process(delta):
 	if is_on_floor():
 		if abs(velocity.x) > 1 or abs(velocity.z) > 1:
 			sound_footsteps.stream_paused = false
-	
-	#headbob?
-	if(movement_velocity.length()>0.1):
-		camera.position.y = lerp(camera.position.y, 0.05+(camera.position.y+0.05*sin(10*time)), delta * 5)
-		container.position.y = lerp(container.position.y, (container.position.y+0.15*sin(10*time)), delta * 5)
-		container.position.x = lerp(container.position.x, (container.position.x+0.25*sin(5*time)), delta * 5)
-	else:
-		camera.position.y = lerp(camera.position.y, 0.0, delta * 5)
+		#headbob
+		if(movement_velocity.length()>0.1):
+			camera.position.y = lerp(camera.position.y, 0.05+(camera.position.y+0.05*sin(10*time)), delta * 5)
+			container.position.y = lerp(container.position.y, (container.position.y+0.15*sin(10*time)), delta * 5)
+			container.position.x = lerp(container.position.x, (container.position.x+0.25*sin(5*time)), delta * 5)
+		else:
+			camera.position.y = lerp(camera.position.y, 0.0, delta * 5)
 		#container.position.y = lerp(container.position.y, container.position.y, delta * 5)
 		#container.position.x = lerp(container.position.x, 0.0, delta * 5)
 		
@@ -213,11 +211,9 @@ func handle_rotation(xRot: float, yRot: float, isController: bool, delta: float 
 
 func handle_mvmt(delta):
 	
-	movement_velocity = (transform.basis * movement_velocity)#.normalized() # Move forward
-	
-	#applied_velocity = velocity.lerp(movement_velocity, delta * 10)
+	movement_velocity = (transform.basis * movement_velocity).normalized() # Move forward
+
 	if(is_on_floor()):
-		#if(jump):
 		if(Input.is_action_pressed("jump")):
 			velocity.y = jump_strength
 			velocity = acc(movement_velocity, MAX_AIRACCEL, delta)
@@ -233,23 +229,25 @@ func handle_mvmt(delta):
 	# Rotation 
 	container.position = lerp(container.position, container_offset - (basis.inverse() * velocity / 250), delta * 10)
 
+#acceleration func
 func acc(applied_velocity, max_velocity, delta):
+	#				current (*) applied leads to quake-style airaccel (w low enough air friction)
 	var current_spd = velocity.dot(applied_velocity)
 	var add_speed=clamp(max_velocity-current_spd, 0, MAX_ACCEL*delta)
 	return velocity+add_speed*applied_velocity
 
+#horz. mvmt
 func hmvmt_ground(applied_velocity, delta):
 	var spd=velocity.length()
 	
 	#friction!
 	if(spd!=0):
-		var drop=max(STOP_SPD, spd) * friction * delta
+		var drop=spd * friction * delta
 		velocity *= max(spd-drop,0)/spd
 	
 	return acc(applied_velocity, RUNSPEED, delta)
 
 # Shooting
-
 func action_shoot():
 	
 	if Input.is_action_pressed("shoot"):

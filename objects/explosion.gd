@@ -1,6 +1,7 @@
 extends Area3D
 
-var DMG=200
+@export var DMG=200
+@export var SPD=20
 
 func _on_rocket_exploded(t) -> void:
 	position=t
@@ -9,7 +10,8 @@ func _on_rocket_exploded(t) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if(body.has_method("action_shoot")):
-		body.velocity.y = 40
+		body.velocity.y=SPD
+		#body.damage(randi_range(0,2))
 	else:
 		$Boom.play()
 		$BoomAudio.play()
