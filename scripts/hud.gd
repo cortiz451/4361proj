@@ -17,7 +17,7 @@ func _process(delta):
 	$FPS.text = "FPS: " + str(Engine.get_frames_per_second())
 	#INTEGER DIVISION IS THE POINT, GODOT.
 	@warning_ignore("integer_division")
-	$Time.text = "Time: %d:%02d.%03d" % [(Time.get_ticks_msec()/60000), ((Time.get_ticks_msec()/1000)%60), (Time.get_ticks_msec()%1000)]
+	$Time.text = "Time: %d:%02d.%03d" % [(int)(time)/60, ((int)(time)%60), ((int)(time*1000))%1000]
 	
 	#update face constantly!
 	hp=$"../Player".health

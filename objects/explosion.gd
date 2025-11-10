@@ -9,7 +9,7 @@ func _on_rocket_exploded(t) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if(body.has_method("action_shoot")):
-		body.gravity=-20
+		body.velocity.y = 40
 	else:
 		$Boom.play()
 		$BoomAudio.play()

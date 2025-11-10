@@ -1,14 +1,17 @@
 extends CharacterBody3D
 
-@export_subgroup("Properties")
-@export var movement_speed = 5
-@export_range(0, 100) var number_of_jumps:int = 2
-@export var jump_strength = 8
-
 @export_subgroup("Weapons")
 @export var weapons: Array[Weapon] = []
 
 @export var coins = 0
+
+const RUNSPEED = 12
+const MAX_AIRACCEL=0.6
+const MAX_ACCEL = 8*RUNSPEED
+const STOP_SPD = 1.5
+const g=18
+const jump_strength = 1.5*sqrt(2*g)
+var friction = 8
 
 var weapon: Weapon
 var weapon_index := 1
@@ -22,7 +25,6 @@ var rotation_target: Vector3
 var input_mouse: Vector2
 
 var health:int = 100
-var gravity := 0.0
 
 var previously_floored := false
 var jumps_remaining:int
@@ -39,7 +41,7 @@ var maxAmmo=[1, 100, 512, 50]
 
 var keys=[false,false,false]
 
-var fullscreen=false
+var jump=false
 
 #Sig-nal.
 signal health_updated
@@ -68,6 +70,8 @@ signal btp_updated
 
 var player_mouse_sensitivity : float = PlayerConfig.get_config(AppSettings.INPUT_SECTION, "MouseSensitivity", 1.0)
 var player_joypad_sensitivity : float = PlayerConfig.get_config(AppSettings.INPUT_SECTION, "JoypadSensitivity", 1.0)
+
+var time=0.0
 
 # Functions
 
@@ -108,41 +112,43 @@ func _ready():
 		tmp.save("user://tmp")
 		
 		consoletext.emit(deathmsg)
+		
+	$"../BackgroundMusicPlayer".play()
+	
 
 func _process(delta):
-	# Handle functions
 	
+	time+=delta
+	
+	# Handle functions
 	handle_controls(delta)
-	handle_gravity(delta)
 	
 	# Movement
-	
-	var applied_velocity: Vector3
-	
-	movement_velocity = transform.basis * movement_velocity # Move forward
-	
-	applied_velocity = velocity.lerp(movement_velocity, delta * 10)
-	applied_velocity.y = -gravity
-	
-	velocity = applied_velocity
-	move_and_slide()
-	
-	# Rotation 
-	container.position = lerp(container.position, container_offset - (basis.inverse() * applied_velocity / 300), delta * 10)
+	handle_mvmt(delta)
 	
 	# Movement sound
-	
 	sound_footsteps.stream_paused = true
 	
 	if is_on_floor():
 		if abs(velocity.x) > 1 or abs(velocity.z) > 1:
 			sound_footsteps.stream_paused = false
 	
+	#headbob?
+	if(movement_velocity.length()>0.1):
+		camera.position.y = lerp(camera.position.y, 0.05+(camera.position.y+0.05*sin(10*time)), delta * 5)
+		container.position.y = lerp(container.position.y, (container.position.y+0.15*sin(10*time)), delta * 5)
+		container.position.x = lerp(container.position.x, (container.position.x+0.25*sin(5*time)), delta * 5)
+	else:
+		camera.position.y = lerp(camera.position.y, 0.0, delta * 5)
+		#container.position.y = lerp(container.position.y, container.position.y, delta * 5)
+		#container.position.x = lerp(container.position.x, 0.0, delta * 5)
+		
+	
 	# Landing after jump or falling
 	
 	camera.position.y = lerp(camera.position.y, 0.0, delta * 5)
 	
-	if is_on_floor() and gravity > 1 and !previously_floored: # Landed
+	if is_on_floor() and !previously_floored: # Landed
 		Audio.play("sounds/land.ogg")
 		camera.position.y = -0.1
 	
@@ -176,10 +182,8 @@ func handle_controls(delta):
 	
 	# Movement
 	var input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	movement_velocity = (Vector3(input.x, 0, 0).normalized()+Vector3(0,0,input.y)) * movement_speed
-	#							^^ Diagonal movement is faster. **This is intended.**
-	#							I'm trying to mimick how something like GoldenEye 64 handled diagonal movement
-	#							...cause I think it's cute :)
+	movement_velocity = (Vector3(input.x, 0, 0)+Vector3(0,0,input.y)).normalized()
+	#movement_velocity = (transform.basis.x*Vector3(input.x, 0, 0)+transform.basis.z*Vector3(0,0,input.y)).normalized()
 	
 	# Handle Controller Rotation
 	var rotation_input := Input.get_vector("camera_right", "camera_left", "camera_down", "camera_up")
@@ -187,18 +191,9 @@ func handle_controls(delta):
 		handle_rotation(rotation_input.x, rotation_input.y, true, delta)
 	
 	# Shooting
-	
 	action_shoot()
 	
-	# Jumping
-	
-	if Input.is_action_pressed("jump"):
-		
-		if jumps_remaining:
-			action_jump()
-		
-	# Weapon switching
-	
+	#Weapon switch
 	action_weapon_toggle()
 	action_weapon_select()
 
@@ -215,23 +210,43 @@ func handle_rotation(xRot: float, yRot: float, isController: bool, delta: float 
 		rotation_target.x = clamp(rotation_target.x, deg_to_rad(-90), deg_to_rad(90))
 		camera.rotation.x = rotation_target.x;
 		rotation.y = rotation_target.y;
+
+func handle_mvmt(delta):
 	
-# Handle gravity
-
-func handle_gravity(delta):
-	gravity += 20 * delta
+	movement_velocity = (transform.basis * movement_velocity)#.normalized() # Move forward
 	
-	if gravity > 0 and is_on_floor():
-		
-		jumps_remaining = number_of_jumps
-		gravity = 0
+	#applied_velocity = velocity.lerp(movement_velocity, delta * 10)
+	if(is_on_floor()):
+		#if(jump):
+		if(Input.is_action_pressed("jump")):
+			velocity.y = jump_strength
+			velocity = acc(movement_velocity, MAX_AIRACCEL, delta)
+			#jump=false
+		else:
+			velocity = hmvmt_ground(movement_velocity, delta)
+	else:
+		velocity.y -= g*delta
+		velocity = acc(movement_velocity, MAX_AIRACCEL, delta)
+	
+	move_and_slide()
+	
+	# Rotation 
+	container.position = lerp(container.position, container_offset - (basis.inverse() * velocity / 250), delta * 10)
 
-# Jumping
+func acc(applied_velocity, max_velocity, delta):
+	var current_spd = velocity.dot(applied_velocity)
+	var add_speed=clamp(max_velocity-current_spd, 0, MAX_ACCEL*delta)
+	return velocity+add_speed*applied_velocity
 
-func action_jump():	
-	Audio.play("sounds/jump_a.ogg, sounds/jump_b.ogg, sounds/jump_c.ogg")
-	gravity = -jump_strength
-	jumps_remaining -= 1
+func hmvmt_ground(applied_velocity, delta):
+	var spd=velocity.length()
+	
+	#friction!
+	if(spd!=0):
+		var drop=max(STOP_SPD, spd) * friction * delta
+		velocity *= max(spd-drop,0)/spd
+	
+	return acc(applied_velocity, RUNSPEED, delta)
 
 # Shooting
 

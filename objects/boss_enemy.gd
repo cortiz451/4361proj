@@ -9,6 +9,7 @@ extends Node3D
 @onready var muzzle_b = $MuzzleB
 
 signal end_game
+signal music
 
 #obj ori progs!
 var health := 5000
@@ -43,6 +44,9 @@ func _process(delta):
 					$Angry.play()
 					alerted=true
 					$Timer3.start(8)
+					
+					#music time
+					music.emit()
 	
 	target_position.y += (cos(time * 5) * 1) * delta  # Sine movement (up and down)
 	time += delta
