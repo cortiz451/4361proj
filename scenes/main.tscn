@@ -1458,13 +1458,12 @@ billboard = 1
 texture = ExtResource("34_ty1g6")
 
 [node name="Bullets2" type="Area3D" parent="Level/WpnPickups"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.586, -25, -4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, -32, -18)
 script = ExtResource("34_1epgm")
 ammotype = 2
 ammo = 128
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/WpnPickups/Bullets2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.575712, -7.2310677, -13.501591)
 shape = SubResource("CylinderShape3D_a8y0u")
 
 [node name="Sprite3D" type="Sprite3D" parent="Level/WpnPickups/Bullets2"]
