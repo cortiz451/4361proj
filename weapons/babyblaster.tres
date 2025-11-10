@@ -9,7 +9,7 @@
 script = ExtResource("2_y4t0t")
 Proj = ExtResource("1_uwy8n")
 model = ExtResource("2_uwy8n")
-cooldown = 0.4
+cooldown = 0.2
 drain = 0
 hitscan = false
 sound_shoot = "sounds/babyblaster.ogg"

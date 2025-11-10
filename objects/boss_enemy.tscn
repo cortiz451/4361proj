@@ -317,7 +317,9 @@ bus = &"SFX"
 
 [node name="Angry" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_wvihl")
+volume_db = 3.0
 unit_size = 100.0
+max_db = 6.0
 bus = &"SFX"
 
 [node name="Pew" type="AudioStreamPlayer3D" parent="."]

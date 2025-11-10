@@ -18,7 +18,7 @@ func _physics_process(delta):
 	if(r):
 		velocity = g*delta*SPEED
 	else:
-		velocity = h*delta*SPEED
+		velocity = h*delta*(int)(SPEED*1.5)
 	look_at(transform.origin + velocity.normalized(), Vector3.UP)
 	transform.origin += velocity * delta
 

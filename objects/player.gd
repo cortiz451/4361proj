@@ -27,7 +27,7 @@ var health:int = 100
 
 var previously_floored := false
 var jumps_remaining:int
-var container_offset = Vector3(0, -1.3, -2.75)
+var container_offset = Vector3(0, -1.3, -3)
 var tween:Tween
 
 var DAMAGE_COOLDOWN=0.25;

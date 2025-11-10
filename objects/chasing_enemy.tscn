@@ -132,14 +132,17 @@ shape = SubResource("ConvexPolygonShape3D_we7g8")
 
 [node name="Destroy" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_5v8eo")
+unit_size = 40.0
 bus = &"SFX"
 
 [node name="Hurt" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_n3q3a")
+unit_size = 40.0
 bus = &"SFX"
 
 [node name="Angry" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_n3q3a")
+unit_size = 40.0
 bus = &"SFX"
 
 [node name="DestroyTime" type="Timer" parent="."]

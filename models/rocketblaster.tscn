@@ -6,14 +6,14 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhynu"]
 resource_name = "colormap"
 cull_mode = 2
-albedo_color = Color(0, 2.0098896, 2.0331757, 1)
+albedo_color = Color(0, 1.803834, 1.8247963, 1)
 albedo_texture = ExtResource("2_evcul")
 metallic = 0.9
 metallic_specular = 0.35
 roughness = 0.36
 emission_enabled = true
 emission = Color(0.989213, 0, 0.84844, 1)
-emission_energy_multiplier = 0.7
+emission_energy_multiplier = 5.0
 clearcoat_enabled = true
 clearcoat = 0.82
 clearcoat_roughness = 0.28
@@ -56,5 +56,5 @@ shadow_mesh = SubResource("ArrayMesh_evcul")
 [node name="blaster" instance=ExtResource("1_dhynu")]
 
 [node name="blaster2" parent="." index="0"]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.4, 0, -0.15, 0)
+transform = Transform3D(-0.84852815, 0.84852815, 0, -0.84852815, -0.84852815, 0, 0, 0, 2, -0.4, 0.7, 0)
 mesh = SubResource("ArrayMesh_h6x5x")
