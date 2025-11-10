@@ -464,9 +464,7 @@ offset_left = 805.0
 offset_top = 277.0
 offset_right = 1206.0
 offset_bottom = 494.0
-text = "NOTE: Going back to Main Menu from the pause menu is broken right now! If you need to change settings, either restart or use the arrow keys + enter. Sorry
-
-Also, visual options don't quite work. Sorry^2."
+text = "NOTE: Going back to Main Menu from the pause menu is broken right now! If you need to change settings, either restart or use the arrow keys + enter. Sorry!"
 label_settings = SubResource("LabelSettings_h0ckf")
 autowrap_mode = 3
 

@@ -6,11 +6,11 @@ extends CharacterBody3D
 @export var coins = 0
 
 const RUNSPEED = 12
-const MAX_AIRACCEL=0.7
+const MAX_AIRACCEL=0.8
 const MAX_ACCEL = 8*RUNSPEED
-const g=23
+const g=24
 const jump_strength = 1.5*sqrt(2*g)
-var friction = 9
+var friction = 10
 
 var weapon: Weapon
 var weapon_index := 1

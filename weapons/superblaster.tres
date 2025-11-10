@@ -8,7 +8,7 @@
 script = ExtResource("3_eooy3")
 model = ExtResource("1_mfnuh")
 cooldown = 1.75
-damage = 20.0
+damage = 16.0
 spread = 25.0
 shot_count = 24
 ammotype = 1
