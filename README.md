@@ -1,5 +1,5 @@
 # MazeQuest 3D: Revenge of the Evil, No-Good, Nefarious Enemies!
-Our project for CS4361.001 class (F25)
+Group 7's project for CS4361.001 class (F25)
 
 TO RUN:
 - Clone into your PC
