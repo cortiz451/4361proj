@@ -26,7 +26,6 @@ var input_mouse: Vector2
 var health:int = 100
 
 var previously_floored := false
-var jumps_remaining:int
 var container_offset = Vector3(0, -1.3, -3)
 var tween:Tween
 
@@ -214,10 +213,14 @@ func handle_mvmt(delta):
 	movement_velocity = (transform.basis * movement_velocity).normalized() # Move forward
 
 	if(is_on_floor()):
+		#allow for easy bhop; you're welcome :)
 		if(Input.is_action_pressed("jump")):
+			#prevent scary hup overlap
+			if($hup.is_stopped()):
+				Audio.play("sounds/hup.ogg")
+				$hup.start(0.4)
 			velocity.y = jump_strength
 			velocity = acc(movement_velocity, MAX_AIRACCEL, delta)
-			#jump=false
 		else:
 			velocity = hmvmt_ground(movement_velocity, delta)
 	else:

@@ -215,6 +215,11 @@ crosshair = NodePath("../HUD/Crosshair")
 wait_time = 0.3
 one_shot = true
 
+[node name="hup" type="Timer" parent="Player"]
+wait_time = 0.4
+one_shot = true
+autostart = true
+
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.42261794, -0.6942719, 0.58256376, 0, 0.64278793, 0.7660442, -0.9063079, 0.32374403, -0.27165374, 0, 2.076825, 0)
 visible = false

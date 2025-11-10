@@ -11,6 +11,7 @@
 collision_layer = 2
 input_ray_pickable = false
 script = ExtResource("1_u3pof")
+Spd = 45
 
 [node name="Sprite3D" type="Sprite3D" parent="Bullet"]
 transparency = 0.74

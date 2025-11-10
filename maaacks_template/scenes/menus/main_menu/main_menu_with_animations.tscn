@@ -369,6 +369,7 @@ parameters/conditions/intro_done = false
 stream = ExtResource("6_jm8w0")
 volume_db = -6.0
 playback_type = 1
+parameters/looping = true
 
 [node name="BackgroundTextureRect" parent="." index="4"]
 texture = ExtResource("6_5bn2x")
@@ -380,7 +381,7 @@ theme = ExtResource("2_61jja")
 modulate = Color(1, 1, 1, 0)
 
 [node name="VersionLabel" parent="VersionMargin/VersionContainer" index="0"]
-text = "v0.0004"
+text = "v0.0005"
 label_settings = SubResource("LabelSettings_eyao0")
 
 [node name="MenuContainer" parent="." index="6"]
