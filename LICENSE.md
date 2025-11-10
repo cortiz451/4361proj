@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2025 Kenney
+Copyright (c) 2025 {Group 7 4361.001 F25}
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
