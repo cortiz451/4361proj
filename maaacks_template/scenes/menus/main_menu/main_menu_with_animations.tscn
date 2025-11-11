@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cr5qst4g2kwro"]
+[gd_scene load_steps=34 format=3 uid="uid://cr5qst4g2kwro"]
 
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_game_template/base/nodes/menus/main_menu/main_menu.tscn" id="1_5omaq"]
 [ext_resource type="Theme" uid="uid://bmipurejtlhpm" path="res://materials/main_theme.tres" id="2_61jja"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://7sbu7ndmuft5" path="res://sounds/bg1.ogg" id="6_jm8w0"]
 [ext_resource type="AudioStream" uid="uid://d4e5q4dijcbgm" path="res://sounds/ouch.ogg" id="7_8m5tm"]
 [ext_resource type="LabelSettings" uid="uid://dy5ecelk2tcjh" path="res://fonts/main_font.tres" id="7_eyao0"]
+[ext_resource type="Texture2D" uid="uid://b812a6taawnj7" path="res://materials/bg_name.png" id="13_8m5tm"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -86,6 +87,30 @@ tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0, 1.6, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BackgroundTextureRect/GPUParticles2D:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BackgroundTextureRect/Name:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(-0.1, 1.6, 2.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -281,6 +306,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BackgroundTextureRect/GPUParticles2D:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BackgroundTextureRect/Name:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2kqig"]
 _data = {
@@ -321,6 +370,41 @@ states/Start/position = Vector2(82, 123)
 transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "OpenSubMenu", SubResource("14"), "Start", "Intro", SubResource("AnimationNodeStateMachineTransition_j0orr"), "OpenSubMenu", "OpenMainMenu", SubResource("AnimationNodeStateMachineTransition_63dxc")]
 graph_offset = Vector2(-180.277, 49)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h0ckf"]
+load_path = "res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.s3tc.ctex"
+
+[sub_resource type="Curve" id="Curve_rnrrw"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 20.224731), 0.0, 0.0, 0, 0, Vector2(1, 200), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_o17w0"]
+curve = SubResource("Curve_rnrrw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fq6jx"]
+particle_flag_disable_z = true
+angle_min = -14.9999895
+angle_max = 15.0000105
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 500.0
+initial_velocity_max = 600.0
+angular_velocity_min = -15.000016
+angular_velocity_max = 14.999984
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 4.9999976
+linear_accel_curve = SubResource("CurveTexture_o17w0")
+scale_min = 0.25
+scale_max = 0.5
+color = Color(1, 1, 1, 0.29803923)
+turbulence_noise_strength = 19.78
+turbulence_noise_speed = Vector3(13.88, 14.865, 13.52)
+turbulence_noise_speed_random = 4.0
+turbulence_influence_max = 0.58000004
+turbulence_initial_displacement_min = -62.399998
+turbulence_initial_displacement_max = 53.2
+
 [sub_resource type="LabelSettings" id="LabelSettings_eyao0"]
 font = ExtResource("6_61jja")
 font_size = 12
@@ -337,9 +421,9 @@ shadow_offset = Vector2(2, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_h0ckf"]
 font = ExtResource("6_61jja")
-font_size = 24
-outline_size = 12
-outline_color = Color(0.42352942, 0.4392157, 0.98039216, 0.4509804)
+font_size = 12
+outline_size = 5
+outline_color = Color(0, 0, 0, 0.8392157)
 shadow_offset = Vector2(2, 1)
 
 [node name="MainMenu" instance=ExtResource("1_5omaq")]
@@ -350,6 +434,8 @@ confirm_new_game = false
 game_scene_path = "uid://3f3cne2yh7ff"
 options_packed_scene = ExtResource("5_8m5tm")
 credits_packed_scene = ExtResource("4_eyao0")
+metadata/_edit_vertical_guides_ = [640.0]
+metadata/_edit_horizontal_guides_ = [360.0]
 
 [node name="UISoundController" parent="." index="0"]
 button_hovered = ExtResource("6_h0ckf")
@@ -374,6 +460,23 @@ parameters/looping = true
 [node name="BackgroundTextureRect" parent="." index="4"]
 texture = ExtResource("6_5bn2x")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BackgroundTextureRect" index="0"]
+position = Vector2(640, 360)
+amount = 32
+texture = SubResource("CompressedTexture2D_h0ckf")
+lifetime = 3.0
+randomness = 0.33
+process_material = SubResource("ParticleProcessMaterial_fq6jx")
+
+[node name="Name" type="TextureRect" parent="BackgroundTextureRect" index="1"]
+layout_mode = 0
+offset_left = -128.0
+offset_top = -24.0
+offset_right = 896.0
+offset_bottom = 488.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("13_8m5tm")
+
 [node name="VersionMargin" parent="." index="5"]
 theme = ExtResource("2_61jja")
 
@@ -387,6 +490,9 @@ label_settings = SubResource("LabelSettings_eyao0")
 [node name="MenuContainer" parent="." index="6"]
 theme = ExtResource("2_61jja")
 
+[node name="TitleMargin" parent="MenuContainer" index="0"]
+visible = false
+
 [node name="TitleContainer" parent="MenuContainer/TitleMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
 
@@ -396,6 +502,7 @@ label_settings = ExtResource("7_eyao0")
 auto_update = false
 
 [node name="SubTitleMargin" parent="MenuContainer" index="1"]
+visible = false
 theme = ExtResource("2_61jja")
 
 [node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" index="0"]
@@ -461,12 +568,13 @@ metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="." index="9"]
 layout_mode = 0
-offset_left = 805.0
-offset_top = 277.0
-offset_right = 1206.0
-offset_bottom = 494.0
+offset_left = 876.0
+offset_top = 6.0
+offset_right = 1271.0
+offset_bottom = 147.0
 text = "NOTE: Going back to Main Menu from the pause menu is broken right now! If you need to change settings, either restart or use the arrow keys + enter. Sorry!"
 label_settings = SubResource("LabelSettings_h0ckf")
+horizontal_alignment = 2
 autowrap_mode = 3
 
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/ContinueGameButton" to="." method="_on_continue_game_button_pressed"]
