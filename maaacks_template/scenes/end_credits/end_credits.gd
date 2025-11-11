@@ -51,9 +51,11 @@ func _ready() -> void:
 	stats.load("user://tmp")
 	
 	var time = float(stats.get_value("Game.Stats", "Time", 0.0))
-	$CenterContainer/EndMessagePanel/VBoxContainer/Time.text="Time: "+(str(time/60)+":"+str(time%60))
+	@warning_ignore("integer_division")
+	$CenterContainer/EndMessagePanel/VBoxContainer/Time.text="Time: "+(str(int(time)/60)+":"+str(int(time)%60))
 	$CenterContainer/EndMessagePanel/VBoxContainer/Coins.text="Coins: "+str(stats.get_value("Game.Stats", "Coins", "???"))
 	$CenterContainer/EndMessagePanel/VBoxContainer/Enemies.text="Enemies: "+str(stats.get_value("Game.Stats", "Enemies", "???"))
+	
 
 func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action_released("ui_cancel"):

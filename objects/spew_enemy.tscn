@@ -211,7 +211,6 @@ frame = 2
 speed_scale = 0.1
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.6
 autostart = true
 
 [node name="Marker3D" type="Marker3D" parent="."]

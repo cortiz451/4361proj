@@ -43,8 +43,6 @@ var jump=false
 
 var gameEnd=false
 
-var DIFFICULTY=1
-
 #Sig-nal.
 signal health_updated
 signal ammo_updated
@@ -74,12 +72,17 @@ signal btp_updated
 var player_mouse_sensitivity : float = PlayerConfig.get_config(AppSettings.INPUT_SECTION, "MouseSensitivity", 1.0)
 var player_joypad_sensitivity : float = PlayerConfig.get_config(AppSettings.INPUT_SECTION, "JoypadSensitivity", 1.0)
 var fov : float = PlayerConfig.get_config(AppSettings.VIDEO_SECTION, "FOV", 90.0)
+var DIFFICULTY=PlayerConfig.get_config(AppSettings.GAME_SECTION, "Difficulty", 3)
+
+var MULT = 3
 
 var time=0.0
 
 # Functions
 
 func _ready():
+	
+	MULT = pow(2, DIFFICULTY-3)
 	
 	hudfade.color=Color(0,0,0,0)
 	
@@ -500,7 +503,8 @@ func damage(amount):
 	
 	Audio.play("sounds/ouch.ogg")
 	
-	health -= DIFFICULTY*amount+randi_range(-2,2)
+	#	1: 1/4 dmg, 2: 1/2, 3: 1, 4: 2, 5: 4
+	health -= int(MULT*amount+randi_range(0,2))
 	health_updated.emit(health) # Update health on HUD
 	
 	dmgcool.start(DAMAGE_COOLDOWN)

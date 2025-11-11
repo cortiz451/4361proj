@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2kij0camq82i"]
+
+[ext_resource type="Script" uid="uid://owmw63pn8qv7" path="res://maaacks_template/scenes/menus/options_menu/game/reset_game_control/reset_game_control.gd" id="1_n5xxv"]
+
+[node name="Difficulty" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+offset_top = 210.0
+offset_right = 305.0
+offset_bottom = 242.0
+script = ExtResource("1_n5xxv")
+
+[node name="ResetLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Difficulty:"
+
+[node name="HSlider" type="HSlider" parent="."]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+min_value = 1.0
+max_value = 5.0
+value = 3.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+
+[connection signal="drag_ended" from="HSlider" to="." method="_on_h_slider_drag_ended"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]

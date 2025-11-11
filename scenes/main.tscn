@@ -815,7 +815,7 @@ player = NodePath("../../Player")
 Bullet = ExtResource("23_1epgm")
 
 [node name="spew-enemy5" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("22_xhfw6")]
-transform = Transform3D(0.00412479, -0.04291031, 0.9990704, -0.00681597, 0.9990547, 0.042937882, -0.9999681, -0.0069867186, 0.0038285106, 42.226387, -31.293213, -5.903525)
+transform = Transform3D(-0.0031789728, 0.7905486, 0.61239123, -0.007305167, 0.61235964, -0.7905455, -0.9999681, -0.0069867186, 0.0038285104, 42.226387, -29.11119, -5.903525)
 player = NodePath("../../Player")
 Bullet = ExtResource("23_1epgm")
 

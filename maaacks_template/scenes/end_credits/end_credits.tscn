@@ -46,7 +46,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ScrollContainer" parent="." index="3"]
-scroll_vertical = 1662
+scroll_vertical = 1659
 
 [node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" index="1"]
 text = "[font_size=48]Collaborators[/font_size]

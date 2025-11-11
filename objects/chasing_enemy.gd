@@ -8,6 +8,9 @@ extends Node3D
 var health := 120
 #I love ATR
 var SPEED_JUSTYOUBELIEVEIT=7.5
+var MULT=max(0.25, \
+			((PlayerConfig.get_config(AppSettings.GAME_SECTION, "Difficulty", 3)-1)/2) \
+			)
 
 var time := 0.0
 var target_position: Vector3
@@ -38,7 +41,7 @@ func _process(delta):
 					$Angry.play()
 					alerted=true
 		else:
-			target_position=position.move_toward(player.position, delta*SPEED_JUSTYOUBELIEVEIT)
+			target_position=position.move_toward(player.position, delta*SPEED_JUSTYOUBELIEVEIT*MULT)
 	
 	target_position.y += (cos(time * 9) * 1) * delta  # Sine movement (up and down)
 	time += delta
