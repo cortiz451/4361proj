@@ -20,7 +20,7 @@ func _on_boss_end_game() -> void:
 func _on_timer_timeout() -> void:
 	if(i<60):
 		hudfade.color=Color(0,0,0,i/60.0)
-		$"../BossMusicPlayer".volume_db-=1.5
+		$"../BossMusicPlayer".volume_db-=0.5
 		i+=1.0
 
 

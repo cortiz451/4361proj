@@ -12,6 +12,7 @@ extends "res://maaacks_template/scenes/credits/scrolling_credits.gd"
 @onready var exit_button = %ExitButton
 @onready var menu_button = %MenuButton
 @onready var init_mouse_filter : MouseFilter = mouse_filter
+@onready var stats = ConfigFile.new()
 
 func get_main_menu_scene_path() -> String:
 	if main_menu_scene_path.is_empty():
@@ -45,6 +46,14 @@ func _ready() -> void:
 	if OS.has_feature("web"):
 		exit_button.hide()
 	super._ready()
+	
+	#stats!
+	stats.load("user://tmp")
+	
+	var time = float(stats.get_value("Game.Stats", "Time", 0.0))
+	$CenterContainer/EndMessagePanel/VBoxContainer/Time.text="Time: "+(str(time/60)+":"+str(time%60))
+	$CenterContainer/EndMessagePanel/VBoxContainer/Coins.text="Coins: "+str(stats.get_value("Game.Stats", "Coins", "???"))
+	$CenterContainer/EndMessagePanel/VBoxContainer/Enemies.text="Enemies: "+str(stats.get_value("Game.Stats", "Enemies", "???"))
 
 func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action_released("ui_cancel"):

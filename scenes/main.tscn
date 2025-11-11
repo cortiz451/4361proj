@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=92 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://bq7bocqfp8ivg" path="res://objects/resupply.gd" id="15_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://bxjujrxi2ormu" path="res://objects/big_bullet.tscn" id="15_tel4y"]
 [ext_resource type="Texture2D" uid="uid://b0kng35r6wlv5" path="res://sprites/key.png" id="16_dnhof"]
+[ext_resource type="Texture2D" uid="uid://cybpksl4d7t36" path="res://materials/face_win.png" id="16_kjtvk"]
 [ext_resource type="Texture2D" uid="uid://c6770lsxhxfvw" path="res://sprites/ammo1.png" id="16_muem4"]
 [ext_resource type="Texture2D" uid="uid://nf5nhm0bsdth" path="res://sprites/ammo2.png" id="17_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://kdmi2skd1htj" path="res://sprites/tp1.png" id="18_0ld40"]
@@ -96,6 +97,7 @@ outline_color = Color(0.5712, 0.58015996, 0.84, 0.4509804)
 shadow_offset = Vector2(2, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gqmmt"]
+radius = 1.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a8y0u"]
 
@@ -114,6 +116,7 @@ animations = [{
 }]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_og1vs"]
+radius = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yc10j"]
 animations = [{
@@ -134,6 +137,7 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_ty1g6"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_muem4"]
+radius = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_muem4"]
 animations = [{
@@ -212,7 +216,7 @@ weapons = Array[ExtResource("3_trceg")]([ExtResource("4_a8y0u"), ExtResource("5_
 crosshair = NodePath("../HUD/Crosshair")
 
 [node name="initWait" type="Timer" parent="Player"]
-wait_time = 0.3
+wait_time = 0.5
 one_shot = true
 
 [node name="hup" type="Timer" parent="Player"]
@@ -390,6 +394,12 @@ grow_vertical = 2
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("14_pibwh")
 expand_mode = 3
+
+[node name="face_win" type="TextureRect" parent="HUD"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("16_kjtvk")
 
 [node name="Enemies" type="Label" parent="HUD"]
 anchors_preset = 8
@@ -718,6 +728,20 @@ transform = Transform3D(-0.08554989, -0.3097971, -0.94694614, -0.18970063, 0.938
 player = NodePath("../../Player")
 Bullet = ExtResource("15_tel4y")
 
+[node name="big-enemy-flying11" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_a8y0u")]
+transform = Transform3D(-0.68958193, -0.33738407, -0.64081883, -0.1897006, 0.9381088, -0.28976777, 0.6989209, -0.07825477, -0.7109049, 35.53572, -27.321543, -15.916581)
+player = NodePath("../../Player")
+Bullet = ExtResource("15_tel4y")
+
+[node name="big-enemy-flying12" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_a8y0u")]
+transform = Transform3D(0.794391, -0.026797539, -0.6068156, -0.18970062, 0.9381088, -0.28976777, 0.5770241, 0.34530228, 0.7401415, 36.580933, -27.321543, 4.1597853)
+player = NodePath("../../Player")
+Bullet = ExtResource("15_tel4y")
+
+[node name="chasing-enemy14" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
+transform = Transform3D(-0.012497906, -0.05619831, 0.99834156, -0.008106547, 0.99839205, 0.05609973, -0.99988914, -0.0073919566, -0.012933418, -24.93539, 20.844933, -4.1576047)
+player = NodePath("../../Player")
+
 [node name="chasing-enemy" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
 transform = Transform3D(-0.23319937, -0.13474716, -0.9630479, -0.031712167, 0.99088, -0.13096234, 0.9719117, 0, -0.23534572, -13.262459, -25.092852, -0.40578747)
 player = NodePath("../../Player")
@@ -771,7 +795,7 @@ transform = Transform3D(-0.023577573, -0.03146584, 0.99922675, 0.009730397, 0.99
 player = NodePath("../../Player")
 
 [node name="spew-enemy" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("22_xhfw6")]
-transform = Transform3D(-0.029066438, 0.5708703, 0.82052565, -0.0456819, 0.8192562, -0.57160527, -0.998533, -0.054097686, 0.0022655744, 43.03161, -24.664497, -6.4554906)
+transform = Transform3D(0.65767664, -0.063154384, 0.7506483, 0.047131617, 0.997977, 0.04266885, -0.7518244, 0.0073170587, 0.65932286, 5.046271, -30.59813, -19.04894)
 player = NodePath("../../Player")
 Bullet = ExtResource("23_1epgm")
 
@@ -785,8 +809,18 @@ transform = Transform3D(-0.22897534, 0.1447052, 0.96261656, -0.023901766, 0.9877
 player = NodePath("../../Player")
 Bullet = ExtResource("23_1epgm")
 
+[node name="spew-enemy4" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("22_xhfw6")]
+transform = Transform3D(-0.48317873, -0.014608758, 0.87539995, 0.047131617, 0.997977, 0.04266886, -0.8742521, 0.061875686, -0.48151267, 4.7075706, -30.59813, 8.641375)
+player = NodePath("../../Player")
+Bullet = ExtResource("23_1epgm")
+
+[node name="spew-enemy5" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("22_xhfw6")]
+transform = Transform3D(0.00412479, -0.04291031, 0.9990704, -0.00681597, 0.9990547, 0.042937882, -0.9999681, -0.0069867186, 0.0038285106, 42.226387, -31.293213, -5.903525)
+player = NodePath("../../Player")
+Bullet = ExtResource("23_1epgm")
+
 [node name="boss" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("24_152kg")]
-transform = Transform3D(0.24049234, 0, 2.990345, 0, 3, 0, -2.990345, 0, 0.24049234, -276.39987, -29.14649, -11.637871)
+transform = Transform3D(-1.3113416e-07, 0, 3, 0, 3, 0, -3, 0, -1.3113416e-07, -270, -30, -10.5)
 player = NodePath("../../Player")
 Bullet = ExtResource("25_r4e17")
 Bullet2 = ExtResource("26_y57op")
@@ -1548,6 +1582,7 @@ unlock = 4
 shape = SubResource("SphereShape3D_og1vs")
 
 [node name="blaster" parent="Level/WpnPickups/RocketLauncher" instance=ExtResource("39_ro3en")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Coins" type="Node" parent="Level"]
 
@@ -1716,6 +1751,7 @@ shape = SubResource("CylinderShape3D_muem4")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level/Teleports/Tp3/Tp"]
 transparency = 0.6
+pixel_size = 0.02
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_muem4")
 autoplay = "default"
@@ -2011,6 +2047,9 @@ parameters/looping = true
 [connection signal="enemy_down" from="Enemies/big-enemy-flying8" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/big-enemy-flying9" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/big-enemy-flying10" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/big-enemy-flying11" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/big-enemy-flying12" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/chasing-enemy14" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/chasing-enemy" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/chasing-enemy2" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/chasing-enemy3" to="HUD" method="_on_enemy_down"]
@@ -2027,6 +2066,9 @@ parameters/looping = true
 [connection signal="enemy_down" from="Enemies/spew-enemy" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/spew-enemy2" to="HUD" method="_on_enemy_down"]
 [connection signal="enemy_down" from="Enemies/spew-enemy3" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/spew-enemy4" to="HUD" method="_on_enemy_down"]
+[connection signal="enemy_down" from="Enemies/spew-enemy5" to="HUD" method="_on_enemy_down"]
+[connection signal="end_game" from="Enemies/boss" to="Player" method="_on_boss_end_game"]
 [connection signal="end_game" from="Enemies/boss" to="Fade" method="_on_boss_end_game"]
 [connection signal="enemy_down" from="Enemies/boss" to="HUD" method="_on_enemy_down"]
 [connection signal="music" from="Enemies/boss" to="Fade" method="_on_boss_music"]

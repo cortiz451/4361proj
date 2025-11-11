@@ -19,8 +19,16 @@ func _process(delta):
 	@warning_ignore("integer_division")
 	$Time.text = "Time: %d:%02d.%03d" % [(int)(time)/60, ((int)(time)%60), ((int)(time*1000))%1000]
 	
-	#update face constantly!
+	#update face constantly! prevents oddities :)
 	hp=$"../Player".health
+	
+	#cutesy buddha mode (See Source engine for terminology) face
+	if(hp>500):
+		$face_win.visible=true
+	else:
+		$face_win.visible=false
+	
+	#normal faces
 	if(hp>100):
 		$face_wow.visible=true
 	elif(hp>50):

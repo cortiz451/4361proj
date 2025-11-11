@@ -9,7 +9,7 @@ const RUNSPEED = 12
 const MAX_AIRACCEL=0.8
 const MAX_ACCEL = 8*RUNSPEED
 const g=24
-const jump_strength = 1.5*sqrt(2*g)
+const jump_strength = 1.35*sqrt(2*g)
 var friction = 10
 
 var weapon: Weapon
@@ -41,6 +41,10 @@ var keys=[false,false,false]
 
 var jump=false
 
+var gameEnd=false
+
+var DIFFICULTY=1
+
 #Sig-nal.
 signal health_updated
 signal ammo_updated
@@ -61,6 +65,7 @@ signal btp_updated
 @onready var resupplytime = $"../Level/WpnPickups/Resupply/Timer"
 @onready var initWait = $"initWait"
 @onready var hudfade=$"../HUD/Fade"
+@onready var hud=$"../HUD"
 
 @export var crosshair:TextureRect
 
@@ -68,6 +73,7 @@ signal btp_updated
 
 var player_mouse_sensitivity : float = PlayerConfig.get_config(AppSettings.INPUT_SECTION, "MouseSensitivity", 1.0)
 var player_joypad_sensitivity : float = PlayerConfig.get_config(AppSettings.INPUT_SECTION, "JoypadSensitivity", 1.0)
+var fov : float = PlayerConfig.get_config(AppSettings.VIDEO_SECTION, "FOV", 90.0)
 
 var time=0.0
 
@@ -76,6 +82,9 @@ var time=0.0
 func _ready():
 	
 	hudfade.color=Color(0,0,0,0)
+	
+	#user fov
+	$Head/Camera.fov=fov
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	weapon = weapons[weapon_index] # Weapon must never be nil
@@ -107,6 +116,10 @@ func _ready():
 			3:
 				deathmsg+=("Maybe you just need to believe in yourself...")
 		tmp.set_value("Game.Info", "died", false)
+		
+		#restore time on death
+		hud.time=float(tmp.get_value("Game.Stats", "Time", 0.0))
+		
 		tmp.save("user://tmp")
 		
 		consoletext.emit(deathmsg)
@@ -252,6 +265,9 @@ func hmvmt_ground(applied_velocity, delta):
 
 # Shooting
 func action_shoot():
+	
+	#don't allow shooting during end scene
+	if(gameEnd): return
 	
 	if Input.is_action_pressed("shoot"):
 		
@@ -484,13 +500,14 @@ func damage(amount):
 	
 	Audio.play("sounds/ouch.ogg")
 	
-	health -= amount+randi_range(-2,2)
+	health -= DIFFICULTY*amount+randi_range(-2,2)
 	health_updated.emit(health) # Update health on HUD
 	
 	dmgcool.start(DAMAGE_COOLDOWN)
 	
 	if health < 0:
 		tmp.set_value("Game.Info", "died", true)
+		tmp.set_value("Game.Stats", "Time", str($"../HUD".time))
 		tmp.save("user://tmp")
 		SceneLoader.reload_current_scene() # Reset when out of health
 
@@ -504,10 +521,13 @@ func _on_init_wait_timeout() -> void:
 	init_enemycount.emit(0)
 	coins_updated.emit(0)
 
-
-func _consoletext() -> void:
-	pass # Replace with function body.
-
-
-func _on_enemy_down() -> void:
-	pass # Replace with function body.
+func _on_boss_end_game() -> void:
+	gameEnd=true
+	consoletext.emit("Something wonderful has happened...")
+	
+	#load player stats into tmp
+	tmp.load("user://tmp")
+	tmp.set_value("Game.Stats", "Time", (hud.time))
+	tmp.set_value("Game.Stats", "Enemies", (str(hud.enemies)+"/"+str(hud.enemycount)))
+	tmp.set_value("Game.Stats", "Coins", (str(coins)+"/"+str(hud.coincount)))
+	tmp.save("user://tmp")
