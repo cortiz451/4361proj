@@ -2,7 +2,6 @@ extends Control
 
 func _difficulty(d: int) -> void:
 	PlayerConfig.set_config(AppSettings.GAME_SECTION, "Difficulty", d)
-	d
 	#random difficulty names
 	match d:
 		1:
