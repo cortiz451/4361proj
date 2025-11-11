@@ -10,17 +10,17 @@ func _on_boss_end_game() -> void:
 	#so you don't die :)
 	$"../Player".sethp(999)
 	
-	$Timer.start(0.5)
+	$Timer.start(0.25)
 	
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(15).timeout
 	
 	SceneLoader.load_scene(credits)
 
 
 func _on_timer_timeout() -> void:
-	if(i<10):
-		hudfade.color=Color(0,0,0,i/8.0)
-		$"../BossMusicPlayer".volume_db-=5.0
+	if(i<60):
+		hudfade.color=Color(0,0,0,i/60.0)
+		$"../BossMusicPlayer".volume_db-=1.5
 		i+=1.0
 
 

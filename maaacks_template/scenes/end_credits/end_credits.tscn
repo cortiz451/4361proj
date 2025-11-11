@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cbyjxn8g2hofm" path="res://maaacks_template/scenes/credits/scrolling_credits.tscn" id="1_sspq7"]
 [ext_resource type="Script" uid="uid://dyo7hdwa23t2x" path="res://maaacks_template/scenes/end_credits/end_credits.gd" id="2_5v7ca"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="3_me3ac"]
-[ext_resource type="AudioStream" uid="uid://bjic0cgjoovs0" path="res://sounds/end_credits.ogg" id="4_5v7ca"]
+[ext_resource type="AudioStream" uid="uid://d3u4fducql2lx" path="res://sounds/end_credits.ogg" id="4_5v7ca"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_game_template/base/nodes/utilities/capture_focus.gd" id="4_66fbp"]
 
 [node name="EndCredits" instance=ExtResource("1_sspq7")]
@@ -13,6 +13,8 @@ force_mouse_mode_visible = false
 
 [node name="BackgroundMusicPlayer" parent="." index="0" instance=ExtResource("3_me3ac")]
 stream = ExtResource("4_5v7ca")
+volume_db = -6.0
+parameters/looping = true
 
 [node name="BackgroundColor" type="ColorRect" parent="." index="1"]
 layout_mode = 1
@@ -34,25 +36,17 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ScrollContainer" parent="." index="3"]
-scroll_vertical = 1839
+scroll_vertical = 1659
 
 [node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" index="1"]
 text = "[font_size=48]Collaborators[/font_size]
 
-[font_size=32]Role[/font_size]
+[font_size=32]The Hard Working Creators[/font_size]
 Lucah Lucero
 John Nguyen
 Carlos Ortiz III 
 Tien Phan
 Henry Trahan
-[url=]Person w/ Link[/url]  
-
-[font_size=48]Sourced[/font_size]
-[font_size=32]Asset Type[/font_size]
-[font_size=24]Use Case[/font_size]
-Author: [url=]Name[/url]  
-Source: [url=]Domain : webpage.html[/url]  
-License: [url=]License[/url]
 
 [font_size=24]Godot Engine Logo[/font_size]
 Author: Andrea Calabró  
@@ -61,7 +55,7 @@ License: [url=https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt]
 
 [font_size=48]Tools[/font_size]
 [font_size=24]Godot[/font_size]
-[img=80]res:///copied_files_wasnt_paying_attention/assets/godot_engine_logo/logo_vertical_color_dark.png[/img]  
+[img=80]res:///maaacks_template/assets/godot_engine_logo/logo_vertical_color_dark.png[/img]  
 Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]  
 Source: [url=https://godotengine.org/]godotengine.org[/url]  
 License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url]
@@ -73,13 +67,13 @@ Source: [url=https://github.com/KenneyNL/Starter-Kit-FPS]github: Starter-Kit-FPS
 License: [url=LICENSE.txt]MIT License[/url] 
 
 [font_size=24]Godot Menus Template[/font_size]
-[img=80]res:///copied_files_wasnt_paying_attention/assets/plugin_logo/logo.png[/img]  
+[img=80]res:///maaacks_template/assets/plugin_logo/logo.png[/img]  
 Author: [url=https://github.com/Maaack/Godot-Menus-Template/graphs/contributors]Marek Belski and contributors[/url]  
 Source: [url=https://github.com/Maaack/Godot-Menus-Template]github: Godot-Menus-Template[/url]  
 License: [url=LICENSE.txt]MIT License[/url]  
 
 [font_size=24]Git[/font_size]
-[img=80]res:///copied_files_wasnt_paying_attention/assets/git_logo/Git-Logo-2Color.png[/img]  
+[img=80]res:///maaacks_template/assets/git_logo/Git-Logo-2Color.png[/img]  
 Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
 Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
 License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]"
@@ -106,7 +100,8 @@ anchor_bottom = 1.0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Thanks for playing!"
+text = "Thanks for playing our demo!
+New levels coming maybe!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -127,7 +122,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Exit"
+text = "Go Away"
 
 [node name="MenuButton" type="Button" parent="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer" index="1"]
 unique_name_in_owner = true

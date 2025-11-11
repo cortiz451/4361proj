@@ -87,8 +87,8 @@ func destroy():
 	$Timer3.stop()
 	
 	end_game.emit()
-	
-	await get_tree().create_timer(4).timeout
+
+	await get_tree().create_timer(13).timeout
 	
 	queue_free()
 
