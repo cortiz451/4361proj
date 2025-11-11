@@ -30,6 +30,10 @@ func load_main_menu() -> void:
 	SceneLoader.load_scene(get_main_menu_scene_path())
 
 func exit_game() -> void:
+	$CenterContainer/EndMessagePanel/VBoxContainer/Time.text="Time: ???"
+	$CenterContainer/EndMessagePanel/VBoxContainer/Coins.text="Coins: ???"
+	$CenterContainer/EndMessagePanel/VBoxContainer/Enemies.text="Enemies: ???"
+	
 	if OS.has_feature("web"):
 		load_main_menu()
 	get_tree().quit()
@@ -52,7 +56,7 @@ func _ready() -> void:
 	
 	var time = float(stats.get_value("Game.Stats", "Time", 0.0))
 	@warning_ignore("integer_division")
-	$CenterContainer/EndMessagePanel/VBoxContainer/Time.text="Time: "+(str(int(time)/60)+":"+str(int(time)%60))
+	$CenterContainer/EndMessagePanel/VBoxContainer/Time.text="Time: "+(str(int(time)/60)+":%02d" % (int(time)%60))
 	$CenterContainer/EndMessagePanel/VBoxContainer/Coins.text="Coins: "+str(stats.get_value("Game.Stats", "Coins", "???"))
 	$CenterContainer/EndMessagePanel/VBoxContainer/Enemies.text="Enemies: "+str(stats.get_value("Game.Stats", "Enemies", "???"))
 	

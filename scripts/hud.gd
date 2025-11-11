@@ -18,31 +18,31 @@ func _process(delta):
 	#INTEGER DIVISION IS THE POINT, GODOT.
 	@warning_ignore("integer_division")
 	$Time.text = "Time: %d:%02d.%03d" % [(int)(time)/60, ((int)(time)%60), ((int)(time*1000))%1000]
-	
-	#update face constantly! prevents oddities :)
-	hp=$"../Player".health
+
+func _on_health_updated(health):
+	$Health.text = "Health: "+ str(health) + "%"
 	
 	#cutesy buddha mode (See Source engine for terminology) face
-	if(hp>500):
+	if(health>500):
 		$face_win.visible=true
 	else:
 		$face_win.visible=false
 	
 	#normal faces
-	if(hp>100):
+	if(health>100):
 		$face_wow.visible=true
-	elif(hp>50):
+	elif(health>50):
 		$face_wow.visible=false
 		$face_good.visible=true
-	elif(hp>25):
+	elif(health>25):
+		$face_wow.visible=false
 		$face_good.visible=false
 		$face_ok.visible=true
 	else:
+		$face_wow.visible=false
+		$face_good.visible=false
 		$face_ok.visible=false
 		$face_bad.visible=true
-
-func _on_health_updated(health):
-	$Health.text = "Health: "+ str(health) + "%"
 
 func _on_player_ammo_updated(weaponammo, type) -> void:
 	if(displayAmmo):
