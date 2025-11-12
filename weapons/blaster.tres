@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://c56y8pqoyk15f"]
 
-[ext_resource type="Texture2D" uid="uid://2jld33y6h5pq" path="res://sprites/crosshair.png" id="1_2onsr"]
+[ext_resource type="Texture2D" uid="uid://cjvem17to2rao" path="res://weapons/crosshair.png" id="1_uworq"]
 [ext_resource type="Script" uid="uid://dg01pkkc1c5vd" path="res://scripts/weapon.gd" id="2_107w7"]
 [ext_resource type="PackedScene" uid="uid://ch7mwami72nr1" path="res://objects/blaster_basic.tscn" id="2_uworq"]
 
@@ -16,4 +16,4 @@ shot_count = 6
 knockback = 5
 ammotype = 1
 sound_shoot = "sounds/blaster.ogg"
-crosshair = ExtResource("1_2onsr")
+crosshair = ExtResource("1_uworq")

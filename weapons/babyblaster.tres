@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=5 format=3 uid="uid://bds2lhxkasyh3"]
 
 [ext_resource type="PackedScene" uid="uid://y1lcn48xm770" path="res://objects/baby_rocket.tscn" id="1_uwy8n"]
-[ext_resource type="Texture2D" uid="uid://2jld33y6h5pq" path="res://sprites/crosshair.png" id="2_0dxg3"]
+[ext_resource type="Texture2D" uid="uid://cjvem17to2rao" path="res://weapons/crosshair.png" id="2_0dxg3"]
 [ext_resource type="PackedScene" uid="uid://b888ra18w1uwb" path="res://objects/babyblaster.tscn" id="2_uwy8n"]
 [ext_resource type="Script" uid="uid://bghiw60fyuex0" path="res://scripts/weapon_proj.gd" id="2_y4t0t"]
 

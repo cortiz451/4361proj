@@ -385,7 +385,7 @@ func initiate_change_weapon(index):
 	
 	Audio.play("sounds/weapon_change.ogg")
 	
-	blaster_cooldown.start(0.5)
+	blaster_cooldown.start(0.3)
 	
 	weapon_index = index
 	
@@ -535,3 +535,6 @@ func _on_boss_end_game() -> void:
 	tmp.set_value("Game.Stats", "Enemies", (str(hud.enemies)+"/"+str(hud.enemycount)))
 	tmp.set_value("Game.Stats", "Coins", (str(coins)+"/"+str(hud.coincount)))
 	tmp.save("user://tmp")
+
+func _exit_tree() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

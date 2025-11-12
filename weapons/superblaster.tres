@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://cipvtara42tpx"]
 
-[ext_resource type="Texture2D" uid="uid://2jld33y6h5pq" path="res://sprites/crosshair.png" id="1_ec3tx"]
+[ext_resource type="Texture2D" uid="uid://cjvem17to2rao" path="res://weapons/crosshair.png" id="1_ec3tx"]
 [ext_resource type="PackedScene" uid="uid://dcartkp2gx554" path="res://objects/superblaster.tscn" id="1_mfnuh"]
 [ext_resource type="Script" uid="uid://dg01pkkc1c5vd" path="res://scripts/weapon.gd" id="3_eooy3"]
 
