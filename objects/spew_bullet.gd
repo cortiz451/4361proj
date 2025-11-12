@@ -2,12 +2,12 @@ extends Area3D
 
 signal exploded
 
-@export var g = Vector3.FORWARD * -20 + Vector3.LEFT*(-8+16*randf()) + Vector3.UP*(-6+12*randf())
+@export var g = Vector3.FORWARD * -20 + Vector3.LEFT*(-10+20*randf()) + Vector3.UP*(-7+14*randf())
 var h = Vector3.FORWARD * -20 + Vector3.LEFT*(-3+6*randf()) + Vector3.UP*(-2+4*randf())
 @export var muzzle_velocity = 45
 
 var velocity = Vector3.ZERO
-var MULT=max(-0.5, \
+var MULT=max(0.5, \
 			((PlayerConfig.get_config(AppSettings.GAME_SECTION, "Difficulty", 3)-1)/2) \
 			)
 #how fast do you want it to go?

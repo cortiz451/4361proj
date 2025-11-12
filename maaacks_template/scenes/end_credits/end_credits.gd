@@ -27,6 +27,9 @@ func _end_reached() -> void:
 	super._end_reached()
 
 func load_main_menu() -> void:
+	$CenterContainer/EndMessagePanel/VBoxContainer/Time.text="Time: ???"
+	$CenterContainer/EndMessagePanel/VBoxContainer/Coins.text="Coins: ???"
+	$CenterContainer/EndMessagePanel/VBoxContainer/Enemies.text="Enemies: ???"
 	SceneLoader.load_scene(get_main_menu_scene_path())
 
 func exit_game() -> void:

@@ -9,7 +9,7 @@ extends Node3D
 
 #obj ori progs!
 var health := 320
-var shots := 24
+var shots := 20
 
 var time := 0.0
 var target_position: Vector3

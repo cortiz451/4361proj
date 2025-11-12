@@ -568,12 +568,13 @@ mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="." index="9"]
+visible = false
 layout_mode = 0
 offset_left = 876.0
 offset_top = 6.0
 offset_right = 1271.0
 offset_bottom = 147.0
-text = "NOTE: Going back to Main Menu from the pause menu is broken right now! If you need to change settings, either restart or use the arrow keys + enter. Sorry!"
+text = "Hello! I love you thank you for playing our game :)"
 label_settings = SubResource("LabelSettings_h0ckf")
 horizontal_alignment = 2
 autowrap_mode = 3

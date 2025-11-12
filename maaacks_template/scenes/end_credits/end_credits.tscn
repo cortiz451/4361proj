@@ -120,7 +120,7 @@ vertical_alignment = 1
 
 [node name="Time" type="Label" parent="CenterContainer/EndMessagePanel/VBoxContainer" index="1"]
 layout_mode = 2
-text = "Time: ???"
+text = "Time: 0:00"
 horizontal_alignment = 3
 
 [node name="DevTime" type="Label" parent="CenterContainer/EndMessagePanel/VBoxContainer" index="2"]
@@ -131,7 +131,7 @@ text = "Developer time:"
 layout_mode = 0
 offset_right = 360.0
 offset_bottom = 16.000002
-text = "2:00"
+text = "1:45"
 horizontal_alignment = 2
 
 [node name="Coins" type="Label" parent="CenterContainer/EndMessagePanel/VBoxContainer" index="3"]

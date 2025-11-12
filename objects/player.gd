@@ -385,7 +385,7 @@ func initiate_change_weapon(index):
 	
 	Audio.play("sounds/weapon_change.ogg")
 	
-	blaster_cooldown.start(0.3)
+	blaster_cooldown.start(0.333)
 	
 	weapon_index = index
 	
