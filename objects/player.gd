@@ -52,6 +52,7 @@ signal init_enemycount
 signal consoletext
 signal key_updated
 signal btp_updated
+signal btps_updated
 
 @onready var camera = $Head/Camera
 @onready var raycast = $Head/Camera/RayCast
@@ -105,6 +106,9 @@ func _ready():
 	#update tp5 (boss tp) status
 	if(tmp.get_value("Game.Info", "tp1")):
 		btp_updated.emit()
+	
+	if(tmp.get_value("Game.Info", "tps")):
+		btps_updated.emit()
 	
 	if(tmp.get_value("Game.Info", "died")):
 		var deathmsg="You died! "
@@ -498,6 +502,8 @@ func unlockWeapon(w):
 			consoletext.emit("You collected a Chaingun!")
 		4:					#maybe a better word here?
 			consoletext.emit("You rounded up a Rocket Launcher!")
+		4:					#maybe a better word here?
+			consoletext.emit("...you shouldn't have this...?")
 
 
 func damage(amount):
@@ -523,6 +529,10 @@ func bossTpUnlocked():
 	tmp.set_value("Game.Info", "tp1", true)
 	tmp.save("user://tmp")
 
+func bossSecretTpUnlocked():
+	tmp.load("user://tmp")
+	tmp.set_value("Game.Info", "tps", true)
+	tmp.save("user://tmp")
 
 func _on_init_wait_timeout() -> void:
 	init_enemycount.emit(0)

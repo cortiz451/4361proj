@@ -10,6 +10,7 @@ script = ExtResource("4_1fdy5")
 Proj = ExtResource("1_pa6h2")
 model = ExtResource("3_pa6h2")
 ammotype = 4
+inInventory = false
 hitscan = false
 sound_shoot = "sounds/plasmablaster.ogg"
 crosshair = ExtResource("2_pgwrw")
