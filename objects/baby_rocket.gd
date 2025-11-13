@@ -2,12 +2,12 @@ extends Area3D
 
 signal exploded
 
-@export var g = Vector3.FORWARD * 20
-@export var muzzle_velocity = 75
+@export var g = Vector3.FORWARD * 20 + Vector3.LEFT*(-0.5+randf()) + Vector3.UP
+@export var muzzle_velocity = 100
 
 var velocity = Vector3.ZERO
 
-var DMG=200;
+#var DMG=200;
 
 func _physics_process(delta):
 	velocity = muzzle_velocity*g*delta
@@ -16,7 +16,8 @@ func _physics_process(delta):
 	transform.origin += velocity * delta
 
 func _on_area_entered(area: Area3D) -> void:
-	if(area.has_method("damage")):
+									#prevent self damage??
+	if(area.has_method("damage") && !area.has_method("heal")):
 		emit_signal("exploded", transform.origin)
 		#area.damage(DMG)
 		queue_free()

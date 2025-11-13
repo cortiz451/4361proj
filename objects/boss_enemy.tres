@@ -2,18 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://b5hxnjwvrxuji" path="res://models/Textures/colormap.png" id="1_a5ecw"]
 [ext_resource type="Texture2D" uid="uid://d1ffu87q6ftth" path="res://materials/unsplash/abstracttile_gray.png" id="2_didbg"]
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_tc86h"]
-render_priority = 1
-transparency = 4
-blend_mode = 4
-albedo_color = Color(5.3965983, 5.575303, 11.740602, 1)
-albedo_texture = ExtResource("2_didbg")
-uv1_scale = Vector3(4, 4, 4)
+[ext_resource type="Material" uid="uid://cit2fna6xl10y" path="res://materials/brick/brickwall020a.tres" id="3_didbg"]
 
 [resource]
 resource_name = "colormap"
-next_pass = SubResource("ORMMaterial3D_tc86h")
+next_pass = ExtResource("3_didbg")
 cull_mode = 2
 albedo_color = Color(1.0276327, 1.5714464, 2.7920005, 1)
 albedo_texture = ExtResource("1_a5ecw")

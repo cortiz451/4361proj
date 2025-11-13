@@ -32,10 +32,10 @@ var tween:Tween
 var DAMAGE_COOLDOWN=0.25;
 
 #add ammotypes here
-var ammoTypes=["Ammo", "Shells", "Bullets", "Rockets"]
-var numATypes=4
-var ammo=[1, 50, 256, 25]
-var maxAmmo=[1, 100, 512, 50]
+var ammoTypes=["Ammo", "Shells", "Bullets", "Rockets", "Plasma"]
+var numATypes=5
+var ammo=[1, 50, 256, 25, 222]
+var maxAmmo=[1, 100, 512, 50, 444]
 
 var keys=[false,false,false]
 
@@ -296,7 +296,8 @@ func action_shoot():
 		
 		# FOR PROJECTILE WEAPONS
 		if(!weapon.hitscan):
-			shootProj()
+			for n in weapon.shot_count:
+				shootProj()
 		# Shoot the weapon, amount based on shot count
 		else:
 			for n in weapon.shot_count:
@@ -339,7 +340,7 @@ func action_shoot():
 func shootProj():
 	var b=weapon.Proj.instantiate()
 	owner.add_child(b)
-	b.transform = $Head/Camera/Marker3D.global_transform
+	b.transform = $Head/Camera/Marker3D.global_transform.translated_local(Vector3(0,-0.5,0.25))
 
 # Toggle between available weapons (listed in 'weapons')
 
@@ -371,7 +372,9 @@ func action_weapon_select():
 		initiate_change_weapon(3)
 	elif Input.is_action_just_pressed("rocket_launcher"):
 		initiate_change_weapon(4)
-	
+	elif Input.is_action_just_pressed("plasma_launcher"):
+		initiate_change_weapon(5)
+
 
 # Initiates the weapon changing animation (tween)
 

@@ -1,7 +1,7 @@
 extends Area3D
 
 @export var DMG=200
-@export var SPD=20
+@export var SPD=3
 
 func _on_rocket_exploded(t) -> void:
 	position=t

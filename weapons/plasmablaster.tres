@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://doubmgawda8xd"]
+
+[ext_resource type="PackedScene" uid="uid://bpo102x3vn202" path="res://objects/plasma_rocket.tscn" id="1_pa6h2"]
+[ext_resource type="Texture2D" uid="uid://cjvem17to2rao" path="res://weapons/crosshair.png" id="2_pgwrw"]
+[ext_resource type="PackedScene" uid="uid://snvkunidkjh8" path="res://objects/plasmablaster.tscn" id="3_pa6h2"]
+[ext_resource type="Script" uid="uid://bghiw60fyuex0" path="res://scripts/weapon_proj.gd" id="4_1fdy5"]
+
+[resource]
+script = ExtResource("4_1fdy5")
+Proj = ExtResource("1_pa6h2")
+model = ExtResource("3_pa6h2")
+ammotype = 4
+hitscan = false
+sound_shoot = "sounds/plasmablaster.ogg"
+crosshair = ExtResource("2_pgwrw")

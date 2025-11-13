@@ -1,14 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://y1lcn48xm770"]
+[gd_scene load_steps=11 format=3 uid="uid://bpo102x3vn202"]
 
-[ext_resource type="Script" uid="uid://brpfjamvioju8" path="res://objects/baby_rocket.gd" id="1_kxx00"]
-[ext_resource type="Texture2D" uid="uid://2jld33y6h5pq" path="res://sprites/crosshair.png" id="2_84iy7"]
-[ext_resource type="Script" uid="uid://ybmatey1y08j" path="res://objects/explosion.gd" id="3_82trq"]
-[ext_resource type="Texture2D" uid="uid://b2yjoi33kmmnw" path="res://sprites/boom3.png" id="4_jd0ib"]
-[ext_resource type="Texture2D" uid="uid://b63hnp1on1plf" path="res://sprites/boom1.png" id="5_bch8t"]
-[ext_resource type="Texture2D" uid="uid://dhvimn3i0pm0" path="res://sprites/boom2.png" id="6_x7jld"]
-[ext_resource type="AudioStream" uid="uid://dlpum02mwcjpi" path="res://sounds/babyblaster.ogg" id="7_kxx00"]
+[ext_resource type="Script" uid="uid://brpfjamvioju8" path="res://objects/baby_rocket.gd" id="1_hmm4s"]
+[ext_resource type="Texture2D" uid="uid://2jld33y6h5pq" path="res://sprites/crosshair.png" id="2_5tuu2"]
+[ext_resource type="Script" uid="uid://ybmatey1y08j" path="res://objects/explosion.gd" id="3_21pic"]
+[ext_resource type="Texture2D" uid="uid://b2yjoi33kmmnw" path="res://sprites/boom3.png" id="4_scpgn"]
+[ext_resource type="Texture2D" uid="uid://b63hnp1on1plf" path="res://sprites/boom1.png" id="5_umgcl"]
+[ext_resource type="Texture2D" uid="uid://dhvimn3i0pm0" path="res://sprites/boom2.png" id="6_mvwxr"]
+[ext_resource type="AudioStream" uid="uid://coqwoxs6fhmsq" path="res://sounds/boom.ogg" id="7_hmm4s"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3ndsa"]
+radius = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pb2y6"]
 radius = 2.0
@@ -17,55 +18,55 @@ radius = 2.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_jd0ib")
+"texture": ExtResource("4_scpgn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_bch8t")
+"texture": ExtResource("5_umgcl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_x7jld")
+"texture": ExtResource("6_mvwxr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_bch8t")
+"texture": ExtResource("5_umgcl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_x7jld")
+"texture": ExtResource("6_mvwxr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_bch8t")
+"texture": ExtResource("5_umgcl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_x7jld")
+"texture": ExtResource("6_mvwxr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_bch8t")
+"texture": ExtResource("5_umgcl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_x7jld")
+"texture": ExtResource("6_mvwxr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_bch8t")
+"texture": ExtResource("5_umgcl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_x7jld")
+"texture": ExtResource("6_mvwxr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_bch8t")
+"texture": ExtResource("5_umgcl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_x7jld")
+"texture": ExtResource("6_mvwxr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_bch8t")
+"texture": ExtResource("5_umgcl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_x7jld")
+"texture": ExtResource("6_mvwxr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_bch8t")
+"texture": ExtResource("5_umgcl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_x7jld")
+"texture": ExtResource("6_mvwxr")
 }],
 "loop": false,
 "name": &"default",
@@ -76,17 +77,18 @@ animations = [{
 
 [node name="Rocket" type="Area3D" parent="."]
 collision_mask = 5
-script = ExtResource("1_kxx00")
+script = ExtResource("1_hmm4s")
+muzzle_velocity = 150
 
 [node name="Sprite3D" type="Sprite3D" parent="Rocket"]
 transparency = 0.66
-modulate = Color(0, 2.231804, 3.2521222, 1)
+modulate = Color(0.68768644, 1.1480514, 0.5998687, 1)
 pixel_size = 0.0075
 billboard = 1
 shaded = true
 texture_filter = 0
 render_priority = 5
-texture = ExtResource("2_84iy7")
+texture = ExtResource("2_5tuu2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rocket"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -94,26 +96,25 @@ shape = SubResource("SphereShape3D_3ndsa")
 
 [node name="Explosion" type="Area3D" parent="."]
 monitoring = false
-script = ExtResource("3_82trq")
-DMG = 8
-SPD = 6
+script = ExtResource("3_21pic")
+DMG = 24
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Explosion"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_pb2y6")
 
 [node name="Boom" type="AnimatedSprite3D" parent="Explosion"]
-modulate = Color(0, 3.013768, 3.013768, 0.39215687)
+modulate = Color(0, 3.013768, 0, 0.39215687)
 billboard = 1
 render_priority = 5
 sprite_frames = SubResource("SpriteFrames_ek3pu")
 
 [node name="BoomAudio" type="AudioStreamPlayer3D" parent="Explosion"]
-stream = ExtResource("7_kxx00")
-volume_db = -6.0
+stream = ExtResource("7_hmm4s")
+volume_db = -12.0
 unit_size = 25.0
 max_db = 0.0
-pitch_scale = 0.5
+pitch_scale = 2.5
 bus = &"SFX"
 
 [node name="PreventWallCol" type="Timer" parent="."]

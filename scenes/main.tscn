@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=93 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -13,6 +13,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bgkrjkpxwnspr" path="res://geometry/godotmap1_vmf_import.mesh" id="8_choun"]
 [ext_resource type="Resource" uid="uid://brdg5gajhxkdc" path="res://weapons/rocketblaster.tres" id="8_ro3en"]
 [ext_resource type="LabelSettings" uid="uid://dy5ecelk2tcjh" path="res://fonts/main_font.tres" id="9_jscy8"]
+[ext_resource type="Resource" uid="uid://doubmgawda8xd" path="res://weapons/plasmablaster.tres" id="9_xrs0c"]
 [ext_resource type="Shape3D" uid="uid://toakdbdoymgg" path="res://geometry/godotmap1_vmf_collision_surface_prop_default.res" id="9_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://dqr1b0mpwudk3" path="res://materials/face_bg.png" id="10_fuf3a"]
 [ext_resource type="Texture2D" uid="uid://0xjf5dj4qq5x" path="res://materials/face_bad.png" id="10_kmb1v"]
@@ -212,7 +213,7 @@ environment = ExtResource("1_q8fpv")
 [node name="Player" parent="." node_paths=PackedStringArray("crosshair") instance=ExtResource("2_elriq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 slide_on_ceiling = false
-weapons = Array[ExtResource("3_trceg")]([ExtResource("4_a8y0u"), ExtResource("5_jkv2x"), ExtResource("7_muem4"), ExtResource("6_jbj1t"), ExtResource("8_ro3en")])
+weapons = Array[ExtResource("3_trceg")]([ExtResource("4_a8y0u"), ExtResource("5_jkv2x"), ExtResource("7_muem4"), ExtResource("6_jbj1t"), ExtResource("8_ro3en"), ExtResource("9_xrs0c")])
 crosshair = NodePath("../HUD/Crosshair")
 
 [node name="initWait" type="Timer" parent="Player"]
