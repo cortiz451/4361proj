@@ -263,17 +263,21 @@ target_position = Vector3(0, 0, 500)
 [node name="MuzzleA" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.25, 0, 2.2)
 modulate = Color(0.42352942, 0.4392157, 0.98039216, 1)
+pixel_size = 0.03
 sprite_frames = ExtResource("4_068eh")
+frame = 2
 
 [node name="MuzzleB" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.25, 0, 2.2)
 modulate = Color(0.42352942, 0.4392157, 0.98039216, 1)
+pixel_size = 0.03
 sprite_frames = ExtResource("4_068eh")
+frame = 2
 
 [node name="DestroyFX" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.2, 0)
 visible = false
-modulate = Color(0.42352942, 0.4392157, 0.98039216, 1)
+modulate = Color(0.42352942, 0.4392157, 0.98039216, 0.1254902)
 pixel_size = 0.1
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_wvihl")
@@ -307,17 +311,19 @@ shape = SubResource("ConvexPolygonShape3D_we7g8")
 
 [node name="Destroy" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_vmsa7")
+volume_db = 3.0
 unit_size = 100.0
 bus = &"SFX"
 
 [node name="Hurt" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_0p5t0")
+volume_db = -6.0
 unit_size = 100.0
 bus = &"SFX"
 
 [node name="Angry" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_wvihl")
-volume_db = 3.0
+volume_db = 4.5
 unit_size = 100.0
 max_db = 6.0
 bus = &"SFX"

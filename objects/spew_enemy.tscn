@@ -194,7 +194,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1, -0.1, 1.4)
 modulate = Color(1, 0, 1, 1)
 sprite_frames = ExtResource("4_swfy7")
 frame = 2
-frame_progress = 1.0
 
 [node name="MuzzleB" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1, -0.1, 1.4)
@@ -203,12 +202,14 @@ sprite_frames = ExtResource("4_swfy7")
 frame = 2
 
 [node name="DestroyFX" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.2, 0)
-pixel_size = 0.03
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.8, 0)
+visible = false
+modulate = Color(1, 0, 1, 0.1254902)
+pixel_size = 0.04
 billboard = 1
 sprite_frames = ExtResource("4_swfy7")
-frame = 2
-speed_scale = 0.1
+autoplay = "default"
+speed_scale = 0.5
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

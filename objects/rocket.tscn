@@ -9,9 +9,10 @@
 [ext_resource type="AudioStream" uid="uid://coqwoxs6fhmsq" path="res://sounds/boom.ogg" id="7_ek3pu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3ndsa"]
+radius = 0.75
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pb2y6"]
-radius = 2.0
+radius = 3.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ek3pu"]
 animations = [{
@@ -103,7 +104,7 @@ shape = SubResource("SphereShape3D_pb2y6")
 
 [node name="Boom" type="AnimatedSprite3D" parent="Explosion"]
 modulate = Color(1, 1, 1, 0.39215687)
-pixel_size = 0.05
+pixel_size = 0.075
 billboard = 1
 render_priority = 5
 sprite_frames = SubResource("SpriteFrames_ek3pu")

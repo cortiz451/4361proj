@@ -71,8 +71,9 @@ func destroy():
 		$CollisionShape3D.queue_free()
 	if($"enemy-flying"):
 		$"enemy-flying".queue_free()
-	$DestroyFX.play()
-	await get_tree().create_timer(0.3).timeout
+	$DestroyFX.visible=true
+	$DestroyFX.play("default")
+	await get_tree().create_timer(0.5).timeout
 	queue_free()
 	
 
