@@ -2,9 +2,9 @@ extends Node
 
 var credits="res://maaacks_template/scenes/end_credits/end_credits_wrong.tscn"
 @onready var hudfade=$"../HUD/Fade"
+@onready var player=$"../Player"
 
 var i=0.0
-
 
 func _on_timer_timeout() -> void:
 	if(i<20):
@@ -15,7 +15,8 @@ func _on_timer_timeout() -> void:
 
 func _on_end_game_end() -> void:
 	#so you don't die :)
-	$"../Player".sethp(999)
+	player.sethp(999)
+	$"../Level/EndGame/Sprite3D".visible=false
 	
 	$Timer.start(0.25)
 	

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cbyjxn8g2hofm" path="res://maaacks_template/scenes/credits/scrolling_credits.tscn" id="1_iw70y"]
 [ext_resource type="Script" uid="uid://dyo7hdwa23t2x" path="res://maaacks_template/scenes/end_credits/end_credits.gd" id="2_sj7x2"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="3_ib7k3"]
-[ext_resource type="AudioStream" uid="uid://d3u4fducql2lx" path="res://sounds/end_credits.ogg" id="4_7xinf"]
+[ext_resource type="AudioStream" uid="uid://bgsbie1odwu3x" path="res://sounds/end_credits_wrong.ogg" id="4_ib7k3"]
 [ext_resource type="Texture2D" uid="uid://duot5b38a0tvp" path="res://materials/unsplash/abstracttile_red2.png" id="5_sj7x2"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_game_template/base/nodes/utilities/capture_focus.gd" id="6_dt6fj"]
 [ext_resource type="Texture2D" uid="uid://basxqld5sf03" path="res://materials/unsplash/abstracttile_red.png" id="6_ib7k3"]
@@ -34,7 +34,7 @@ main_menu_scene_path = ""
 force_mouse_mode_visible = false
 
 [node name="BackgroundMusicPlayer" parent="." index="0" instance=ExtResource("3_ib7k3")]
-stream = ExtResource("4_7xinf")
+stream = ExtResource("4_ib7k3")
 volume_db = -6.0
 parameters/looping = true
 
@@ -59,7 +59,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.6666667)
 
 [node name="ScrollContainer" parent="." index="3"]
-scroll_vertical = 156
+scroll_vertical = 1659
 
 [node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" index="1"]
 text = "[font_size=48]Collaborators[/font_size]
@@ -131,7 +131,7 @@ vertical_alignment = 1
 
 [node name="Time" type="Label" parent="CenterContainer/EndMessagePanel/VBoxContainer" index="1"]
 layout_mode = 2
-text = "Time: 0:00"
+text = "Time: ???"
 horizontal_alignment = 3
 
 [node name="DevTime" type="Label" parent="CenterContainer/EndMessagePanel/VBoxContainer" index="2"]
