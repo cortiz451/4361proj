@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://d2g78tpqbyf5g"]
 
-[ext_resource type="PackedScene" uid="uid://lde2xq3vq635" path="res://models/enemy-flying.glb" id="1_3v8nl"]
 [ext_resource type="Script" uid="uid://b6udw8uhlp4ei" path="res://objects/enemy.gd" id="1_jg24b"]
 [ext_resource type="PackedScene" uid="uid://c4cej68vmmp6c" path="res://objects/bullet.tscn" id="2_we7g8"]
 [ext_resource type="SpriteFrames" uid="uid://dbv3sy5qjatnl" path="res://sprites/burst_animation.tres" id="3_iblw5"]
+[ext_resource type="PackedScene" uid="uid://bj43wf0bkkeei" path="res://objects/enemy_basic.tscn" id="3_l24ub"]
 [ext_resource type="AudioStream" uid="uid://cgnbyrnxj12ed" path="res://sounds/enemy_hurt.ogg" id="5_l24ub"]
 [ext_resource type="AudioStream" uid="uid://br1ov3ld0er6r" path="res://sounds/enemy_destroy.ogg" id="6_lw0qc"]
 [ext_resource type="AudioStream" uid="uid://dqoyre6x2aqnk" path="res://sounds/enemy_aggro.ogg" id="7_l24ub"]
@@ -20,7 +20,7 @@ collision_layer = 261
 script = ExtResource("1_jg24b")
 Bullet = ExtResource("2_we7g8")
 
-[node name="enemy-flying" parent="." instance=ExtResource("1_3v8nl")]
+[node name="enemy-flying" parent="." instance=ExtResource("3_l24ub")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Enemy"]]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0.25, 0)

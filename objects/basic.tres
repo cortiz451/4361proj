@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://clbum335dwvsj"]
+
+[ext_resource type="Texture2D" uid="uid://d1ffu87q6ftth" path="res://materials/unsplash/abstracttile_gray.png" id="1_5t4cs"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g32wr"]
+load_path = "res://.godot/imported/colormap.png-c1bc3c3aabeec406ff4b53328583776a.bptc.ctex"
+
+[resource]
+resource_name = "colormap"
+cull_mode = 2
+albedo_color = Color(0, 5.912981, 2.990273, 1)
+albedo_texture = SubResource("CompressedTexture2D_g32wr")
+metallic = 1.0
+emission = Color(1, 0, 0, 1)
+emission_operator = 1
+emission_texture = ExtResource("1_5t4cs")
+texture_filter = 2
