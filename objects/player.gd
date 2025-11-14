@@ -52,7 +52,6 @@ signal init_enemycount
 signal consoletext
 signal key_updated
 signal btp_updated
-signal btps_updated
 
 @onready var camera = $Head/Camera
 @onready var raycast = $Head/Camera/RayCast
@@ -104,11 +103,8 @@ func _ready():
 	initWait.start(0.5)
 	
 	#update tp5 (boss tp) status
-	if(tmp.get_value("Game.Info", "tp1")):
+	if(tmp.get_value("Game.Info", "tp1", false)):
 		btp_updated.emit()
-	
-	if(tmp.get_value("Game.Info", "tps")):
-		btps_updated.emit()
 	
 	if(tmp.get_value("Game.Info", "died")):
 		var deathmsg="You died! "
@@ -344,7 +340,7 @@ func action_shoot():
 func shootProj():
 	var b=weapon.Proj.instantiate()
 	owner.add_child(b)
-	b.transform = $Head/Camera/Marker3D.global_transform.translated_local(Vector3(0,-0.5,0.25))
+	b.transform = $Head/Camera/Marker3D.global_transform.translated_local(Vector3(0,-0.5,0))
 
 # Toggle between available weapons (listed in 'weapons')
 
@@ -428,7 +424,7 @@ func change_weapon():
 	# Set weapon data
 	
 	raycast.target_position = Vector3(0, 0, -1) * weapon.max_distance
-	crosshair.texture = weapon.crosshair
+	#crosshair.texture = weapon.crosshair
 	
 	drain_updated.emit(weapon.drain) # Update drain on HUD..?
 	ammo_updated.emit(ammo[weapon.ammotype], ammoTypes[weapon.ammotype]) # Update ammo on HUD
@@ -484,6 +480,9 @@ func setAmmo(ammotype, value, add=false):
 				consoletext.emit("You bargained for some Bullets!")
 			3:
 				consoletext.emit("You racketeered some Rockets!")
+			4:
+				consoletext.emit("...what kind of power...?")
+		
 	else:
 		ammo[ammotype]=value
 	#wrap down
@@ -498,12 +497,12 @@ func unlockWeapon(w):
 	match w:
 		2:
 			consoletext.emit("You snagged a Super Shotgun!")
-		3:					#maybe a better word here?
+		3:
 			consoletext.emit("You collected a Chaingun!")
-		4:					#maybe a better word here?
+		4:
 			consoletext.emit("You rounded up a Rocket Launcher!")
-		4:					#maybe a better word here?
-			consoletext.emit("...you shouldn't have this...?")
+		5:
+			consoletext.emit("...you feel like you shouldn't have this...?")
 
 
 func damage(amount):

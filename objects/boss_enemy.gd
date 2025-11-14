@@ -3,6 +3,7 @@ extends Node3D
 @export var player: Node3D
 @export var Bullet : PackedScene
 @export var Bullet2 : PackedScene
+@export var endgame : bool
 
 @onready var raycast = $RayCast
 @onready var muzzle_a = $MuzzleA
@@ -12,7 +13,7 @@ signal end_game
 signal music
 
 #obj ori progs!
-var health := 5000
+var health := 6000
 var shots := 10
 
 var time := 0.0
@@ -86,7 +87,8 @@ func destroy():
 	$Timer2.stop()
 	$Timer3.stop()
 	
-	end_game.emit()
+	if(endgame):
+		end_game.emit()
 
 	await get_tree().create_timer(13).timeout
 	

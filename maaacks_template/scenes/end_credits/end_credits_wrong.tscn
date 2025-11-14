@@ -1,0 +1,190 @@
+[gd_scene load_steps=11 format=3 uid="uid://cv1pns3gwtl4t"]
+
+[ext_resource type="PackedScene" uid="uid://cbyjxn8g2hofm" path="res://maaacks_template/scenes/credits/scrolling_credits.tscn" id="1_iw70y"]
+[ext_resource type="Script" uid="uid://dyo7hdwa23t2x" path="res://maaacks_template/scenes/end_credits/end_credits.gd" id="2_sj7x2"]
+[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="3_ib7k3"]
+[ext_resource type="AudioStream" uid="uid://d3u4fducql2lx" path="res://sounds/end_credits.ogg" id="4_7xinf"]
+[ext_resource type="Texture2D" uid="uid://duot5b38a0tvp" path="res://materials/unsplash/abstracttile_red2.png" id="5_sj7x2"]
+[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_game_template/base/nodes/utilities/capture_focus.gd" id="6_dt6fj"]
+[ext_resource type="Texture2D" uid="uid://basxqld5sf03" path="res://materials/unsplash/abstracttile_red.png" id="6_ib7k3"]
+[ext_resource type="Texture2D" uid="uid://d1ffu87q6ftth" path="res://materials/unsplash/abstracttile_gray.png" id="7_ib7k3"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_7xinf"]
+frames = 3
+frame_0/texture = ExtResource("5_sj7x2")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("6_ib7k3")
+frame_1/duration = 0.9
+frame_2/texture = ExtResource("7_ib7k3")
+frame_2/duration = 1.3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5v7ca"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_detail = 1
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[node name="EndCredits" instance=ExtResource("1_iw70y")]
+script = ExtResource("2_sj7x2")
+main_menu_scene_path = ""
+force_mouse_mode_visible = false
+
+[node name="BackgroundMusicPlayer" parent="." index="0" instance=ExtResource("3_ib7k3")]
+stream = ExtResource("4_7xinf")
+volume_db = -6.0
+parameters/looping = true
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="." index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_7xinf")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="BackgroundColor" type="ColorRect" parent="." index="2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6666667)
+
+[node name="ScrollContainer" parent="." index="3"]
+scroll_vertical = 156
+
+[node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" index="1"]
+text = "[font_size=48]Collaborators[/font_size]
+
+[font_size=32]The Hard Working Creators[/font_size]
+Lucah Lucero
+John Nguyen
+Carlos Ortiz III 
+Tien Phan
+Henry Trahan
+
+[font_size=24]Godot Engine Logo[/font_size]
+Author: Andrea Calabró  
+Source: [url=https://godotengine.org/press/]godotengine.org : press[/url]  
+License: [url=https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt]CC BY 4.0 International[/url] 
+
+[font_size=48]Tools[/font_size]
+[font_size=24]Godot[/font_size]
+[img=80]res:///maaacks_template/assets/godot_engine_logo/logo_vertical_color_dark.png[/img]  
+Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]  
+Source: [url=https://godotengine.org/]godotengine.org[/url]  
+License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url]
+
+[font_size=24]Kenney's  Starter Kit FPS[/font_size]
+[img=80]res:///addons/kenney_fps/icon.png[/img]
+Author: [url=https://github.com/KenneyNL]Kenney[/url]  
+Source: [url=https://github.com/KenneyNL/Starter-Kit-FPS]github: Starter-Kit-FPS[/url]  
+License: [url=LICENSE.txt]MIT License[/url] 
+
+[font_size=24]Godot Menus Template[/font_size]
+[img=80]res:///maaacks_template/assets/plugin_logo/logo.png[/img]  
+Author: [url=https://github.com/Maaack/Godot-Menus-Template/graphs/contributors]Marek Belski and contributors[/url]  
+Source: [url=https://github.com/Maaack/Godot-Menus-Template]github: Godot-Menus-Template[/url]  
+License: [url=LICENSE.txt]MIT License[/url]  
+
+[font_size=24]Git[/font_size]
+[img=80]res:///maaacks_template/assets/git_logo/Git-Logo-2Color.png[/img]  
+Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
+Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
+License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]"
+
+[node name="CenterContainer" type="CenterContainer" parent="." index="4"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="EndMessagePanel" type="Panel" parent="CenterContainer" index="0"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 120)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5v7ca")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/EndMessagePanel" index="0"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ThankPlayer" type="Label" parent="CenterContainer/EndMessagePanel/VBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Thanks for playing!
+- 99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="CenterContainer/EndMessagePanel/VBoxContainer" index="1"]
+layout_mode = 2
+text = "Time: 0:00"
+horizontal_alignment = 3
+
+[node name="DevTime" type="Label" parent="CenterContainer/EndMessagePanel/VBoxContainer" index="2"]
+layout_mode = 2
+text = "Developer time:"
+
+[node name="DevTimeTime" type="Label" parent="CenterContainer/EndMessagePanel/VBoxContainer/DevTime" index="0"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 16.000002
+text = "?:??"
+horizontal_alignment = 2
+
+[node name="Coins" type="Label" parent="CenterContainer/EndMessagePanel/VBoxContainer" index="3"]
+layout_mode = 2
+text = "Coins: ???"
+horizontal_alignment = 3
+
+[node name="Enemies" type="Label" parent="CenterContainer/EndMessagePanel/VBoxContainer" index="4"]
+layout_mode = 2
+text = "Enemies: ???"
+horizontal_alignment = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/EndMessagePanel/VBoxContainer" index="5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BGPanel" type="Panel" parent="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer" index="0"]
+custom_minimum_size = Vector2(360, 20)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5v7ca")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer" index="1"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+script = ExtResource("6_dt6fj")
+
+[node name="ExitButton" type="Button" parent="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Go Away"
+
+[node name="MenuButton" type="Button" parent="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Menu"
+
+[connection signal="pressed" from="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

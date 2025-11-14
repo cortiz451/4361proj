@@ -1,0 +1,7 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://cn46xd8juu8iq"]
+
+[resource]
+render_priority = 6
+shading_mode = 0
+albedo_color = Color(0.42352942, 0.4392157, 0.98039216, 1)
+disable_receive_shadows = true

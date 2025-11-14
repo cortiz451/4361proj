@@ -10,8 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cydjn1ct3hps2" path="res://sounds/walking.ogg" id="5_ics1s"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gdq8c"]
-radius = 0.4
-height = 1.4
+height = 1.5
 
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 3

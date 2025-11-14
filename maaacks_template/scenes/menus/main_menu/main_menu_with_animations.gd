@@ -25,6 +25,7 @@ func load_game_scene() -> void:
 	
 	tmp.set_value("Game.Info", "died", false)
 	tmp.set_value("Game.Info", "tp1", false)
+	tmp.set_value("Game.Info", "tps", false)
 	tmp.save("user://tmp")
 	
 	GameState.start_game()

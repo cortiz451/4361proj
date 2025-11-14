@@ -12,6 +12,7 @@ func _on_body_entered(body: Node3D) -> void:
 	if(unlocked):
 		body.position=dest.position
 		Audio.play("sounds/tp.ogg")
+		$"../../../../SecretMusicPlayer".play()
 	else:
 		console_text.emit("...?")
 		Audio.play("sounds/nope.ogg")
@@ -23,6 +24,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		$"../../../../JingleUnlock".play()
 		unlocked=true
 		#threads
+		$"../../../../SecretMusicPlayer".play()
 		body.bossSecretTpUnlocked()
 		
 		$Area3D.queue_free()

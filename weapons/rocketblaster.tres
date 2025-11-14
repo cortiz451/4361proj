@@ -9,7 +9,7 @@
 script = ExtResource("3_ms8kt")
 Proj = ExtResource("1_1ov0n")
 model = ExtResource("2_1ov0n")
-cooldown = 1.25
+cooldown = 0.9
 ammotype = 3
 inInventory = false
 hitscan = false

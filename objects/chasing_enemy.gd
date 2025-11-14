@@ -79,6 +79,9 @@ func destroy():
 		$"enemy-flying".queue_free()
 	$DestroyFX.visible=true
 	$DestroyFX.play("default")
+	
+	#prevent weird crash on kill
+	#if(get_tree()!=null):
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
 
