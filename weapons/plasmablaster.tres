@@ -9,9 +9,8 @@
 script = ExtResource("4_1fdy5")
 Proj = ExtResource("1_pa6h2")
 model = ExtResource("3_pa6h2")
-shot_count = 3
+shot_count = 2
 ammotype = 4
-drain = 2
 inInventory = false
 hitscan = false
 sound_shoot = "sounds/plasmablaster.ogg"

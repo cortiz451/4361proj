@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "8870"
-	"mapversion" "504"
+	"mapversion" "505"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -89,7 +89,7 @@ bgimages_plus
 world
 {
 	"id" "1"
-	"mapversion" "504"
+	"mapversion" "505"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -47652,6 +47652,188 @@ entity
 		"visgroupshown" "1"
 		"visgroupautoshown" "1"
 		"logicalpos" "[500 15000]"
+	}
+}
+entity
+{
+	"id" "2635"
+	"classname" "infodecal"
+	"texture" "decals/scorch1"
+	"origin" "-305.29 512 578.141"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 0]"
+	}
+}
+entity
+{
+	"id" "2638"
+	"classname" "infodecal"
+	"texture" "decals/scorch1"
+	"origin" "491.528 -217.721 6.10352e-05"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 500]"
+	}
+}
+entity
+{
+	"id" "2641"
+	"classname" "infodecal"
+	"texture" "decals/scorch1"
+	"origin" "880.325 0 1225.12"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 1000]"
+	}
+}
+entity
+{
+	"id" "2647"
+	"classname" "infodecal"
+	"texture" "decals/scorch1"
+	"origin" "93.9851 -846.863 1024"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 2000]"
+	}
+}
+entity
+{
+	"id" "2650"
+	"classname" "infodecal"
+	"texture" "decals/scorch1"
+	"origin" "1215.11 -3072 1715.23"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 2500]"
+	}
+}
+entity
+{
+	"id" "2653"
+	"classname" "infodecal"
+	"texture" "decals/scorch1"
+	"origin" "2368 -1393.72 1405.53"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 3000]"
+	}
+}
+entity
+{
+	"id" "2656"
+	"classname" "infodecal"
+	"texture" "decals/scorch1"
+	"origin" "1705.25 -1024 1676.59"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 3500]"
+	}
+}
+entity
+{
+	"id" "2659"
+	"classname" "infodecal"
+	"texture" "decals/scorch1"
+	"origin" "320 -1253.5 1573.29"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 4000]"
+	}
+}
+entity
+{
+	"id" "2665"
+	"classname" "infodecal"
+	"texture" "decals/scorch1"
+	"origin" "-340.648 512 1390.05"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 5000]"
+	}
+}
+entity
+{
+	"id" "2668"
+	"classname" "infodecal"
+	"texture" "decals/scorch1"
+	"origin" "-331.315 1480.7 1024"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 5500]"
+	}
+}
+entity
+{
+	"id" "2671"
+	"classname" "infodecal"
+	"texture" "decals/scorch1"
+	"origin" "-128 2010.58 1062.84"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 6000]"
+	}
+}
+entity
+{
+	"id" "2674"
+	"classname" "infodecal"
+	"texture" "decals/scorch1"
+	"origin" "339.909 1312 1065.71"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 6500]"
+	}
+}
+entity
+{
+	"id" "2677"
+	"classname" "infodecal"
+	"texture" "decals/scorch1"
+	"origin" "704 1556.65 1085.43"
+	editor
+	{
+		"color" "220 30 220"
+		"visgroupshown" "1"
+		"visgroupautoshown" "1"
+		"logicalpos" "[0 7000]"
 	}
 }
 cameras

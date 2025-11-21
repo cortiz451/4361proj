@@ -2,6 +2,7 @@ extends Node3D
 
 @export var player: Node3D
 @export var Bullet: PackedScene
+@export var shot_time=0.5
 
 @onready var raycast = $RayCast
 @onready var muzzle_a = $MuzzleA
@@ -73,7 +74,7 @@ func destroy():
 		$"enemy-flying".queue_free()
 	$DestroyFX.visible=true
 	$DestroyFX.play("default")
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(shot_time).timeout
 	queue_free()
 	
 

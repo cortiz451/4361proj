@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://c8tslsg2thu2t"]
+
+[ext_resource type="Script" uid="uid://b6udw8uhlp4ei" path="res://objects/enemy.gd" id="1_emyil"]
+[ext_resource type="PackedScene" uid="uid://c4cej68vmmp6c" path="res://objects/bullet.tscn" id="2_20007"]
+[ext_resource type="PackedScene" uid="uid://bj43wf0bkkeei" path="res://objects/enemy_basic.tscn" id="3_gko35"]
+[ext_resource type="SpriteFrames" uid="uid://dbv3sy5qjatnl" path="res://sprites/burst_animation.tres" id="4_35jua"]
+[ext_resource type="AudioStream" uid="uid://br1ov3ld0er6r" path="res://sounds/enemy_destroy.ogg" id="5_jxswf"]
+[ext_resource type="AudioStream" uid="uid://cgnbyrnxj12ed" path="res://sounds/enemy_hurt.ogg" id="6_k7v61"]
+[ext_resource type="AudioStream" uid="uid://dqoyre6x2aqnk" path="res://sounds/enemy_aggro.ogg" id="7_2n874"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iix87"]
+radius = 0.75
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_we7g8"]
+margin = 0.05
+points = PackedVector3Array(0, 0, 0, -5, -5, 10, -5, 5, 10, 5, 5, 10, 5, -5, 10, 0, 0, 0)
+
+[node name="enemy-flying" type="Area3D"]
+collision_layer = 261
+script = ExtResource("1_emyil")
+Bullet = ExtResource("2_20007")
+
+[node name="enemy-flying" parent="." instance=ExtResource("3_gko35")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Enemy"]]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0.25, 0)
+shape = SubResource("SphereShape3D_iix87")
+
+[node name="RayCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 500)
+
+[node name="MuzzleA" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.45, 0.3, 0.4)
+sprite_frames = ExtResource("4_35jua")
+frame = 2
+
+[node name="MuzzleB" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.45, 0.3, 0.4)
+sprite_frames = ExtResource("4_35jua")
+frame = 2
+
+[node name="DestroyFX" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.2, 0)
+visible = false
+modulate = Color(1, 1, 1, 0.1254902)
+pixel_size = 0.02
+billboard = 1
+sprite_frames = ExtResource("4_35jua")
+autoplay = "default"
+frame_progress = 0.13024491
+speed_scale = 0.5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29273826, 0.6475944)
+
+[node name="Aggro" type="Area3D" parent="."]
+collision_layer = 2
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Aggro"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0.30040395, 0)
+shape = SubResource("ConvexPolygonShape3D_we7g8")
+
+[node name="Destroy" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_jxswf")
+unit_size = 25.0
+bus = &"SFX"
+
+[node name="Hurt" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_k7v61")
+unit_size = 25.0
+bus = &"SFX"
+
+[node name="Angry" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_2n874")
+unit_size = 25.0
+bus = &"SFX"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Aggro" to="." method="_on_aggro_body_entered"]
+[connection signal="body_exited" from="Aggro" to="." method="_on_aggro_body_exited"]
