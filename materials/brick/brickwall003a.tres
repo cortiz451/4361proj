@@ -1,7 +1,9 @@
-[gd_resource type="ORMMaterial3D" load_steps=2 format=3 uid="uid://c212qwcgbecfk"]
+[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://c212qwcgbecfk"]
 
 [ext_resource type="Texture2D" uid="uid://dr248ihv7vpwt" path="res://materials/unsplash/europeana-wMb9Kt_qjJA-unsplash.jpg" id="1_6mncs"]
+[ext_resource type="Texture2D" uid="uid://basxqld5sf03" path="res://materials/unsplash/abstracttile_red.png" id="2_6w4kw"]
 
 [resource]
 albedo_texture = ExtResource("1_6mncs")
+orm_texture = ExtResource("2_6w4kw")
 uv1_scale = Vector3(0.5, 0.5, 0.5)

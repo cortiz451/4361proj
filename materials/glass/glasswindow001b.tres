@@ -1,8 +1,10 @@
-[gd_resource type="ORMMaterial3D" load_steps=2 format=3 uid="uid://b5v8v3fvrxgxh"]
+[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://b5v8v3fvrxgxh"]
 
 [ext_resource type="Texture2D" uid="uid://bet5oel2nurlp" path="res://materials/glass/glasswindow001b.png" id="1_36puc"]
+[ext_resource type="Texture2D" uid="uid://dr248ihv7vpwt" path="res://materials/unsplash/europeana-wMb9Kt_qjJA-unsplash.jpg" id="2_sm470"]
 
 [resource]
 transparency = 1
 blend_mode = 1
 albedo_texture = ExtResource("1_36puc")
+orm_texture = ExtResource("2_sm470")

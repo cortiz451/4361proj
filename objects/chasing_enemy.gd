@@ -81,8 +81,8 @@ func destroy():
 	$DestroyFX.play("default")
 	
 	#prevent weird crash on kill
-	#if(get_tree()!=null):
-	await get_tree().create_timer(0.5).timeout
+	if(get_tree()!=null):
+		await get_tree().create_timer(0.5).timeout
 	queue_free()
 
 #aggro mechanics

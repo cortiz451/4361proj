@@ -1,7 +1,9 @@
-[gd_resource type="ORMMaterial3D" load_steps=2 format=3 uid="uid://bivq6xighcw"]
+[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://bivq6xighcw"]
 
 [ext_resource type="Texture2D" uid="uid://d0vb18hhsn5s5" path="res://materials/tendrils.png" id="1_xqw3c"]
+[ext_resource type="Texture2D" uid="uid://loo8s3nb242i" path="res://materials/glass/glass_seamless_texture_3522.jpg" id="2_2mtvv"]
 
 [resource]
 albedo_texture = ExtResource("1_xqw3c")
+orm_texture = ExtResource("2_2mtvv")
 uv1_scale = Vector3(0.5, 0.5, 0.5)

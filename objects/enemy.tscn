@@ -62,7 +62,7 @@ collision_layer = 2
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Aggro"]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0.30040395, 0)
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0.30040395, 0)
 shape = SubResource("ConvexPolygonShape3D_we7g8")
 
 [node name="Destroy" type="AudioStreamPlayer3D" parent="."]

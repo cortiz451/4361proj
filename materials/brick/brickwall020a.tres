@@ -1,9 +1,11 @@
-[gd_resource type="ORMMaterial3D" load_steps=2 format=3 uid="uid://cit2fna6xl10y"]
+[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://cit2fna6xl10y"]
 
 [ext_resource type="Texture2D" uid="uid://d1ffu87q6ftth" path="res://materials/unsplash/abstracttile_gray.png" id="1_ojtss"]
+[ext_resource type="Texture2D" uid="uid://bpmriub5g32dl" path="res://materials/glass/glass_seamless_texture_3528.jpg" id="2_oukfm"]
 
 [resource]
 albedo_color = Color(1.8358698, 1.9658469, 3.1001916, 1)
 albedo_texture = ExtResource("1_ojtss")
+orm_texture = ExtResource("2_oukfm")
 emission_enabled = true
 uv1_scale = Vector3(0.5, 0.5, 0.5)

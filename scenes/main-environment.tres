@@ -1,36 +1,29 @@
 [gd_resource type="Environment" load_steps=3 format=3 uid="uid://jvmpkdwaeaq"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3vlvf"]
-sky_top_color = Color(0.81868726, 0.6321173, 0.4829309, 1)
-sky_horizon_color = Color(0.36862746, 0.2901961, 0.23137255, 1)
-sky_curve = 6.7882247
-ground_bottom_color = Color(0.12507391, 0.10308347, 0.08383646, 1)
-ground_horizon_color = Color(0.3695321, 0.28848165, 0.22950864, 1)
-ground_curve = 0.76109576
+[ext_resource type="Material" uid="uid://dxud1sjo6loai" path="res://sky.tres" id="1_u3n42"]
 
-[sub_resource type="Sky" id="Sky_u3n42"]
-sky_material = SubResource("ProceduralSkyMaterial_3vlvf")
+[sub_resource type="Sky" id="Sky_816me"]
+sky_material = ExtResource("1_u3n42")
 
 [resource]
 background_mode = 2
 background_color = Color(0.48962224, 0.48962224, 0.48962218, 1)
-sky = SubResource("Sky_u3n42")
-ambient_light_color = Color(1, 0.64705884, 0, 1)
-tonemap_exposure = 0.9
-tonemap_white = 4.0
+sky = SubResource("Sky_816me")
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 3
+tonemap_exposure = 0.75
 ssr_depth_tolerance = 0.21
 glow_enabled = true
 glow_levels/2 = 0.6
 glow_levels/3 = 0.6
 glow_levels/5 = 6.0
 glow_normalized = true
-glow_intensity = 2.0
-glow_strength = 0.3
-glow_bloom = 0.1
-glow_blend_mode = 1
-glow_hdr_luminance_cap = 36.0
+glow_intensity = 0.3
+glow_strength = 0.75
+glow_mix = 1.0
+glow_bloom = 0.2
+glow_blend_mode = 0
 fog_light_color = Color(0.61960787, 0.5176471, 0.4392157, 1)
 fog_density = 0.0025
-adjustment_enabled = true
 adjustment_contrast = 1.1
 adjustment_saturation = 0.8

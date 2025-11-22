@@ -49,7 +49,7 @@ shadow_mesh = SubResource("ArrayMesh_1wj75")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xeaoh"]
 resource_name = "colormap"
 cull_mode = 2
-albedo_color = Color(1.258237, 3.1474833, 3.2647524, 1)
+albedo_color = Color(3.0786626, 7.589122, 7.9112988, 1)
 albedo_texture = ExtResource("2_1wj75")
 texture_filter = 2
 
@@ -96,6 +96,6 @@ mesh = SubResource("ArrayMesh_xeaoh")
 mesh = SubResource("ArrayMesh_qenhu")
 
 [node name="Group2" type="MeshInstance3D" parent="blaster-repeater2" index="1"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.13126555, 0.77599084, 0.2596929)
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.14847961, 0.77599084, 0.2596929)
 mesh = SubResource("ArrayMesh_qenhu")
 skeleton = NodePath("")

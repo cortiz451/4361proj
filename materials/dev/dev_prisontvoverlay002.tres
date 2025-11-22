@@ -1,8 +1,10 @@
-[gd_resource type="ORMMaterial3D" load_steps=2 format=3 uid="uid://dsnjfk1cn0vxf"]
+[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://dsnjfk1cn0vxf"]
 
 [ext_resource type="Texture2D" uid="uid://f8a2kk6tdjwh" path="res://materials/dev/dev_prisontvoverlay002.png" id="1_mdc4p"]
+[ext_resource type="Texture2D" uid="uid://cde5667gut02w" path="res://materials/roughtexture.png" id="2_rt2pf"]
 
 [resource]
 albedo_texture = ExtResource("1_mdc4p")
+orm_texture = ExtResource("2_rt2pf")
 uv1_scale = Vector3(-1, -1, 1)
 uv1_offset = Vector3(0.5, 0.5, 0)

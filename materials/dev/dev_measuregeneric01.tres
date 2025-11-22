@@ -1,6 +1,8 @@
-[gd_resource type="ORMMaterial3D" load_steps=2 format=3 uid="uid://7o17sse0j4f5"]
+[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://7o17sse0j4f5"]
 
 [ext_resource type="Texture2D" uid="uid://bs0upgvgkbxhn" path="res://materials/paper/paper_seamless_texture_3164.jpg" id="1_2ej7m"]
+[ext_resource type="Texture2D" uid="uid://cde5667gut02w" path="res://materials/roughtexture.png" id="2_0g6eg"]
 
 [resource]
 albedo_texture = ExtResource("1_2ej7m")
+orm_texture = ExtResource("2_0g6eg")

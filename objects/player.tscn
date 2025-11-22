@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dl2ed4gkybggf"]
+[gd_scene load_steps=11 format=3 uid="uid://dl2ed4gkybggf"]
 
 [ext_resource type="Script" uid="uid://cu47grjp072jk" path="res://objects/player.gd" id="1_ffboj"]
 [ext_resource type="Resource" uid="uid://cu2gtxlcmbb34" path="res://weapons/blaster-repeater.tres" id="2_6epbw"]
@@ -8,6 +8,7 @@
 [ext_resource type="SpriteFrames" uid="uid://dbv3sy5qjatnl" path="res://sprites/burst_animation.tres" id="4_m6ukc"]
 [ext_resource type="Resource" uid="uid://cipvtara42tpx" path="res://weapons/superblaster.tres" id="5_3rfka"]
 [ext_resource type="AudioStream" uid="uid://cydjn1ct3hps2" path="res://sounds/walking.ogg" id="5_ics1s"]
+[ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="6_i8sra"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gdq8c"]
 height = 1.5
@@ -40,12 +41,13 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="Head/Camera/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-msaa_3d = 1
+fsr_sharpness = 0.0
 size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
 [node name="CameraItem" type="Camera3D" parent="Head/Camera/SubViewportContainer/SubViewport"]
 cull_mask = 1047554
+environment = ExtResource("6_i8sra")
 fov = 40.0
 
 [node name="Container" type="Node3D" parent="Head/Camera/SubViewportContainer/SubViewport/CameraItem"]

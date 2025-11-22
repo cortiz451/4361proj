@@ -321,7 +321,7 @@ collision_layer = 2
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Aggro"]
-transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0.30040395, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.30040395, 0)
 shape = SubResource("ConvexPolygonShape3D_we7g8")
 
 [node name="Destroy" type="AudioStreamPlayer3D" parent="."]
@@ -356,6 +356,11 @@ volume_db = -3.0
 unit_size = 30.0
 pitch_scale = 1.6
 bus = &"SFX"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.42352942, 0.4392157, 0.98039216, 1)
+light_bake_mode = 0
+distance_fade_begin = 20.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

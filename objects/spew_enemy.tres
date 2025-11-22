@@ -5,7 +5,7 @@
 [resource]
 resource_name = "colormap"
 cull_mode = 2
-albedo_color = Color(2.2640002, 0.6527984, 2.1173322, 1)
+albedo_color = Color(3.2944162, 0.97681063, 3.101283, 1)
 albedo_texture = ExtResource("1_v0egh")
 rim_enabled = true
 texture_filter = 2

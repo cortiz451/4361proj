@@ -8,7 +8,7 @@ load_path = "res://.godot/imported/colormap.png-c1bc3c3aabeec406ff4b53328583776a
 [resource]
 resource_name = "colormap"
 cull_mode = 2
-albedo_color = Color(0, 5.912981, 2.990273, 1)
+albedo_color = Color(0, 4.415934, 2.226377, 1)
 albedo_texture = SubResource("CompressedTexture2D_g32wr")
 metallic = 1.0
 emission = Color(1, 0, 0, 1)

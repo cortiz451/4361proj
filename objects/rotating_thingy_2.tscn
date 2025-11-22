@@ -3,12 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://0xjf5dj4qq5x" path="res://materials/face_bad.png" id="1_2k8xj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sdq0s"]
-albedo_color = Color(0, 18.821157, 18.18967, 1)
+albedo_color = Color(0, 18.892157, 18.293512, 1)
 albedo_texture = ExtResource("1_2k8xj")
 albedo_texture_force_srgb = true
 emission_enabled = true
 emission = Color(1.2032687e-07, 0.10754847, 0.10754851, 1)
-emission_energy_multiplier = 5.51
+emission_energy_multiplier = 0.0
 rim_enabled = true
 rim_tint = 0.0
 
