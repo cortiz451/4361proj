@@ -18,6 +18,9 @@ func _process(delta):
 	#INTEGER DIVISION IS THE POINT, GODOT.
 	@warning_ignore("integer_division")
 	$Time.text = "Time: %d:%02d.%03d" % [(int)(time)/60, ((int)(time)%60), ((int)(time*1000))%1000]
+	
+	if(Input.is_action_just_pressed("toggle_HUD")):
+		visible = !visible
 
 func _on_health_updated(health):
 	$Health.text = "Health: "+ str(health) + "%"
@@ -43,9 +46,7 @@ func _on_health_updated(health):
 		$face_good.visible=false
 		$face_ok.visible=false
 		$face_bad.visible=true
-		
-	if(Input.is_action_just_pressed("toggle_HUD")):
-		visible = !visible
+	
 
 func _on_player_ammo_updated(weaponammo, type) -> void:
 	if(displayAmmo):

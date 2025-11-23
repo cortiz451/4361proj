@@ -153,7 +153,6 @@ points = PackedVector3Array(0, 0, 0, -15, -15, 10, -15, 15, 10, 15, 15, 10, 15, 
 
 [node name="enemy-flying" type="Area3D"]
 collision_layer = 5
-collision_mask = 5
 script = ExtResource("1_0dv1w")
 
 [node name="enemy-flying" type="Node3D" parent="."]
@@ -226,7 +225,7 @@ collision_layer = 2
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Aggro"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.30040395, 0)
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0.30040395, 0)
 shape = SubResource("ConvexPolygonShape3D_we7g8")
 
 [node name="Destroy" type="AudioStreamPlayer3D" parent="."]

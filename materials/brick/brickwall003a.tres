@@ -1,9 +1,15 @@
-[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://c212qwcgbecfk"]
+[gd_resource type="ORMMaterial3D" load_steps=4 format=3 uid="uid://c212qwcgbecfk"]
 
 [ext_resource type="Texture2D" uid="uid://dr248ihv7vpwt" path="res://materials/unsplash/europeana-wMb9Kt_qjJA-unsplash.jpg" id="1_6mncs"]
-[ext_resource type="Texture2D" uid="uid://basxqld5sf03" path="res://materials/unsplash/abstracttile_red.png" id="2_6w4kw"]
+
+[sub_resource type="Gradient" id="Gradient_6mncs"]
+offsets = PackedFloat32Array(0.7131783)
+colors = PackedColorArray(0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6w4kw"]
+gradient = SubResource("Gradient_6mncs")
 
 [resource]
 albedo_texture = ExtResource("1_6mncs")
-orm_texture = ExtResource("2_6w4kw")
+orm_texture = SubResource("GradientTexture1D_6w4kw")
 uv1_scale = Vector3(0.5, 0.5, 0.5)

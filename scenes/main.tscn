@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=109 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_elriq"]
@@ -43,6 +43,7 @@
 [ext_resource type="PackedScene" uid="uid://dqoy6y05fgdji" path="res://objects/spew_bullet.tscn" id="23_1epgm"]
 [ext_resource type="Script" uid="uid://ukxui1v3rlrf" path="res://objects/coin.gd" id="23_og1vs"]
 [ext_resource type="PackedScene" uid="uid://ca25kh31waiua" path="res://objects/boss_enemy.tscn" id="24_152kg"]
+[ext_resource type="LabelSettings" uid="uid://xx6ko6vp3gkf" path="res://consoletxt.tres" id="25_r4ag1"]
 [ext_resource type="PackedScene" uid="uid://ct05qboq6adm0" path="res://objects/boss_bullet.tscn" id="25_r4e17"]
 [ext_resource type="PackedScene" uid="uid://dcartkp2gx554" path="res://objects/superblaster.tscn" id="26_2wyq8"]
 [ext_resource type="PackedScene" uid="uid://kusronv2ccrs" path="res://objects/boss_bullet2.tscn" id="26_y57op"]
@@ -73,6 +74,7 @@
 [ext_resource type="PackedScene" uid="uid://cf0nr61kufqjx" path="res://objects/blockade_yellow.tscn" id="57_ro3en"]
 [ext_resource type="Script" uid="uid://pwhx32u1aspq" path="res://objects/keyblock.gd" id="57_t5ykj"]
 [ext_resource type="Script" uid="uid://bkddxeysv4e8h" path="res://scripts/tp_secret.gd" id="58_xljpf"]
+[ext_resource type="Script" uid="uid://ce3np18xsjaog" path="res://scenes/area_for_rot_thingy.gd" id="62_bfu41"]
 [ext_resource type="PackedScene" uid="uid://b5dqjbmbocun7" path="res://objects/blockade_boss.tscn" id="67_gdvew"]
 [ext_resource type="Script" uid="uid://ck1icqy8v2ckf" path="res://scenes/fade.gd" id="71_a82wo"]
 [ext_resource type="Texture2D" uid="uid://mj52dmmvhujv" path="res://materials/decals/Texturelabs_InkPaint_281M.png" id="72_b6ruc"]
@@ -92,14 +94,6 @@
 [sub_resource type="LabelSettings" id="LabelSettings_og1vs"]
 font = ExtResource("11_y6deb")
 font_size = 48
-outline_size = 12
-outline_color = Color(0.42352942, 0.4392157, 0.98039216, 0.4509804)
-shadow_offset = Vector2(2, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_vchkt"]
-paragraph_spacing = 1.0
-font = ExtResource("11_y6deb")
-font_size = 18
 outline_size = 12
 outline_color = Color(0.42352942, 0.4392157, 0.98039216, 0.4509804)
 shadow_offset = Vector2(2, 1)
@@ -198,6 +192,9 @@ animations = [{
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fjhjs"]
+radius = 6.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bu4jf"]
 direction = Vector3(0, 2, 0)
@@ -1151,11 +1148,16 @@ label_settings = SubResource("LabelSettings_og1vs")
 horizontal_alignment = 2
 
 [node name="Console" type="Label" parent="HUD"]
-offset_left = 16.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -960.0
 offset_top = 8.0
-offset_right = 1272.0
+offset_right = 960.0
 offset_bottom = 128.0
-label_settings = SubResource("LabelSettings_vchkt")
+grow_horizontal = 2
+label_settings = ExtResource("25_r4ag1")
+horizontal_alignment = 1
 
 [node name="FPS" type="Label" parent="HUD"]
 anchors_preset = 3
@@ -1186,18 +1188,24 @@ grow_vertical = 0
 text = "Time: 0.00:000"
 label_settings = SubResource("LabelSettings_txyw0")
 
-[node name="Keys" type="Node" parent="HUD"]
+[node name="Keys" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
 
 [node name="RedKey" type="TextureRect" parent="HUD/Keys"]
 visible = false
 modulate = Color(1.8247963, 0, 0, 1)
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = -48.0
-offset_right = 145.0
-offset_bottom = 80.0
+offset_left = 24.0
+offset_top = -60.0
+offset_right = 152.0
+offset_bottom = 68.0
 grow_vertical = 0
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("16_dnhof")
@@ -1205,13 +1213,14 @@ texture = ExtResource("16_dnhof")
 [node name="YelKey" type="TextureRect" parent="HUD/Keys"]
 visible = false
 modulate = Color(1.8247963, 1.8247963, 0, 1)
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -96.0
-offset_right = 144.0
-offset_bottom = 32.0
+offset_left = 24.0
+offset_top = -110.0
+offset_right = 152.0
+offset_bottom = 18.0
 grow_vertical = 0
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("16_dnhof")
@@ -1219,13 +1228,14 @@ texture = ExtResource("16_dnhof")
 [node name="BluKey" type="TextureRect" parent="HUD/Keys"]
 visible = false
 modulate = Color(0, 0, 1.8247963, 1)
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -144.0
-offset_right = 144.0
-offset_bottom = -16.0
+offset_left = 24.0
+offset_top = -160.0
+offset_right = 152.0
+offset_bottom = -32.0
 grow_vertical = 0
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("16_dnhof")
@@ -1546,7 +1556,7 @@ player = NodePath("../../Player")
 Bullet = ExtResource("23_1epgm")
 
 [node name="spew-enemy5" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("22_xhfw6")]
-transform = Transform3D(-0.0031789728, 0.7905486, 0.61239123, -0.007305167, 0.61235964, -0.7905455, -0.9999681, -0.0069867186, 0.0038285104, 42.226387, -29.11119, -5.903525)
+transform = Transform3D(-0.0031789728, 0.7905486, 0.61239123, -0.007305167, 0.61235964, -0.7905455, -0.9999681, -0.0069867186, 0.0038285104, 44.549805, -29.11119, -5.903525)
 player = NodePath("../../Player")
 Bullet = ExtResource("23_1epgm")
 
@@ -2071,6 +2081,16 @@ frame_progress = 0.8368172
 transform = Transform3D(-10.147826, -5.9334126, -2.4116864, -0.9902861, 5.917713, -10.392305, 6.3277917, -8.589254, -5.493975, 27, 36, 41)
 script = ExtResource("20_5poiv")
 
+[node name="AreaForRotThingy" type="Area3D" parent="Level/Rotating Thingy"]
+transform = Transform3D(-0.070471026, -0.0068769874, 0.043943, -0.041204255, 0.041095227, -0.0596476, -0.016747823, -0.07216878, -0.038152605, 0, 0, 0)
+collision_layer = 5
+script = ExtResource("62_bfu41")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Rotating Thingy/AreaForRotThingy"]
+shape = SubResource("SphereShape3D_fjhjs")
+
+[node name="Timer" type="Timer" parent="Level/Rotating Thingy/AreaForRotThingy"]
+
 [node name="JumpPad" type="Node3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -40.7, 50)
 script = ExtResource("48_0loja")
@@ -2203,8 +2223,18 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.3, 0)
 shape = SubResource("BoxShape3D_ty1g6")
 
 [node name="Rotating Thingy 2" parent="Level" instance=ExtResource("57_e755i")]
-transform = Transform3D(19.176395, 5.6803074, 0, -5.6627965, 19.117281, -1.5691819, -0.4456718, 1.5045626, 19.938347, 34.991127, -24, -6)
+transform = Transform3D(19.176395, 5.6803074, 0, -5.6627965, 19.117281, -1.5691819, -0.4456718, 1.5045626, 19.938347, 35, -23, -6)
 script = ExtResource("20_5poiv")
+
+[node name="AreaForRotThingy" type="Area3D" parent="Level/Rotating Thingy 2"]
+transform = Transform3D(-0.070471026, -0.0068769874, 0.043943, -0.041204255, 0.041095227, -0.0596476, -0.016747823, -0.07216878, -0.038152605, 0, 0, 0)
+collision_layer = 5
+script = ExtResource("62_bfu41")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Rotating Thingy 2/AreaForRotThingy"]
+shape = SubResource("SphereShape3D_fjhjs")
+
+[node name="Timer" type="Timer" parent="Level/Rotating Thingy 2/AreaForRotThingy"]
 
 [node name="BlockadeBoss" parent="Level" instance=ExtResource("67_gdvew")]
 transform = Transform3D(-3.496911e-07, 0, 8, 0, 8, 0, -8, 0, -3.496911e-07, -220, -33, -2.5)
@@ -2402,6 +2432,7 @@ bus = &"Music"
 parameters/looping = true
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
+quality = 2
 shadowmask_mode = 1
 environment_custom_color = Color(0.6993065, 0.25402156, 1, 1)
 environment_custom_energy = 9.49
@@ -2535,6 +2566,7 @@ light_data = ExtResource("88_fjhjs")
 [connection signal="console_text" from="Level/Teleports/Tp5/Tp" to="HUD" method="_consoletext"]
 [connection signal="body_entered" from="Level/Teleports/Tp5/Tp/Area3D" to="Level/Teleports/Tp5/Tp" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Level/Teleports/Tp6/Tp" to="Level/Teleports/Tp6/Tp" method="_on_body_entered"]
+[connection signal="consoletext" from="Level/Rotating Thingy/AreaForRotThingy" to="HUD" method="_consoletext"]
 [connection signal="body_entered" from="Level/JumpPad/Area3D" to="Level/JumpPad" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/JumpPad2/Area3D" to="Level/JumpPad2" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/JumpPad3/Area3D" to="Level/JumpPad3" method="_on_body_entered"]
@@ -2543,6 +2575,7 @@ light_data = ExtResource("88_fjhjs")
 [connection signal="consoletext" from="Level/Key/BKBlockade" to="HUD" method="_consoletext"]
 [connection signal="body_entered" from="Level/Key/BKBlockade/Warning" to="Level/Key/BKBlockade" method="_on_warning_body_entered"]
 [connection signal="body_entered" from="Level/Key/YKBlockade/Warning" to="Level/Key/YKBlockade" method="_on_warning_body_entered"]
+[connection signal="consoletext" from="Level/Rotating Thingy 2/AreaForRotThingy" to="HUD" method="_consoletext"]
 [connection signal="timeout" from="BlockadeSanityTimer" to="Level/Blockade" method="_on_blockade_sanity_timer_timeout"]
 [connection signal="timeout" from="Fade/Timer" to="Fade" method="_on_timer_timeout"]
 

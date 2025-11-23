@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://xx6ko6vp3gkf"]
+
+[ext_resource type="FontFile" uid="uid://brilqc8nb0env" path="res://fonts/texgyreadventor-regular.otf" id="1_n7ykj"]
+
+[resource]
+paragraph_spacing = 1.0
+font = ExtResource("1_n7ykj")
+font_size = 28
+outline_size = 12
+outline_color = Color(0.42352942, 0.4392157, 0.98039216, 0.4509804)
+shadow_offset = Vector2(2, 1)

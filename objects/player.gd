@@ -507,6 +507,9 @@ func unlockWeapon(w):
 
 func damage(amount):
 	
+	#godmode
+	if(health>995): return
+	
 	if(dmgcool.time_left!=0): return
 	
 	Audio.play("sounds/ouch.ogg")

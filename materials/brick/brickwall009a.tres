@@ -1,7 +1,7 @@
 [gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://dc74oy5haaemm"]
 
 [ext_resource type="Texture2D" uid="uid://8asygs5mpciw" path="res://materials/unsplash/the-cleveland-museum-of-art-cGHiYQrduuo-unsplash.jpg" id="1_c8bwx"]
-[ext_resource type="Texture2D" uid="uid://42lmxtx3wfi1" path="res://materials/paper/paper_seamless_texture_3141.jpg" id="2_67s60"]
+[ext_resource type="Texture2D" uid="uid://cde5667gut02w" path="res://materials/roughtexture.png" id="2_67s60"]
 
 [resource]
 albedo_texture = ExtResource("1_c8bwx")

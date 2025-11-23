@@ -50,5 +50,6 @@ shadow_mesh = SubResource("ArrayMesh_tfdmh")
 
 [node name="torso" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+layers = 8
 mesh = SubResource("ArrayMesh_oi8wa")
 skeleton = NodePath("")

@@ -1,9 +1,15 @@
-[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://d2yl7q1xw3w5h"]
+[gd_resource type="ORMMaterial3D" load_steps=4 format=3 uid="uid://d2yl7q1xw3w5h"]
 
 [ext_resource type="Texture2D" uid="uid://bd8tueakthlo" path="res://materials/unsplash/the-cleveland-museum-of-art-OrcUsnv1hP4-unsplash.jpg" id="1_cju2v"]
-[ext_resource type="Texture2D" uid="uid://b8mvy4l6qq68a" path="res://materials/dev/dev_measuregeneric01.jpg" id="2_2h2u3"]
+
+[sub_resource type="Gradient" id="Gradient_cju2v"]
+offsets = PackedFloat32Array(0.42635658)
+colors = PackedColorArray(0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2h2u3"]
+gradient = SubResource("Gradient_cju2v")
 
 [resource]
 albedo_texture = ExtResource("1_cju2v")
-orm_texture = ExtResource("2_2h2u3")
+orm_texture = SubResource("GradientTexture1D_2h2u3")
 uv1_scale = Vector3(0.5, 0.5, 0.5)

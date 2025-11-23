@@ -339,3 +339,7 @@ func import_map() -> void:
 
 	import_geometry();
 	import_entities();
+
+
+func _on_enemy_down() -> void:
+	pass # Replace with function body.
