@@ -43,6 +43,9 @@ func _on_health_updated(health):
 		$face_good.visible=false
 		$face_ok.visible=false
 		$face_bad.visible=true
+		
+	if(Input.is_action_just_pressed("toggle_HUD")):
+		visible = !visible
 
 func _on_player_ammo_updated(weaponammo, type) -> void:
 	if(displayAmmo):

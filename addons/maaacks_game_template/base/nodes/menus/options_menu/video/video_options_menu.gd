@@ -39,3 +39,7 @@ func _on_v_sync_control_setting_changed(value) -> void:
 func _on_fov_control_setting_changed(value: Variant) -> void:
 	PlayerConfig.set_config(AppSettings.VIDEO_SECTION, "FOV", value)
 	$VBoxContainer/FOV.text=("(%.1f)" % value)
+
+func _on_resolution_scale_control_setting_changed(value: Variant) -> void:
+	PlayerConfig.set_config(AppSettings.VIDEO_SECTION, "ResolutionScale", value)
+	$VBoxContainer/Res.text=("%.2f" % value)

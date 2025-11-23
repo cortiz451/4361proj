@@ -10,3 +10,6 @@ func _ready() -> void:
 	var anti_aliasing : int = PlayerConfig.get_config(video_section, anti_aliasing_key, Viewport.MSAA_DISABLED)
 	msaa_2d = anti_aliasing as MSAA
 	msaa_3d = anti_aliasing as MSAA
+	
+	var res : float = PlayerConfig.get_config(video_section, "ResolutionScale", 1.00)
+	scaling_3d_scale = res
