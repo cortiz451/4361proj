@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://dcartkp2gx554"]
+[gd_scene load_steps=7 format=4 uid="uid://dcartkp2gx554"]
 
 [ext_resource type="PackedScene" uid="uid://b2p7bbkuxf7m" path="res://models/blaster.glb" id="1_br6dh"]
-[ext_resource type="Texture2D" uid="uid://b5hxnjwvrxuji" path="res://models/Textures/colormap.png" id="2_v0he2"]
+[ext_resource type="Texture2D" uid="uid://basxqld5sf03" path="res://materials/unsplash/abstracttile_red.png" id="2_v0he2"]
+[ext_resource type="Texture2D" uid="uid://c71b1d4j5163v" path="res://materials/bg_button.jpg" id="3_wtsjb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nn7xr"]
 resource_name = "colormap"
@@ -11,6 +12,13 @@ albedo_texture = ExtResource("2_v0he2")
 metallic = 0.81
 metallic_specular = 0.32
 roughness = 0.36
+emission_enabled = true
+emission = Color(0.2489303, 2.6321504e-07, 5.4147094e-08, 1)
+emission_energy_multiplier = 1.82
+emission_operator = 1
+emission_texture = ExtResource("3_wtsjb")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6k4qq"]
@@ -50,5 +58,5 @@ shadow_mesh = SubResource("ArrayMesh_6k4qq")
 [node name="blaster" instance=ExtResource("1_br6dh")]
 
 [node name="blaster2" parent="." index="0"]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.4, 0, -0.15, 0)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.4, 0, -0.30032778, 0)
 mesh = SubResource("ArrayMesh_0cm4n")

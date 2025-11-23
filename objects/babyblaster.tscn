@@ -1,18 +1,23 @@
-[gd_scene load_steps=9 format=4 uid="uid://b888ra18w1uwb"]
+[gd_scene load_steps=11 format=4 uid="uid://b888ra18w1uwb"]
 
 [ext_resource type="PackedScene" uid="uid://dd3oln1ucgqpd" path="res://models/blaster-repeater.glb" id="1_hices"]
 [ext_resource type="Texture2D" uid="uid://b5hxnjwvrxuji" path="res://models/Textures/colormap.png" id="2_s78fo"]
+[ext_resource type="Texture2D" uid="uid://by03vu0rvyyps" path="res://materials/glass/glass_seamless_texture_3498.jpg" id="2_w3b7h"]
+[ext_resource type="Texture2D" uid="uid://bpmriub5g32dl" path="res://materials/glass/glass_seamless_texture_3528.jpg" id="3_ejml1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2goam"]
 resource_name = "colormap"
 cull_mode = 2
-albedo_color = Color(2.6757286e-06, 1.182374, 1.2249979, 1)
-albedo_texture = ExtResource("2_s78fo")
+albedo_color = Color(1.2257116, 1.3136927, 1.3167266, 1)
+albedo_texture = ExtResource("2_w3b7h")
 metallic = 0.3
 metallic_specular = 0.39
 emission_enabled = true
-emission = Color(0.16888294, 0.062434874, 1.2032688e-08, 1)
-emission_energy_multiplier = 9.0
+emission = Color(0.71, 0.26033333, 0, 1)
+emission_operator = 1
+emission_texture = ExtResource("3_ejml1")
+uv1_scale = Vector3(2.045, 2.045, 2.045)
+uv1_triplanar = true
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_w3b7h"]

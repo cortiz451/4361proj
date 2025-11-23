@@ -2138,18 +2138,18 @@ shape = SubResource("BoxShape3D_bu4jf")
 
 [node name="RedKey" parent="Level/Key" instance=ExtResource("53_1v6qk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -19, 14)
-KeyType = "red"
-color = Color(255.0139, 0, 0, 1)
+KeyType = "yellow"
+color = Color(255.0139, 255.0139, 0, 1)
 
 [node name="BluKey" parent="Level/Key" instance=ExtResource("53_1v6qk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 3, -35.5)
-KeyType = "blue"
-color = Color(0, 0, 255.0139, 1)
+KeyType = "red"
+color = Color(255.0139, 0, 0, 1)
 
 [node name="YelKey" parent="Level/Key" instance=ExtResource("53_1v6qk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, -32.5, -5.5)
-KeyType = "yellow"
-color = Color(255.0139, 255.0139, 0, 1)
+KeyType = "blue"
+color = Color(0, 0, 255.0139, 1)
 
 [node name="RKBlockade" parent="Level/Key" instance=ExtResource("54_augu2")]
 transform = Transform3D(-4.371139e-07, 0, 10, 0, 10, 0, -10, 0, -4.371139e-07, -55, -33, -9.5)

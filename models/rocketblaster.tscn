@@ -1,22 +1,22 @@
 [gd_scene load_steps=6 format=4 uid="uid://s1hptq4hmpvo"]
 
 [ext_resource type="PackedScene" uid="uid://b2p7bbkuxf7m" path="res://models/blaster.glb" id="1_dhynu"]
-[ext_resource type="Texture2D" uid="uid://b5hxnjwvrxuji" path="res://models/Textures/colormap.png" id="2_evcul"]
+[ext_resource type="Texture2D" uid="uid://d1ffu87q6ftth" path="res://materials/unsplash/abstracttile_gray.png" id="2_dhynu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhynu"]
 resource_name = "colormap"
 cull_mode = 2
-albedo_color = Color(0, 1.803834, 1.8247963, 1)
-albedo_texture = ExtResource("2_evcul")
+albedo_color = Color(4.415934, 0, 2.8620546, 1)
+albedo_texture = ExtResource("2_dhynu")
 metallic = 0.9
 metallic_specular = 0.35
 roughness = 0.36
-emission_enabled = true
-emission = Color(0.989213, 0, 0.84844, 1)
-emission_energy_multiplier = 5.0
 clearcoat_enabled = true
 clearcoat = 0.82
 clearcoat_roughness = 0.28
+uv1_offset = Vector3(0.855, 0.305, 0)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.5743518
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_evcul"]

@@ -1,15 +1,17 @@
-[gd_scene load_steps=9 format=4 uid="uid://cvervjf8gggum"]
+[gd_scene load_steps=10 format=4 uid="uid://cvervjf8gggum"]
 
 [ext_resource type="PackedScene" uid="uid://dd3oln1ucgqpd" path="res://models/blaster-repeater.glb" id="1_bw8g2"]
-[ext_resource type="Texture2D" uid="uid://b5hxnjwvrxuji" path="res://models/Textures/colormap.png" id="2_1wj75"]
+[ext_resource type="Texture2D" uid="uid://jq06b8w0giki" path="res://materials/glass/glass_seamless_texture_3499.jpg" id="2_xeaoh"]
+[ext_resource type="Texture2D" uid="uid://by03vu0rvyyps" path="res://materials/glass/glass_seamless_texture_3498.jpg" id="3_1wj75"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bw8g2"]
 resource_name = "colormap"
 cull_mode = 2
-albedo_color = Color(0.9655085, 0.9285301, 0.64855057, 1)
-albedo_texture = ExtResource("2_1wj75")
+albedo_color = Color(0.5104748, 0.7041575, 0.57329077, 1)
+albedo_texture = ExtResource("2_xeaoh")
 metallic = 1.0
 roughness = 0.66
+uv1_triplanar = true
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1wj75"]
@@ -49,8 +51,9 @@ shadow_mesh = SubResource("ArrayMesh_1wj75")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xeaoh"]
 resource_name = "colormap"
 cull_mode = 2
-albedo_color = Color(3.0786626, 7.589122, 7.9112988, 1)
-albedo_texture = ExtResource("2_1wj75")
+albedo_color = Color(0, 2.454227, 1.3069919, 1)
+albedo_texture = ExtResource("3_1wj75")
+uv1_triplanar = true
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3l2ap"]
@@ -90,6 +93,7 @@ shadow_mesh = SubResource("ArrayMesh_3l2ap")
 [node name="blaster-repeater" instance=ExtResource("1_bw8g2")]
 
 [node name="blaster-repeater2" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.29554445, 0)
 mesh = SubResource("ArrayMesh_xeaoh")
 
 [node name="Group" parent="blaster-repeater2" index="0"]

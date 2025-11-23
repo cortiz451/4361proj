@@ -1,0 +1,11 @@
+[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://doh3ka7vgqfbt"]
+
+[ext_resource type="Texture2D" uid="uid://d1ffu87q6ftth" path="res://materials/unsplash/abstracttile_gray.png" id="1_nb6ti"]
+[ext_resource type="Texture2D" uid="uid://cde5667gut02w" path="res://materials/roughtexture.png" id="2_nb6ti"]
+
+[resource]
+albedo_color = Color(3.6007304, 3.6007304, 3.6007304, 1)
+albedo_texture = ExtResource("1_nb6ti")
+orm_texture = ExtResource("2_nb6ti")
+emission_enabled = true
+uv1_scale = Vector3(0.5, 0.5, 0.5)
