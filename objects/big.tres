@@ -5,7 +5,7 @@
 [resource]
 resource_name = "colormap"
 cull_mode = 2
-albedo_color = Color(2.2639842, 1.3495791, 0.54947466, 1)
+albedo_color = Color(2.2639842, 1.4375026, 0.19778028, 1)
 albedo_texture = ExtResource("1_1jsa5")
 rim_enabled = true
 texture_filter = 2

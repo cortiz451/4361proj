@@ -1231,8 +1231,8 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("16_dnhof")
 
 [node name="Fade" type="ColorRect" parent="HUD"]
-offset_right = 1280.0
-offset_bottom = 720.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 color = Color(0, 0, 0, 0)
 
 [node name="Enemies" type="Node" parent="."]
@@ -1510,7 +1510,7 @@ transform = Transform3D(0.9933398, -0.013301312, 0.11445339, 0.009730398, 0.9994
 player = NodePath("../../Player")
 
 [node name="chasing-enemy10" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]
-transform = Transform3D(0.008707203, -0.031787455, 0.9994568, 0.009730399, 0.99944973, 0.03170255, -0.99991506, 0.009449034, 0.00901144, -90.24001, -30.57889, -9.18014)
+transform = Transform3D(-0.018674528, -0.03151681, 0.9993288, 0.009730397, 0.9994496, 0.03170254, -0.9997785, 0.010315855, -0.018357858, -90.24001, -30.57889, -9.18014)
 player = NodePath("../../Player")
 
 [node name="chasing-enemy11" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("19_ids8r")]

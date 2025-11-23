@@ -37,3 +37,81 @@ License: [MIT License](LICENSE.txt)
 Author: [Linus Torvalds](https://github.com/torvalds)  
 Source: [git-scm.com](https://git-scm.com/downloads)  
 License: [GNU General Public License version 2](https://opensource.org/licenses/GPL-2.0)
+
+
+Thanks for playing!
+
+
+
+
+You can go now...
+
+
+
+
+
+seriously....
+
+
+
+You can click the "go away" button
+
+
+
+
+like right now....
+
+
+
+
+
+
+
+You can go now.
+
+
+
+
+
+
+uh....
+
+
+
+
+
+
+you come here often?
+
+
+
+
+No?
+
+
+
+
+Well...
+heh...
+
+
+
+uhh....
+
+
+You wanna go out sometime?
+
+
+
+...no?
+
+
+
+well... it was worth a shot...
+
+
+anyways....
+
+
+
+okay... bye....

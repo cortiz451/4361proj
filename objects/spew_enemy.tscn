@@ -183,7 +183,7 @@ mesh = SubResource("ArrayMesh_1em1r")
 skeleton = NodePath("")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="enemy-flying"]
-light_color = Color(0.86532336, 0.31205645, 0.99999994, 1)
+light_color = Color(0.701, 0.31, 1, 1)
 light_bake_mode = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Enemy"]]

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="MazeQuest 3D: Revenge of the Evil, No-Good, Nefarious Enemies!"
 config/description="A game made by Group 7 for CS 4361.001's 2025 project."
-config/version="0.0007"
+config/version="0.0008"
 config/tags=PackedStringArray("starterkit")
 run/main_scene="res://maaacks_template/scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")

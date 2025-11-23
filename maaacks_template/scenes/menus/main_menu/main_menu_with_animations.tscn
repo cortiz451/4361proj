@@ -383,19 +383,19 @@ curve = SubResource("Curve_rnrrw")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fq6jx"]
 particle_flag_disable_z = true
-angle_min = -14.9999895
-angle_max = 15.0000105
+angle_min = -29.99999
+angle_max = 30.000011
 direction = Vector3(0, 0, 0)
 spread = 180.0
 initial_velocity_min = 500.0
 initial_velocity_max = 600.0
-angular_velocity_min = -15.000016
-angular_velocity_max = 14.999984
+angular_velocity_min = -101.55001
+angular_velocity_max = 101.54998
 gravity = Vector3(0, 0, 0)
 linear_accel_min = -2.2351742e-06
 linear_accel_max = 4.9999976
 linear_accel_curve = SubResource("CurveTexture_o17w0")
-scale_min = 0.25
+scale_min = 0.29999998
 scale_max = 0.5
 color = Color(1, 1, 1, 0.29803923)
 turbulence_noise_strength = 19.78
@@ -461,11 +461,13 @@ parameters/looping = true
 texture = ExtResource("6_5bn2x")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="BackgroundTextureRect" index="0"]
+position = Vector2(960, 540)
 amount = 64
 texture = SubResource("CompressedTexture2D_h0ckf")
 lifetime = 3.0
 randomness = 1.0
-visibility_rect = Rect2(-700, -400, 1400, 800)
+visibility_rect = Rect2(-1000, -600, 2000, 1200)
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_fq6jx")
 
 [node name="Name" type="TextureRect" parent="BackgroundTextureRect" index="1"]
@@ -482,7 +484,7 @@ theme = ExtResource("2_61jja")
 modulate = Color(1, 1, 1, 0)
 
 [node name="VersionLabel" parent="VersionMargin/VersionContainer" index="0"]
-text = "v0.0007"
+text = "v0.0008"
 label_settings = SubResource("LabelSettings_eyao0")
 vertical_alignment = 2
 
