@@ -14,7 +14,6 @@ script = ExtResource("1_lhdtw")
 Spd = 55
 
 [node name="Sprite3D" type="Sprite3D" parent="Bullet"]
-transparency = 0.33
 cast_shadow = 0
 modulate = Color(0.69411767, 0.22745098, 1, 0.5019608)
 billboard = 1

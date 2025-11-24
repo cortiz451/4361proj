@@ -13,7 +13,6 @@ input_ray_pickable = false
 script = ExtResource("1_jpaxd")
 
 [node name="Sprite3D" type="Sprite3D" parent="Bullet"]
-transparency = 0.25
 cast_shadow = 0
 modulate = Color(3.2368753, 0.7406666, 0, 1)
 billboard = 1
