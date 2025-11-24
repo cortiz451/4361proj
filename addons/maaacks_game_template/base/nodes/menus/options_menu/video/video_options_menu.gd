@@ -19,6 +19,16 @@ func _update_ui(window : Window) -> void:
 	_preselect_resolution(window)
 	%VSyncControl.value = AppSettings.get_vsync(window)
 	_update_resolution_options_enabled(window)
+	
+	#I added these :)
+	var fov: float = PlayerConfig.get_config(AppSettings.VIDEO_SECTION, "FOV", 90.0)
+	_on_fov_control_setting_changed(fov)
+	$VBoxContainer/FOVControl/HSlider.value=fov
+	
+	var rs: float = PlayerConfig.get_config(AppSettings.VIDEO_SECTION, "ResolutionScale", 1.00)
+	_on_resolution_scale_control_setting_changed(rs)
+	$VBoxContainer/ResScaleSlider/HSlider.value=rs
+	
 
 func _ready() -> void:
 	var window : Window = get_window()

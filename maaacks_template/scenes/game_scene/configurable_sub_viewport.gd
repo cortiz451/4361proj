@@ -13,3 +13,9 @@ func _ready() -> void:
 	
 	var res : float = PlayerConfig.get_config(video_section, "ResolutionScale", 1.00)
 	scaling_3d_scale = res
+	
+	var secret : int = PlayerConfig.get_config(AppSettings.GAME_SECTION, "SecretMode", false)
+	if(secret): 
+		debug_draw=DEBUG_DRAW_OVERDRAW
+	else:
+		debug_draw=DEBUG_DRAW_DISABLED 

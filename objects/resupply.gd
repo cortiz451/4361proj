@@ -1,6 +1,7 @@
 extends Area3D
 
 @export var player: Node3D
+@export var wait: int = 10
 @onready var resupplytime=$Timer
 
 signal console_text
@@ -18,7 +19,7 @@ func _on_player_resupply(body: Node3D) -> void:
 				body.setAmmo(w, body.maxAmmo[w])
 			
 			$Sprite3D.frame=1
-			resupplytime.start(10)
+			resupplytime.start(wait)
 			
 			console_text.emit("You filled up on ammo! Now to find the baddies...")
 			

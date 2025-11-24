@@ -13,7 +13,8 @@ input_ray_pickable = false
 script = ExtResource("1_3ndsa")
 
 [node name="Sprite3D" type="Sprite3D" parent="Bullet"]
-transparency = 0.66
+transparency = 0.33
+cast_shadow = 0
 modulate = Color(0.38626027, 1.353, 0.5724831, 1)
 pixel_size = 0.005
 billboard = 1

@@ -14,7 +14,8 @@ script = ExtResource("1_u3pof")
 Spd = 45
 
 [node name="Sprite3D" type="Sprite3D" parent="Bullet"]
-transparency = 0.74
+transparency = 0.33
+cast_shadow = 0
 modulate = Color(0.42352942, 0.4392157, 0.98039216, 1)
 billboard = 1
 alpha_cut = 3
@@ -26,7 +27,8 @@ texture = ExtResource("2_1svsl")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Bullet"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006876111, 0, -0.06702018)
-transparency = 0.74
+transparency = 0.33
+cast_shadow = 0
 modulate = Color(0.42352942, 0.4392157, 0.98039216, 0.5019608)
 billboard = 1
 texture_filter = 0
@@ -35,7 +37,8 @@ texture = ExtResource("2_1svsl")
 
 [node name="Sprite3D3" type="Sprite3D" parent="Bullet"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.061869144, 0, 0.0071667433)
-transparency = 0.74
+transparency = 0.33
+cast_shadow = 0
 modulate = Color(0.42352942, 0.4392157, 0.98039216, 0.5019608)
 billboard = 1
 texture_filter = 0

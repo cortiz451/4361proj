@@ -340,7 +340,7 @@ func action_shoot():
 func shootProj():
 	var b=weapon.Proj.instantiate()
 	owner.add_child(b)
-	b.transform = $Head/Camera/Marker3D.global_transform.translated_local(Vector3(0,-0.5,0))
+	b.transform = $Head/Camera/Marker3D.global_transform.translated_local(Vector3(0,-0.4,0))
 
 # Toggle between available weapons (listed in 'weapons')
 

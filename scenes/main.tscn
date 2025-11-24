@@ -202,13 +202,13 @@ initial_velocity_min = 5.0
 initial_velocity_max = 8.0
 scale_min = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4bwh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4ag1"]
 transparency = 1
 albedo_color = Color(2.1168277, 0, 2.1168277, 1)
 albedo_texture = ExtResource("48_o7ddy")
 
 [sub_resource type="QuadMesh" id="QuadMesh_o7ddy"]
-material = SubResource("StandardMaterial3D_j4bwh")
+material = SubResource("StandardMaterial3D_r4ag1")
 size = Vector2(0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bu4jf"]
@@ -372,6 +372,7 @@ entity = {
 
 [node name="DirectionalLight3D" parent="WorldEnvironment/VMFNode/Entities/lights/light_environment" index="0"]
 light_energy = 0.78431374
+light_bake_mode = 1
 
 [node name="light_330" parent="WorldEnvironment/VMFNode/Entities/lights" instance=ExtResource("19_j8jky")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 7.68, 3.84)
@@ -2444,6 +2445,7 @@ bus = &"Music"
 parameters/looping = true
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
+layers = 16
 quality = 2
 environment_custom_color = Color(0.6993065, 0.25402156, 1, 1)
 environment_custom_energy = 9.49

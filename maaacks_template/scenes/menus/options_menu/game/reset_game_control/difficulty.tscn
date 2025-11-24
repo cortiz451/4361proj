@@ -15,7 +15,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Difficulty:"
 
-[node name="HSlider" type="HSlider" parent="."]
+[node name="DiffSlider" type="HSlider" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
 min_value = 1.0
@@ -25,5 +26,5 @@ rounded = true
 tick_count = 5
 ticks_on_borders = true
 
-[connection signal="drag_ended" from="HSlider" to="." method="_on_h_slider_drag_ended"]
-[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="drag_ended" from="DiffSlider" to="." method="_on_h_slider_drag_ended"]
+[connection signal="value_changed" from="DiffSlider" to="." method="_on_h_slider_value_changed"]

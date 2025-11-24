@@ -13,3 +13,4 @@ func _process(delta):
 func _on_end(body: Node3D) -> void:
 	if(body.has_method("heal")):
 		end.emit()
+		queue_free()

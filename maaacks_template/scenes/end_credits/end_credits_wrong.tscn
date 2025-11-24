@@ -59,9 +59,13 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.6666667)
 
 [node name="ScrollContainer" parent="." index="3"]
-scroll_vertical = 1659
+scroll_vertical = 787
+
+[node name="HeaderSpace" parent="ScrollContainer/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 1080)
 
 [node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" index="1"]
+custom_minimum_size = Vector2(1920, 0)
 text = "[font_size=48]Collaborators[/font_size]
 
 [font_size=32]The Hard Working Creators[/font_size]
@@ -99,7 +103,89 @@ License: [url=LICENSE.txt]MIT License[/url]
 [img=80]res:///maaacks_template/assets/git_logo/Git-Logo-2Color.png[/img]  
 Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
 Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
-License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]"
+License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
+
+
+Thanks for playing!
+
+
+
+
+You can go now...
+
+
+
+
+
+seriously....
+
+
+
+You can click the \"go away\" button
+
+
+
+
+like right now....
+
+
+
+
+
+
+
+You can go now.
+
+
+
+
+
+
+uh....
+
+
+
+
+
+
+you come here often?
+
+
+
+
+No?
+
+
+
+
+Well...
+heh...
+
+
+
+uhh....
+
+
+You wanna go out sometime?
+
+
+
+...no?
+
+
+
+well... it was worth a shot...
+
+
+anyways....
+
+
+
+okay... bye....
+"
+
+[node name="FooterSpace" parent="ScrollContainer/VBoxContainer" index="2"]
+custom_minimum_size = Vector2(0, 1080)
 
 [node name="CenterContainer" type="CenterContainer" parent="." index="4"]
 layout_mode = 0
@@ -125,13 +211,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Thanks for playing!
-- 99"
+;)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Time" type="Label" parent="CenterContainer/EndMessagePanel/VBoxContainer" index="1"]
 layout_mode = 2
-text = "Time: ???"
+text = "Time: 8:01"
 horizontal_alignment = 3
 
 [node name="DevTime" type="Label" parent="CenterContainer/EndMessagePanel/VBoxContainer" index="2"]
@@ -147,12 +233,12 @@ horizontal_alignment = 2
 
 [node name="Coins" type="Label" parent="CenterContainer/EndMessagePanel/VBoxContainer" index="3"]
 layout_mode = 2
-text = "Coins: ???"
+text = "Coins: 0/0"
 horizontal_alignment = 3
 
 [node name="Enemies" type="Label" parent="CenterContainer/EndMessagePanel/VBoxContainer" index="4"]
 layout_mode = 2
-text = "Enemies: ???"
+text = "Enemies: 69/129"
 horizontal_alignment = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/EndMessagePanel/VBoxContainer" index="5"]

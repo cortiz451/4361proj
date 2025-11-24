@@ -1,16 +1,28 @@
-[gd_scene load_steps=10 format=4 uid="uid://snvkunidkjh8"]
+[gd_scene load_steps=13 format=4 uid="uid://snvkunidkjh8"]
 
 [ext_resource type="PackedScene" uid="uid://dd3oln1ucgqpd" path="res://models/blaster-repeater.glb" id="1_5k1wa"]
 [ext_resource type="Texture2D" uid="uid://d1ffu87q6ftth" path="res://materials/unsplash/abstracttile_gray.png" id="2_5k1wa"]
+[ext_resource type="Texture2D" uid="uid://bpmriub5g32dl" path="res://materials/glass/glass_seamless_texture_3528.jpg" id="2_xqs0t"]
+[ext_resource type="Texture2D" uid="uid://d0vb18hhsn5s5" path="res://materials/tendrils.png" id="3_3u63c"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5k1wa"]
 load_path = "res://.godot/imported/glasswindow001b.png-20266a4ce5f94225417ce6731f82211e.s3tc.ctex"
 
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_r8ay3"]
+blend_mode = 3
+albedo_color = Color(2.3464565, 0.67719764, 0, 1)
+albedo_texture = ExtResource("3_3u63c")
+
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_xqs0t"]
+next_pass = SubResource("ORMMaterial3D_r8ay3")
 transparency = 1
 blend_mode = 1
 albedo_color = Color(0.74900705, 1.2232525, 0.79723537, 1)
 albedo_texture = SubResource("CompressedTexture2D_5k1wa")
+emission_enabled = true
+emission_energy_multiplier = 4.0
+emission_texture = ExtResource("2_xqs0t")
+uv1_triplanar = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_r8ay3"]
 _surfaces = [{
@@ -49,6 +61,7 @@ shadow_mesh = SubResource("ArrayMesh_r8ay3")
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_3u63c"]
 albedo_color = Color(6.2307706, 10.5787325, 6.5865135, 1)
 albedo_texture = ExtResource("2_5k1wa")
+uv1_triplanar = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_xqs0t"]
 _surfaces = [{
@@ -98,3 +111,7 @@ mesh = SubResource("ArrayMesh_3u63c")
 transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1, 0.25, 0.3, 0.25)
 mesh = SubResource("ArrayMesh_3u63c")
 skeleton = NodePath("")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55409324, 0)
+light_color = Color(0, 1, 0.049999952, 1)

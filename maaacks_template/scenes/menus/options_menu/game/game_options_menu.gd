@@ -1,5 +1,12 @@
 extends Control
 
+
+func _ready() -> void:
+	var d: int = PlayerConfig.get_config(AppSettings.GAME_SECTION, "Difficulty", 3)
+	_difficulty(d)
+	$VBoxContainer/Difficulty/DiffSlider.value=d
+	
+
 func _difficulty(d: int) -> void:
 	PlayerConfig.set_config(AppSettings.GAME_SECTION, "Difficulty", d)
 	#random difficulty names
@@ -36,7 +43,7 @@ func _difficulty(d: int) -> void:
 				0:
 					$VBoxContainer/Label.text="Fear me."
 				1:
-					$VBoxContainer/Label.text="No problems for me."
+					$VBoxContainer/Label.text="Play time's over."
 				2:
 					$VBoxContainer/Label.text="Elimination is near."
 				
@@ -50,3 +57,7 @@ func _difficulty(d: int) -> void:
 					$VBoxContainer/Label.text="...hahahaHAHA!!"
 				
 		
+
+
+func _on_secret_toggled(toggled_on: bool) -> void:
+	PlayerConfig.set_config(AppSettings.GAME_SECTION, "SecretMode", toggled_on)

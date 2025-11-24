@@ -26,6 +26,7 @@ var alerted=false;
 
 func _ready():
 	target_position = position
+	$Timer.wait_time=shot_time
 
 func _process(delta):
 	#sorry for the gross nested ifs
@@ -74,7 +75,7 @@ func destroy():
 		$"enemy-flying".queue_free()
 	$DestroyFX.visible=true
 	$DestroyFX.play("default")
-	await get_tree().create_timer(shot_time).timeout
+	await get_tree().create_timer(0.4).timeout
 	queue_free()
 	
 

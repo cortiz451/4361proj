@@ -81,11 +81,12 @@ script = ExtResource("1_hmm4s")
 muzzle_velocity = 150
 
 [node name="Sprite3D" type="Sprite3D" parent="Rocket"]
-transparency = 0.66
+transparency = 0.5
+cast_shadow = 0
 modulate = Color(0.68768644, 1.1480514, 0.5998687, 1)
 pixel_size = 0.0075
 billboard = 1
-shaded = true
+alpha_cut = 3
 texture_filter = 0
 render_priority = 5
 texture = ExtResource("2_5tuu2")
@@ -97,7 +98,7 @@ shape = SubResource("SphereShape3D_3ndsa")
 [node name="Explosion" type="Area3D" parent="."]
 monitoring = false
 script = ExtResource("3_21pic")
-DMG = 18
+DMG = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Explosion"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
