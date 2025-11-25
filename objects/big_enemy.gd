@@ -2,6 +2,7 @@ extends Node3D
 
 @export var player: Node3D
 @export var Bullet : PackedScene
+@export var shot_time : float = 1.2
 
 @onready var raycast = $RayCast
 @onready var muzzle_a = $MuzzleA
@@ -9,7 +10,7 @@ extends Node3D
 
 #obj ori progs!
 var health := 400
-var shots := 8
+var shots := 6
 
 var time := 0.0
 var target_position: Vector3
@@ -18,6 +19,7 @@ var destroyed := false
 #code for aggro
 var angry=false;
 var alerted=false;
+var waiting=false;
 
 signal enemy_down
 
@@ -31,13 +33,15 @@ func _process(delta):
 	
 	if(angry):
 		self.look_at(player.position + Vector3(0, 0.5, 0), Vector3.UP, true)  # Look at player
-		if(!alerted):
+		if(!alerted && !waiting):
 			raycast.force_raycast_update()
 			if(raycast.is_colliding()):
 				var collider = raycast.get_collider()
 				if collider.has_method("damage"):  # Raycast collides with player
 					$Angry.pitch_scale=randf_range(0.9, 1.1)
 					$Angry.play()
+					await get_tree().create_timer(randf_range(0.15,0.4)).timeout
+					$Timer.start(shot_time)
 					alerted=true
 	
 	target_position.y += (cos(time * 5) * 1) * delta  # Sine movement (up and down)
@@ -79,12 +83,13 @@ func destroy():
 
 # Shoot when timer hits 0
 func _on_timer_timeout():
+	#if dead, don't shoot lol
+	if(destroyed): return
+	
 	#do not aggro if not in aggro zone
 	if(angry):
 		raycast.force_raycast_update()
 	
-	if(destroyed): return
-
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		if collider.has_method("damage"):  # Raycast collides with player

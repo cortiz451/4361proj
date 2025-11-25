@@ -2,7 +2,7 @@ extends Area3D
 
 signal exploded
 
-@export var g = Vector3.FORWARD * -20 + Vector3.LEFT*(-2+4*randf()) + Vector3.UP*(-1.5+3*randf())
+@export var g = Vector3.FORWARD * -20 + Vector3.LEFT*(-3+6*randf()) + Vector3.UP*(-2+4*randf())
 @export var muzzle_velocity = 35
 
 var MULT=max(0.5, \
@@ -13,7 +13,7 @@ var velocity = Vector3.ZERO
 #how fast do you want it to go?
 var SPEED = 60
 
-var DMG=15;
+var DMG=20;
 
 func _physics_process(delta):
 	velocity = g*delta*SPEED

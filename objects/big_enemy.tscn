@@ -218,8 +218,7 @@ frame_progress = 1.0
 speed_scale = 0.5
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.6
-autostart = true
+wait_time = 1.2
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29273826, 0.6475944)

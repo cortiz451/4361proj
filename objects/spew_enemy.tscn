@@ -215,6 +215,7 @@ autoplay = "default"
 speed_scale = 0.5
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 1.6
 autostart = true
 
 [node name="Marker3D" type="Marker3D" parent="."]

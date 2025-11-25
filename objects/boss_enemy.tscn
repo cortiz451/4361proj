@@ -299,10 +299,8 @@ sprite_frames = SubResource("SpriteFrames_wvihl")
 speed_scale = 0.5
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="Timer2" type="Timer" parent="."]
-autostart = true
 
 [node name="Timer3" type="Timer" parent="."]
 wait_time = 8.0

@@ -931,6 +931,7 @@ omni_attenuation = 1.44
 [node name="Player" parent="." node_paths=PackedStringArray("crosshair") instance=ExtResource("2_elriq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0960894, 0)
 slide_on_ceiling = false
+floor_max_angle = 0.87266463
 safe_margin = 0.005
 weapons = Array[ExtResource("3_trceg")]([ExtResource("4_a8y0u"), ExtResource("5_jkv2x"), ExtResource("7_muem4"), ExtResource("6_jbj1t"), ExtResource("8_ro3en"), ExtResource("9_xrs0c")])
 crosshair = NodePath("../HUD/Crosshair")

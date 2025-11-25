@@ -13,7 +13,7 @@ var MULT=max(0.5, \
 #how fast do you want it to go?
 var SPEED = 65
 
-var DMG=20
+var DMG=25
 
 var r=false
 

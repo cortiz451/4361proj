@@ -5,7 +5,7 @@ extends Node3D
 @onready var raycast = $RayCast
 
 #obj ori progs!
-var health := 120
+var health := 160
 #I love ATR
 var SPEED_JUSTYOUBELIEVEIT=7.5
 var MULT=max(0.25, \
@@ -19,6 +19,7 @@ var destroyed := false
 #code for aggro
 var angry=false;
 var alerted=false;
+var waiting=false;
 
 signal enemy_down
 
@@ -32,13 +33,17 @@ func _process(delta):
 	
 	if(angry):
 		self.look_at(player.position + Vector3(0, 0.5, 0), Vector3.UP, true)  # Look at player
+		#WE love nested ifs
 		if(!alerted):
-			raycast.force_raycast_update()
+			if(!waiting): raycast.force_raycast_update()
 			if(raycast.is_colliding()):
 				var collider = raycast.get_collider()
 				if collider.has_method("damage"):  # Raycast collides with player
 					$Angry.pitch_scale=randf_range(0.9, 1.1)
 					$Angry.play()
+					waiting=true
+					await get_tree().create_timer(randf_range(0.1,0.4)).timeout
+					waiting=false
 					alerted=true
 		else:
 			target_position=position.move_toward(player.position, delta*SPEED_JUSTYOUBELIEVEIT*MULT)

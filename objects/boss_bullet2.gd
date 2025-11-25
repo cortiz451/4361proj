@@ -11,7 +11,7 @@ var MULT=max(0.25, \
 
 var velocity = Vector3.ZERO
 
-var DMG=25;
+var DMG=30;
 
 func _physics_process(delta):
 	velocity = g*delta*Spd

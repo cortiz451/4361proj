@@ -49,7 +49,7 @@ movie_writer/mjpeg_quality=1.0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godotresourcecleaner/plugin.cfg", "res://addons/godotvmf/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg", "res://addons/vertex_painter/plugin.cfg")
+enabled=PackedStringArray("res://addons/godotresourcecleaner/plugin.cfg", "res://addons/godotvmf/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg")
 
 [global_group]
 

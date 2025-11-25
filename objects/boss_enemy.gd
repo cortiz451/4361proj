@@ -43,7 +43,10 @@ func _process(delta):
 				if collider.has_method("damage"):  # Raycast collides with player
 					$Angry.pitch_scale=randf_range(0.9, 1.1)
 					$Angry.play()
+					await get_tree().create_timer(1.0).timeout
 					alerted=true
+					$Timer.start()
+					$Timer2.start()
 					$Timer3.start(8)
 					
 					#music time
@@ -96,12 +99,13 @@ func destroy():
 
 # Shoot when timer hits 0
 func _on_timer_timeout():
+	#if dead, don't shoot lol
+	if(destroyed): return
+	
 	#do not aggro if not in aggro zone
 	if(angry):
 		raycast.force_raycast_update()
-	
-	if(destroyed): return
-
+		
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		if collider.has_method("damage"):  # Raycast collides with player
@@ -118,12 +122,13 @@ func _on_timer_timeout():
 
 #right
 func _on_timer_2_timeout() -> void:
+	#if dead, don't shoot lol
+	if(destroyed): return
+	
 	#do not aggro if not in aggro zone
 	if(angry):
 		raycast.force_raycast_update()
 	
-	if(destroyed): return
-
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		if collider.has_method("damage"):  # Raycast collides with player
@@ -152,12 +157,13 @@ func _on_aggro_body_exited(body: Node3D) -> void:
 
 #big boss attack
 func _on_timer_3_timeout() -> void:
+	#if dead, don't shoot lol
+	if(destroyed): return
+	
 	#do not aggro if not in aggro zone
 	if(angry):
 		raycast.force_raycast_update()
 	
-	if(destroyed): return
-
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		if collider.has_method("damage"):  # Raycast collides with player
