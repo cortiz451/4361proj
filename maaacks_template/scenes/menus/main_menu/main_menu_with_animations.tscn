@@ -484,7 +484,7 @@ theme = ExtResource("2_61jja")
 modulate = Color(1, 1, 1, 0)
 
 [node name="VersionLabel" parent="VersionMargin/VersionContainer" index="0"]
-text = "v0.0008"
+text = "v0.0009"
 label_settings = SubResource("LabelSettings_eyao0")
 vertical_alignment = 2
 

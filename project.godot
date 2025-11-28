@@ -12,7 +12,7 @@ config_version=5
 
 config/name="MazeQuest 3D: Revenge of the Evil, No-Good, Nefarious Enemies!"
 config/description="A game made by Group 7 for CS 4361.001's 2025 project."
-config/version="0.0009"
+config/version="0.0010"
 config/tags=PackedStringArray("starterkit")
 run/main_scene="res://maaacks_template/scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
@@ -212,5 +212,4 @@ environment/screen_space_reflection/roughness_quality=0
 environment/subsurface_scattering/subsurface_scattering_quality=2
 limits/opengl/max_lights_per_object=32
 anti_aliasing/quality/screen_space_aa=1
-occlusion_culling/use_occlusion_culling=true
 2d/sdf/scale=0
